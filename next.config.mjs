@@ -9,6 +9,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // Enable dynamic rendering for pages that need it
+  output: 'standalone',
+  // Increase static page generation timeout
+  staticPageGenerationTimeout: 120,
   async headers() {
     return [
       {
