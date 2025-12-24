@@ -6,8 +6,9 @@ import {
   newsletterTemplate,
 } from "./email-templates"
 
-// Initialize Resend client
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Initialize Resend client (only if API key is available)
+// During build time, this might be undefined, so we'll handle it gracefully
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null
 
 const FROM_EMAIL = process.env.FROM_EMAIL || "noreply@konnectingdots.com"
 const FROM_NAME = process.env.FROM_NAME || "Konnecting Dots"
@@ -35,8 +36,8 @@ export interface SendEmailOptions {
 
 export const sendEmail = async (options: SendEmailOptions) => {
   try {
-    // If no API key, log the email instead (for development)
-    if (!process.env.RESEND_API_KEY) {
+    // If no API key or resend client not initialized, log the email instead (for development/build)
+    if (!process.env.RESEND_API_KEY || !resend) {
       console.log("📧 Email would be sent (RESEND_API_KEY not set):", {
         to: options.to,
         subject: options.subject,
