@@ -42,11 +42,11 @@
 ### 1. Environment Variables
 Create a `.env` file with:
 ```env
-RESEND_API_KEY=re_your_resend_api_key_here
-FROM_EMAIL=noreply@konnectingdots.com
+RESEND_API_KEY=re_Y2XZqUfv_6zPjFuV3U5Hc1VpdpjWog5Xn
+FROM_EMAIL=noreply@konnectingdots.org
 FROM_NAME=Konnecting Dots
 ADMIN_EMAIL=yousifmangi32@gmail.com
-NEXT_PUBLIC_SITE_URL=https://yourdomain.com
+NEXT_PUBLIC_SITE_URL=https://konnectingdots.org
 ```
 
 ### 2. Database Migration (Recommended)
@@ -73,7 +73,7 @@ Consider adding rate limiting to prevent abuse:
 If you need to allow specific origins, add CORS headers to API routes:
 ```typescript
 headers: {
-  'Access-Control-Allow-Origin': 'https://yourdomain.com',
+  'Access-Control-Allow-Origin': 'https://konnectingdots.org',
   'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
   'Access-Control-Allow-Headers': 'Content-Type',
 }
@@ -86,9 +86,9 @@ Set up error monitoring for production:
 - Vercel Analytics (already included)
 
 ### 7. Email Domain Verification
-- Verify your domain with Resend
-- Set up SPF, DKIM, and DMARC records
-- Use verified domain for FROM_EMAIL
+- ✅ Domain verified with Resend (konnectingdots.org)
+- ✅ SPF, DKIM, and DMARC records configured
+- ✅ Using verified domain for FROM_EMAIL (noreply@konnectingdots.org)
 
 ### 8. Content Security Policy (CSP)
 Consider adding CSP headers in `next.config.mjs` for additional security.
