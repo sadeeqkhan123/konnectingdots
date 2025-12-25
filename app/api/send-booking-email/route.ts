@@ -18,18 +18,24 @@ export async function POST(request: Request) {
     const body = await request.json()
     const validated = bookingSchema.parse(body)
 
-    // Save booking to database
-    const booking = bookingDb.create({
-      name: validated.name,
-      email: validated.email,
-      phone: validated.phone,
-      service: validated.service,
-      preferredDate: validated.preferredDate,
-      preferredTime: validated.preferredTime,
-      message: validated.message,
-    })
+    // Try to save booking to database (but don't fail if it doesn't work on Vercel)
+    let booking = null
+    try {
+      booking = bookingDb.create({
+        name: validated.name,
+        email: validated.email,
+        phone: validated.phone,
+        service: validated.service,
+        preferredDate: validated.preferredDate,
+        preferredTime: validated.preferredTime,
+        message: validated.message,
+      })
+    } catch (dbError) {
+      console.error("Error saving booking to database (non-critical):", dbError)
+      // Continue even if database save fails
+    }
 
-    // Send confirmation emails
+    // Send confirmation emails (this is the critical part)
     try {
       await sendBookingConfirmation({
         name: validated.name,
@@ -41,7 +47,14 @@ export async function POST(request: Request) {
       })
     } catch (emailError) {
       console.error("Error sending booking email:", emailError)
-      // Don't fail the request if email fails - booking is still saved
+      // If email fails, we should return an error
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Failed to send confirmation email. Please try again or contact us directly.",
+        },
+        { status: 500 },
+      )
     }
 
     return NextResponse.json(

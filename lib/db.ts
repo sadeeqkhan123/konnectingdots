@@ -248,7 +248,15 @@ export const bookingDb = {
         createdAt: new Date().toISOString(),
       }
       bookings.push(newBooking)
-      fs.writeFileSync(BOOKINGS_DB, JSON.stringify({ bookings }, null, 2))
+      
+      // Try to write to file, but don't fail if it's read-only (e.g., on Vercel)
+      try {
+        fs.writeFileSync(BOOKINGS_DB, JSON.stringify({ bookings }, null, 2))
+      } catch (writeError) {
+        console.warn("Could not write booking to file (filesystem may be read-only):", writeError)
+        // Return the booking anyway - email will still be sent
+      }
+      
       return newBooking
     } catch (error) {
       console.error("Error creating booking:", error)
@@ -301,7 +309,15 @@ export const contactDb = {
         createdAt: new Date().toISOString(),
       }
       contacts.push(newContact)
-      fs.writeFileSync(CONTACTS_DB, JSON.stringify({ contacts }, null, 2))
+      
+      // Try to write to file, but don't fail if it's read-only (e.g., on Vercel)
+      try {
+        fs.writeFileSync(CONTACTS_DB, JSON.stringify({ contacts }, null, 2))
+      } catch (writeError) {
+        console.warn("Could not write contact to file (filesystem may be read-only):", writeError)
+        // Return the contact anyway - email will still be sent
+      }
+      
       return newContact
     } catch (error) {
       console.error("Error creating contact:", error)
@@ -350,7 +366,12 @@ export const newsletterDb = {
             subscribedAt: new Date().toISOString(),
             unsubscribedAt: undefined,
           }
-          fs.writeFileSync(NEWSLETTER_DB, JSON.stringify({ subscribers }, null, 2))
+          // Try to write to file, but don't fail if it's read-only (e.g., on Vercel)
+          try {
+            fs.writeFileSync(NEWSLETTER_DB, JSON.stringify({ subscribers }, null, 2))
+          } catch (writeError) {
+            console.warn("Could not write newsletter subscription to file (filesystem may be read-only):", writeError)
+          }
           return subscribers[index]
         }
         return existing
@@ -364,7 +385,12 @@ export const newsletterDb = {
         status: "active",
       }
       subscribers.push(newSubscriber)
-      fs.writeFileSync(NEWSLETTER_DB, JSON.stringify({ subscribers }, null, 2))
+      // Try to write to file, but don't fail if it's read-only (e.g., on Vercel)
+      try {
+        fs.writeFileSync(NEWSLETTER_DB, JSON.stringify({ subscribers }, null, 2))
+      } catch (writeError) {
+        console.warn("Could not write newsletter subscription to file (filesystem may be read-only):", writeError)
+      }
       return newSubscriber
     } catch (error) {
       console.error("Error subscribing to newsletter:", error)
@@ -432,7 +458,15 @@ export const eventDb = {
         createdAt: new Date().toISOString(),
       }
       events.push(newEvent)
-      fs.writeFileSync(EVENTS_DB, JSON.stringify({ events }, null, 2))
+      
+      // Try to write to file, but don't fail if it's read-only (e.g., on Vercel)
+      try {
+        fs.writeFileSync(EVENTS_DB, JSON.stringify({ events }, null, 2))
+      } catch (writeError) {
+        console.warn("Could not write event to file (filesystem may be read-only):", writeError)
+        // Return the event anyway
+      }
+      
       return newEvent
     } catch (error) {
       console.error("Error creating event:", error)
@@ -466,7 +500,14 @@ export const eventDb = {
 
       // Increment registered count
       event.registered += 1
-      fs.writeFileSync(EVENTS_DB, JSON.stringify({ events }, null, 2))
+      
+      // Try to write to file, but don't fail if it's read-only (e.g., on Vercel)
+      try {
+        fs.writeFileSync(EVENTS_DB, JSON.stringify({ events }, null, 2))
+      } catch (writeError) {
+        console.warn("Could not write event registration to file (filesystem may be read-only):", writeError)
+        // Return the registration anyway - email will still be sent
+      }
 
       // Store registration (in a separate file or append to event)
       const registrationData: EventRegistration = {

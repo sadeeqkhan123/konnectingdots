@@ -31,15 +31,28 @@ export async function POST(request: Request) {
       )
     }
 
-    // Subscribe
-    const subscriber = newsletterDb.subscribe(validated.email, validated.name)
+    // Try to subscribe (but don't fail if database write doesn't work on Vercel)
+    let subscriber = null
+    try {
+      subscriber = newsletterDb.subscribe(validated.email, validated.name)
+    } catch (dbError) {
+      console.error("Error saving newsletter subscription to database (non-critical):", dbError)
+      // Continue even if database save fails
+    }
 
-    // Send welcome email
+    // Send welcome email (this is the critical part)
     try {
       await sendNewsletterWelcome(validated.email, validated.name)
     } catch (emailError) {
       console.error("Error sending newsletter welcome email:", emailError)
-      // Don't fail the request if email fails
+      // If email fails, we should return an error
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Failed to send welcome email. Please try again.",
+        },
+        { status: 500 },
+      )
     }
 
     return NextResponse.json(

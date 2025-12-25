@@ -17,17 +17,24 @@ export async function POST(request: Request) {
     const body = await request.json()
     const validated = contactSchema.parse(body)
 
-    // Save to database
-    const contact = contactDb.create({
-      name: validated.name,
-      email: validated.email,
-      phone: validated.phone,
-      subject: validated.subject,
-      message: validated.message,
-      service: validated.service,
-    })
+    // Try to save to database (but don't fail if it doesn't work on Vercel)
+    let contact = null
+    try {
+      contact = contactDb.create({
+        name: validated.name,
+        email: validated.email,
+        phone: validated.phone,
+        subject: validated.subject,
+        message: validated.message,
+        service: validated.service,
+      })
+    } catch (dbError) {
+      console.error("Error saving contact to database (non-critical):", dbError)
+      // Continue even if database save fails
+    }
 
-    // Send emails
+    // Send emails (this is the critical part)
+    let emailSent = false
     try {
       await sendContactNotification({
         name: validated.name,
@@ -37,11 +44,20 @@ export async function POST(request: Request) {
         message: validated.message,
         service: validated.service,
       })
+      emailSent = true
     } catch (emailError) {
       console.error("Error sending contact email:", emailError)
-      // Don't fail the request if email fails
+      // If email fails, we should return an error
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Failed to send email. Please try again or contact us directly.",
+        },
+        { status: 500 },
+      )
     }
 
+    // Return success if email was sent (database save is optional)
     return NextResponse.json(
       {
         success: true,
