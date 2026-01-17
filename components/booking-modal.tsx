@@ -219,7 +219,7 @@ export default function BookingModal({ children }: BookingModalProps) {
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => handleInputChange("phone", e.target.value)}
-                    placeholder="+1 (555) 123-4567"
+                    placeholder="+92 331 1365146"
                     required
                     className="h-12"
                   />

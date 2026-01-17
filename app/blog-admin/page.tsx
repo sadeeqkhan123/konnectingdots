@@ -18,7 +18,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { PlusCircle, Upload, Eye, Edit, Trash2, FileText } from "lucide-react"
+import { PlusCircle, Upload, Eye, Edit, Trash2, FileText, CheckCircle, XCircle } from "lucide-react"
+import { RichTextEditor } from "@/components/rich-text-editor"
 
 export default function BlogAdminPage() {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
@@ -59,6 +60,8 @@ export default function BlogAdminPage() {
     excerpt: "",
     author: "",
     image: "",
+    submittedBy: "",
+    submittedByEmail: "",
   })
 
   const [isCreating, setIsCreating] = useState(false)
@@ -84,7 +87,9 @@ export default function BlogAdminPage() {
           excerpt: newPost.excerpt,
           content: newPost.content,
           image: newPost.image || "/placeholder.svg",
-          status: "draft",
+          status: "pending",
+          submittedBy: newPost.submittedBy || newPost.author,
+          submittedByEmail: newPost.submittedByEmail,
         }),
       })
 
@@ -111,12 +116,12 @@ export default function BlogAdminPage() {
                 day: "numeric",
                 year: "numeric",
               }),
-              status: post.status === "published" ? "Published" : "Draft",
+              status: post.status === "published" ? "Published" : post.status === "pending" ? "Pending" : post.status === "rejected" ? "Rejected" : "Draft",
               image: post.image,
             })),
           )
         }
-        setNewPost({ title: "", category: "", content: "", excerpt: "", author: "", image: "" })
+        setNewPost({ title: "", category: "", content: "", excerpt: "", author: "", image: "", submittedBy: "", submittedByEmail: "" })
         setIsDialogOpen(false)
         alert("Blog post created successfully!")
       } else {
@@ -151,7 +156,7 @@ export default function BlogAdminPage() {
                 day: "numeric",
                 year: "numeric",
               }),
-              status: post.status === "published" ? "Published" : "Draft",
+              status: post.status === "published" ? "Published" : post.status === "pending" ? "Pending" : post.status === "rejected" ? "Rejected" : "Draft",
               image: post.image,
             })),
           )
@@ -259,18 +264,38 @@ export default function BlogAdminPage() {
                     </div>
                   </div>
 
+                  {/* Submitted By (Optional) */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="submittedBy">Submitted By (Optional)</Label>
+                      <Input
+                        id="submittedBy"
+                        placeholder="Name of submitter..."
+                        value={newPost.submittedBy}
+                        onChange={(e) => setNewPost({ ...newPost, submittedBy: e.target.value })}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="submittedByEmail">Submitter Email (Optional)</Label>
+                      <Input
+                        id="submittedByEmail"
+                        type="email"
+                        placeholder="email@example.com"
+                        value={newPost.submittedByEmail}
+                        onChange={(e) => setNewPost({ ...newPost, submittedByEmail: e.target.value })}
+                      />
+                    </div>
+                  </div>
+
                   {/* Content */}
                   <div className="space-y-2">
                     <Label htmlFor="content">Blog Content *</Label>
-                    <Textarea
-                      id="content"
+                    <RichTextEditor
+                      value={newPost.content}
+                      onChange={(value) => setNewPost({ ...newPost, content: value })}
                       placeholder="Write your blog content here..."
                       rows={12}
-                      value={newPost.content}
-                      onChange={(e) => setNewPost({ ...newPost, content: e.target.value })}
-                      className="font-mono text-sm"
                     />
-                    <p className="text-xs text-gray-500">Supports Markdown formatting</p>
                   </div>
 
                   {/* Action Buttons */}
@@ -317,11 +342,11 @@ export default function BlogAdminPage() {
 
           <Card>
             <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium text-gray-600 dark:text-gray-400">Drafts</CardTitle>
+              <CardTitle className="text-sm font-medium text-gray-600 dark:text-gray-400">Pending</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold text-yellow-600">
-                {blogPosts.filter((p) => p.status === "Draft").length}
+                {blogPosts.filter((p) => p.status === "Pending").length}
               </div>
             </CardContent>
           </Card>
@@ -368,7 +393,11 @@ export default function BlogAdminPage() {
                           className={
                             post.status === "Published"
                               ? "bg-green-100 text-green-800"
-                              : "bg-yellow-100 text-yellow-800"
+                              : post.status === "Pending"
+                              ? "bg-yellow-100 text-yellow-800"
+                              : post.status === "Rejected"
+                              ? "bg-red-100 text-red-800"
+                              : "bg-gray-100 text-gray-800"
                           }
                         >
                           {post.status}
@@ -376,6 +405,94 @@ export default function BlogAdminPage() {
                       </TableCell>
                       <TableCell className="text-right">
                         <div className="flex justify-end gap-2">
+                          {post.status === "Pending" && (
+                            <>
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                className="text-green-600 hover:text-green-700 hover:bg-green-50"
+                                onClick={async () => {
+                                  try {
+                                    const response = await fetch(`/api/blog/${post.id}`, {
+                                      method: "PUT",
+                                      headers: { "Content-Type": "application/json" },
+                                      body: JSON.stringify({ status: "published" }),
+                                    })
+                                    if (response.ok) {
+                                      const postsResponse = await fetch("/api/blog")
+                                      const postsData = await postsResponse.json()
+                                      if (postsData.success) {
+                                        setBlogPosts(
+                                          postsData.posts.map((p: any) => ({
+                                            id: p.id,
+                                            title: p.title,
+                                            category: p.category,
+                                            author: p.author,
+                                            date: new Date(p.createdAt).toLocaleDateString("en-US", {
+                                              month: "long",
+                                              day: "numeric",
+                                              year: "numeric",
+                                            }),
+                                            status: p.status === "published" ? "Published" : p.status === "pending" ? "Pending" : p.status === "rejected" ? "Rejected" : "Draft",
+                                            image: p.image,
+                                          })),
+                                        )
+                                      }
+                                    }
+                                  } catch (error) {
+                                    console.error("Error approving post:", error)
+                                    alert("Failed to approve post")
+                                  }
+                                }}
+                              >
+                                <CheckCircle className="h-4 w-4 mr-1" />
+                                Approve
+                              </Button>
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                className="text-red-600 hover:text-red-700 hover:bg-red-50"
+                                onClick={async () => {
+                                  if (confirm("Are you sure you want to reject this post?")) {
+                                    try {
+                                      const response = await fetch(`/api/blog/${post.id}`, {
+                                        method: "PUT",
+                                        headers: { "Content-Type": "application/json" },
+                                        body: JSON.stringify({ status: "rejected" }),
+                                      })
+                                      if (response.ok) {
+                                        const postsResponse = await fetch("/api/blog")
+                                        const postsData = await postsResponse.json()
+                                        if (postsData.success) {
+                                          setBlogPosts(
+                                            postsData.posts.map((p: any) => ({
+                                              id: p.id,
+                                              title: p.title,
+                                              category: p.category,
+                                              author: p.author,
+                                              date: new Date(p.createdAt).toLocaleDateString("en-US", {
+                                                month: "long",
+                                                day: "numeric",
+                                                year: "numeric",
+                                              }),
+                                              status: p.status === "published" ? "Published" : p.status === "pending" ? "Pending" : p.status === "rejected" ? "Rejected" : "Draft",
+                                              image: p.image,
+                                            })),
+                                          )
+                                        }
+                                      }
+                                    } catch (error) {
+                                      console.error("Error rejecting post:", error)
+                                      alert("Failed to reject post")
+                                    }
+                                  }
+                                }}
+                              >
+                                <XCircle className="h-4 w-4 mr-1" />
+                                Reject
+                              </Button>
+                            </>
+                          )}
                           <Button variant="ghost" size="icon">
                             <Eye className="h-4 w-4" />
                           </Button>

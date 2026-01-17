@@ -50,11 +50,13 @@ export interface BlogPost {
   excerpt: string
   content: string
   image: string
-  status: "draft" | "published"
+  status: "draft" | "pending" | "published" | "rejected"
   createdAt: string
   updatedAt: string
   publishedAt?: string
   readTime?: number
+  submittedBy?: string
+  submittedByEmail?: string
 }
 
 // Booking Types

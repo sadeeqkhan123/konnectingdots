@@ -246,15 +246,19 @@ export default function ContactPage() {
                   <div className="space-y-3">
                     <div>
                       <p className="font-semibold">Main Office</p>
-                      <p className="text-gray-600">+1 (555) 123-4567</p>
+                      <a href="tel:+923311365146" className="text-gray-600 hover:text-blue-600 transition-colors">
+                        +92 331 1365146
+                      </a>
                     </div>
                     <div>
                       <p className="font-semibold">WhatsApp</p>
-                      <p className="text-gray-600">+1 (555) 123-4567</p>
-                      <Button size="sm" className="mt-2 bg-green-600 hover:bg-green-700">
-                        <MessageCircle className="mr-2 h-4 w-4" />
-                        Chat on WhatsApp
-                      </Button>
+                      <p className="text-gray-600">+92 331 1365146</p>
+                      <a href="https://wa.link/8ens4r" target="_blank" rel="noopener noreferrer">
+                        <Button size="sm" className="mt-2 bg-green-600 hover:bg-green-700">
+                          <MessageCircle className="mr-2 h-4 w-4" />
+                          Chat on WhatsApp
+                        </Button>
+                      </a>
                     </div>
                   </div>
                 </CardContent>
@@ -271,15 +275,21 @@ export default function ContactPage() {
                   <div className="space-y-3">
                     <div>
                       <p className="font-semibold">General Inquiries</p>
-                      <p className="text-gray-600">info@konnectingdots.com</p>
+                      <a href="mailto:Connect@konnectingdots.org" className="text-gray-600 hover:text-purple-600 transition-colors">
+                        Connect@konnectingdots.org
+                      </a>
                     </div>
                     <div>
                       <p className="font-semibold">Corporate Training</p>
-                      <p className="text-gray-600">corporate@konnectingdots.com</p>
+                      <a href="mailto:Connect@konnectingdots.org" className="text-gray-600 hover:text-purple-600 transition-colors">
+                        Connect@konnectingdots.org
+                      </a>
                     </div>
                     <div>
                       <p className="font-semibold">Support</p>
-                      <p className="text-gray-600">support@konnectingdots.com</p>
+                      <a href="mailto:Connect@konnectingdots.org" className="text-gray-600 hover:text-purple-600 transition-colors">
+                        Connect@konnectingdots.org
+                      </a>
                     </div>
                   </div>
                 </CardContent>
@@ -296,13 +306,7 @@ export default function ContactPage() {
                   <div>
                     <p className="font-semibold">Headquarters</p>
                     <p className="text-gray-600">
-                      123 Transformation Blvd
-                      <br />
-                      Suite 456
-                      <br />
-                      Miami, FL 33101
-                      <br />
-                      United States
+                      Karachi, Pakistan
                     </p>
                   </div>
                 </CardContent>
@@ -346,12 +350,12 @@ export default function ContactPage() {
           </div>
 
           <div className="flex justify-center space-x-6">
-            <Link href="#" className="group">
+            <a href="https://www.facebook.com/share/1Cvf5iD3YT/" target="_blank" rel="noopener noreferrer" className="group">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center group-hover:bg-blue-200 transition-colors">
                 <Facebook className="h-8 w-8 text-blue-600" />
               </div>
               <p className="text-center mt-2 text-sm font-medium">Facebook</p>
-            </Link>
+            </a>
 
             <Link href="#" className="group">
               <div className="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center group-hover:bg-sky-200 transition-colors">
@@ -360,12 +364,12 @@ export default function ContactPage() {
               <p className="text-center mt-2 text-sm font-medium">Twitter</p>
             </Link>
 
-            <Link href="#" className="group">
+            <a href="https://www.instagram.com/konnectingdots_?igsh=eTc1YW55N2FxN3Bx" target="_blank" rel="noopener noreferrer" className="group">
               <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center group-hover:bg-pink-200 transition-colors">
                 <Instagram className="h-8 w-8 text-pink-600" />
               </div>
               <p className="text-center mt-2 text-sm font-medium">Instagram</p>
-            </Link>
+            </a>
 
             <Link href="#" className="group">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center group-hover:bg-blue-200 transition-colors">
@@ -459,14 +463,16 @@ export default function ContactPage() {
               <Phone className="mr-2 h-5 w-5" />
               Book Free Consultation
             </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-white text-white hover:bg-white hover:text-blue-800 bg-transparent"
-            >
-              <MessageCircle className="mr-2 h-5 w-5" />
-              WhatsApp Us
-            </Button>
+            <a href="https://wa.link/8ens4r" target="_blank" rel="noopener noreferrer">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-white text-white hover:bg-white hover:text-blue-800 bg-transparent"
+              >
+                <MessageCircle className="mr-2 h-5 w-5" />
+                WhatsApp Us
+              </Button>
+            </a>
           </div>
         </div>
       </section>

@@ -76,7 +76,7 @@ export default function EventsPage() {
                       <div className="flex items-center">
                         <MapPin className="h-5 w-5 text-purple-600 mr-3" />
                         <div>
-                          <p className="font-semibold">Miami, FL</p>
+                          <p className="font-semibold">Karachi, Pakistan</p>
                           <p className="text-sm text-gray-600">Luxury resort venue</p>
                         </div>
                       </div>

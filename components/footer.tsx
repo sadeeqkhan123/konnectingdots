@@ -20,15 +20,19 @@ export default function Footer() {
               programs.
             </p>
             <div className="flex space-x-4">
-              <Button size="icon" variant="ghost" className="hover:text-brand-primary hover:bg-accent">
-                <Facebook className="h-5 w-5" />
-              </Button>
+              <a href="https://www.facebook.com/share/1Cvf5iD3YT/" target="_blank" rel="noopener noreferrer">
+                <Button size="icon" variant="ghost" className="hover:text-brand-primary hover:bg-accent">
+                  <Facebook className="h-5 w-5" />
+                </Button>
+              </a>
               <Button size="icon" variant="ghost" className="hover:text-brand-primary hover:bg-accent">
                 <Twitter className="h-5 w-5" />
               </Button>
-              <Button size="icon" variant="ghost" className="hover:text-brand-primary hover:bg-accent">
-                <Instagram className="h-5 w-5" />
-              </Button>
+              <a href="https://www.instagram.com/konnectingdots_?igsh=eTc1YW55N2FxN3Bx" target="_blank" rel="noopener noreferrer">
+                <Button size="icon" variant="ghost" className="hover:text-brand-primary hover:bg-accent">
+                  <Instagram className="h-5 w-5" />
+                </Button>
+              </a>
               <Button size="icon" variant="ghost" className="hover:text-brand-primary hover:bg-accent">
                 <Linkedin className="h-5 w-5" />
               </Button>
@@ -138,15 +142,19 @@ export default function Footer() {
             <div className="space-y-4 mb-6">
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-brand-secondary" />
-                <span className="text-muted-foreground">info@konnectingdots.com</span>
+                <a href="mailto:Connect@konnectingdots.org" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Connect@konnectingdots.org
+                </a>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-brand-secondary" />
-                <span className="text-muted-foreground">+1 (555) 123-4567</span>
+                <a href="tel:+923311365146" className="text-muted-foreground hover:text-foreground transition-colors">
+                  +92 331 1365146
+                </a>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="h-5 w-5 text-brand-secondary" />
-                <span className="text-muted-foreground">Miami, FL</span>
+                <span className="text-muted-foreground">Karachi, Pakistan</span>
               </div>
             </div>
 

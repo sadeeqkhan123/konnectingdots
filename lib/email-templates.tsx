@@ -192,7 +192,7 @@ export const bookingConfirmationTemplate = (data: BookingData): string => {
       <div class="divider"></div>
 
       <p class="message" style="font-size: 14px;">
-        Questions? Reach us at <a href="mailto:info@konnectingdots.com" style="color: #0d9488;">info@konnectingdots.com</a> or call <a href="tel:+15551234567" style="color: #0d9488;">+1 (555) 123-4567</a>
+        Questions? Reach us at <a href="mailto:Connect@konnectingdots.org" style="color: #0d9488;">Connect@konnectingdots.org</a> or call <a href="tel:+923311365146" style="color: #0d9488;">+92 331 1365146</a>
       </p>
     </div>
 
@@ -214,7 +214,7 @@ export const bookingConfirmationTemplate = (data: BookingData): string => {
 
       <p style="margin: 10px 0; font-size: 12px;">
         © 2025 Konnecting Dots. All rights reserved.<br>
-        Miami, FL
+        Karachi, Pakistan
       </p>
 
       <p style="margin: 10px 0; font-size: 12px;">
@@ -366,7 +366,7 @@ export const welcomeEmailTemplate = (name: string): string => {
       </center>
 
       <p class="message" style="margin-top: 30px;">
-        Have questions? Our team is here to help. Reply to this email or reach out at <a href="mailto:info@konnectingdots.com" style="color: #0d9488;">info@konnectingdots.com</a>
+        Have questions? Our team is here to help. Reply to this email or reach out at <a href="mailto:Connect@konnectingdots.org" style="color: #0d9488;">Connect@konnectingdots.org</a>
       </p>
 
       <p class="message">
@@ -392,7 +392,7 @@ export const welcomeEmailTemplate = (name: string): string => {
 
       <p style="margin: 10px 0; font-size: 12px;">
         © 2025 Konnecting Dots. All rights reserved.<br>
-        Miami, FL
+        Karachi, Pakistan
       </p>
 
       <p style="margin: 10px 0; font-size: 12px;">
@@ -583,7 +583,7 @@ export const sessionReminderTemplate = (data: {
       </p>
 
       <center>
-        <a href="mailto:info@konnectingdots.com" class="cta-button">Contact Us</a>
+        <a href="mailto:Connect@konnectingdots.org" class="cta-button">Contact Us</a>
       </center>
 
       <p class="message" style="margin-top: 30px;">
@@ -597,12 +597,12 @@ export const sessionReminderTemplate = (data: {
       
       <p style="margin: 20px 0;">
         © 2025 Konnecting Dots. All rights reserved.<br>
-        Miami, FL
+        Karachi, Pakistan
       </p>
 
       <p style="margin: 10px 0; font-size: 12px;">
-        <a href="mailto:info@konnectingdots.com" style="color: #94a3b8;">info@konnectingdots.com</a> | 
-        <a href="tel:+15551234567" style="color: #94a3b8;">+1 (555) 123-4567</a>
+        <a href="mailto:Connect@konnectingdots.org" style="color: #94a3b8;">Connect@konnectingdots.org</a> | 
+        <a href="tel:+923311365146" style="color: #94a3b8;">+92 331 1365146</a>
       </p>
     </div>
   </div>
@@ -748,7 +748,7 @@ export const newsletterTemplate = (content: {
 
       <p style="margin: 20px 0;">
         © 2025 Konnecting Dots. All rights reserved.<br>
-        Miami, FL
+        Karachi, Pakistan
       </p>
 
       <p style="margin: 10px 0; font-size: 12px;">

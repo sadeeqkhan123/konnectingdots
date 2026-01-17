@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { blogDb, BlogPost } from "@/lib/db"
 import { z } from "zod"
+import { sendEmail } from "@/lib/email"
 
 // Validation schemas
 const createPostSchema = z.object({
@@ -10,7 +11,9 @@ const createPostSchema = z.object({
   excerpt: z.string().min(1),
   content: z.string().min(1),
   image: z.string().optional(),
-  status: z.enum(["draft", "published"]).optional(),
+  status: z.enum(["draft", "pending", "published"]).optional(),
+  submittedBy: z.string().optional(),
+  submittedByEmail: z.string().email().optional(),
 })
 
 // GET - Get all blog posts (with optional filtering)
@@ -60,6 +63,8 @@ export async function POST(request: Request) {
     const wordCount = validated.content.split(/\s+/).length
     const readTime = Math.ceil(wordCount / 200)
 
+    const postStatus = validated.status || "pending"
+    
     const newPost = blogDb.create({
       title: validated.title,
       slug,
@@ -68,9 +73,71 @@ export async function POST(request: Request) {
       excerpt: validated.excerpt,
       content: validated.content,
       image: validated.image || "/placeholder.svg",
-      status: validated.status || "draft",
+      status: postStatus,
       readTime,
+      submittedBy: validated.submittedBy,
+      submittedByEmail: validated.submittedByEmail,
     })
+
+    // Send email to admin if status is pending
+    if (postStatus === "pending") {
+      try {
+        const adminEmail = process.env.ADMIN_EMAIL || "Connect@konnectingdots.org"
+        const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+        
+        const emailHtml = `
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <style>
+              body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+              .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+              .header { background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%); color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0; }
+              .content { background: #f9fafb; padding: 30px; border: 1px solid #e5e7eb; }
+              .post-details { background: white; padding: 20px; margin: 20px 0; border-radius: 8px; border-left: 4px solid #eab308; }
+              .button { display: inline-block; padding: 12px 24px; background: #eab308; color: #000; text-decoration: none; border-radius: 6px; font-weight: bold; margin: 10px 5px; }
+              .button-reject { background: #ef4444; color: white; }
+              .footer { text-align: center; padding: 20px; color: #6b7280; font-size: 12px; }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <div class="header">
+                <h1>New Blog Post Submission</h1>
+              </div>
+              <div class="content">
+                <p>A new blog post has been submitted and is awaiting your approval.</p>
+                
+                <div class="post-details">
+                  <h3>${validated.title}</h3>
+                  <p><strong>Category:</strong> ${validated.category}</p>
+                  <p><strong>Author:</strong> ${validated.author}</p>
+                  ${validated.submittedBy ? `<p><strong>Submitted by:</strong> ${validated.submittedBy}</p>` : ""}
+                  ${validated.submittedByEmail ? `<p><strong>Email:</strong> ${validated.submittedByEmail}</p>` : ""}
+                  <p><strong>Excerpt:</strong> ${validated.excerpt.substring(0, 200)}...</p>
+                </div>
+                
+                <p>Review and approve this post:</p>
+                <a href="${siteUrl}/blog-admin" class="button">Review in Dashboard</a>
+              </div>
+              <div class="footer">
+                <p>© 2025 Konnecting Dots. All rights reserved.</p>
+              </div>
+            </div>
+          </body>
+          </html>
+        `
+        
+        await sendEmail({
+          to: adminEmail,
+          subject: `New Blog Post Pending Approval: ${validated.title}`,
+          html: emailHtml,
+        })
+      } catch (emailError) {
+        console.error("Error sending approval email:", emailError)
+        // Don't fail the request if email fails
+      }
+    }
 
     return NextResponse.json({ success: true, post: newPost }, { status: 201 })
   } catch (error) {

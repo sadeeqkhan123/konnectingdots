@@ -10,7 +10,9 @@ import {
 // During build time, this might be undefined, so we'll handle it gracefully
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null
 
-const FROM_EMAIL = process.env.FROM_EMAIL || "noreply@konnectingdots.com"
+// Use Resend test domain if custom domain not verified
+// For production, verify your domain in Resend and set FROM_EMAIL env variable
+const FROM_EMAIL = process.env.FROM_EMAIL || "onboarding@resend.dev"
 const FROM_NAME = process.env.FROM_NAME || "Konnecting Dots"
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "yousifmangi32@gmail.com"
 
@@ -41,21 +43,40 @@ export const sendEmail = async (options: SendEmailOptions) => {
       console.log("📧 Email would be sent (RESEND_API_KEY not set):", {
         to: options.to,
         subject: options.subject,
+        from: options.from || `${FROM_NAME} <${FROM_EMAIL}>`,
       })
       return { success: true, id: "dev-mode" }
     }
 
+    const fromEmail = options.from || `${FROM_NAME} <${FROM_EMAIL}>`
+    
+    console.log("📧 Sending email via Resend:", {
+      from: fromEmail,
+      to: options.to,
+      subject: options.subject,
+    })
+
     const result = await resend.emails.send({
-      from: options.from || `${FROM_NAME} <${FROM_EMAIL}>`,
+      from: fromEmail,
       to: Array.isArray(options.to) ? options.to : [options.to],
       subject: options.subject,
       html: options.html,
       reply_to: options.replyTo,
     })
 
+    console.log("✅ Email sent successfully:", {
+      id: result.data?.id,
+      to: options.to,
+    })
+
     return { success: true, id: result.data?.id }
-  } catch (error) {
-    console.error("Error sending email:", error)
+  } catch (error: any) {
+    console.error("❌ Error sending email:", {
+      error: error.message,
+      to: options.to,
+      subject: options.subject,
+      details: error,
+    })
     throw error
   }
 }
