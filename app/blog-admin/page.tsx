@@ -89,16 +89,16 @@ export default function BlogAdminPage() {
           image: newPost.image || "/placeholder.svg",
           status: "pending",
           submittedBy: newPost.submittedBy || newPost.author,
-          submittedByEmail: newPost.submittedByEmail,
+          submittedByEmail: newPost.submittedByEmail?.trim() || undefined,
         }),
       })
 
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({ error: `HTTP error! status: ${response.status}` }))
-        throw new Error(errorData.error || `HTTP error! status: ${response.status}`)
-      }
-
       const data = await response.json()
+
+      if (!response.ok || !data.success) {
+        const errorMessage = data.error || data.details?.map((d: any) => d.message).join(", ") || `HTTP error! status: ${response.status}`
+        throw new Error(errorMessage)
+      }
 
       if (data.success) {
         // Refresh the blog posts list
@@ -129,7 +129,8 @@ export default function BlogAdminPage() {
       }
     } catch (error) {
       console.error("Error creating blog post:", error)
-      alert("Failed to create blog post. Please try again.")
+      const errorMessage = error instanceof Error ? error.message : "Failed to create blog post. Please try again."
+      alert(`Error: ${errorMessage}`)
     } finally {
       setIsCreating(false)
     }
@@ -254,14 +255,45 @@ export default function BlogAdminPage() {
                     <div className="flex gap-2">
                       <Input
                         id="image"
-                        placeholder="Enter image URL or upload..."
+                        placeholder="Enter image URL or upload from computer..."
                         value={newPost.image}
                         onChange={(e) => setNewPost({ ...newPost, image: e.target.value })}
                       />
-                      <Button variant="outline" size="icon">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        id="featured-image-upload"
+                        onChange={(e) => {
+                          const file = e.target.files?.[0]
+                          if (!file) return
+                          if (!file.type.startsWith("image/")) {
+                            alert("Please select an image file")
+                            return
+                          }
+                          const reader = new FileReader()
+                          reader.onload = (event) => {
+                            const dataUrl = event.target?.result as string
+                            setNewPost({ ...newPost, image: dataUrl })
+                          }
+                          reader.readAsDataURL(file)
+                        }}
+                      />
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="icon"
+                        onClick={() => document.getElementById("featured-image-upload")?.click()}
+                        title="Upload from computer"
+                      >
                         <Upload className="h-4 w-4" />
                       </Button>
                     </div>
+                    {newPost.image && newPost.image.startsWith("data:image") && (
+                      <p className="text-xs text-muted-foreground">
+                        Image uploaded (using base64). For production, consider using a cloud storage service.
+                      </p>
+                    )}
                   </div>
 
                   {/* Submitted By (Optional) */}

@@ -14,6 +14,7 @@ interface RichTextEditorProps {
 
 export function RichTextEditor({ value, onChange, placeholder = "Write your content here...", rows = 12 }: RichTextEditorProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const insertAtCursor = (text: string) => {
     const textarea = textareaRef.current
@@ -42,8 +43,36 @@ export function RichTextEditor({ value, onChange, placeholder = "Write your cont
     }, 0)
   }
 
+  const handleImageUpload = () => {
+    fileInputRef.current?.click()
+  }
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    // Check if it's an image
+    if (!file.type.startsWith("image/")) {
+      alert("Please select an image file")
+      return
+    }
+
+    // For now, we'll convert to base64 data URL
+    // In production, you'd upload to a cloud service like Cloudinary, AWS S3, etc.
+    const reader = new FileReader()
+    reader.onload = (event) => {
+      const dataUrl = event.target?.result as string
+      const altText = prompt("Enter image description (optional):") || "Image"
+      insertAtCursor(`\n![${altText}](${dataUrl})\n`)
+    }
+    reader.readAsDataURL(file)
+    
+    // Reset input
+    e.target.value = ""
+  }
+
   const insertImage = () => {
-    const imageUrl = prompt("Enter image URL:")
+    const imageUrl = prompt("Enter image URL (or click Upload to select from computer):")
     if (imageUrl) {
       insertAtCursor(`\n![Image description](${imageUrl})\n`)
     }
@@ -100,11 +129,18 @@ export function RichTextEditor({ value, onChange, placeholder = "Write your cont
           type="button"
           variant="ghost"
           size="sm"
-          onClick={insertImage}
-          title="Insert Image"
+          onClick={handleImageUpload}
+          title="Upload Image from Computer"
         >
           <Image className="h-4 w-4" />
         </Button>
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          className="hidden"
+          onChange={handleFileChange}
+        />
       </div>
       <Textarea
         ref={textareaRef}

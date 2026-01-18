@@ -13,7 +13,16 @@ const createPostSchema = z.object({
   image: z.string().optional(),
   status: z.enum(["draft", "pending", "published"]).optional(),
   submittedBy: z.string().optional(),
-  submittedByEmail: z.string().email().optional(),
+  submittedByEmail: z
+    .string()
+    .optional()
+    .refine(
+      (val) => {
+        if (!val || val.trim() === "") return true // Empty is allowed
+        return z.string().email().safeParse(val).success // If provided, must be valid email
+      },
+      { message: "Invalid email format" },
+    ),
 })
 
 // GET - Get all blog posts (with optional filtering)
