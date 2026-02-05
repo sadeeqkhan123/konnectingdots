@@ -24,20 +24,21 @@ export default function TrainTheTrainerPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-6 bg-blue-500/20 text-blue-300 border-blue-500/30">
-              Professional Certification Program
+              NLP • Hypnosis • Corporate Trainer Program
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
               Train the Trainer
               <span className="text-yellow-400"> Certification</span>
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-3xl mx-auto">
-              Become a certified trainer and learn to deliver impactful NLP and leadership programs to others. Master
-              the art of facilitation and transform lives through teaching.
+              Are you ready to move from learning techniques to professionally delivering trainings with confidence?
+              This comprehensive, practice-based program prepares you to train individuals, groups, and organizations
+              with credibility and skill.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <BookingModal>
                 <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold">
-                  Enroll Now
+                  Apply Now
                 </Button>
               </BookingModal>
               <Button
@@ -59,7 +60,7 @@ export default function TrainTheTrainerPage() {
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Program Overview</h2>
               <p className="text-xl text-gray-600">
-                Comprehensive training to become a world-class facilitator and trainer
+                A complete pathway to become a certified trainer in NLP, Hypnosis, and corporate development
               </p>
             </div>
 
@@ -70,7 +71,7 @@ export default function TrainTheTrainerPage() {
                     <Clock className="h-8 w-8 text-blue-600" />
                   </div>
                   <h3 className="text-xl font-bold mb-2">Duration</h3>
-                  <p className="text-gray-600">5-Day Intensive Program</p>
+                  <p className="text-gray-600">03 Month Program</p>
                 </CardContent>
               </Card>
 
@@ -79,8 +80,8 @@ export default function TrainTheTrainerPage() {
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Award className="h-8 w-8 text-green-600" />
                   </div>
-                  <h3 className="text-xl font-bold mb-2">Certification</h3>
-                  <p className="text-gray-600">Internationally Recognized</p>
+                  <h3 className="text-xl font-bold mb-2">Certifications</h3>
+                  <p className="text-gray-600">NLP, Hypnosis, and Corporate Trainer</p>
                 </CardContent>
               </Card>
 
@@ -89,8 +90,8 @@ export default function TrainTheTrainerPage() {
                   <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Users className="h-8 w-8 text-purple-600" />
                   </div>
-                  <h3 className="text-xl font-bold mb-2">Class Size</h3>
-                  <p className="text-gray-600">Maximum 16 Participants</p>
+                  <h3 className="text-xl font-bold mb-2">Training Style</h3>
+                  <p className="text-gray-600">Highly practical and experiential</p>
                 </CardContent>
               </Card>
             </div>
@@ -103,9 +104,9 @@ export default function TrainTheTrainerPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">What You'll Master</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">What You Will Learn</h2>
               <p className="text-xl text-gray-600">
-                Comprehensive skills to become an exceptional trainer and facilitator
+                Trainer skills, NLP & hypnosis training mastery, and corporate trainer competencies
               </p>
             </div>
 
@@ -116,10 +117,9 @@ export default function TrainTheTrainerPage() {
                     <BookOpen className="h-6 w-6 text-blue-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">Advanced Facilitation Skills</h3>
+                    <h3 className="text-xl font-bold mb-2">Trainer Skills & Delivery</h3>
                     <p className="text-gray-600">
-                      Master the art of engaging audiences, managing group dynamics, and creating transformational
-                      learning experiences.
+                      Trainer mindset, adult learning principles, facilitation skills, and handling resistance.
                     </p>
                   </div>
                 </div>
@@ -129,10 +129,9 @@ export default function TrainTheTrainerPage() {
                     <Target className="h-6 w-6 text-green-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">Program Design & Development</h3>
+                    <h3 className="text-xl font-bold mb-2">NLP & Hypnosis Training Skills</h3>
                     <p className="text-gray-600">
-                      Learn to create compelling training programs, design learning objectives, and structure content
-                      for maximum impact.
+                      Teach NLP concepts clearly, demonstrate techniques, and guide safe practice sessions.
                     </p>
                   </div>
                 </div>
@@ -142,10 +141,9 @@ export default function TrainTheTrainerPage() {
                     <TrendingUp className="h-6 w-6 text-purple-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">Assessment & Evaluation</h3>
+                    <h3 className="text-xl font-bold mb-2">Corporate Trainer Competencies</h3>
                     <p className="text-gray-600">
-                      Develop skills in measuring learning outcomes, providing effective feedback, and continuous
-                      program improvement.
+                      Design corporate training programs, customize content, and maintain professional standards.
                     </p>
                   </div>
                 </div>
@@ -157,10 +155,9 @@ export default function TrainTheTrainerPage() {
                     <Users className="h-6 w-6 text-yellow-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">Adult Learning Principles</h3>
+                    <h3 className="text-xl font-bold mb-2">Group Facilitation Skills</h3>
                     <p className="text-gray-600">
-                      Understand how adults learn best and apply proven methodologies to enhance knowledge retention and
-                      application.
+                      Manage different learning styles, group energy, and engagement with confidence.
                     </p>
                   </div>
                 </div>
@@ -170,10 +167,9 @@ export default function TrainTheTrainerPage() {
                     <Globe className="h-6 w-6 text-teal-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">Virtual & Hybrid Training</h3>
+                    <h3 className="text-xl font-bold mb-2">Program Design</h3>
                     <p className="text-gray-600">
-                      Master online facilitation techniques, virtual engagement strategies, and hybrid learning
-                      environments.
+                      Build professional training content and customize for organizations.
                     </p>
                   </div>
                 </div>
@@ -183,10 +179,9 @@ export default function TrainTheTrainerPage() {
                     <DollarSign className="h-6 w-6 text-red-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">Business Development</h3>
+                    <h3 className="text-xl font-bold mb-2">Presence & Confidence</h3>
                     <p className="text-gray-600">
-                      Learn to market your training services, price programs effectively, and build a sustainable
-                      training business.
+                      Build voice, stage presence, and a strong trainer identity.
                     </p>
                   </div>
                 </div>
@@ -201,46 +196,41 @@ export default function TrainTheTrainerPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">5-Day Curriculum</h2>
-              <p className="text-xl text-gray-600">Intensive hands-on training with practical application</p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">3-Month Program Structure</h2>
+              <p className="text-xl text-gray-600">Highly practical and experiential learning with live practice</p>
             </div>
 
             <div className="space-y-6">
               {[
                 {
-                  day: "Day 1",
-                  title: "Foundation of Training Excellence",
+                  day: "Month 1",
+                  title: "Trainer Skills & Delivery",
                   topics: [
-                    "Adult Learning Principles",
-                    "Training Styles & Methodologies",
-                    "Audience Analysis",
-                    "Learning Objectives",
+                    "Trainer mindset and presence",
+                    "Adult learning principles",
+                    "Group facilitation skills",
+                    "Handling questions and resistance",
                   ],
                 },
                 {
-                  day: "Day 2",
-                  title: "Program Design & Content Development",
+                  day: "Month 2",
+                  title: "NLP & Hypnosis Training Skills",
                   topics: [
-                    "Curriculum Design",
-                    "Content Structuring",
-                    "Interactive Activities",
-                    "Resource Development",
+                    "Teaching NLP concepts clearly",
+                    "Demonstrating NLP techniques",
+                    "Training hypnosis safely and ethically",
+                    "Guiding practice sessions",
                   ],
                 },
                 {
-                  day: "Day 3",
-                  title: "Advanced Facilitation Techniques",
-                  topics: ["Group Dynamics", "Difficult Situations", "Engagement Strategies", "Virtual Facilitation"],
-                },
-                {
-                  day: "Day 4",
-                  title: "Assessment & Continuous Improvement",
-                  topics: ["Evaluation Methods", "Feedback Techniques", "Program Optimization", "ROI Measurement"],
-                },
-                {
-                  day: "Day 5",
-                  title: "Business Development & Certification",
-                  topics: ["Marketing Your Services", "Pricing Strategies", "Client Relations", "Final Assessment"],
+                  day: "Month 3",
+                  title: "Corporate Trainer Competencies",
+                  topics: [
+                    "Designing corporate training programs",
+                    "Delivering leadership workshops",
+                    "Customizing content for organizations",
+                    "Professional behavior and ethics",
+                  ],
                 },
               ].map((day, index) => (
                 <Card key={index} className="border-l-4 border-l-blue-500">
@@ -272,41 +262,41 @@ export default function TrainTheTrainerPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Program Benefits</h2>
-              <p className="text-xl text-gray-600">What you gain from this comprehensive certification program</p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">What You Receive</h2>
+              <p className="text-xl text-gray-600">Certifications, memberships, and a complete trainer toolkit</p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 {
                   icon: Award,
-                  title: "International Certification",
-                  description: "Receive globally recognized Train the Trainer certification",
+                  title: "Three Certifications",
+                  description: "NLP Trainer, Hypnosis Trainer, and Corporate Trainer",
                 },
                 {
                   icon: BookOpen,
-                  title: "Complete Training Materials",
-                  description: "Access to all training materials, templates, and resources",
+                  title: "Trainer Toolkit",
+                  description: "Ready-to-use content, slides, manuals, and exercises",
                 },
                 {
                   icon: Users,
-                  title: "Ongoing Support",
-                  description: "12 months of post-certification support and mentoring",
+                  title: "Professional Memberships",
+                  description: "ANLP, ABH, and PBH memberships (1 year each)",
                 },
                 {
                   icon: Calendar,
-                  title: "Flexible Scheduling",
-                  description: "Multiple program dates throughout the year",
+                  title: "Live Practice & Feedback",
+                  description: "Demonstrations, practice sessions, and feedback",
                 },
                 {
                   icon: Globe,
-                  title: "Online & In-Person Options",
-                  description: "Choose from virtual, in-person, or hybrid formats",
+                  title: "Ongoing Support",
+                  description: "Mentoring and guidance after certification",
                 },
                 {
                   icon: TrendingUp,
-                  title: "Career Advancement",
-                  description: "Open doors to new opportunities in training and development",
+                  title: "Positioning Support",
+                  description: "Help to start and grow your training practice",
                 },
               ].map((benefit, index) => (
                 <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow">
@@ -384,7 +374,7 @@ export default function TrainTheTrainerPage() {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Become a Certified Trainer?</h2>
             <p className="text-xl mb-8 text-blue-100">
-              Join our next cohort and transform your career in training and development
+              Step into your role as a professional trainer with credibility, confidence, and complete support
             </p>
 
             <div className="bg-white/10 rounded-lg p-8 mb-8">
@@ -392,17 +382,17 @@ export default function TrainTheTrainerPage() {
                 <div>
                   <h3 className="text-2xl font-bold mb-4">Program Investment</h3>
                   <div className="space-y-2">
-                    <p className="text-blue-100">Early Bird: $2,997 (Save $500)</p>
-                    <p className="text-blue-100">Regular Price: $3,497</p>
-                    <p className="text-blue-100">Payment Plans Available</p>
+                    <p className="text-blue-100">USD 5,000</p>
+                    <p className="text-blue-100">Includes certifications, memberships, and training materials</p>
+                    <p className="text-blue-100">Ongoing mentoring and guidance included</p>
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold mb-4">Next Program Dates</h3>
+                  <h3 className="text-2xl font-bold mb-4">Apply or Request Details</h3>
                   <div className="space-y-2">
-                    <p className="text-blue-100">March 15-19, 2024</p>
-                    <p className="text-blue-100">June 10-14, 2024</p>
-                    <p className="text-blue-100">September 16-20, 2024</p>
+                    <p className="text-blue-100">Email: yousif.mangi@konnectingdots.org</p>
+                    <p className="text-blue-100">In-person training</p>
+                    <p className="text-blue-100">Practice-based program</p>
                   </div>
                 </div>
               </div>
@@ -411,7 +401,7 @@ export default function TrainTheTrainerPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <BookingModal>
                 <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold">
-                  Enroll Now - Early Bird
+                  Apply Now
                 </Button>
               </BookingModal>
               <Button

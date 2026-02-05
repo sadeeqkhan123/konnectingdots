@@ -111,7 +111,7 @@ export default function AboutPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet Yousif Mangi</h2>
-              <p className="text-xl text-gray-600">Founder & Master Trainer</p>
+              <p className="text-xl text-gray-600">Founder & Chief Learning Officer</p>
             </div>
 
             <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -122,23 +122,23 @@ export default function AboutPage() {
                       <Users className="h-16 w-16" />
                     </div>
                     <h3 className="text-2xl font-bold">Yousif Mangi</h3>
-                    <p className="text-teal-100">Master NLP Trainer</p>
+                    <p className="text-teal-100">Founder & Chief Learning Officer</p>
                   </div>
                 </div>
               </div>
 
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-2xl font-bold mb-4">Transformational Leader & Advocate</h3>
+                  <h3 className="text-2xl font-bold mb-4">Transformational Leader</h3>
                   <p className="text-gray-600 leading-relaxed mb-6">
-                    With over 15 years of experience in personal development and organizational transformation, Yousif
-                    Mangi has dedicated his life to helping individuals and organizations break through barriers and
-                    achieve extraordinary results.
+                    Yousif Mangi, Founder and Chief Learning Officer at Konnecting Dots, is a seasoned professional in
+                    personal development and organizational transformation. With a decade-long background in Learning
+                    and Development, he has conducted 80+ workshops across diverse sectors, impacting 10,000+ individuals.
                   </p>
                   <p className="text-gray-600 leading-relaxed">
-                    As a passionate advocate for diversity, equity, and inclusion, Yousif combines cutting-edge NLP
-                    techniques with deep cultural understanding to create programs that not only transform performance
-                    but also build more inclusive and empowering environments.
+                    As a certified Trainer of NLP, Hypnotherapy, and Success Coach, he empowers individuals and
+                    organizations to reach their full potential. His approach is rooted in the belief that internal
+                    transformation leads to external success, and he continues to coach clients across 15 countries.
                   </p>
                 </div>
 
@@ -146,24 +146,44 @@ export default function AboutPage() {
                   <div>
                     <h4 className="font-bold text-gray-800 mb-3 flex items-center">
                       <Award className="mr-2 h-5 w-5 text-yellow-600" />
-                      Certifications
+                      Areas of Expertise
                     </h4>
                     <ul className="space-y-2 text-sm text-gray-600">
                       <li className="flex items-center">
                         <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
-                        Master NLP Practitioner
+                        Emotional intelligence
                       </li>
                       <li className="flex items-center">
                         <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
-                        Certified Hypnotherapist
+                        Negotiation skills
                       </li>
                       <li className="flex items-center">
                         <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
-                        DEI Specialist Certification
+                        Stress management
                       </li>
                       <li className="flex items-center">
                         <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
-                        Corporate Training Expert
+                        Work-life balance
+                      </li>
+                      <li className="flex items-center">
+                        <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
+                        Team building, collaboration, and leadership
+                      </li>
+                      <li className="flex items-center">
+                        <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
+                        Sales and customer relationships
+                      </li>
+                      <li className="flex items-center">
+                        <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
+                        First-time managers
+                      </li>
+                      <li className="flex items-center">
+                        <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
+                        Conflict management
+                      </li>
+                      <li className="flex items-center">
+                        <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
+                        Personality, behavior, and managing state
                       </li>
                     </ul>
                   </div>
@@ -171,24 +191,28 @@ export default function AboutPage() {
                   <div>
                     <h4 className="font-bold text-gray-800 mb-3 flex items-center">
                       <Tv className="mr-2 h-5 w-5 text-blue-600" />
-                      Media Appearances
+                      Professional Highlights
                     </h4>
                     <ul className="space-y-2 text-sm text-gray-600">
                       <li className="flex items-center">
                         <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
-                        CNN Business Expert
+                        Decade-long experience in Learning and Development
                       </li>
                       <li className="flex items-center">
                         <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
-                        TEDx Speaker
+                        80+ workshops across diverse sectors
                       </li>
                       <li className="flex items-center">
                         <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
-                        Forbes Contributor
+                        10,000+ individuals impacted
                       </li>
                       <li className="flex items-center">
                         <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
-                        Podcast Host
+                        Certified Trainer of NLP, Hypnotherapy, and Success Coach
+                      </li>
+                      <li className="flex items-center">
+                        <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
+                        Coaching clients across 15 countries
                       </li>
                     </ul>
                   </div>
@@ -336,8 +360,10 @@ export default function AboutPage() {
                   <span className="text-teal-600 font-bold text-xl">YM</span>
                 </div>
                 <h3 className="text-xl font-bold mb-2">Yousif Mangi</h3>
-                <p className="text-gray-600 mb-4">Founder & Master Trainer</p>
-                <p className="text-sm text-gray-500">15+ years experience in NLP, Hypnosis, and DEI training</p>
+                <p className="text-gray-600 mb-4">Founder & Chief Learning Officer</p>
+                <p className="text-sm text-gray-500">
+                  80+ workshops, 10,000+ individuals impacted, coaching clients across 15 countries
+                </p>
               </CardContent>
             </Card>
 

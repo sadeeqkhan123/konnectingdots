@@ -61,7 +61,7 @@ export default function BlogPage() {
 
                 <div className="flex items-center mb-6 text-sm text-muted-foreground">
                   <User className="h-4 w-4 mr-2" />
-                  <span className="mr-4">Yousif Mangi</span>
+                  <span className="mr-4">Yousif Mangi · Founder & Chief Learning Officer</span>
                   <Calendar className="h-4 w-4 mr-2" />
                   <span className="mr-4">March 15, 2024</span>
                   <Clock className="h-4 w-4 mr-2" />

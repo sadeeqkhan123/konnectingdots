@@ -45,7 +45,7 @@ export default function ServicesPage() {
           <Tabs defaultValue="one-on-one" className="w-full">
             <TabsList className="grid w-full grid-cols-2 lg:grid-cols-5 mb-12">
               <TabsTrigger value="one-on-one" className="text-xs lg:text-sm">
-                ONE on ONE
+                One-on-One
               </TabsTrigger>
               <TabsTrigger value="corporate" className="text-xs lg:text-sm">
                 Corporate
@@ -54,7 +54,7 @@ export default function ServicesPage() {
                 DEI Training
               </TabsTrigger>
               <TabsTrigger value="train-trainer" className="text-xs lg:text-sm">
-                Train Trainer
+                Train the Trainer
               </TabsTrigger>
               <TabsTrigger value="practitioner" className="text-xs lg:text-sm">
                 Practitioner
@@ -68,34 +68,46 @@ export default function ServicesPage() {
                   <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mb-6">
                     <Users className="h-10 w-10 text-yellow-600" />
                   </div>
-                  <h2 className="text-3xl md:text-4xl font-bold mb-6">ONE on ONE Coaching</h2>
-                  <p className="text-xl text-gray-600 mb-8">
-                    Experience personalized transformation through individual NLP and Hypnosis sessions tailored
-                    specifically to your unique goals and challenges.
-                  </p>
+                  <h2 className="text-3xl md:text-4xl font-bold mb-3">One-on-One Coaching</h2>
+                  <p className="text-xl text-gray-600 mb-4">Personalized NLP & Hypnosis Sessions</p>
+                  <div className="space-y-4 text-gray-600 mb-8">
+                    <p className="text-lg">
+                      Do you ever feel stuck, even though you know you are capable of more? Do certain fears, habits, or
+                      thoughts keep repeating no matter how hard you try to change them?
+                    </p>
+                    <p className="text-lg">
+                      Are you looking for real change, not just motivation or advice? One-on-one coaching is a safe,
+                      focused space where we work directly on what is holding you back and help you move forward with
+                      clarity and confidence.
+                    </p>
+                  </div>
 
                   <div className="space-y-6 mb-8">
                     <div>
                       <h3 className="text-xl font-bold mb-3 flex items-center">
                         <Target className="mr-2 h-5 w-5 text-yellow-600" />
-                        Who It's For
+                        Who Is This For?
                       </h3>
                       <ul className="space-y-2 text-gray-600">
                         <li className="flex items-center">
                           <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                          Individuals seeking personal breakthrough
+                          You want to break through mental or emotional blocks
                         </li>
                         <li className="flex items-center">
                           <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                          Professionals wanting to enhance performance
+                          You feel limited by self-doubt, fear, or past experiences
                         </li>
                         <li className="flex items-center">
                           <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                          Anyone struggling with limiting beliefs
+                          You want better control over your emotions and reactions
                         </li>
                         <li className="flex items-center">
                           <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                          People seeking to overcome phobias or anxiety
+                          You want to improve confidence, focus, or performance
+                        </li>
+                        <li className="flex items-center">
+                          <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                          You are dealing with anxiety, phobias, stress, or unwanted habits
                         </li>
                       </ul>
                     </div>
@@ -103,32 +115,41 @@ export default function ServicesPage() {
                     <div>
                       <h3 className="text-xl font-bold mb-3 flex items-center">
                         <Clock className="mr-2 h-5 w-5 text-yellow-600" />
-                        Duration & Format
+                        How the Sessions Work
                       </h3>
                       <div className="grid md:grid-cols-2 gap-4">
                         <div className="flex items-center space-x-3">
                           <Clock className="h-5 w-5 text-blue-600" />
-                          <span>60-90 minutes per session</span>
+                          <span>Session length: 60-90 minutes</span>
                         </div>
                         <div className="flex items-center space-x-3">
                           <MapPin className="h-5 w-5 text-green-600" />
-                          <span>In-person or Online</span>
+                          <span>Mode: In-person or online</span>
                         </div>
                         <div className="flex items-center space-x-3">
                           <Video className="h-5 w-5 text-purple-600" />
-                          <span>Flexible scheduling</span>
+                          <span>Schedule: Flexible</span>
                         </div>
                         <div className="flex items-center space-x-3">
                           <Award className="h-5 w-5 text-teal-600" />
-                          <span>3-12 sessions typically</span>
+                          <span>Sessions: Usually 4-12</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <Star className="h-5 w-5 text-yellow-600" />
+                          <span>Investment: 50 USD per session</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <CheckCircle className="h-5 w-5 text-green-600" />
+                          <span>Packages are available</span>
                         </div>
                       </div>
+                      <p className="text-gray-600 mt-4">Each session is practical, focused, and tailored to you.</p>
                     </div>
                   </div>
 
                   <Link href="/contact">
                     <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold">
-                      Book Your Session
+                      Book Your FREE Call (30 min)
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
                   </Link>
@@ -139,54 +160,49 @@ export default function ServicesPage() {
                     <CardHeader>
                       <CardTitle className="flex items-center">
                         <Star className="mr-2 h-5 w-5 text-yellow-600" />
-                        Success Story
+                        A Safe, Focused Space
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-gray-700 italic mb-4">
-                        "After just 5 sessions, I overcame my 20-year fear of public speaking and got promoted to a
-                        leadership role that requires regular presentations."
+                      <p className="text-gray-700">
+                        One-on-one coaching is a safe, focused space where we work directly on what is holding you back
+                        and help you move forward with clarity and confidence.
                       </p>
-                      <div className="flex items-center">
-                        <div className="w-10 h-10 bg-yellow-200 rounded-full flex items-center justify-center mr-3">
-                          <span className="text-yellow-800 font-bold text-sm">AL</span>
-                        </div>
-                        <div>
-                          <p className="font-semibold">Amanda Lee</p>
-                          <p className="text-sm text-gray-600">Sales Manager</p>
-                        </div>
-                      </div>
                     </CardContent>
                   </Card>
 
                   <Card>
                     <CardHeader>
-                      <CardTitle>What You'll Experience</CardTitle>
+                      <CardTitle>What Happens in Coaching?</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <ul className="space-y-3">
                         <li className="flex items-start">
                           <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
                           <div>
-                            <strong>Initial Assessment:</strong> Comprehensive evaluation of your goals and challenges
+                            <strong>Understanding You First:</strong> We start by understanding your situation,
+                            challenges, and what you truly want to change.
                           </div>
                         </li>
                         <li className="flex items-start">
                           <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
                           <div>
-                            <strong>Customized Techniques:</strong> Personalized NLP and hypnosis methods
+                            <strong>Targeted Techniques:</strong> Using NLP and hypnosis, we work with the subconscious
+                            patterns that influence your thoughts, emotions, and behavior.
                           </div>
                         </li>
                         <li className="flex items-start">
                           <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
                           <div>
-                            <strong>Ongoing Support:</strong> Resources and follow-up to maintain progress
+                            <strong>Support Between Sessions:</strong> You may receive simple exercises, reflections, or
+                            tools to support your progress.
                           </div>
                         </li>
                         <li className="flex items-start">
                           <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
                           <div>
-                            <strong>Measurable Results:</strong> Clear tracking of your transformation journey
+                            <strong>Real, Noticeable Change:</strong> Clients often experience clearer thinking,
+                            emotional relief, increased confidence, and better control over their responses.
                           </div>
                         </li>
                       </ul>
@@ -203,34 +219,53 @@ export default function ServicesPage() {
                   <div className="w-20 h-20 bg-teal-100 rounded-full flex items-center justify-center mb-6">
                     <Briefcase className="h-10 w-10 text-teal-600" />
                   </div>
-                  <h2 className="text-3xl md:text-4xl font-bold mb-6">Corporate Training Programs</h2>
-                  <p className="text-xl text-gray-600 mb-8">
-                    Transform your organization's culture and performance with cutting-edge NLP techniques and
-                    leadership development programs.
-                  </p>
+                  <h2 className="text-3xl md:text-4xl font-bold mb-3">
+                    Corporate Training & Organizational Development Programs
+                  </h2>
+                  <p className="text-xl text-gray-600 mb-4">NLP, Leadership, Coaching & Workplace Excellence</p>
+                  <div className="space-y-4 text-gray-600 mb-8">
+                    <p className="text-lg">
+                      Are your managers technically strong but struggling with people management? Do communication gaps
+                      exist between leadership, managers, and frontline teams? Is stress, conflict, or disengagement
+                      affecting performance and culture?
+                    </p>
+                    <p className="text-lg">
+                      Our corporate programs are designed to build strong leaders, confident managers, emotionally
+                      intelligent teams, and healthy workplace cultures using practical NLP-based tools and real-world
+                      coaching approaches.
+                    </p>
+                  </div>
 
                   <div className="space-y-6 mb-8">
                     <div>
                       <h3 className="text-xl font-bold mb-3 flex items-center">
                         <Target className="mr-2 h-5 w-5 text-teal-600" />
-                        Who It's For
+                        Who These Programs Are For
                       </h3>
                       <ul className="space-y-2 text-gray-600">
                         <li className="flex items-center">
                           <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                          Leadership teams and executives
+                          Senior leadership and executives
                         </li>
                         <li className="flex items-center">
                           <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                          Sales and customer service teams
+                          First-time and mid-level managers
                         </li>
                         <li className="flex items-center">
                           <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                          HR and people development professionals
+                          Team leaders and supervisors
                         </li>
                         <li className="flex items-center">
                           <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                          Organizations seeking cultural transformation
+                          HR, L&D, and people development teams
+                        </li>
+                        <li className="flex items-center">
+                          <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                          Sales, customer service, and operations teams
+                        </li>
+                        <li className="flex items-center">
+                          <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                          Organizations seeking performance and cultural transformation
                         </li>
                       </ul>
                     </div>
@@ -238,24 +273,24 @@ export default function ServicesPage() {
                     <div>
                       <h3 className="text-xl font-bold mb-3 flex items-center">
                         <Clock className="mr-2 h-5 w-5 text-teal-600" />
-                        Duration & Format
+                        Program Format
                       </h3>
                       <div className="grid md:grid-cols-2 gap-4">
                         <div className="flex items-center space-x-3">
                           <Clock className="h-5 w-5 text-blue-600" />
-                          <span>Half-day to multi-day programs</span>
+                          <span>Duration: Half-day, full-day, or multi-day</span>
                         </div>
                         <div className="flex items-center space-x-3">
                           <MapPin className="h-5 w-5 text-green-600" />
-                          <span>Onsite delivery</span>
+                          <span>Delivery: Onsite, online, or hybrid</span>
                         </div>
                         <div className="flex items-center space-x-3">
                           <Video className="h-5 w-5 text-purple-600" />
-                          <span>Online and hybrid options</span>
+                          <span>Design: Fully customized</span>
                         </div>
                         <div className="flex items-center space-x-3">
                           <Award className="h-5 w-5 text-teal-600" />
-                          <span>Customized to your needs</span>
+                          <span>Methodology: Interactive and action-oriented</span>
                         </div>
                       </div>
                     </div>
@@ -263,10 +298,16 @@ export default function ServicesPage() {
 
                   <Link href="/contact">
                     <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-white font-semibold">
-                      Request Proposal
+                      Request a Proposal
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
                   </Link>
+                  <p className="text-sm text-gray-600 mt-4">
+                    Email:{" "}
+                    <a href="mailto:yousif.mangi@konnectingdots.org" className="text-teal-700 underline">
+                      yousif.mangi@konnectingdots.org
+                    </a>
+                  </p>
                 </div>
 
                 <div className="space-y-6">
@@ -274,55 +315,72 @@ export default function ServicesPage() {
                     <CardHeader>
                       <CardTitle className="flex items-center">
                         <Star className="mr-2 h-5 w-5 text-teal-600" />
-                        Case Study
+                        Why Organizations Choose These Programs
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-gray-700 italic mb-4">
-                        "Our leadership team's communication improved by 60% and we saw a $2.3M increase in quarterly
-                        revenue after the NLP training program."
-                      </p>
-                      <div className="flex items-center">
-                        <div className="w-10 h-10 bg-teal-200 rounded-full flex items-center justify-center mr-3">
-                          <span className="text-teal-800 font-bold text-sm">JD</span>
-                        </div>
-                        <div>
-                          <p className="font-semibold">John Davidson</p>
-                          <p className="text-sm text-gray-600">CEO, Fortune 500 Company</p>
-                        </div>
-                      </div>
+                      <ul className="space-y-3 text-gray-700">
+                        <li className="flex items-start">
+                          <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
+                          Practical tools, not just theory
+                        </li>
+                        <li className="flex items-start">
+                          <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
+                          NLP-based behavior change methods
+                        </li>
+                        <li className="flex items-start">
+                          <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
+                          Customized to business realities
+                        </li>
+                        <li className="flex items-start">
+                          <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
+                          Measurable impact on performance and culture
+                        </li>
+                        <li className="flex items-start">
+                          <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
+                          Sustainable change beyond the training room
+                        </li>
+                      </ul>
                     </CardContent>
                   </Card>
 
                   <Card>
                     <CardHeader>
-                      <CardTitle>Program Components</CardTitle>
+                      <CardTitle>Program Tracks</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <ul className="space-y-3">
                         <li className="flex items-start">
                           <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Leadership Excellence:</strong> Advanced communication and influence skills
-                          </div>
+                          <div>Leadership & management development</div>
                         </li>
                         <li className="flex items-start">
                           <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Team Dynamics:</strong> Building high-performance collaborative teams
-                          </div>
+                          <div>Communication excellence programs</div>
                         </li>
                         <li className="flex items-start">
                           <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Change Management:</strong> Leading organizational transformation
-                          </div>
+                          <div>NLP-based communication & influence</div>
                         </li>
                         <li className="flex items-start">
                           <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Performance Optimization:</strong> Maximizing individual and team potential
-                          </div>
+                          <div>Emotional intelligence & wellbeing</div>
+                        </li>
+                        <li className="flex items-start">
+                          <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
+                          <div>Anger, stress & pressure management</div>
+                        </li>
+                        <li className="flex items-start">
+                          <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
+                          <div>Performance, productivity & mindset</div>
+                        </li>
+                        <li className="flex items-start">
+                          <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
+                          <div>Diversity, equity & inclusion (DEI)</div>
+                        </li>
+                        <li className="flex items-start">
+                          <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
+                          <div>Coaching at the workplace</div>
                         </li>
                       </ul>
                     </CardContent>
@@ -473,34 +531,46 @@ export default function ServicesPage() {
                   <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-6">
                     <TrendingUp className="h-10 w-10 text-blue-600" />
                   </div>
-                  <h2 className="text-3xl md:text-4xl font-bold mb-6">Train the Trainer Certification</h2>
-                  <p className="text-xl text-gray-600 mb-8">
-                    Become a certified trainer and learn to deliver impactful NLP and personal development programs to
-                    others with confidence and expertise.
-                  </p>
+                  <h2 className="text-3xl md:text-4xl font-bold mb-3">Train the Trainer Certification</h2>
+                  <p className="text-xl text-gray-600 mb-4">NLP • Hypnosis • Corporate Trainer Program</p>
+                  <div className="space-y-4 text-gray-600 mb-8">
+                    <p className="text-lg">
+                      Are you ready to move from learning techniques to professionally delivering trainings with
+                      confidence? Do you want to work as a certified trainer in NLP, Hypnosis, and corporate development
+                      programs?
+                    </p>
+                    <p className="text-lg">
+                      This Train the Trainer Certification is a comprehensive, practice-based program designed to
+                      prepare you to train individuals, groups, and organizations with credibility and skill.
+                    </p>
+                  </div>
 
                   <div className="space-y-6 mb-8">
                     <div>
                       <h3 className="text-xl font-bold mb-3 flex items-center">
                         <Target className="mr-2 h-5 w-5 text-blue-600" />
-                        Who It's For
+                        Who This Program Is For
                       </h3>
                       <ul className="space-y-2 text-gray-600">
                         <li className="flex items-center">
                           <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                          Existing coaches and trainers
+                          Existing coaches, trainers, and facilitators
                         </li>
                         <li className="flex items-center">
                           <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                          Corporate learning professionals
+                          Corporate learning and development professionals
                         </li>
                         <li className="flex items-center">
                           <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                          Consultants and facilitators
+                          Consultants and HR trainers
                         </li>
                         <li className="flex items-center">
                           <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                          Anyone wanting to teach NLP techniques
+                          NLP & Hypnosis practitioners who want to teach
+                        </li>
+                        <li className="flex items-center">
+                          <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                          Anyone ready to step into a professional trainer role
                         </li>
                       </ul>
                     </div>
@@ -508,35 +578,49 @@ export default function ServicesPage() {
                     <div>
                       <h3 className="text-xl font-bold mb-3 flex items-center">
                         <Clock className="mr-2 h-5 w-5 text-blue-600" />
-                        Duration & Format
+                        Program Structure
                       </h3>
                       <div className="grid md:grid-cols-2 gap-4">
                         <div className="flex items-center space-x-3">
                           <Clock className="h-5 w-5 text-blue-600" />
-                          <span>3-day intensive program</span>
+                          <span>Duration: 03 Month Program</span>
                         </div>
                         <div className="flex items-center space-x-3">
                           <MapPin className="h-5 w-5 text-green-600" />
-                          <span>In-person delivery</span>
+                          <span>Format: In-person training</span>
                         </div>
                         <div className="flex items-center space-x-3">
                           <Video className="h-5 w-5 text-purple-600" />
-                          <span>Practice sessions included</span>
+                          <span>Training Style: Practical and experiential</span>
                         </div>
                         <div className="flex items-center space-x-3">
                           <Award className="h-5 w-5 text-teal-600" />
-                          <span>Official certification</span>
+                          <span>Practice: Live demos and feedback</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <Star className="h-5 w-5 text-yellow-600" />
+                          <span>Support: Ongoing mentoring</span>
                         </div>
                       </div>
+                      <p className="text-gray-600 mt-4">
+                        Investment: USD 5,000 (includes certifications, memberships, training materials, and ongoing
+                        support).
+                      </p>
                     </div>
                   </div>
 
-                  <Link href="/events">
+                  <Link href="/contact">
                     <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold">
-                      View Training Dates
+                      Apply Now
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
                   </Link>
+                  <p className="text-sm text-gray-600 mt-4">
+                    Apply now or request full program details at{" "}
+                    <a href="mailto:yousif.mangi@konnectingdots.org" className="text-blue-700 underline">
+                      yousif.mangi@konnectingdots.org
+                    </a>
+                  </p>
                 </div>
 
                 <div className="space-y-6">
@@ -544,54 +628,57 @@ export default function ServicesPage() {
                     <CardHeader>
                       <CardTitle className="flex items-center">
                         <Star className="mr-2 h-5 w-5 text-blue-600" />
-                        Graduate Success
+                        What You Will Learn
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-gray-700 italic mb-4">
-                        "The Train the Trainer program gave me the confidence and skills to launch my own successful
-                        training business. I now train executives at Fortune 500 companies."
-                      </p>
-                      <div className="flex items-center">
-                        <div className="w-10 h-10 bg-blue-200 rounded-full flex items-center justify-center mr-3">
-                          <span className="text-blue-800 font-bold text-sm">JM</span>
-                        </div>
-                        <div>
-                          <p className="font-semibold">James Martinez</p>
-                          <p className="text-sm text-gray-600">Certified Corporate Trainer</p>
-                        </div>
-                      </div>
+                      <ul className="space-y-3 text-gray-700">
+                        <li>
+                          <strong>Trainer Skills & Delivery:</strong> trainer mindset, adult learning, facilitation,
+                          handling resistance, and stage presence.
+                        </li>
+                        <li>
+                          <strong>NLP & Hypnosis Training Skills:</strong> teach concepts clearly, demonstrate techniques,
+                          and guide safe practice.
+                        </li>
+                        <li>
+                          <strong>Corporate Trainer Competencies:</strong> design corporate programs, customize content,
+                          and maintain professional standards.
+                        </li>
+                      </ul>
                     </CardContent>
                   </Card>
 
                   <Card>
                     <CardHeader>
-                      <CardTitle>Certification Includes</CardTitle>
+                      <CardTitle>What You Receive</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <ul className="space-y-3">
                         <li className="flex items-start">
                           <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
                           <div>
-                            <strong>Advanced Facilitation:</strong> Master the art of engaging group dynamics
+                            <strong>Three Professional Certifications:</strong> NLP Trainer, Hypnosis Trainer, and
+                            Corporate Trainer.
                           </div>
                         </li>
                         <li className="flex items-start">
                           <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
                           <div>
-                            <strong>Program Design:</strong> Create compelling training curricula
+                            <strong>Professional Memberships:</strong> ANLP, ABH, and PBH memberships (1 year each).
                           </div>
                         </li>
                         <li className="flex items-start">
                           <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
                           <div>
-                            <strong>Business Development:</strong> Build your training practice
+                            <strong>Complete Trainer Toolkit:</strong> ready-to-use content, slides, manuals, and
+                            exercises.
                           </div>
                         </li>
                         <li className="flex items-start">
                           <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
                           <div>
-                            <strong>Ongoing Support:</strong> Alumni network and continued education
+                            <strong>Ongoing Support:</strong> mentoring and guidance to grow your training practice.
                           </div>
                         </li>
                       </ul>
@@ -608,34 +695,37 @@ export default function ServicesPage() {
                   <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6">
                     <GraduationCap className="h-10 w-10 text-green-600" />
                   </div>
-                  <h2 className="text-3xl md:text-4xl font-bold mb-6">NLP Practitioner & Master Practitioner</h2>
+                  <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                    NLP & Hypnotherapy Practitioner & Master Practitioner Certification
+                  </h2>
                   <p className="text-xl text-gray-600 mb-8">
-                    Achieve internationally recognized certification in Neuro-Linguistic Programming through our
-                    comprehensive Practitioner and Master Practitioner programs.
+                    Become a confident, skilled, and internationally certified NLP and Hypnotherapy Practitioner. This
+                    comprehensive program is designed for deep personal transformation and professional practice,
+                    combining practical skills, live training, and ongoing mentorship.
                   </p>
 
                   <div className="space-y-6 mb-8">
                     <div>
                       <h3 className="text-xl font-bold mb-3 flex items-center">
                         <Target className="mr-2 h-5 w-5 text-green-600" />
-                        Who It's For
+                        Who This Program Is For
                       </h3>
                       <ul className="space-y-2 text-gray-600">
                         <li className="flex items-center">
                           <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                          Aspiring life coaches and therapists
+                          Aspiring life coaches, therapists, and healers
                         </li>
                         <li className="flex items-center">
                           <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                          Business professionals seeking edge
+                          Business professionals seeking a mindset and performance edge
                         </li>
                         <li className="flex items-center">
                           <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                          Anyone passionate about personal development
+                          Individuals passionate about personal growth and self-mastery
                         </li>
                         <li className="flex items-center">
                           <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                          Existing practitioners wanting mastery
+                          Existing practitioners ready to deepen skills and credibility
                         </li>
                       </ul>
                     </div>
@@ -643,24 +733,24 @@ export default function ServicesPage() {
                     <div>
                       <h3 className="text-xl font-bold mb-3 flex items-center">
                         <Clock className="mr-2 h-5 w-5 text-green-600" />
-                        Duration & Format
+                        Program Structure & Duration
                       </h3>
                       <div className="grid md:grid-cols-2 gap-4">
                         <div className="flex items-center space-x-3">
                           <Clock className="h-5 w-5 text-blue-600" />
-                          <span>7-day intensive programs</span>
+                          <span>Total Duration: 4 Months (flexible timings)</span>
                         </div>
                         <div className="flex items-center space-x-3">
                           <MapPin className="h-5 w-5 text-green-600" />
-                          <span>Luxury resort venues</span>
+                          <span>Environment: Premium learning experience</span>
                         </div>
                         <div className="flex items-center space-x-3">
                           <Video className="h-5 w-5 text-purple-600" />
-                          <span>Hybrid learning options</span>
+                          <span>Learning Mode: Online (hybrid options available)</span>
                         </div>
                         <div className="flex items-center space-x-3">
                           <Award className="h-5 w-5 text-teal-600" />
-                          <span>International certification</span>
+                          <span>Training Style: Live, interactive, practice-based</span>
                         </div>
                       </div>
                     </div>
@@ -673,16 +763,19 @@ export default function ServicesPage() {
                         <ArrowRight className="ml-2 h-5 w-5" />
                       </Button>
                     </Link>
-                    <Link href="/member-login">
+                    <Link href="https://lnkd.in/dbNTGHgH" target="_blank" rel="noreferrer">
                       <Button
                         size="lg"
                         variant="outline"
                         className="border-green-600 text-green-600 hover:bg-green-50 bg-transparent"
                       >
-                        Member Portal
+                        Sign Up Now
                       </Button>
                     </Link>
                   </div>
+                  <p className="text-sm text-gray-600 mt-4">
+                    Investment: PKR 350,000 (Special Program Fee: PKR 300,000)
+                  </p>
                 </div>
 
                 <div className="space-y-6">
@@ -690,48 +783,44 @@ export default function ServicesPage() {
                     <CardHeader>
                       <CardTitle className="flex items-center">
                         <Star className="mr-2 h-5 w-5 text-green-600" />
-                        Practitioner Success
+                        Certification & Recognition
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-gray-700 italic mb-4">
-                        "The NLP Practitioner certification changed my life completely. I now run a successful coaching
-                        practice and help hundreds of people achieve their dreams."
+                      <ul className="space-y-2 text-gray-700 mb-4">
+                        <li>American Board of Hypnotherapy (ABH)</li>
+                        <li>Professional Board of Hypnotherapy (PBH)</li>
+                        <li>Konnecting Dots Pakistan</li>
+                        <li>Eligible for ANLP International CIC (UK) membership</li>
+                      </ul>
+                      <p className="text-gray-700 text-sm">
+                        These certifications allow you to practice internationally, subject to local regulations.
                       </p>
-                      <div className="flex items-center">
-                        <div className="w-10 h-10 bg-green-200 rounded-full flex items-center justify-center mr-3">
-                          <span className="text-green-800 font-bold text-sm">RK</span>
-                        </div>
-                        <div>
-                          <p className="font-semibold">Rachel Kim</p>
-                          <p className="text-sm text-gray-600">Certified NLP Coach</p>
-                        </div>
-                      </div>
                     </CardContent>
                   </Card>
 
                   <div className="grid md:grid-cols-2 gap-4">
                     <Card>
                       <CardHeader>
-                        <CardTitle className="text-lg">Practitioner Level</CardTitle>
+                        <CardTitle className="text-lg">NLP & Hypnosis Practitioner</CardTitle>
                       </CardHeader>
                       <CardContent>
                         <ul className="space-y-2 text-sm">
                           <li className="flex items-center">
                             <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                            Core NLP techniques
+                            Foundations of NLP and communication
                           </li>
                           <li className="flex items-center">
                             <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                            Communication mastery
+                            Understanding mind, emotions, and behavior patterns
                           </li>
                           <li className="flex items-center">
                             <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                            Goal achievement strategies
+                            Hypnosis and hypnotherapy fundamentals
                           </li>
                           <li className="flex items-center">
                             <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                            Basic coaching skills
+                            Conducting safe and ethical client sessions
                           </li>
                         </ul>
                       </CardContent>
@@ -739,25 +828,25 @@ export default function ServicesPage() {
 
                     <Card>
                       <CardHeader>
-                        <CardTitle className="text-lg">Master Level</CardTitle>
+                        <CardTitle className="text-lg">Master Practitioner</CardTitle>
                       </CardHeader>
                       <CardContent>
                         <ul className="space-y-2 text-sm">
                           <li className="flex items-center">
                             <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                            Advanced modeling
+                            Advanced NLP patterns and modeling
                           </li>
                           <li className="flex items-center">
                             <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                            Timeline therapy
+                            Deep subconscious change work
                           </li>
                           <li className="flex items-center">
                             <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                            Unconscious patterns
+                            Mastery in hypnosis and hypnotherapy techniques
                           </li>
                           <li className="flex items-center">
                             <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                            Master-level coaching
+                            Practitioner identity, confidence, and ethics
                           </li>
                         </ul>
                       </CardContent>

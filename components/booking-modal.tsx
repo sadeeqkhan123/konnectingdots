@@ -266,13 +266,13 @@ export default function BookingModal({ children }: BookingModalProps) {
                         >
                           Popular
                         </Badge>
-                        ONE on ONE Coaching
+                        One-on-One Coaching
                       </div>
                     </SelectItem>
-                    <SelectItem value="corporate">Corporate Training</SelectItem>
+                    <SelectItem value="corporate">Corporate Training & Organizational Development</SelectItem>
                     <SelectItem value="dei">DEI Training</SelectItem>
-                    <SelectItem value="train-trainer">Train the Trainer</SelectItem>
-                    <SelectItem value="practitioner">NLP Practitioner Program</SelectItem>
+                    <SelectItem value="train-trainer">Train the Trainer Certification</SelectItem>
+                    <SelectItem value="practitioner">NLP & Hypnotherapy Practitioner Program</SelectItem>
                     <SelectItem value="consultation">
                       <div className="flex items-center gap-2">
                         <Badge variant="outline" className="bg-success/10 text-success border-success/20">

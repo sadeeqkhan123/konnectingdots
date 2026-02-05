@@ -96,7 +96,7 @@ export default function Footer() {
                   href="/services#one-on-one"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  ONE on ONE Coaching
+                  One-on-One Coaching
                 </Link>
               </li>
               <li>
@@ -104,7 +104,7 @@ export default function Footer() {
                   href="/services#corporate"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  Corporate Training
+                  Corporate Training & Organizational Development
                 </Link>
               </li>
               <li>
@@ -117,7 +117,7 @@ export default function Footer() {
                   href="/services#train-trainer"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  Train the Trainer
+                  Train the Trainer Certification
                 </Link>
               </li>
               <li>
@@ -125,7 +125,7 @@ export default function Footer() {
                   href="/services#practitioner"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  NLP Practitioner
+                  NLP & Hypnotherapy Practitioner
                 </Link>
               </li>
               <li>

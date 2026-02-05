@@ -59,7 +59,7 @@ export default function HomePage() {
               A Message from Yousif Mangi
             </h2>
             <p className="text-xl text-muted-foreground mb-8 opacity-0-animate animate-fade-in-up animate-delay-100">
-              Discover our mission and how we're transforming lives through the power of NLP and Hypnosis
+              Founder & Chief Learning Officer at Konnecting Dots
             </p>
             <div className="relative aspect-video bg-gradient-to-br from-brand-primary to-info rounded-2xl overflow-hidden shadow-2xl opacity-0-animate animate-scale-in animate-delay-200 group cursor-pointer">
               <div className="absolute inset-0 flex items-center justify-center">
@@ -70,6 +70,30 @@ export default function HomePage() {
                   <Play className="mr-2 h-8 w-8" />
                   Play Video
                 </Button>
+              </div>
+            </div>
+            <div className="mt-8 text-left max-w-3xl mx-auto space-y-4 text-muted-foreground">
+              <p className="text-lg">
+                Yousif Mangi is a seasoned professional in personal development and organizational transformation. With
+                a decade-long background in Learning and Development, he has conducted 80+ workshops across various
+                sectors, impacting 10,000+ individuals. As a certified Trainer of NLP, Hypnotherapy, and Success Coach,
+                he empowers individuals and organizations to reach their full potential.
+              </p>
+              <p className="text-lg">
+                His approach is rooted in the belief that internal transformation leads to external success. With a
+                global reach, he coaches clients from 15 countries and continues to inspire deep transformation
+                worldwide.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-2 text-sm">
+                <div>Emotional intelligence</div>
+                <div>Negotiation skills</div>
+                <div>Stress management</div>
+                <div>Work-life balance</div>
+                <div>Team building, collaboration and leadership</div>
+                <div>Sales and customer relationships</div>
+                <div>First-time managers</div>
+                <div>Conflict management</div>
+                <div>Personality, behavior & managing state</div>
               </div>
             </div>
           </div>
@@ -93,22 +117,22 @@ export default function HomePage() {
                 <div className="w-16 h-16 bg-brand-secondary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-secondary/20 transition-colors transform group-hover:scale-110 duration-300">
                   <Users className="h-8 w-8 text-brand-secondary" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4">ONE on ONE Coaching</h3>
+                <h3 className="text-2xl font-bold mb-4">One-on-One Coaching</h3>
                 <p className="text-muted-foreground mb-6">
-                  Personalized NLP and Hypnosis sessions tailored to your specific goals and challenges.
+                  Personalized NLP & Hypnosis sessions focused on deep, lasting change.
                 </p>
                 <ul className="space-y-2 mb-6">
                   <li className="flex items-center text-sm text-muted-foreground">
                     <CheckCircle className="h-4 w-4 text-success mr-2" />
-                    Individual assessment and goal setting
+                    60-90 minute sessions
                   </li>
                   <li className="flex items-center text-sm text-muted-foreground">
                     <CheckCircle className="h-4 w-4 text-success mr-2" />
-                    Customized NLP techniques
+                    In-person or online
                   </li>
                   <li className="flex items-center text-sm text-muted-foreground">
                     <CheckCircle className="h-4 w-4 text-success mr-2" />
-                    Online and in-person options
+                    4-12 sessions, $50 per session
                   </li>
                 </ul>
                 <Link href="/services#one-on-one">
@@ -127,22 +151,22 @@ export default function HomePage() {
                 <div className="w-16 h-16 bg-brand-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-primary/20 transition-colors transform group-hover:scale-110 duration-300">
                   <Award className="h-8 w-8 text-brand-primary" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4">Corporate Training</h3>
+                <h3 className="text-2xl font-bold mb-4">Corporate Training & Organizational Development</h3>
                 <p className="text-muted-foreground mb-6">
-                  Transform your organization with cutting-edge NLP techniques and leadership development.
+                  NLP, leadership, coaching, and workplace excellence programs.
                 </p>
                 <ul className="space-y-2 mb-6">
                   <li className="flex items-center text-sm text-muted-foreground">
                     <CheckCircle className="h-4 w-4 text-success mr-2" />
-                    Leadership development programs
+                    Half-day to multi-day formats
                   </li>
                   <li className="flex items-center text-sm text-muted-foreground">
                     <CheckCircle className="h-4 w-4 text-success mr-2" />
-                    Team communication enhancement
+                    Onsite, online, or hybrid delivery
                   </li>
                   <li className="flex items-center text-sm text-muted-foreground">
                     <CheckCircle className="h-4 w-4 text-success mr-2" />
-                    Onsite, online, and hybrid formats
+                    Fully customized to your needs
                   </li>
                 </ul>
                 <Link href="/services#corporate">
@@ -158,59 +182,25 @@ export default function HomePage() {
 
             <Card className="group hover:shadow-2xl transition-all duration-500 border-0 shadow-lg opacity-0-animate animate-fade-in-up animate-delay-300 transform hover:-translate-y-2">
               <CardContent className="p-8">
-                <div className="w-16 h-16 bg-brand-accent/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-accent/20 transition-colors transform group-hover:scale-110 duration-300">
-                  <Heart className="h-8 w-8 text-brand-accent" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4">DEI Training</h3>
-                <p className="text-muted-foreground mb-6">
-                  Build inclusive workplaces through comprehensive Diversity, Equity, and Inclusion programs.
-                </p>
-                <ul className="space-y-2 mb-6">
-                  <li className="flex items-center text-sm text-muted-foreground">
-                    <CheckCircle className="h-4 w-4 text-success mr-2" />
-                    Unconscious bias training
-                  </li>
-                  <li className="flex items-center text-sm text-muted-foreground">
-                    <CheckCircle className="h-4 w-4 text-success mr-2" />
-                    Inclusive leadership development
-                  </li>
-                  <li className="flex items-center text-sm text-muted-foreground">
-                    <CheckCircle className="h-4 w-4 text-success mr-2" />
-                    Cultural competency workshops
-                  </li>
-                </ul>
-                <Link href="/services#dei">
-                  <Button
-                    variant="ghost"
-                    className="p-0 h-auto text-brand-accent hover:text-brand-accent/80 group-hover:translate-x-2 transition-transform duration-300"
-                  >
-                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-
-            <Card className="group hover:shadow-2xl transition-all duration-500 border-0 shadow-lg opacity-0-animate animate-fade-in-up animate-delay-400 transform hover:-translate-y-2">
-              <CardContent className="p-8">
                 <div className="w-16 h-16 bg-info/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-info/20 transition-colors transform group-hover:scale-110 duration-300">
                   <TrendingUp className="h-8 w-8 text-info" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4">Train the Trainer</h3>
+                <h3 className="text-2xl font-bold mb-4">Train the Trainer Certification</h3>
                 <p className="text-muted-foreground mb-6">
-                  Become a certified trainer and learn to deliver impactful programs to others.
+                  Become a certified NLP, Hypnosis, and corporate trainer.
                 </p>
                 <ul className="space-y-2 mb-6">
                   <li className="flex items-center text-sm text-muted-foreground">
                     <CheckCircle className="h-4 w-4 text-success mr-2" />
-                    Advanced facilitation skills
+                    03 month, in-person program
                   </li>
                   <li className="flex items-center text-sm text-muted-foreground">
                     <CheckCircle className="h-4 w-4 text-success mr-2" />
-                    Program design and delivery
+                    Three professional certifications
                   </li>
                   <li className="flex items-center text-sm text-muted-foreground">
                     <CheckCircle className="h-4 w-4 text-success mr-2" />
-                    Certification upon completion
+                    USD 5,000 investment
                   </li>
                 </ul>
                 <Link href="/services#train-trainer">
@@ -229,22 +219,22 @@ export default function HomePage() {
                 <div className="w-16 h-16 bg-success/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-success/20 transition-colors transform group-hover:scale-110 duration-300">
                   <Award className="h-8 w-8 text-success" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4">NLP Practitioner</h3>
+                <h3 className="text-2xl font-bold mb-4">NLP & Hypnotherapy Practitioner</h3>
                 <p className="text-muted-foreground mb-6">
-                  Master and Practitioner certification programs for comprehensive NLP training.
+                  Practitioner & Master Practitioner certification pathway.
                 </p>
                 <ul className="space-y-2 mb-6">
                   <li className="flex items-center text-sm text-muted-foreground">
                     <CheckCircle className="h-4 w-4 text-success mr-2" />
-                    Internationally recognized certification
+                    4-month, live practice-based training
                   </li>
                   <li className="flex items-center text-sm text-muted-foreground">
                     <CheckCircle className="h-4 w-4 text-success mr-2" />
-                    Comprehensive curriculum
+                    Triple certification (ABH, PBH, KDP)
                   </li>
                   <li className="flex items-center text-sm text-muted-foreground">
                     <CheckCircle className="h-4 w-4 text-success mr-2" />
-                    Ongoing support and resources
+                    PKR 350,000 (special 300,000)
                   </li>
                 </ul>
                 <Link href="/services#practitioner">

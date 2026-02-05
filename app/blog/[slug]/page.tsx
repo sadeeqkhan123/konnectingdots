@@ -185,9 +185,10 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
                   <div className="flex-1">
                     <h3 className="text-2xl font-bold mb-2 text-foreground">About Yousif Mangi</h3>
                     <p className="text-muted-foreground mb-4">
-                      Yousif Mangi is a Master NLP Practitioner and Hypnotherapist with over 15 years of experience
-                      helping individuals and organizations achieve breakthrough results. He specializes in rapid
-                      transformation techniques and has trained thousands of practitioners worldwide.
+                      Yousif Mangi, Founder and Chief Learning Officer at Konnecting Dots, is a seasoned professional in
+                      personal development and organizational transformation. With a decade-long background in Learning
+                      and Development, he has led 80+ workshops across sectors, impacting 10,000+ individuals and
+                      coaching clients in 15 countries.
                     </p>
                     <Button variant="outline">View All Articles</Button>
                   </div>
@@ -266,7 +267,8 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Experience Your Own Breakthrough?</h2>
             <p className="text-xl mb-8 opacity-90">
-              Book a session with Yousif Mangi and discover what's possible when you have the right tools and guidance.
+              Book a session with Yousif Mangi, Founder & Chief Learning Officer at Konnecting Dots, and discover what's
+              possible when you have the right tools and guidance.
             </p>
             <Button size="lg" variant="secondary" className="text-lg">
               Book Your Session Now

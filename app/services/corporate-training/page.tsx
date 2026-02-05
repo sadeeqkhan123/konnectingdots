@@ -11,13 +11,15 @@ export default function CorporateTrainingPage() {
       {/* Hero Section */}
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto text-center">
-          <Badge className="mb-4 bg-blue-100 text-blue-800 hover:bg-blue-200">Corporate Training Programs</Badge>
+          <Badge className="mb-4 bg-blue-100 text-blue-800 hover:bg-blue-200">
+            Corporate Training & Organizational Development
+          </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-            Elevate Your Team's Performance
+            NLP, Leadership, Coaching & Workplace Excellence
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Comprehensive corporate training solutions that drive results, enhance productivity, and create
-            high-performing teams across all levels of your organization.
+            Build strong leaders, confident managers, emotionally intelligent teams, and healthy workplace cultures
+            using practical NLP-based tools and real-world coaching approaches.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
@@ -58,19 +60,18 @@ export default function CorporateTrainingPage() {
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Comprehensive Training Solutions</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From leadership development to technical skills, we offer training programs tailored to your
-              organization's specific needs and goals.
-            </p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">Program Tracks</h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Fully customized programs built around your organizational needs and culture.
+              </p>
           </div>
 
           <Tabs defaultValue="leadership" className="w-full">
             <TabsList className="grid w-full grid-cols-1 md:grid-cols-4 mb-8">
               <TabsTrigger value="leadership">Leadership</TabsTrigger>
               <TabsTrigger value="communication">Communication</TabsTrigger>
-              <TabsTrigger value="sales">Sales & Marketing</TabsTrigger>
-              <TabsTrigger value="technical">Technical Skills</TabsTrigger>
+              <TabsTrigger value="wellbeing">Wellbeing & Mindset</TabsTrigger>
+              <TabsTrigger value="dei">DEI</TabsTrigger>
             </TabsList>
 
             <TabsContent value="leadership" className="space-y-8">
@@ -78,15 +79,15 @@ export default function CorporateTrainingPage() {
                 <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
                   <CardHeader>
                     <Users className="h-8 w-8 text-blue-600 mb-2" />
-                    <CardTitle>Executive Leadership</CardTitle>
-                    <CardDescription>Strategic leadership for C-suite executives</CardDescription>
+                    <CardTitle>First-Time Managers</CardTitle>
+                    <CardDescription>From individual contributor to people manager</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-2 text-sm">
-                      <li>• Strategic thinking and planning</li>
-                      <li>• Change management</li>
-                      <li>• Executive presence</li>
-                      <li>• Board communication</li>
+                      <li>• Managing former peers confidently</li>
+                      <li>• Setting expectations and accountability</li>
+                      <li>• Giving feedback and handling performance issues</li>
+                      <li>• Time and priority management</li>
                     </ul>
                   </CardContent>
                 </Card>
@@ -94,15 +95,15 @@ export default function CorporateTrainingPage() {
                 <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
                   <CardHeader>
                     <Target className="h-8 w-8 text-indigo-600 mb-2" />
-                    <CardTitle>Middle Management</CardTitle>
-                    <CardDescription>Essential skills for team leaders</CardDescription>
+                    <CardTitle>Management Development (MDP)</CardTitle>
+                    <CardDescription>For growing and established managers</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-2 text-sm">
-                      <li>• Team building and motivation</li>
-                      <li>• Performance management</li>
-                      <li>• Conflict resolution</li>
-                      <li>• Delegation strategies</li>
+                      <li>• Leadership mindset and responsibility</li>
+                      <li>• Decision-making and problem-solving</li>
+                      <li>• Delegation and empowerment</li>
+                      <li>• Leading through change</li>
                     </ul>
                   </CardContent>
                 </Card>
@@ -110,15 +111,31 @@ export default function CorporateTrainingPage() {
                 <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
                   <CardHeader>
                     <TrendingUp className="h-8 w-8 text-green-600 mb-2" />
-                    <CardTitle>Emerging Leaders</CardTitle>
-                    <CardDescription>Developing future leaders</CardDescription>
+                    <CardTitle>Coaching for Managers</CardTitle>
+                    <CardDescription>Lead through coaching rather than control</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-2 text-sm">
-                      <li>• Leadership fundamentals</li>
-                      <li>• Emotional intelligence</li>
-                      <li>• Decision-making skills</li>
-                      <li>• Mentoring and coaching</li>
+                      <li>• Coaching conversations at work</li>
+                      <li>• Asking powerful questions</li>
+                      <li>• Developing team potential</li>
+                      <li>• Ownership and accountability</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+                  <CardHeader>
+                    <BookOpen className="h-8 w-8 text-purple-600 mb-2" />
+                    <CardTitle>Coaching at the Workplace</CardTitle>
+                    <CardDescription>Embedding coaching as a leadership skill</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2 text-sm">
+                      <li>• Coaching culture development</li>
+                      <li>• Peer coaching frameworks</li>
+                      <li>• Manager-as-coach mindset</li>
+                      <li>• Feedback and reflection practices</li>
                     </ul>
                   </CardContent>
                 </Card>
@@ -130,15 +147,15 @@ export default function CorporateTrainingPage() {
                 <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
                   <CardHeader>
                     <BookOpen className="h-8 w-8 text-purple-600 mb-2" />
-                    <CardTitle>Public Speaking</CardTitle>
-                    <CardDescription>Master the art of presentation</CardDescription>
+                    <CardTitle>Effective Communication</CardTitle>
+                    <CardDescription>Top to bottom clarity and alignment</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-2 text-sm">
-                      <li>• Overcoming speaking anxiety</li>
-                      <li>• Engaging storytelling</li>
-                      <li>• Visual presentation design</li>
-                      <li>• Q&A handling techniques</li>
+                      <li>• Leadership communication clarity</li>
+                      <li>• Aligning vision, goals, and expectations</li>
+                      <li>• Handling difficult conversations</li>
+                      <li>• Communicating change effectively</li>
                     </ul>
                   </CardContent>
                 </Card>
@@ -146,51 +163,35 @@ export default function CorporateTrainingPage() {
                 <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
                   <CardHeader>
                     <Users className="h-8 w-8 text-blue-600 mb-2" />
-                    <CardTitle>Interpersonal Skills</CardTitle>
-                    <CardDescription>Build stronger workplace relationships</CardDescription>
+                    <CardTitle>NLP-Based Communication & Influence</CardTitle>
+                    <CardDescription>Rapport, influence, and conflict resolution</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-2 text-sm">
-                      <li>• Active listening techniques</li>
-                      <li>• Empathy and rapport building</li>
-                      <li>• Difficult conversations</li>
-                      <li>• Cross-cultural communication</li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-                  <CardHeader>
-                    <Building className="h-8 w-8 text-orange-600 mb-2" />
-                    <CardTitle>Business Writing</CardTitle>
-                    <CardDescription>Professional written communication</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2 text-sm">
-                      <li>• Email etiquette and efficiency</li>
-                      <li>• Report and proposal writing</li>
-                      <li>• Executive summaries</li>
-                      <li>• Digital communication best practices</li>
+                      <li>• Rapport building across teams</li>
+                      <li>• Influencing without authority</li>
+                      <li>• Persuasive communication skills</li>
+                      <li>• Cross-functional communication</li>
                     </ul>
                   </CardContent>
                 </Card>
               </div>
             </TabsContent>
 
-            <TabsContent value="sales" className="space-y-8">
+            <TabsContent value="wellbeing" className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
                   <CardHeader>
                     <Target className="h-8 w-8 text-green-600 mb-2" />
-                    <CardTitle>Sales Excellence</CardTitle>
-                    <CardDescription>Advanced selling techniques</CardDescription>
+                    <CardTitle>Emotional Intelligence at Work</CardTitle>
+                    <CardDescription>Self-awareness and relationship management</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-2 text-sm">
-                      <li>• Consultative selling approach</li>
-                      <li>• Objection handling</li>
-                      <li>• Closing techniques</li>
-                      <li>• Customer relationship management</li>
+                      <li>• Self-awareness and self-regulation</li>
+                      <li>• Empathy and relationship management</li>
+                      <li>• Emotionally intelligent leadership</li>
+                      <li>• Psychological safety</li>
                     </ul>
                   </CardContent>
                 </Card>
@@ -198,15 +199,15 @@ export default function CorporateTrainingPage() {
                 <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
                   <CardHeader>
                     <Lightbulb className="h-8 w-8 text-yellow-600 mb-2" />
-                    <CardTitle>Digital Marketing</CardTitle>
-                    <CardDescription>Modern marketing strategies</CardDescription>
+                    <CardTitle>Anger, Stress & Pressure Management</CardTitle>
+                    <CardDescription>Resilience and emotional control</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-2 text-sm">
-                      <li>• Social media marketing</li>
-                      <li>• Content marketing strategies</li>
-                      <li>• SEO and SEM fundamentals</li>
-                      <li>• Analytics and measurement</li>
+                      <li>• Recognizing emotional triggers</li>
+                      <li>• Stress and burnout prevention</li>
+                      <li>• Emotional resilience</li>
+                      <li>• Work-life balance strategies</li>
                     </ul>
                   </CardContent>
                 </Card>
@@ -214,67 +215,35 @@ export default function CorporateTrainingPage() {
                 <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
                   <CardHeader>
                     <Users className="h-8 w-8 text-blue-600 mb-2" />
-                    <CardTitle>Customer Service</CardTitle>
-                    <CardDescription>Exceptional customer experiences</CardDescription>
+                    <CardTitle>Performance, Productivity & Mindset</CardTitle>
+                    <CardDescription>Confidence, focus, and accountability</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-2 text-sm">
-                      <li>• Service excellence standards</li>
-                      <li>• Complaint resolution</li>
-                      <li>• Customer retention strategies</li>
-                      <li>• Omnichannel support</li>
+                      <li>• Goal setting and outcome focus</li>
+                      <li>• Breaking limiting beliefs</li>
+                      <li>• Focus, motivation, and energy</li>
+                      <li>• Ownership culture</li>
                     </ul>
                   </CardContent>
                 </Card>
               </div>
             </TabsContent>
 
-            <TabsContent value="technical" className="space-y-8">
+            <TabsContent value="dei" className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
                   <CardHeader>
                     <Shield className="h-8 w-8 text-red-600 mb-2" />
-                    <CardTitle>Cybersecurity Awareness</CardTitle>
-                    <CardDescription>Protect your organization</CardDescription>
+                    <CardTitle>Diversity, Equity & Inclusion</CardTitle>
+                    <CardDescription>Respectful, inclusive, high-trust workplaces</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-2 text-sm">
-                      <li>• Threat identification</li>
-                      <li>• Password security</li>
-                      <li>• Phishing prevention</li>
-                      <li>• Data protection protocols</li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-                  <CardHeader>
-                    <BookOpen className="h-8 w-8 text-indigo-600 mb-2" />
-                    <CardTitle>Software Training</CardTitle>
-                    <CardDescription>Master essential business tools</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2 text-sm">
-                      <li>• Microsoft Office Suite</li>
-                      <li>• CRM systems</li>
-                      <li>• Project management tools</li>
-                      <li>• Industry-specific software</li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-                  <CardHeader>
-                    <TrendingUp className="h-8 w-8 text-purple-600 mb-2" />
-                    <CardTitle>Data Analytics</CardTitle>
-                    <CardDescription>Make data-driven decisions</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2 text-sm">
-                      <li>• Excel advanced functions</li>
-                      <li>• Data visualization</li>
-                      <li>• Statistical analysis basics</li>
-                      <li>• Business intelligence tools</li>
+                      <li>• Unconscious bias awareness</li>
+                      <li>• Inclusive leadership behaviors</li>
+                      <li>• Cultural intelligence</li>
+                      <li>• Psychological safety and belonging</li>
                     </ul>
                   </CardContent>
                 </Card>

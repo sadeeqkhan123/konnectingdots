@@ -50,10 +50,10 @@ export default function EventsPage() {
 
                 <div className="grid lg:grid-cols-3 gap-8">
                   <div className="lg:col-span-2">
-                    <h3 className="text-3xl font-bold mb-4">NLP Practitioner Certification Program</h3>
+                    <h3 className="text-3xl font-bold mb-4">NLP & Hypnotherapy Practitioner Certification Program</h3>
                     <p className="text-gray-700 mb-6 text-lg">
-                      Comprehensive 7-day intensive program to become a certified NLP Practitioner. Learn powerful
-                      techniques for personal transformation and helping others achieve breakthrough results.
+                      A comprehensive program to become a certified NLP and Hypnotherapy Practitioner with practical,
+                      live training and ongoing support.
                     </p>
 
                     <div className="grid md:grid-cols-2 gap-4 mb-6">
@@ -245,8 +245,8 @@ export default function EventsPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 mb-6">
-                    Become a certified trainer and learn to deliver impactful NLP and personal development programs to
-                    others.
+                    Become a certified trainer and learn to deliver NLP, Hypnosis, and corporate training programs with
+                    confidence.
                   </p>
 
                   <div className="space-y-3 mb-6">

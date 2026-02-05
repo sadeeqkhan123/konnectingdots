@@ -95,7 +95,9 @@ export default function TestimonialsPage() {
                     Play Video
                   </Button>
                 </div>
-                <Badge className="absolute top-4 left-4 bg-purple-100 text-purple-800">NLP Practitioner</Badge>
+                <Badge className="absolute top-4 left-4 bg-purple-100 text-purple-800">
+                  NLP & Hypnotherapy Practitioner
+                </Badge>
               </div>
               <CardContent className="p-6">
                 <div className="flex items-center mb-3">
@@ -108,8 +110,8 @@ export default function TestimonialsPage() {
                   </div>
                 </div>
                 <p className="text-gray-700">
-                  "The NLP Practitioner program gave me the tools to not only transform my own life but to help hundreds
-                  of clients achieve their goals."
+                  "The NLP & Hypnotherapy Practitioner program gave me the tools to not only transform my own life but to
+                  help hundreds of clients achieve their goals."
                 </p>
               </CardContent>
             </Card>
@@ -338,8 +340,9 @@ export default function TestimonialsPage() {
               <CardContent className="p-8">
                 <Quote className="h-8 w-8 text-teal-400 mb-4" />
                 <p className="text-gray-700 mb-6 italic">
-                  "I became a certified NLP Practitioner through Konnecting Dots and it's been life-changing. I now run
-                  my own successful coaching practice and help others transform their lives daily."
+                  "I became a certified NLP & Hypnotherapy Practitioner through Konnecting Dots and it's been
+                  life-changing. I now run my own successful coaching practice and help others transform their lives
+                  daily."
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">

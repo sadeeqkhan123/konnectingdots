@@ -56,24 +56,28 @@ export default function Header() {
                   <div className="w-80 p-4 bg-card">
                     <div className="space-y-3">
                       <Link href="/services/one-on-one-coaching" className="block p-3 rounded-lg hover:bg-accent">
-                        <h4 className="font-semibold text-card-foreground">ONE on ONE Coaching</h4>
-                        <p className="text-sm text-muted-foreground">Personalized NLP and Hypnosis sessions</p>
+                        <h4 className="font-semibold text-card-foreground">One-on-One Coaching</h4>
+                        <p className="text-sm text-muted-foreground">Personalized NLP & Hypnosis sessions</p>
                       </Link>
                       <Link href="/services/corporate-training" className="block p-3 rounded-lg hover:bg-accent">
-                        <h4 className="font-semibold text-card-foreground">Corporate Training Programs</h4>
-                        <p className="text-sm text-muted-foreground">Transform your organization</p>
+                        <h4 className="font-semibold text-card-foreground">
+                          Corporate Training & Organizational Development
+                        </h4>
+                        <p className="text-sm text-muted-foreground">NLP, leadership, and workplace excellence</p>
                       </Link>
                       <Link href="/services/dei-training" className="block p-3 rounded-lg hover:bg-accent">
                         <h4 className="font-semibold text-card-foreground">Diversity, Equity & Inclusion Training</h4>
                         <p className="text-sm text-muted-foreground">Build inclusive workplaces</p>
                       </Link>
                       <Link href="/services/train-the-trainer" className="block p-3 rounded-lg hover:bg-accent">
-                        <h4 className="font-semibold text-card-foreground">Train the Trainer</h4>
-                        <p className="text-sm text-muted-foreground">Become a certified trainer</p>
+                        <h4 className="font-semibold text-card-foreground">Train the Trainer Certification</h4>
+                        <p className="text-sm text-muted-foreground">NLP, Hypnosis, & corporate trainer program</p>
                       </Link>
                       <Link href="/services/practitioner-master" className="block p-3 rounded-lg hover:bg-accent">
-                        <h4 className="font-semibold text-card-foreground">Practitioner & Master Practitioner</h4>
-                        <p className="text-sm text-muted-foreground">NLP certification programs</p>
+                        <h4 className="font-semibold text-card-foreground">
+                          NLP & Hypnotherapy Practitioner & Master
+                        </h4>
+                        <p className="text-sm text-muted-foreground">Practitioner and Master Practitioner track</p>
                       </Link>
                     </div>
                   </div>
@@ -177,14 +181,14 @@ export default function Header() {
                     className="block py-2 px-6 text-base text-foreground hover:text-brand-primary hover:bg-accent rounded-lg transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
-                    ONE on ONE Coaching
+                    One-on-One Coaching
                   </Link>
                   <Link
                     href="/services/corporate-training"
                     className="block py-2 px-6 text-base text-foreground hover:text-brand-primary hover:bg-accent rounded-lg transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
-                    Corporate Training Programs
+                    Corporate Training & Organizational Development
                   </Link>
                   <Link
                     href="/services/dei-training"
@@ -198,14 +202,14 @@ export default function Header() {
                     className="block py-2 px-6 text-base text-foreground hover:text-brand-primary hover:bg-accent rounded-lg transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
-                    Train the Trainer
+                    Train the Trainer Certification
                   </Link>
                   <Link
                     href="/services/practitioner-master"
                     className="block py-2 px-6 text-base text-foreground hover:text-brand-primary hover:bg-accent rounded-lg transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
-                    Practitioner & Master Practitioner
+                    NLP & Hypnotherapy Practitioner & Master
                   </Link>
                 </div>
                 <Link

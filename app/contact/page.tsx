@@ -167,11 +167,11 @@ export default function ContactPage() {
                           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         >
                           <option value="">Select a service</option>
-                          <option value="one-on-one">ONE on ONE Coaching</option>
+                          <option value="one-on-one">One-on-One Coaching</option>
                           <option value="corporate">Corporate Training</option>
                           <option value="dei">DEI Training</option>
-                          <option value="train-trainer">Train the Trainer</option>
-                          <option value="practitioner">NLP Practitioner</option>
+                          <option value="train-trainer">Train the Trainer Certification</option>
+                          <option value="practitioner">NLP & Hypnotherapy Practitioner</option>
                           <option value="consultation">Free Consultation</option>
                         </select>
                       </div>

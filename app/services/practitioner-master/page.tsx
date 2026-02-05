@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Brain, Award, CheckCircle, Star, BookOpen, Target, Users, Globe, Zap, Heart } from "lucide-react"
 import BookingModal from "@/components/booking-modal"
+import Link from "next/link"
 
 export default function PractitionerMasterPage() {
   return (
@@ -12,19 +13,21 @@ export default function PractitionerMasterPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-6 bg-green-500/20 text-green-300 border-green-500/30">
-              International NLP Certification
+              NLP & Hypnotherapy Certification
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              NLP Practitioner &<span className="text-yellow-400"> Master Practitioner</span>
+              NLP & Hypnotherapy Practitioner
+              <span className="text-yellow-400"> & Master Practitioner</span>
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-3xl mx-auto">
-              Master the art and science of Neuro-Linguistic Programming with our internationally recognized
-              certification programs. Transform yourself and others through advanced NLP techniques.
+              Become a confident, skilled, and internationally certified NLP and Hypnotherapy Practitioner. This
+              program is designed for deep personal transformation and professional practice with live training and
+              ongoing mentorship.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <BookingModal>
                 <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold">
-                  Start Your Journey
+                  Sign Up Now
                 </Button>
               </BookingModal>
               <Button
@@ -32,7 +35,7 @@ export default function PractitionerMasterPage() {
                 variant="outline"
                 className="border-white text-white hover:bg-white hover:text-green-800 bg-transparent"
               >
-                Download Brochure
+                Request Full Program Details
               </Button>
             </div>
           </div>
@@ -44,8 +47,10 @@ export default function PractitionerMasterPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Choose Your Path</h2>
-              <p className="text-xl text-gray-600">Two comprehensive levels of NLP certification to match your goals</p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Program Breakdown</h2>
+              <p className="text-xl text-gray-600">
+                Practitioner and Master Practitioner levels within one comprehensive 4-month journey
+              </p>
             </div>
 
             <div className="grid lg:grid-cols-2 gap-8">
@@ -56,41 +61,41 @@ export default function PractitionerMasterPage() {
                     <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                       <Brain className="h-10 w-10 text-green-600" />
                     </div>
-                    <h3 className="text-2xl font-bold mb-2">NLP Practitioner</h3>
-                    <p className="text-gray-600">Foundation Level Certification</p>
+                    <h3 className="text-2xl font-bold mb-2">NLP & Hypnosis Practitioner</h3>
+                    <p className="text-gray-600">Foundations and practical application</p>
                   </div>
 
                   <div className="space-y-4 mb-6">
                     <div className="flex items-center space-x-3">
                       <CheckCircle className="h-5 w-5 text-green-500" />
-                      <span>7-Day Intensive Training</span>
+                      <span>Foundations of NLP and communication</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <CheckCircle className="h-5 w-5 text-green-500" />
-                      <span>Core NLP Techniques</span>
+                      <span>Understanding mind, emotions, and behavior patterns</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <CheckCircle className="h-5 w-5 text-green-500" />
-                      <span>Personal Transformation</span>
+                      <span>Hypnosis and hypnotherapy fundamentals</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <CheckCircle className="h-5 w-5 text-green-500" />
-                      <span>Communication Excellence</span>
+                      <span>Conducting safe and ethical client sessions</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <CheckCircle className="h-5 w-5 text-green-500" />
-                      <span>International Certification</span>
+                      <span>Live demonstrations and guided practice</span>
                     </div>
                   </div>
 
                   <div className="text-center mb-6">
-                    <div className="text-3xl font-bold text-green-600 mb-2">$2,497</div>
-                    <p className="text-gray-600">Payment plans available</p>
+                    <div className="text-3xl font-bold text-green-600 mb-2">Included</div>
+                    <p className="text-gray-600">Part of the 4-month program</p>
                   </div>
 
                   <BookingModal>
                     <Button className="w-full bg-green-600 hover:bg-green-700 text-white">
-                      Enroll in Practitioner
+                      Request Practitioner Details
                     </Button>
                   </BookingModal>
                 </CardContent>
@@ -107,40 +112,40 @@ export default function PractitionerMasterPage() {
                       <Award className="h-10 w-10 text-blue-600" />
                     </div>
                     <h3 className="text-2xl font-bold mb-2">Master Practitioner</h3>
-                    <p className="text-gray-600">Advanced Level Certification</p>
+                    <p className="text-gray-600">Advanced integration and mastery</p>
                   </div>
 
                   <div className="space-y-4 mb-6">
                     <div className="flex items-center space-x-3">
                       <CheckCircle className="h-5 w-5 text-blue-500" />
-                      <span>10-Day Advanced Training</span>
+                      <span>Advanced NLP patterns and modeling</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <CheckCircle className="h-5 w-5 text-blue-500" />
-                      <span>Advanced NLP Patterns</span>
+                      <span>Deep subconscious change work</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <CheckCircle className="h-5 w-5 text-blue-500" />
-                      <span>Modeling Excellence</span>
+                      <span>Mastery in hypnosis and hypnotherapy techniques</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <CheckCircle className="h-5 w-5 text-blue-500" />
-                      <span>Coaching & Therapy Skills</span>
+                      <span>Working with complex client issues</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <CheckCircle className="h-5 w-5 text-blue-500" />
-                      <span>Master Level Certification</span>
+                      <span>Practitioner identity, confidence, and ethics</span>
                     </div>
                   </div>
 
                   <div className="text-center mb-6">
-                    <div className="text-3xl font-bold text-blue-600 mb-2">$3,997</div>
-                    <p className="text-gray-600">Includes Practitioner level</p>
+                    <div className="text-3xl font-bold text-blue-600 mb-2">Included</div>
+                    <p className="text-gray-600">Part of the 4-month program</p>
                   </div>
 
                   <BookingModal>
                     <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-                      Enroll in Master Program
+                      Request Master Details
                     </Button>
                   </BookingModal>
                 </CardContent>
@@ -155,9 +160,9 @@ export default function PractitionerMasterPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">What is NLP?</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">What is NLP & Hypnotherapy?</h2>
               <p className="text-xl text-gray-600">
-                Neuro-Linguistic Programming: The study of excellence and human potential
+                A practical approach to understanding the mind, communication, and change
               </p>
             </div>
 
@@ -223,10 +228,8 @@ export default function PractitionerMasterPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">NLP Practitioner Curriculum</h2>
-              <p className="text-xl text-gray-600">
-                7 days of intensive training covering core NLP techniques and principles
-              </p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Practitioner Level Focus</h2>
+              <p className="text-xl text-gray-600">Core foundations and practical application</p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -285,10 +288,8 @@ export default function PractitionerMasterPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Master Practitioner Curriculum</h2>
-              <p className="text-xl text-gray-600">
-                Advanced 10-day program for mastery-level NLP skills and applications
-              </p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Master Practitioner Focus</h2>
+              <p className="text-xl text-gray-600">Advanced mastery, integration, and professional confidence</p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -357,33 +358,33 @@ export default function PractitionerMasterPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Transform Your Life & Career</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Outcomes of the Program</h2>
               <p className="text-xl text-gray-600">
-                The benefits of NLP certification extend far beyond the training room
+                Think and respond with clarity, work professionally with clients, and create deep, lasting change
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
                 {
-                  icon: Heart,
-                  title: "Personal Growth",
-                  description: "Overcome limiting beliefs and achieve personal excellence",
+                  icon: Brain,
+                  title: "Clarity & Confidence",
+                  description: "Think, communicate, and respond with greater clarity and confidence",
                 },
                 {
                   icon: Users,
-                  title: "Enhanced Relationships",
-                  description: "Improve communication and build deeper connections",
+                  title: "Professional Practice",
+                  description: "Work professionally with clients using NLP and Hypnotherapy",
                 },
                 {
                   icon: Target,
-                  title: "Goal Achievement",
-                  description: "Master the psychology of success and achievement",
+                  title: "Lasting Change",
+                  description: "Create deep, lasting change for yourself and others",
                 },
                 {
-                  icon: Brain,
-                  title: "Mental Flexibility",
-                  description: "Develop cognitive agility and creative problem-solving",
+                  icon: Heart,
+                  title: "Ongoing Support",
+                  description: "Mentorship, revision sessions, and ongoing learning support",
                 },
               ].map((benefit, index) => (
                 <Card key={index} className="border-0 shadow-lg text-center">
@@ -459,31 +460,31 @@ export default function PractitionerMasterPage() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">International Certification</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Certification & Recognition</h2>
             <p className="text-xl text-gray-600 mb-8">
-              Our programs are internationally recognized and accredited by leading NLP organizations
+              Upon completion, you receive triple certification and eligibility for international membership
             </p>
 
             <div className="grid md:grid-cols-3 gap-8 mb-12">
               <Card className="border-0 shadow-lg">
                 <CardContent className="p-6 text-center">
                   <Award className="h-12 w-12 text-gold-500 mx-auto mb-4" />
-                  <h3 className="font-bold mb-2">ABNLP Certified</h3>
-                  <p className="text-sm text-gray-600">American Board of NLP</p>
+                  <h3 className="font-bold mb-2">ABH</h3>
+                  <p className="text-sm text-gray-600">American Board of Hypnotherapy</p>
                 </CardContent>
               </Card>
               <Card className="border-0 shadow-lg">
                 <CardContent className="p-6 text-center">
                   <Globe className="h-12 w-12 text-blue-500 mx-auto mb-4" />
-                  <h3 className="font-bold mb-2">INLPTA Accredited</h3>
-                  <p className="text-sm text-gray-600">International NLP Trainers Association</p>
+                  <h3 className="font-bold mb-2">PBH</h3>
+                  <p className="text-sm text-gray-600">Professional Board of Hypnotherapy</p>
                 </CardContent>
               </Card>
               <Card className="border-0 shadow-lg">
                 <CardContent className="p-6 text-center">
                   <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />
-                  <h3 className="font-bold mb-2">Lifetime Certification</h3>
-                  <p className="text-sm text-gray-600">No renewal required</p>
+                  <h3 className="font-bold mb-2">Konnecting Dots Pakistan</h3>
+                  <p className="text-sm text-gray-600">Eligible for ANLP International CIC (UK)</p>
                 </CardContent>
               </Card>
             </div>
@@ -495,27 +496,27 @@ export default function PractitionerMasterPage() {
       <section className="py-16 bg-gradient-to-r from-green-600 to-blue-600 text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Begin Your NLP Journey Today</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Begin Your Transformation Journey</h2>
             <p className="text-xl mb-8 text-green-100">
-              Transform your life and unlock your potential with internationally recognized NLP certification
+              Invest in your skills and your future practice with a complete pathway from learning to mastery
             </p>
 
             <div className="bg-white/10 rounded-lg p-8 mb-8">
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="text-left">
-                  <h3 className="text-2xl font-bold mb-4">Upcoming Dates</h3>
+                  <h3 className="text-2xl font-bold mb-4">Investment & Payment Options</h3>
                   <div className="space-y-2">
-                    <p className="text-green-100">Practitioner: Feb 10-16, 2024</p>
-                    <p className="text-green-100">Master: March 5-14, 2024</p>
-                    <p className="text-green-100">Combined: April 15-28, 2024</p>
+                    <p className="text-green-100">Total Investment: PKR 350,000</p>
+                    <p className="text-green-100">Special Program Fee: PKR 300,000</p>
+                    <p className="text-green-100">Repeat the program free for 3 years</p>
                   </div>
                 </div>
                 <div className="text-left">
-                  <h3 className="text-2xl font-bold mb-4">Special Offers</h3>
+                  <h3 className="text-2xl font-bold mb-4">Additional Support</h3>
                   <div className="space-y-2">
-                    <p className="text-green-100">Early Bird: Save $500</p>
-                    <p className="text-green-100">Payment Plans Available</p>
-                    <p className="text-green-100">Group Discounts: 3+ people</p>
+                    <p className="text-green-100">Dedicated mentorship and 1:1 support sessions</p>
+                    <p className="text-green-100">Start coaching early after training</p>
+                    <p className="text-green-100">Regular revision and recap sessions</p>
                   </div>
                 </div>
               </div>
@@ -524,16 +525,18 @@ export default function PractitionerMasterPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <BookingModal>
                 <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold">
-                  Enroll Now - Save $500
+                  Sign Up Now
                 </Button>
               </BookingModal>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white hover:text-green-600 bg-transparent"
-              >
-                Download Program Guide
-              </Button>
+              <Link href="https://lnkd.in/dbNTGHgH" target="_blank" rel="noreferrer">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-green-600 bg-transparent"
+                >
+                  Sign Up Now
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

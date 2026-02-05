@@ -269,10 +269,9 @@ export default function FAQPage() {
                     </CollapsibleTrigger>
                     <CollapsibleContent className="p-4 bg-white border border-gray-100 rounded-b-lg">
                       <p className="text-gray-700">
-                        The number of sessions varies depending on your goals and the complexity of the issues being
-                        addressed. Many clients see significant results within 3-6 sessions. Simple phobias or specific
-                        behavioral changes might be resolved in 1-3 sessions, while more complex personal development
-                        goals may require 6-12 sessions. We'll discuss a personalized plan during your consultation.
+                        The number of sessions varies based on your goals and the challenges being addressed. Most
+                        clients benefit from 4-12 sessions, and we will discuss a personalized plan during your
+                        consultation.
                       </p>
                     </CollapsibleContent>
                   </Collapsible>
@@ -290,17 +289,17 @@ export default function FAQPage() {
                   <Collapsible>
                     <CollapsibleTrigger className="flex w-full items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                       <span className="font-semibold text-left">
-                        What's included in the NLP Practitioner certification?
+                        What's included in the NLP & Hypnotherapy Practitioner certification?
                       </span>
                       <ChevronDown className="h-5 w-5 transition-transform [&[data-state=open]]:rotate-180" />
                     </CollapsibleTrigger>
                     <CollapsibleContent className="p-4 bg-white border border-gray-100 rounded-b-lg">
                       <p className="text-gray-700">
-                        Our NLP Practitioner certification includes 7 days of intensive training, comprehensive course
-                        materials, practice sessions, ongoing support, and official certification upon completion.
-                        You'll learn core NLP techniques, communication skills, goal-setting strategies, and how to help
-                        others achieve breakthrough results. The program also includes access to our member portal with
-                        additional resources and alumni network.
+                        The program is a 4-month, live and practice-based training journey covering NLP foundations,
+                        hypnosis, and professional practice. It includes guided practice, mentorship, and triple
+                        certification from ABH, PBH, and Konnecting Dots Pakistan, with eligibility for ANLP
+                        International CIC (UK) membership. Participants also receive ongoing support and the option to
+                        repeat the program free for 3 years.
                       </p>
                     </CollapsibleContent>
                   </Collapsible>
