@@ -84,16 +84,46 @@ export default function HomePage() {
                 global reach, he coaches clients from 15 countries and continues to inspire deep transformation
                 worldwide.
               </p>
-              <div className="grid sm:grid-cols-2 gap-2 text-sm">
-                <div>Emotional intelligence</div>
-                <div>Negotiation skills</div>
-                <div>Stress management</div>
-                <div>Work-life balance</div>
-                <div>Team building, collaboration and leadership</div>
-                <div>Sales and customer relationships</div>
-                <div>First-time managers</div>
-                <div>Conflict management</div>
-                <div>Personality, behavior & managing state</div>
+              <div className="rounded-2xl border border-border/60 bg-background/60 p-6">
+                <h3 className="text-base font-semibold text-foreground mb-4">Areas of Expertise</h3>
+                <ul className="grid sm:grid-cols-2 gap-3 text-sm">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    Emotional intelligence
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    Negotiation skills
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    Stress management
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    Work-life balance
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    Team building, collaboration and leadership
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    Sales and customer relationships
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    First-time managers
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    Conflict management
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    Personality, behavior & managing state
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

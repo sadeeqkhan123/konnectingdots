@@ -148,41 +148,41 @@ export default function AboutPage() {
                       <Award className="mr-2 h-5 w-5 text-yellow-600" />
                       Areas of Expertise
                     </h4>
-                    <ul className="space-y-2 text-sm text-gray-600">
-                      <li className="flex items-center">
-                        <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
+                    <ul className="space-y-3 text-sm text-gray-600">
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                         Emotional intelligence
                       </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                         Negotiation skills
                       </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                         Stress management
                       </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                         Work-life balance
                       </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                         Team building, collaboration, and leadership
                       </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                         Sales and customer relationships
                       </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                         First-time managers
                       </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                         Conflict management
                       </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                         Personality, behavior, and managing state
                       </li>
                     </ul>
@@ -193,25 +193,25 @@ export default function AboutPage() {
                       <Tv className="mr-2 h-5 w-5 text-blue-600" />
                       Professional Highlights
                     </h4>
-                    <ul className="space-y-2 text-sm text-gray-600">
-                      <li className="flex items-center">
-                        <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
+                    <ul className="space-y-3 text-sm text-gray-600">
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                         Decade-long experience in Learning and Development
                       </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                         80+ workshops across diverse sectors
                       </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                         10,000+ individuals impacted
                       </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                         Certified Trainer of NLP, Hypnotherapy, and Success Coach
                       </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                         Coaching clients across 15 countries
                       </li>
                     </ul>
