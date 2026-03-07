@@ -32,58 +32,64 @@ export default function ResourcesPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="hover:shadow-lg transition-shadow flex flex-col">
               <CardHeader>
                 <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-4">
                   <Headphones className="h-8 w-8 text-purple-600" />
                 </div>
                 <CardTitle>Stress Relief Hypnosis</CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-4">A 20-minute guided hypnosis session to release stress and tension</p>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500">Duration: 20 min</span>
-                  <Button size="sm">
-                    <Play className="mr-2 h-4 w-4" />
-                    Listen
+              <CardContent className="flex flex-1 flex-col">
+                <p className="text-gray-600 mb-4 flex-1">A 20-minute guided hypnosis session to release stress and tension</p>
+                <div className="flex items-center justify-between gap-4 mt-auto">
+                  <span className="text-sm text-gray-500 shrink-0">Duration: 20 min</span>
+                  <Button size="sm" className="min-w-[100px] shrink-0" asChild>
+                    <Link href="/contact?subject=Stress%20Relief%20Hypnosis%20Audio">
+                      <Play className="mr-2 h-4 w-4" />
+                      Listen
+                    </Link>
                   </Button>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="hover:shadow-lg transition-shadow flex flex-col">
               <CardHeader>
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
                   <Headphones className="h-8 w-8 text-blue-600" />
                 </div>
                 <CardTitle>Confidence Building</CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-4">Boost your self-confidence with this powerful hypnosis audio</p>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500">Duration: 25 min</span>
-                  <Button size="sm">
-                    <Play className="mr-2 h-4 w-4" />
-                    Listen
+              <CardContent className="flex flex-1 flex-col">
+                <p className="text-gray-600 mb-4 flex-1">Boost your self-confidence with this powerful hypnosis audio</p>
+                <div className="flex items-center justify-between gap-4 mt-auto">
+                  <span className="text-sm text-gray-500 shrink-0">Duration: 25 min</span>
+                  <Button size="sm" className="min-w-[100px] shrink-0" asChild>
+                    <Link href="/contact?subject=Confidence%20Building%20Audio">
+                      <Play className="mr-2 h-4 w-4" />
+                      Listen
+                    </Link>
                   </Button>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="hover:shadow-lg transition-shadow flex flex-col">
               <CardHeader>
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
                   <Headphones className="h-8 w-8 text-green-600" />
                 </div>
                 <CardTitle>Sleep Meditation</CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-4">Drift into peaceful sleep with this calming meditation</p>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500">Duration: 30 min</span>
-                  <Button size="sm">
-                    <Play className="mr-2 h-4 w-4" />
-                    Listen
+              <CardContent className="flex flex-1 flex-col">
+                <p className="text-gray-600 mb-4 flex-1">Drift into peaceful sleep with this calming meditation</p>
+                <div className="flex items-center justify-between gap-4 mt-auto">
+                  <span className="text-sm text-gray-500 shrink-0">Duration: 30 min</span>
+                  <Button size="sm" className="min-w-[100px] shrink-0" asChild>
+                    <Link href="/contact?subject=Sleep%20Meditation%20Audio">
+                      <Play className="mr-2 h-4 w-4" />
+                      Listen
+                    </Link>
                   </Button>
                 </div>
               </CardContent>
@@ -101,58 +107,66 @@ export default function ResourcesPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-6 text-center">
+            <Card className="hover:shadow-lg transition-shadow flex flex-col">
+              <CardContent className="p-6 text-center flex flex-1 flex-col">
                 <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <BookOpen className="h-8 w-8 text-yellow-600" />
                 </div>
                 <h3 className="font-bold mb-2">Goal Setting Workbook</h3>
-                <p className="text-sm text-gray-600 mb-4">Complete guide to setting and achieving your goals</p>
-                <Button size="sm" variant="outline" className="w-full bg-transparent">
+                <p className="text-sm text-gray-600 mb-4 flex-1">Complete guide to setting and achieving your goals</p>
+                <Button size="sm" variant="outline" className="w-full bg-transparent mt-auto" asChild>
+                  <Link href="/contact?subject=Goal%20Setting%20Workbook%20PDF">
                   <Download className="mr-2 h-4 w-4" />
                   Download PDF
+                  </Link>
                 </Button>
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-6 text-center">
+            <Card className="hover:shadow-lg transition-shadow flex flex-col">
+              <CardContent className="p-6 text-center flex flex-1 flex-col">
                 <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <FileText className="h-8 w-8 text-teal-600" />
                 </div>
                 <h3 className="font-bold mb-2">Daily Reflection Journal</h3>
-                <p className="text-sm text-gray-600 mb-4">Track your progress and insights daily</p>
-                <Button size="sm" variant="outline" className="w-full bg-transparent">
+                <p className="text-sm text-gray-600 mb-4 flex-1">Track your progress and insights daily</p>
+                <Button size="sm" variant="outline" className="w-full bg-transparent mt-auto" asChild>
+                  <Link href="/contact?subject=Daily%20Reflection%20Journal%20PDF">
                   <Download className="mr-2 h-4 w-4" />
                   Download PDF
+                  </Link>
                 </Button>
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-6 text-center">
+            <Card className="hover:shadow-lg transition-shadow flex flex-col">
+              <CardContent className="p-6 text-center flex flex-1 flex-col">
                 <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <BookOpen className="h-8 w-8 text-purple-600" />
                 </div>
                 <h3 className="font-bold mb-2">NLP Techniques Guide</h3>
-                <p className="text-sm text-gray-600 mb-4">Essential NLP techniques for beginners</p>
-                <Button size="sm" variant="outline" className="w-full bg-transparent">
+                <p className="text-sm text-gray-600 mb-4 flex-1">Essential NLP techniques for beginners</p>
+                <Button size="sm" variant="outline" className="w-full bg-transparent mt-auto" asChild>
+                  <Link href="/contact?subject=NLP%20Techniques%20Guide%20PDF">
                   <Download className="mr-2 h-4 w-4" />
                   Download PDF
+                  </Link>
                 </Button>
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-6 text-center">
+            <Card className="hover:shadow-lg transition-shadow flex flex-col">
+              <CardContent className="p-6 text-center flex flex-1 flex-col">
                 <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <FileText className="h-8 w-8 text-red-600" />
                 </div>
                 <h3 className="font-bold mb-2">Mindfulness Planner</h3>
-                <p className="text-sm text-gray-600 mb-4">Plan your mindfulness practice effectively</p>
-                <Button size="sm" variant="outline" className="w-full bg-transparent">
+                <p className="text-sm text-gray-600 mb-4 flex-1">Plan your mindfulness practice effectively</p>
+                <Button size="sm" variant="outline" className="w-full bg-transparent mt-auto" asChild>
+                  <Link href="/contact?subject=Mindfulness%20Planner%20PDF">
                   <Download className="mr-2 h-4 w-4" />
                   Download PDF
+                  </Link>
                 </Button>
               </CardContent>
             </Card>
@@ -180,8 +194,8 @@ export default function ResourcesPage() {
                   <CardContent className="p-4">
                     <h4 className="font-semibold mb-2">Introduction to NLP</h4>
                     <p className="text-sm text-gray-600 mb-3">Learn the fundamentals of Neuro-Linguistic Programming</p>
-                    <Button size="sm" variant="ghost" className="p-0 h-auto text-blue-600">
-                      Watch Replay
+                    <Button size="sm" variant="ghost" className="p-0 h-auto text-blue-600" asChild>
+                      <Link href="/events">Watch Replay</Link>
                     </Button>
                   </CardContent>
                 </Card>
@@ -190,8 +204,8 @@ export default function ResourcesPage() {
                   <CardContent className="p-4">
                     <h4 className="font-semibold mb-2">Hypnosis Myths Debunked</h4>
                     <p className="text-sm text-gray-600 mb-3">Separating fact from fiction about hypnosis</p>
-                    <Button size="sm" variant="ghost" className="p-0 h-auto text-blue-600">
-                      Watch Replay
+                    <Button size="sm" variant="ghost" className="p-0 h-auto text-blue-600" asChild>
+                      <Link href="/events">Watch Replay</Link>
                     </Button>
                   </CardContent>
                 </Card>
@@ -209,8 +223,8 @@ export default function ResourcesPage() {
                   <CardContent className="p-4">
                     <h4 className="font-semibold mb-2">Mind Mastery Podcast</h4>
                     <p className="text-sm text-gray-600 mb-3">Weekly insights on personal development</p>
-                    <Button size="sm" variant="ghost" className="p-0 h-auto text-green-600">
-                      Listen Now
+                    <Button size="sm" variant="ghost" className="p-0 h-auto text-green-600" asChild>
+                      <Link href="/contact?subject=Mind%20Mastery%20Podcast">Listen Now</Link>
                     </Button>
                   </CardContent>
                 </Card>
@@ -219,8 +233,8 @@ export default function ResourcesPage() {
                   <CardContent className="p-4">
                     <h4 className="font-semibold mb-2">Corporate Transformation</h4>
                     <p className="text-sm text-gray-600 mb-3">How NLP transforms workplace culture</p>
-                    <Button size="sm" variant="ghost" className="p-0 h-auto text-green-600">
-                      Listen Now
+                    <Button size="sm" variant="ghost" className="p-0 h-auto text-green-600" asChild>
+                      <Link href="/contact?subject=Corporate%20Transformation%20Podcast">Listen Now</Link>
                     </Button>
                   </CardContent>
                 </Card>
@@ -238,8 +252,8 @@ export default function ResourcesPage() {
                   <CardContent className="p-4">
                     <h4 className="font-semibold mb-2">The Science of Change</h4>
                     <p className="text-sm text-gray-600 mb-3">Understanding how the brain adapts and transforms</p>
-                    <Button size="sm" variant="ghost" className="p-0 h-auto text-purple-600">
-                      Read Article
+                    <Button size="sm" variant="ghost" className="p-0 h-auto text-purple-600" asChild>
+                      <Link href="/blog/science-behind-rapid-transformation">Read Article</Link>
                     </Button>
                   </CardContent>
                 </Card>
@@ -248,8 +262,8 @@ export default function ResourcesPage() {
                   <CardContent className="p-4">
                     <h4 className="font-semibold mb-2">Building Inclusive Teams</h4>
                     <p className="text-sm text-gray-600 mb-3">DEI strategies that actually work</p>
-                    <Button size="sm" variant="ghost" className="p-0 h-auto text-purple-600">
-                      Read Article
+                    <Button size="sm" variant="ghost" className="p-0 h-auto text-purple-600" asChild>
+                      <Link href="/blog/building-inclusive-teams">Read Article</Link>
                     </Button>
                   </CardContent>
                 </Card>

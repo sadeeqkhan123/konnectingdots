@@ -1,3 +1,6 @@
+"use client"
+
+import { useEffect, useState, useCallback } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -10,16 +13,50 @@ import {
   CheckCircle,
   Clock,
   MapPin,
-  Video,
+  Calendar,
   Star,
   ArrowRight,
   Target,
   Briefcase,
   GraduationCap,
+  LayoutGrid,
+  Crown,
+  UserCheck,
+  Building2,
+  Store,
+  Sparkles,
+  MessageCircle,
+  Megaphone,
+  Flame,
+  Shield,
 } from "lucide-react"
 import Link from "next/link"
 
 export default function ServicesPage() {
+  const [activeTab, setActiveTab] = useState("one-on-one")
+
+  const syncTabFromHash = useCallback(() => {
+    if (typeof window === "undefined") return
+    const hash = window.location.hash.replace("#", "")
+    const allowedTabs = ["one-on-one", "corporate", "dei", "train-trainer", "practitioner"]
+    if (allowedTabs.includes(hash)) {
+      setActiveTab(hash)
+    }
+  }, [])
+
+  useEffect(() => {
+    syncTabFromHash()
+    window.addEventListener("hashchange", syncTabFromHash)
+    return () => window.removeEventListener("hashchange", syncTabFromHash)
+  }, [syncTabFromHash])
+
+  const handleTabChange = useCallback((value: string) => {
+    setActiveTab(value)
+    if (typeof window !== "undefined") {
+      window.history.replaceState(null, "", `/services#${value}`)
+    }
+  }, [])
+
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Section */}
@@ -42,7 +79,7 @@ export default function ServicesPage() {
       {/* Services Overview */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <Tabs defaultValue="one-on-one" className="w-full">
+          <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
             <TabsList className="grid w-full grid-cols-2 lg:grid-cols-5 mb-12">
               <TabsTrigger value="one-on-one" className="text-xs lg:text-sm">
                 One-on-One
@@ -118,28 +155,40 @@ export default function ServicesPage() {
                         How the Sessions Work
                       </h3>
                       <div className="grid md:grid-cols-2 gap-4">
-                        <div className="flex items-center space-x-3">
-                          <Clock className="h-5 w-5 text-blue-600" />
+                        <div className="flex items-center gap-3">
+                          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-100">
+                            <Clock className="h-5 w-5 text-blue-600" />
+                          </span>
                           <span>Session length: 60-90 minutes</span>
                         </div>
-                        <div className="flex items-center space-x-3">
-                          <MapPin className="h-5 w-5 text-green-600" />
+                        <div className="flex items-center gap-3">
+                          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-green-100">
+                            <MapPin className="h-5 w-5 text-green-600" />
+                          </span>
                           <span>Mode: In-person or online</span>
                         </div>
-                        <div className="flex items-center space-x-3">
-                          <Video className="h-5 w-5 text-purple-600" />
+                        <div className="flex items-center gap-3">
+                          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-purple-100">
+                            <Calendar className="h-5 w-5 text-purple-600" />
+                          </span>
                           <span>Schedule: Flexible</span>
                         </div>
-                        <div className="flex items-center space-x-3">
-                          <Award className="h-5 w-5 text-teal-600" />
+                        <div className="flex items-center gap-3">
+                          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-teal-100">
+                            <Award className="h-5 w-5 text-teal-600" />
+                          </span>
                           <span>Sessions: Usually 4-12</span>
                         </div>
-                        <div className="flex items-center space-x-3">
-                          <Star className="h-5 w-5 text-yellow-600" />
+                        <div className="flex items-center gap-3">
+                          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-yellow-100">
+                            <Star className="h-5 w-5 text-yellow-600" />
+                          </span>
                           <span>Investment: 50 USD per session</span>
                         </div>
-                        <div className="flex items-center space-x-3">
-                          <CheckCircle className="h-5 w-5 text-green-600" />
+                        <div className="flex items-center gap-3">
+                          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-green-100">
+                            <CheckCircle className="h-5 w-5 text-green-600" />
+                          </span>
                           <span>Packages are available</span>
                         </div>
                       </div>
@@ -243,28 +292,28 @@ export default function ServicesPage() {
                         Who These Programs Are For
                       </h3>
                       <ul className="space-y-2 text-gray-600">
-                        <li className="flex items-center">
-                          <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                        <li className="flex items-center gap-2">
+                          <Crown className="h-4 w-4 shrink-0 text-amber-600" />
                           Senior leadership and executives
                         </li>
-                        <li className="flex items-center">
-                          <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                        <li className="flex items-center gap-2">
+                          <Users className="h-4 w-4 shrink-0 text-blue-600" />
                           First-time and mid-level managers
                         </li>
-                        <li className="flex items-center">
-                          <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                        <li className="flex items-center gap-2">
+                          <UserCheck className="h-4 w-4 shrink-0 text-teal-600" />
                           Team leaders and supervisors
                         </li>
-                        <li className="flex items-center">
-                          <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                        <li className="flex items-center gap-2">
+                          <Building2 className="h-4 w-4 shrink-0 text-indigo-600" />
                           HR, L&D, and people development teams
                         </li>
-                        <li className="flex items-center">
-                          <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                        <li className="flex items-center gap-2">
+                          <Store className="h-4 w-4 shrink-0 text-orange-600" />
                           Sales, customer service, and operations teams
                         </li>
-                        <li className="flex items-center">
-                          <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                        <li className="flex items-center gap-2">
+                          <Sparkles className="h-4 w-4 shrink-0 text-purple-600" />
                           Organizations seeking performance and cultural transformation
                         </li>
                       </ul>
@@ -276,27 +325,35 @@ export default function ServicesPage() {
                         Program Format
                       </h3>
                       <div className="grid md:grid-cols-2 gap-4">
-                        <div className="flex items-center space-x-3">
-                          <Clock className="h-5 w-5 text-blue-600" />
+                        <div className="flex items-center gap-3">
+                          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-100">
+                            <Calendar className="h-5 w-5 text-blue-600" />
+                          </span>
                           <span>Duration: Half-day, full-day, or multi-day</span>
                         </div>
-                        <div className="flex items-center space-x-3">
-                          <MapPin className="h-5 w-5 text-green-600" />
+                        <div className="flex items-center gap-3">
+                          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-green-100">
+                            <MapPin className="h-5 w-5 text-green-600" />
+                          </span>
                           <span>Delivery: Onsite, online, or hybrid</span>
                         </div>
-                        <div className="flex items-center space-x-3">
-                          <Video className="h-5 w-5 text-purple-600" />
+                        <div className="flex items-center gap-3">
+                          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-purple-100">
+                            <LayoutGrid className="h-5 w-5 text-purple-600" />
+                          </span>
                           <span>Design: Fully customized</span>
                         </div>
-                        <div className="flex items-center space-x-3">
-                          <Award className="h-5 w-5 text-teal-600" />
+                        <div className="flex items-center gap-3">
+                          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-teal-100">
+                            <GraduationCap className="h-5 w-5 text-teal-600" />
+                          </span>
                           <span>Methodology: Interactive and action-oriented</span>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <Link href="/contact">
+                  <Link href="/contact?subject=Corporate%20Training%20Proposal">
                     <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-white font-semibold">
                       Request a Proposal
                       <ArrowRight className="ml-2 h-5 w-5" />
@@ -350,36 +407,36 @@ export default function ServicesPage() {
                     </CardHeader>
                     <CardContent>
                       <ul className="space-y-3">
-                        <li className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
+                        <li className="flex items-start gap-3">
+                          <Award className="h-5 w-5 shrink-0 text-amber-600 mt-0.5" />
                           <div>Leadership & management development</div>
                         </li>
-                        <li className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
+                        <li className="flex items-start gap-3">
+                          <MessageCircle className="h-5 w-5 shrink-0 text-blue-600 mt-0.5" />
                           <div>Communication excellence programs</div>
                         </li>
-                        <li className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
+                        <li className="flex items-start gap-3">
+                          <Megaphone className="h-5 w-5 shrink-0 text-teal-600 mt-0.5" />
                           <div>NLP-based communication & influence</div>
                         </li>
-                        <li className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
+                        <li className="flex items-start gap-3">
+                          <Heart className="h-5 w-5 shrink-0 text-rose-600 mt-0.5" />
                           <div>Emotional intelligence & wellbeing</div>
                         </li>
-                        <li className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
+                        <li className="flex items-start gap-3">
+                          <Flame className="h-5 w-5 shrink-0 text-orange-600 mt-0.5" />
                           <div>Anger, stress & pressure management</div>
                         </li>
-                        <li className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
+                        <li className="flex items-start gap-3">
+                          <TrendingUp className="h-5 w-5 shrink-0 text-green-600 mt-0.5" />
                           <div>Performance, productivity & mindset</div>
                         </li>
-                        <li className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
+                        <li className="flex items-start gap-3">
+                          <Shield className="h-5 w-5 shrink-0 text-indigo-600 mt-0.5" />
                           <div>Diversity, equity & inclusion (DEI)</div>
                         </li>
-                        <li className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
+                        <li className="flex items-start gap-3">
+                          <Users className="h-5 w-5 shrink-0 text-purple-600 mt-0.5" />
                           <div>Coaching at the workplace</div>
                         </li>
                       </ul>

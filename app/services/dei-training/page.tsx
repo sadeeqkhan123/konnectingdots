@@ -2,10 +2,11 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { CheckCircle, Users, Target, TrendingUp, Clock, Award, BookOpen } from "lucide-react"
+import Link from "next/link"
 
 export default function DEITrainingPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 pt-20">
       {/* Hero Section */}
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto text-center">
@@ -20,11 +21,11 @@ export default function DEITrainingPage() {
             innovation, and create lasting cultural change.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-purple-600 hover:bg-purple-700">
-              Start Your DEI Journey
+            <Button size="lg" className="bg-purple-600 hover:bg-purple-700" asChild>
+              <Link href="#training-packages">Start Your DEI Journey</Link>
             </Button>
-            <Button size="lg" variant="outline">
-              Download DEI Assessment
+            <Button size="lg" variant="outline" asChild>
+              <Link href="/contact?subject=DEI%20Assessment%20Request">Download DEI Assessment</Link>
             </Button>
           </div>
         </div>
@@ -55,7 +56,7 @@ export default function DEITrainingPage() {
       </section>
 
       {/* Why DEI Training Matters */}
-      <section className="py-20 px-4">
+      <section id="training-packages" className="py-20 px-4 scroll-mt-24">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Why DEI Training Matters</h2>
@@ -308,8 +309,8 @@ export default function DEITrainingPage() {
                     <span>30-day email support</span>
                   </li>
                 </ul>
-                <Button className="w-full mt-6 bg-transparent" variant="outline">
-                  Get Started
+                <Button className="w-full mt-6 bg-transparent" variant="outline" asChild>
+                  <Link href="/contact?subject=DEI%20Starter%20Package">Get Started</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -347,7 +348,9 @@ export default function DEITrainingPage() {
                     <span>Progress assessment tools</span>
                   </li>
                 </ul>
-                <Button className="w-full mt-6 bg-purple-600 hover:bg-purple-700">Choose Professional</Button>
+                <Button className="w-full mt-6 bg-purple-600 hover:bg-purple-700" asChild>
+                  <Link href="/contact?subject=DEI%20Professional%20Package">Choose Professional</Link>
+                </Button>
               </CardContent>
             </Card>
 
@@ -381,8 +384,8 @@ export default function DEITrainingPage() {
                     <span>Custom content development</span>
                   </li>
                 </ul>
-                <Button className="w-full mt-6 bg-transparent" variant="outline">
-                  Contact Sales
+                <Button className="w-full mt-6 bg-transparent" variant="outline" asChild>
+                  <Link href="/contact?subject=DEI%20Enterprise%20Package">Contact Sales</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -398,15 +401,16 @@ export default function DEITrainingPage() {
             Join hundreds of organizations that have created more inclusive, innovative, and successful workplaces.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100">
-              Schedule Free Consultation
+            <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100" asChild>
+              <Link href="/contact?subject=DEI%20Consultation">Schedule Free Consultation</Link>
             </Button>
             <Button
               size="lg"
               variant="outline"
               className="border-white text-white hover:bg-white hover:text-purple-600 bg-transparent"
+              asChild
             >
-              Download DEI Toolkit
+              <Link href="/contact?subject=DEI%20Toolkit%20Request">Download DEI Toolkit</Link>
             </Button>
           </div>
         </div>

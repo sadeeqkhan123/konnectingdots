@@ -15,6 +15,7 @@ import {
   Globe,
 } from "lucide-react"
 import BookingModal from "@/components/booking-modal"
+import Link from "next/link"
 
 export default function TrainTheTrainerPage() {
   return (
@@ -45,8 +46,9 @@ export default function TrainTheTrainerPage() {
                 size="lg"
                 variant="outline"
                 className="border-white text-white hover:bg-white hover:text-blue-800 bg-transparent"
+                asChild
               >
-                Download Curriculum
+                <Link href="/contact?subject=Train%20the%20Trainer%20Curriculum">Download Curriculum</Link>
               </Button>
             </div>
           </div>
@@ -408,8 +410,9 @@ export default function TrainTheTrainerPage() {
                 size="lg"
                 variant="outline"
                 className="border-white text-white hover:bg-white hover:text-blue-600 bg-transparent"
+                asChild
               >
-                Schedule Info Session
+                <Link href="/contact?subject=Train%20the%20Trainer%20Info%20Session">Schedule Info Session</Link>
               </Button>
             </div>
           </div>

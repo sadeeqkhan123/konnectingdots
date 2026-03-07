@@ -3,11 +3,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { CheckCircle, Users, Target, TrendingUp, BookOpen, Building, Lightbulb, Shield } from "lucide-react"
+import { CheckCircle, Users, Target, TrendingUp, BookOpen, Building, Lightbulb, Shield, Calendar, MapPin, LayoutGrid, GraduationCap } from "lucide-react"
+import Link from "next/link"
 
 export default function CorporateTrainingPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 pt-20">
       {/* Hero Section */}
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto text-center">
@@ -22,12 +23,71 @@ export default function CorporateTrainingPage() {
             using practical NLP-based tools and real-world coaching approaches.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-              Explore Training Solutions
+            <Button size="lg" className="bg-blue-600 hover:bg-blue-700" asChild>
+              <Link href="#program-tracks">Explore Training Solutions</Link>
             </Button>
-            <Button size="lg" variant="outline">
-              Request Custom Proposal
+            <Button size="lg" variant="outline" asChild>
+              <Link href="/contact?subject=Corporate%20Training%20Proposal">Request Custom Proposal</Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Program Format - aligned icons */}
+      <section className="py-12 px-4 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold mb-8 text-center">Program Format</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="flex items-center gap-4 rounded-lg border p-4">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-100">
+                <Calendar className="h-5 w-5 text-blue-600" />
+              </span>
+              <div>
+                <p className="font-semibold text-gray-900">Duration</p>
+                <p className="text-sm text-gray-600">Half-day, full-day, or multi-day</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4 rounded-lg border p-4">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-green-100">
+                <MapPin className="h-5 w-5 text-green-600" />
+              </span>
+              <div>
+                <p className="font-semibold text-gray-900">Delivery</p>
+                <p className="text-sm text-gray-600">Onsite, online, or hybrid</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4 rounded-lg border p-4">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-purple-100">
+                <LayoutGrid className="h-5 w-5 text-purple-600" />
+              </span>
+              <div>
+                <p className="font-semibold text-gray-900">Design</p>
+                <p className="text-sm text-gray-600">Fully customized</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4 rounded-lg border p-4">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-teal-100">
+                <GraduationCap className="h-5 w-5 text-teal-600" />
+              </span>
+              <div>
+                <p className="font-semibold text-gray-900">Methodology</p>
+                <p className="text-sm text-gray-600">Interactive and action-oriented</p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 text-center">
+            <Button asChild className="bg-teal-600 hover:bg-teal-700">
+              <Link href="/contact?subject=Corporate%20Training%20Proposal">
+                Request a Proposal
+                <span className="ml-2">→</span>
+              </Link>
+            </Button>
+            <p className="text-sm text-gray-600 mt-4">
+              Email:{" "}
+              <a href="mailto:yousif.mangi@konnectingdots.org" className="text-teal-700 underline hover:no-underline">
+                yousif.mangi@konnectingdots.org
+              </a>
+            </p>
           </div>
         </div>
       </section>
@@ -57,7 +117,7 @@ export default function CorporateTrainingPage() {
       </section>
 
       {/* Training Categories */}
-      <section className="py-20 px-4">
+      <section id="program-tracks" className="py-20 px-4 scroll-mt-24">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">Program Tracks</h2>
@@ -473,15 +533,16 @@ export default function CorporateTrainingPage() {
             Transform your organization with world-class training programs designed to deliver measurable results.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
-              Schedule Consultation
+            <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100" asChild>
+              <Link href="/contact?subject=Schedule%20Consultation">Schedule Consultation</Link>
             </Button>
             <Button
               size="lg"
               variant="outline"
               className="border-white text-white hover:bg-white hover:text-blue-600 bg-transparent"
+              asChild
             >
-              Download Training Catalog
+              <Link href="/contact?subject=Training%20Catalog%20Request">Download Training Catalog</Link>
             </Button>
           </div>
         </div>

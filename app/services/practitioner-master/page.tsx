@@ -34,8 +34,9 @@ export default function PractitionerMasterPage() {
                 size="lg"
                 variant="outline"
                 className="border-white text-white hover:bg-white hover:text-green-800 bg-transparent"
+                asChild
               >
-                Request Full Program Details
+                <Link href="/contact?subject=Practitioner%20Master%20Program%20Details">Request Full Program Details</Link>
               </Button>
             </div>
           </div>
