@@ -257,9 +257,11 @@ export default function TestimonialsPage() {
                   </div>
                 </div>
 
-                <Button variant="outline" className="w-full bg-transparent">
-                  Read Full Case Study
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                <Button variant="outline" className="w-full bg-transparent" asChild>
+                  <Link href="/success-stories/fortune-500-leadership">
+                    Read Full Case Study
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
                 </Button>
               </CardContent>
             </Card>
@@ -291,9 +293,11 @@ export default function TestimonialsPage() {
                   </div>
                 </div>
 
-                <Button variant="outline" className="w-full bg-transparent">
-                  Read Full Case Study
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                <Button variant="outline" className="w-full bg-transparent" asChild>
+                  <Link href="/success-stories/overcoming-phobia">
+                    Read Full Case Study
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
                 </Button>
               </CardContent>
             </Card>

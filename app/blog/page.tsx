@@ -1,5 +1,6 @@
 "use client"
 
+import { useState, useMemo, useCallback } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -7,7 +8,93 @@ import { Input } from "@/components/ui/input"
 import { Calendar, Clock, User, Search, ArrowRight, BookOpen, TrendingUp, Heart } from "lucide-react"
 import Link from "next/link"
 
+const LATEST_ARTICLES = [
+  {
+    badge: "NLP Techniques",
+    badgeClass: "bg-primary/10 text-primary",
+    title: "5 NLP Anchoring Techniques That Actually Work",
+    excerpt: "Learn the most effective anchoring methods used by top NLP practitioners to create lasting behavioral change.",
+    href: "/blog/nlp-anchoring-techniques",
+    date: "March 12, 2024",
+    readTime: "6 min read",
+    gradient: "from-primary/20 to-accent/20",
+    Icon: BookOpen,
+  },
+  {
+    badge: "Hypnosis",
+    badgeClass: "bg-secondary/50 text-secondary-foreground",
+    title: "Debunking Common Hypnosis Myths",
+    excerpt: "Separate fact from fiction and understand what hypnosis really is and how it can benefit your life.",
+    href: "/blog/hypnosis-myths",
+    date: "March 10, 2024",
+    readTime: "5 min read",
+    gradient: "from-secondary/20 to-accent/20",
+    Icon: Heart,
+  },
+  {
+    badge: "Corporate",
+    badgeClass: "bg-accent/50 text-accent-foreground",
+    title: "Building Inclusive Teams: A Practical Guide",
+    excerpt: "Actionable strategies for creating workplace environments where everyone feels valued and heard.",
+    href: "/blog/building-inclusive-teams",
+    date: "March 8, 2024",
+    readTime: "7 min read",
+    gradient: "from-accent/20 to-primary/20",
+    Icon: TrendingUp,
+  },
+  {
+    badge: "Personal Development",
+    badgeClass: "bg-primary/10 text-primary",
+    title: "The Power of Visualization in Goal Achievement",
+    excerpt: "Discover how mental imagery can accelerate your progress toward any goal you set for yourself.",
+    href: "/blog/visualization-goal-achievement",
+    date: "March 5, 2024",
+    readTime: "8 min read",
+    gradient: "from-primary/20 to-secondary/20",
+    Icon: User,
+  },
+  {
+    badge: "Case Study",
+    badgeClass: "bg-accent/50 text-accent-foreground",
+    title: "How One CEO Transformed Company Culture in 90 Days",
+    excerpt: "A detailed case study of rapid organizational transformation using NLP and leadership coaching.",
+    href: "/blog/ceo-culture-transformation",
+    date: "March 3, 2024",
+    readTime: "10 min read",
+    gradient: "from-accent/20 to-secondary/20",
+    Icon: BookOpen,
+  },
+  {
+    badge: "Wellness",
+    badgeClass: "bg-secondary/50 text-secondary-foreground",
+    title: "Stress Management Through Self-Hypnosis",
+    excerpt: "Learn simple self-hypnosis techniques you can use anywhere to manage stress and anxiety effectively.",
+    href: "/blog/stress-management-hypnosis",
+    date: "March 1, 2024",
+    readTime: "6 min read",
+    gradient: "from-secondary/20 to-primary/20",
+    Icon: Heart,
+  },
+] as const
+
 export default function BlogPage() {
+  const [searchQuery, setSearchQuery] = useState("")
+
+  const filteredArticles = useMemo(() => {
+    if (!searchQuery.trim()) return LATEST_ARTICLES
+    const q = searchQuery.toLowerCase().trim()
+    return LATEST_ARTICLES.filter(
+      (a) =>
+        a.title.toLowerCase().includes(q) ||
+        a.excerpt.toLowerCase().includes(q) ||
+        a.badge.toLowerCase().includes(q)
+    )
+  }, [searchQuery])
+
+  const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value)
+  }, [])
+
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Section */}
@@ -27,7 +114,13 @@ export default function BlogPage() {
             <div className="max-w-md mx-auto">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                <Input placeholder="Search articles..." className="pl-10 pr-4 py-3 text-lg" />
+                <Input
+                  placeholder="Search articles..."
+                  className="pl-10 pr-4 py-3 text-lg"
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                  aria-label="Search articles"
+                />
               </div>
             </div>
           </div>
@@ -137,168 +230,63 @@ export default function BlogPage() {
       </section>
 
       {/* Recent Articles */}
-      <section className="py-16">
+      <section id="latest-articles" className="py-16 scroll-mt-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Latest Articles</h2>
             <p className="text-xl text-muted-foreground">Stay updated with our newest insights and discoveries</p>
+            {searchQuery && (
+              <p className="text-sm text-muted-foreground mt-2">
+                {filteredArticles.length} article{filteredArticles.length !== 1 ? "s" : ""} matching &quot;{searchQuery}&quot;
+              </p>
+            )}
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="hover:shadow-lg transition-shadow">
-              <div className="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                <BookOpen className="h-12 w-12 text-primary" />
-              </div>
-              <CardContent className="p-6">
-                <Badge className="mb-3 bg-primary/10 text-primary">NLP Techniques</Badge>
-                <h3 className="text-xl font-bold mb-3 text-foreground">
-                  5 NLP Anchoring Techniques That Actually Work
-                </h3>
-                <p className="text-muted-foreground mb-4">
-                  Learn the most effective anchoring methods used by top NLP practitioners to create lasting behavioral
-                  change.
-                </p>
-                <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
-                  <span>March 12, 2024</span>
-                  <span>6 min read</span>
-                </div>
-                <Link href="/blog/nlp-anchoring-techniques">
-                  <Button variant="ghost" className="p-0 h-auto text-primary hover:text-primary/80">
-                    Read More <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow">
-              <div className="aspect-video bg-gradient-to-br from-secondary/20 to-accent/20 flex items-center justify-center">
-                <Heart className="h-12 w-12 text-secondary-foreground" />
-              </div>
-              <CardContent className="p-6">
-                <Badge className="mb-3 bg-secondary/50 text-secondary-foreground">Hypnosis</Badge>
-                <h3 className="text-xl font-bold mb-3 text-foreground">Debunking Common Hypnosis Myths</h3>
-                <p className="text-muted-foreground mb-4">
-                  Separate fact from fiction and understand what hypnosis really is and how it can benefit your life.
-                </p>
-                <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
-                  <span>March 10, 2024</span>
-                  <span>5 min read</span>
-                </div>
-                <Link href="/blog/hypnosis-myths">
-                  <Button variant="ghost" className="p-0 h-auto text-primary hover:text-primary/80">
-                    Read More <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow">
-              <div className="aspect-video bg-gradient-to-br from-accent/20 to-primary/20 flex items-center justify-center">
-                <TrendingUp className="h-12 w-12 text-accent-foreground" />
-              </div>
-              <CardContent className="p-6">
-                <Badge className="mb-3 bg-accent/50 text-accent-foreground">Corporate</Badge>
-                <h3 className="text-xl font-bold mb-3 text-foreground">Building Inclusive Teams: A Practical Guide</h3>
-                <p className="text-muted-foreground mb-4">
-                  Actionable strategies for creating workplace environments where everyone feels valued and heard.
-                </p>
-                <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
-                  <span>March 8, 2024</span>
-                  <span>7 min read</span>
-                </div>
-                <Link href="/blog/building-inclusive-teams">
-                  <Button variant="ghost" className="p-0 h-auto text-primary hover:text-primary/80">
-                    Read More <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow">
-              <div className="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                <User className="h-12 w-12 text-primary" />
-              </div>
-              <CardContent className="p-6">
-                <Badge className="mb-3 bg-primary/10 text-primary">Personal Development</Badge>
-                <h3 className="text-xl font-bold mb-3 text-foreground">
-                  The Power of Visualization in Goal Achievement
-                </h3>
-                <p className="text-muted-foreground mb-4">
-                  Discover how mental imagery can accelerate your progress toward any goal you set for yourself.
-                </p>
-                <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
-                  <span>March 5, 2024</span>
-                  <span>8 min read</span>
-                </div>
-                <Link href="/blog/visualization-goal-achievement">
-                  <Button variant="ghost" className="p-0 h-auto text-primary hover:text-primary/80">
-                    Read More <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow">
-              <div className="aspect-video bg-gradient-to-br from-accent/20 to-secondary/20 flex items-center justify-center">
-                <BookOpen className="h-12 w-12 text-accent-foreground" />
-              </div>
-              <CardContent className="p-6">
-                <Badge className="mb-3 bg-accent/50 text-accent-foreground">Case Study</Badge>
-                <h3 className="text-xl font-bold mb-3 text-foreground">
-                  How One CEO Transformed Company Culture in 90 Days
-                </h3>
-                <p className="text-muted-foreground mb-4">
-                  A detailed case study of rapid organizational transformation using NLP and leadership coaching.
-                </p>
-                <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
-                  <span>March 3, 2024</span>
-                  <span>10 min read</span>
-                </div>
-                <Link href="/blog/ceo-culture-transformation">
-                  <Button variant="ghost" className="p-0 h-auto text-primary hover:text-primary/80">
-                    Read More <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow">
-              <div className="aspect-video bg-gradient-to-br from-secondary/20 to-primary/20 flex items-center justify-center">
-                <Heart className="h-12 w-12 text-secondary-foreground" />
-              </div>
-              <CardContent className="p-6">
-                <Badge className="mb-3 bg-secondary/50 text-secondary-foreground">Wellness</Badge>
-                <h3 className="text-xl font-bold mb-3 text-foreground">Stress Management Through Self-Hypnosis</h3>
-                <p className="text-muted-foreground mb-4">
-                  Learn simple self-hypnosis techniques you can use anywhere to manage stress and anxiety effectively.
-                </p>
-                <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
-                  <span>March 1, 2024</span>
-                  <span>6 min read</span>
-                </div>
-                <Link href="/blog/stress-management-hypnosis">
-                  <Button variant="ghost" className="p-0 h-auto text-primary hover:text-primary/80">
-                    Read More <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
+            {filteredArticles.map((article) => {
+              const Icon = article.Icon
+              return (
+                <Card key={article.href} className="hover:shadow-lg transition-shadow">
+                  <div className={`aspect-video bg-gradient-to-br ${article.gradient} flex items-center justify-center`}>
+                    <Icon className="h-12 w-12 text-primary" />
+                  </div>
+                  <CardContent className="p-6">
+                    <Badge className={`mb-3 ${article.badgeClass}`}>{article.badge}</Badge>
+                    <h3 className="text-xl font-bold mb-3 text-foreground">{article.title}</h3>
+                    <p className="text-muted-foreground mb-4">{article.excerpt}</p>
+                    <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
+                      <span>{article.date}</span>
+                      <span>{article.readTime}</span>
+                    </div>
+                    <Link href={article.href}>
+                      <Button variant="ghost" className="p-0 h-auto text-primary hover:text-primary/80">
+                        Read More <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              )
+            })}
           </div>
 
+          {filteredArticles.length === 0 && (
+            <p className="text-center text-muted-foreground py-8">No articles match your search. Try a different term.</p>
+          )}
+
           <div className="text-center mt-12">
-            <Button size="lg" variant="outline">
-              Load More Articles
+            <Button size="lg" variant="outline" asChild>
+              <Link href="/blog#latest-articles">Load More Articles</Link>
             </Button>
           </div>
         </div>
       </section>
 
       {/* Newsletter Signup */}
-      <section className="py-16 bg-gradient-to-r from-primary via-accent to-secondary text-primary-foreground">
+      <section className="py-16 bg-[#0d5c56] text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Stay Updated</h2>
-            <p className="text-xl mb-8 opacity-90">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Stay Updated</h2>
+            <p className="text-xl mb-8 text-white/95">
               Get the latest insights on NLP, Hypnosis, and Personal Development delivered to your inbox
             </p>
 
@@ -334,14 +322,14 @@ export default function BlogPage() {
                 type="email"
                 required
                 placeholder="Enter your email"
-                className="flex-1 bg-background/10 border-background/20 text-foreground placeholder:text-muted-foreground"
+                className="flex-1 bg-white/15 border-white/30 text-white placeholder:text-white/70 focus-visible:ring-white"
               />
-              <Button type="submit" className="bg-background text-foreground hover:bg-background/90 font-semibold">
+              <Button type="submit" className="bg-white text-[#0d5c56] hover:bg-white/90 font-semibold">
                 Subscribe
               </Button>
             </form>
 
-            <p className="text-sm mt-4 opacity-80">Join 10,000+ readers. Unsubscribe anytime.</p>
+            <p className="text-sm mt-4 text-white/90">Join 10,000+ readers. Unsubscribe anytime.</p>
           </div>
         </div>
       </section>

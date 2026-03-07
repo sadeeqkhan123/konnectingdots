@@ -1,5 +1,6 @@
 "use client"
 
+import { useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -10,6 +11,11 @@ import { Calendar, Clock, MapPin, Users, Video, Star } from "lucide-react"
 import Link from "next/link"
 
 export default function EventsPage() {
+  const registrationRef = useRef<HTMLDivElement>(null)
+  const upcomingRef = useRef<HTMLDivElement>(null)
+
+  const scrollToRegistration = () => registrationRef.current?.scrollIntoView({ behavior: "smooth" })
+  const scrollToUpcoming = () => upcomingRef.current?.scrollIntoView({ behavior: "smooth" })
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Section */}
@@ -29,7 +35,7 @@ export default function EventsPage() {
       </section>
 
       {/* Upcoming Events */}
-      <section className="py-16">
+      <section id="upcoming-events" ref={upcomingRef} className="py-16 scroll-mt-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Upcoming Training Events</h2>
@@ -97,7 +103,7 @@ export default function EventsPage() {
                     </div>
                   </div>
 
-                  <div className="bg-white p-6 rounded-lg border">
+                  <div ref={registrationRef} className="bg-white p-6 rounded-lg border scroll-mt-24" id="registration-form">
                     <h4 className="text-xl font-bold mb-4">Quick Registration</h4>
                     <form
                       onSubmit={async (e) => {
@@ -189,7 +195,7 @@ export default function EventsPage() {
 
                   <div className="flex items-center justify-between">
                     <span className="text-2xl font-bold text-teal-600">$297</span>
-                    <Button>Register Now</Button>
+                    <Button onClick={scrollToRegistration}>Register Now</Button>
                   </div>
                 </CardContent>
               </Card>
@@ -228,7 +234,9 @@ export default function EventsPage() {
 
                   <div className="flex items-center justify-between">
                     <span className="text-2xl font-bold text-purple-600">$1,497</span>
-                    <Button variant="outline">Learn More</Button>
+                    <Button variant="outline" asChild>
+                      <Link href="/contact?subject=DEI%20Leadership%20Intensive">Learn More</Link>
+                    </Button>
                   </div>
                 </CardContent>
               </Card>
@@ -266,7 +274,7 @@ export default function EventsPage() {
 
                   <div className="flex items-center justify-between">
                     <span className="text-2xl font-bold text-blue-600">$1,997</span>
-                    <Button>Register Now</Button>
+                    <Button onClick={scrollToRegistration}>Register Now</Button>
                   </div>
                 </CardContent>
               </Card>
@@ -305,7 +313,9 @@ export default function EventsPage() {
 
                   <div className="flex items-center justify-between">
                     <span className="text-2xl font-bold text-green-600">FREE</span>
-                    <Button className="bg-green-600 hover:bg-green-700">Join Webinar</Button>
+                    <Button className="bg-green-600 hover:bg-green-700" asChild>
+                      <Link href="/contact?subject=Introduction%20to%20NLP%20Webinar">Join Webinar</Link>
+                    </Button>
                   </div>
                 </CardContent>
               </Card>
@@ -414,41 +424,90 @@ export default function EventsPage() {
                 <CardTitle className="text-2xl text-center">Custom Training Request</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="firstName">First Name</Label>
-                    <Input id="firstName" placeholder="Enter your first name" />
+                <form
+                  onSubmit={async (e) => {
+                    e.preventDefault()
+                    const form = e.currentTarget
+                    const formData = new FormData(form)
+                    const firstName = (formData.get("firstName") as string) || ""
+                    const lastName = (formData.get("lastName") as string) || ""
+                    const email = formData.get("email") as string
+                    const company = (formData.get("company") as string) || ""
+                    const training = (formData.get("training") as string) || ""
+                    const message = [
+                      "Custom Training Request",
+                      "",
+                      "Training interest:",
+                      training,
+                      company ? `\nCompany/Organization: ${company}` : "",
+                    ].join("\n")
+
+                    try {
+                      const response = await fetch("/api/contact", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                          name: `${firstName} ${lastName}`.trim() || "Custom Training Enquiry",
+                          email,
+                          subject: "Custom Training Request",
+                          message,
+                          service: "Custom Training",
+                        }),
+                      })
+                      const data = await response.json()
+                      if (data.success) {
+                        alert("Request sent! We'll respond within 24 hours with a custom proposal.")
+                        form.reset()
+                      } else {
+                        alert(data.error || "Failed to send request. Please try again.")
+                      }
+                    } catch (err) {
+                      console.error(err)
+                      alert("Failed to send request. Please try again.")
+                    }
+                  }}
+                  className="space-y-6"
+                >
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="custom-firstName">First Name</Label>
+                      <Input id="custom-firstName" name="firstName" placeholder="Enter your first name" required />
+                    </div>
+                    <div>
+                      <Label htmlFor="custom-lastName">Last Name</Label>
+                      <Input id="custom-lastName" name="lastName" placeholder="Enter your last name" required />
+                    </div>
                   </div>
+
                   <div>
-                    <Label htmlFor="lastName">Last Name</Label>
-                    <Input id="lastName" placeholder="Enter your last name" />
+                    <Label htmlFor="custom-email">Email Address</Label>
+                    <Input id="custom-email" name="email" type="email" placeholder="Enter your email" required />
                   </div>
-                </div>
 
-                <div>
-                  <Label htmlFor="email">Email Address</Label>
-                  <Input id="email" type="email" placeholder="Enter your email" />
-                </div>
+                  <div>
+                    <Label htmlFor="custom-company">Company/Organization (Optional)</Label>
+                    <Input id="custom-company" name="company" placeholder="Enter your company name" />
+                  </div>
 
-                <div>
-                  <Label htmlFor="company">Company/Organization (Optional)</Label>
-                  <Input id="company" placeholder="Enter your company name" />
-                </div>
+                  <div>
+                    <Label htmlFor="custom-training">Training Interest</Label>
+                    <Textarea
+                      id="custom-training"
+                      name="training"
+                      placeholder="Describe the type of training you're interested in, number of participants, preferred dates, etc."
+                      rows={4}
+                      required
+                    />
+                  </div>
 
-                <div>
-                  <Label htmlFor="training">Training Interest</Label>
-                  <Textarea
-                    id="training"
-                    placeholder="Describe the type of training you're interested in, number of participants, preferred dates, etc."
-                    rows={4}
-                  />
-                </div>
+                  <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700">
+                    Submit Request
+                  </Button>
 
-                <Button className="w-full bg-teal-600 hover:bg-teal-700">Submit Request</Button>
-
-                <p className="text-sm text-gray-600 text-center">
-                  We'll respond within 24 hours with a custom proposal
-                </p>
+                  <p className="text-sm text-gray-600 text-center">
+                    We'll respond within 24 hours with a custom proposal
+                  </p>
+                </form>
               </CardContent>
             </Card>
           </div>
@@ -463,7 +522,7 @@ export default function EventsPage() {
             Join our next training event and experience the power of NLP, Hypnosis, and personal transformation
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold">
+            <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold" onClick={scrollToUpcoming}>
               View All Events
             </Button>
             <Link href="/contact">
