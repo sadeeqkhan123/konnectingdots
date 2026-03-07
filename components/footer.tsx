@@ -13,7 +13,7 @@ export default function Footer() {
           {/* Company Info */}
           <div className="space-y-6">
             <Link href="/" className="flex items-center">
-              <Image src="/logo-dark.png" alt="Konnecting Dots Logo" width={180} height={60} className="h-12 w-auto" />
+              <Image src="/logo-light.png" alt="Konnecting Dots Logo" width={180} height={60} className="h-12 w-auto" />
             </Link>
             <p className="text-muted-foreground leading-relaxed">
               Empowering minds and transforming lives through world-class NLP, Hypnosis, and Corporate Training
@@ -25,20 +25,26 @@ export default function Footer() {
                   <Facebook className="h-5 w-5" />
                 </Button>
               </a>
-              <Button size="icon" variant="ghost" className="hover:text-brand-primary hover:bg-accent">
-                <Twitter className="h-5 w-5" />
-              </Button>
+              <a href="https://x.com" target="_blank" rel="noopener noreferrer">
+                <Button size="icon" variant="ghost" className="hover:text-brand-primary hover:bg-accent">
+                  <Twitter className="h-5 w-5" />
+                </Button>
+              </a>
               <a href="https://www.instagram.com/konnectingdots_?igsh=eTc1YW55N2FxN3Bx" target="_blank" rel="noopener noreferrer">
                 <Button size="icon" variant="ghost" className="hover:text-brand-primary hover:bg-accent">
                   <Instagram className="h-5 w-5" />
                 </Button>
               </a>
-              <Button size="icon" variant="ghost" className="hover:text-brand-primary hover:bg-accent">
-                <Linkedin className="h-5 w-5" />
-              </Button>
-              <Button size="icon" variant="ghost" className="hover:text-brand-primary hover:bg-accent">
-                <Youtube className="h-5 w-5" />
-              </Button>
+              <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+                <Button size="icon" variant="ghost" className="hover:text-brand-primary hover:bg-accent">
+                  <Linkedin className="h-5 w-5" />
+                </Button>
+              </a>
+              <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
+                <Button size="icon" variant="ghost" className="hover:text-brand-primary hover:bg-accent">
+                  <Youtube className="h-5 w-5" />
+                </Button>
+              </a>
             </div>
           </div>
 
