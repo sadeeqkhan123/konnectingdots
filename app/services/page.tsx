@@ -14,6 +14,7 @@ import {
   Clock,
   MapPin,
   Calendar,
+  Video,
   Star,
   ArrowRight,
   Target,
