@@ -19,6 +19,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Calendar, Clock, User, MessageSquare, Sparkles, CheckCircle2 } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
+import { trackGtmEvent } from "@/lib/gtm"
 
 interface BookingModalProps {
   children: React.ReactNode
@@ -61,6 +62,11 @@ export default function BookingModal({ children }: BookingModalProps) {
       const data = await response.json()
 
       if (data.success) {
+        trackGtmEvent("booking_submit", {
+          service: formData.service || "unknown",
+          preferred_date: formData.preferredDate || "",
+          page_path: window.location.pathname,
+        })
         // Reset form
         setFormData({
           name: "",

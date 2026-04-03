@@ -23,6 +23,7 @@ import {
   Youtube,
 } from "lucide-react"
 import Link from "next/link"
+import { trackGtmEvent } from "@/lib/gtm"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -59,6 +60,11 @@ export default function ContactPage() {
       const data = await response.json()
 
       if (data.success) {
+        trackGtmEvent("contact_submit", {
+          service: formData.service || "general",
+          subject: formData.subject || "none",
+          page_path: window.location.pathname,
+        })
         setSubmitStatus("success")
         // Reset form
         setFormData({

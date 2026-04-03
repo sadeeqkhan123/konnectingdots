@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Calendar, Clock, MapPin, Users, Video, Star } from "lucide-react"
 import Link from "next/link"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { trackGtmEvent } from "@/lib/gtm"
 
 interface EventItem {
   id: string
@@ -84,6 +85,12 @@ export default function EventsPage() {
       })
       const data = await response.json()
       if (response.ok && data.success) {
+        const selected = events.find((item) => item.id === eventId)
+        trackGtmEvent("event_registration", {
+          event_id: eventId,
+          event_title: selected?.title || selectedEvent?.title || "unknown",
+          page_path: window.location.pathname,
+        })
         alert("Registration successful! Check your email for confirmation.")
         setRegistrationForm({ name: "", email: "", phone: "", company: "" })
         setSelectedEvent(null)

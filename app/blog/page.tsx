@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Calendar, Clock, User, Search, ArrowRight, BookOpen, TrendingUp, Heart } from "lucide-react"
 import Link from "next/link"
+import { trackGtmEvent } from "@/lib/gtm"
 
 interface BlogPost {
   id: string
@@ -327,6 +328,9 @@ export default function BlogPage() {
 
                   const data = await response.json()
                   if (data.success) {
+                    trackGtmEvent("newsletter_subscribe", {
+                      page_path: window.location.pathname,
+                    })
                     alert("Successfully subscribed! Check your email.")
                     e.currentTarget.reset()
                   } else {
