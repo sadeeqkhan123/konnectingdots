@@ -7,6 +7,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { blogStore } from "@/lib/blog-store"
+import { SITE_URL } from "@/lib/site-url"
 
 const formatDate = (dateString?: string) =>
   dateString
@@ -26,8 +27,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     }
   }
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
-  const canonicalUrl = post.canonicalUrl || `${siteUrl}/blog/${post.slug}`
+  const canonicalUrl = post.canonicalUrl || `${SITE_URL}/blog/${post.slug}`
   const seoTitle = post.seoTitle || `${post.title} | Konnecting Dots`
   const seoDescription = post.seoDescription || post.excerpt
   const keywords = post.seoKeywords

@@ -3,6 +3,7 @@ import { BlogPost } from "@/lib/db"
 import { blogStore } from "@/lib/blog-store"
 import { z } from "zod"
 import { sendEmail } from "@/lib/email"
+import { SITE_URL } from "@/lib/site-url"
 
 const updatePostSchema = z.object({
   title: z.string().min(1).optional(),
@@ -117,7 +118,7 @@ export async function PUT(request: Request, { params }: { params: { id: string }
                     <h3>${updatedPost.title}</h3>
                     <p><strong>Category:</strong> ${updatedPost.category}</p>
                   </div>
-                  ${validated.status === "published" ? `<a href="${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/blog/${updatedPost.slug}" class="button">View Published Post</a>` : ""}
+                  ${validated.status === "published" ? `<a href="${SITE_URL}/blog/${updatedPost.slug}" class="button">View Published Post</a>` : ""}
                 </div>
                 <div class="footer">
                   <p>© 2025 Konnecting Dots. All rights reserved.</p>

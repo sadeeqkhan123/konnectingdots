@@ -8,10 +8,12 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SITE_URL } from "@/lib/site-url"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Konnecting Dots - NLP, Hypnosis & Corporate Training",
   description:
     "Empowering minds and transforming lives through world-class NLP, Hypnosis, and Corporate Training programs. Unlock your potential with our expert-led courses.",

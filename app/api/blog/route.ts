@@ -3,6 +3,7 @@ import { BlogPost } from "@/lib/db"
 import { blogStore } from "@/lib/blog-store"
 import { z } from "zod"
 import { sendEmail } from "@/lib/email"
+import { SITE_URL } from "@/lib/site-url"
 
 // Validation schemas
 const createPostSchema = z.object({
@@ -103,8 +104,6 @@ export async function POST(request: Request) {
     if (postStatus === "pending") {
       try {
         const adminEmail = process.env.ADMIN_EMAIL || "Connect@konnectingdots.org"
-        const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
-        
         const emailHtml = `
           <!DOCTYPE html>
           <html>
@@ -138,7 +137,7 @@ export async function POST(request: Request) {
                 </div>
                 
                 <p>Review and approve this post:</p>
-                <a href="${siteUrl}/blogadmin" class="button">Review in Dashboard</a>
+                <a href="${SITE_URL}/blogadmin" class="button">Review in Dashboard</a>
               </div>
               <div class="footer">
                 <p>© 2025 Konnecting Dots. All rights reserved.</p>

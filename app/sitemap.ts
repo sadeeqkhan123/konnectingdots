@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next"
 import { blogStore } from "@/lib/blog-store"
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://konnectingdots.org"
+import { SITE_URL } from "@/lib/site-url"
 
 const staticRoutes = [
   "",
@@ -29,7 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date()
 
   const staticUrls: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
-    url: `${siteUrl}${route}`,
+    url: `${SITE_URL}${route}`,
     lastModified: now,
     changeFrequency: route === "" ? "daily" : "weekly",
     priority: route === "" ? 1 : 0.8,
@@ -39,7 +38,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     const publishedPosts = await blogStore.getPublished()
     blogUrls = publishedPosts.map((post) => ({
-      url: `${siteUrl}/blog/${post.slug}`,
+      url: `${SITE_URL}/blog/${post.slug}`,
       lastModified: post.updatedAt ? new Date(post.updatedAt) : now,
       changeFrequency: "weekly",
       priority: 0.7,
