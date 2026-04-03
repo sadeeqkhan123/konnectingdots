@@ -11,6 +11,15 @@ const nextConfig = {
   },
   // Increase static page generation timeout for pages with client components
   staticPageGenerationTimeout: 120,
+  async redirects() {
+    return [
+      {
+        source: "/events-admin",
+        destination: "/eventsadmin",
+        permanent: true,
+      },
+    ]
+  },
   async headers() {
     return [
       {

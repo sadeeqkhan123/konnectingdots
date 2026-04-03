@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
-import { blogDb, BlogPost } from "@/lib/db"
+import { BlogPost } from "@/lib/db"
+import { blogStore } from "@/lib/blog-store"
 import { z } from "zod"
 import { sendEmail } from "@/lib/email"
 
@@ -32,11 +33,11 @@ export async function GET(request: Request) {
     const status = searchParams.get("status")
     const category = searchParams.get("category")
 
-    let posts: BlogPost[] = blogDb.getAll()
+    let posts: BlogPost[] = await blogStore.getAll()
 
     // Filter by status
     if (status === "published") {
-      posts = blogDb.getPublished()
+      posts = await blogStore.getPublished()
     } else if (status) {
       posts = posts.filter((post) => post.status === status)
     }
@@ -74,7 +75,7 @@ export async function POST(request: Request) {
 
     const postStatus = validated.status || "pending"
     
-    const newPost = blogDb.create({
+    const newPost = await blogStore.create({
       title: validated.title,
       slug,
       category: validated.category,
@@ -127,7 +128,7 @@ export async function POST(request: Request) {
                 </div>
                 
                 <p>Review and approve this post:</p>
-                <a href="${siteUrl}/blog-admin" class="button">Review in Dashboard</a>
+                <a href="${siteUrl}/blogadmin" class="button">Review in Dashboard</a>
               </div>
               <div class="footer">
                 <p>© 2025 Konnecting Dots. All rights reserved.</p>

@@ -3,6 +3,17 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Play, ArrowRight, Users, Award, Heart, Star, CheckCircle, TrendingUp } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
+
+const CLIENT_LOGOS = [
+  { name: "Pakistan Reinsurance Company Limited", src: "/client-logos/pakre.png" },
+  { name: "Octal", src: "/client-logos/octal.png" },
+  { name: "Engro Vopak Terminal Ltd.", src: "/client-logos/engro-vopak.png" },
+  { name: "Tech Destination Pakistan", src: "/client-logos/tech-destination.png" },
+  { name: "Kiran Foundation", src: "/client-logos/kiran-foundation.png" },
+  { name: "QUEST Nawabshah", src: "/client-logos/quest.png" },
+  { name: "SZABIST University", src: "/client-logos/szabist.png" },
+]
 
 export default function HomePage() {
   return (
@@ -290,15 +301,24 @@ export default function HomePage() {
             <p className="text-xl text-muted-foreground">Companies worldwide trust us to transform their teams</p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center opacity-60">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div
-                key={i}
-                className="bg-muted h-16 rounded-lg flex items-center justify-center hover:bg-muted/80 transition-colors duration-300 transform hover:scale-105"
-              >
-                <span className="text-muted-foreground font-semibold">Company {i}</span>
-              </div>
-            ))}
+          <div className="logo-marquee">
+            <div className="logo-marquee-track">
+              {[...CLIENT_LOGOS, ...CLIENT_LOGOS].map((logo, index) => (
+                <div
+                  key={`${logo.name}-${index}`}
+                  className="h-24 min-w-[220px] md:min-w-[260px] rounded-xl border border-border/70 bg-white px-6 py-4 flex items-center justify-center shadow-sm"
+                >
+                  <Image
+                    src={logo.src}
+                    alt={logo.name}
+                    width={220}
+                    height={80}
+                    className="h-full w-full object-contain"
+                    unoptimized
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

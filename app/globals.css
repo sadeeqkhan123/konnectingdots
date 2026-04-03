@@ -387,3 +387,47 @@ html {
 .gradient-cta {
   background: linear-gradient(90deg, #0d9488 0%, #0891b2 100%);
 }
+
+@keyframes logo-marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.logo-marquee {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.logo-marquee::before,
+.logo-marquee::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  height: 100%;
+  width: 72px;
+  pointer-events: none;
+}
+
+.logo-marquee::before {
+  left: 0;
+  background: linear-gradient(to right, var(--background), transparent);
+}
+
+.logo-marquee::after {
+  right: 0;
+  background: linear-gradient(to left, var(--background), transparent);
+}
+
+.logo-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 1.25rem;
+  animation: logo-marquee-scroll 50s linear infinite;
+  will-change: transform;
+}

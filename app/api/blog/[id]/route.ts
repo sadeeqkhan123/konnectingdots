@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
-import { blogDb, BlogPost } from "@/lib/db"
+import { BlogPost } from "@/lib/db"
+import { blogStore } from "@/lib/blog-store"
 import { z } from "zod"
 import { sendEmail } from "@/lib/email"
 
@@ -26,7 +27,7 @@ export async function GET(
       return NextResponse.json({ success: false, error: "Missing post ID" }, { status: 400 })
     }
     
-    const post = blogDb.getById(paramsValue.id)
+    const post = await blogStore.getById(paramsValue.id)
     if (!post) {
       return NextResponse.json({ success: false, error: "Post not found" }, { status: 404 })
     }
@@ -68,12 +69,12 @@ export async function PUT(request: Request, { params }: { params: { id: string }
     }
 
     // Get the post before update to check status change
-    const existingPost = blogDb.getById(paramsValue.id)
+    const existingPost = await blogStore.getById(paramsValue.id)
     if (!existingPost) {
       return NextResponse.json({ success: false, error: "Post not found" }, { status: 404 })
     }
 
-    const updatedPost = blogDb.update(paramsValue.id, updates)
+    const updatedPost = await blogStore.update(paramsValue.id, updates)
     if (!updatedPost) {
       return NextResponse.json({ success: false, error: "Post not found" }, { status: 404 })
     }
@@ -153,7 +154,7 @@ export async function DELETE(request: Request, { params }: { params: { id: strin
     if (!paramsValue?.id) {
       return NextResponse.json({ success: false, error: "Missing post ID" }, { status: 400 })
     }
-    const deleted = blogDb.delete(paramsValue.id)
+    const deleted = await blogStore.delete(paramsValue.id)
     if (!deleted) {
       return NextResponse.json({ success: false, error: "Post not found" }, { status: 404 })
     }

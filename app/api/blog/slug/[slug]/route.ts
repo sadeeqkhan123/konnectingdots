@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { blogDb } from "@/lib/db"
+import { blogStore } from "@/lib/blog-store"
 
 // GET - Get a blog post by slug
 export async function GET(request: Request, { params }: { params: { slug: string } | Promise<{ slug: string }> }) {
@@ -10,7 +10,7 @@ export async function GET(request: Request, { params }: { params: { slug: string
       return NextResponse.json({ success: false, error: "Missing slug" }, { status: 400 })
     }
     
-    const post = blogDb.getBySlug(paramsValue.slug)
+    const post = await blogStore.getBySlug(paramsValue.slug)
     if (!post) {
       return NextResponse.json({ success: false, error: "Post not found" }, { status: 404 })
     }

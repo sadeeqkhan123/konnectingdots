@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -9,12 +9,95 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Calendar, Clock, MapPin, Users, Video, Star } from "lucide-react"
 import Link from "next/link"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+
+interface EventItem {
+  id: string
+  title: string
+  description: string
+  category: string
+  date: string
+  time: string
+  location: string
+  format: "in-person" | "online" | "hybrid"
+  price: number
+  capacity: number
+  registered: number
+  status: "upcoming" | "ongoing" | "completed" | "cancelled"
+}
 
 export default function EventsPage() {
-  const registrationRef = useRef<HTMLDivElement>(null)
   const upcomingRef = useRef<HTMLDivElement>(null)
+  const [events, setEvents] = useState<EventItem[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [selectedEvent, setSelectedEvent] = useState<EventItem | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [registrationForm, setRegistrationForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+  })
 
-  const scrollToRegistration = () => registrationRef.current?.scrollIntoView({ behavior: "smooth" })
+  useEffect(() => {
+    const loadEvents = async () => {
+      try {
+        const response = await fetch("/api/events?upcoming=true")
+        const data = await response.json()
+        if (response.ok && data.success) {
+          setEvents(data.events || [])
+        }
+      } catch (error) {
+        console.error("Error loading events:", error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+    loadEvents()
+  }, [])
+
+  const featuredEvent = events[0]
+  const otherEvents = useMemo(() => events.slice(1), [events])
+  const formatDate = (value: string) =>
+    new Date(value).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
+
+  const getFormatIcon = (format: EventItem["format"]) => (format === "in-person" ? MapPin : Video)
+  const getSpotsText = (event: EventItem) => {
+    const spotsLeft = Math.max(event.capacity - event.registered, 0)
+    return spotsLeft > 0 ? `${spotsLeft} spots left` : "Fully booked"
+  }
+  const getCategoryClass = (category: string) => {
+    const c = category.toLowerCase()
+    if (c.includes("corporate")) return "bg-purple-100 text-purple-800"
+    if (c.includes("webinar") || c.includes("online")) return "bg-teal-100 text-teal-800"
+    if (c.includes("certification")) return "bg-blue-100 text-blue-800"
+    return "bg-yellow-100 text-yellow-800"
+  }
+
+  const handleRegister = async (eventId: string) => {
+    setIsSubmitting(true)
+    try {
+      const response = await fetch(`/api/events/${eventId}/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(registrationForm),
+      })
+      const data = await response.json()
+      if (response.ok && data.success) {
+        alert("Registration successful! Check your email for confirmation.")
+        setRegistrationForm({ name: "", email: "", phone: "", company: "" })
+        setSelectedEvent(null)
+      } else {
+        alert(data.error || "Failed to register")
+      }
+    } catch (error) {
+      console.error("Error registering:", error)
+      alert("Failed to register. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   const scrollToUpcoming = () => upcomingRef.current?.scrollIntoView({ behavior: "smooth" })
   return (
     <div className="min-h-screen pt-20">
@@ -43,286 +126,174 @@ export default function EventsPage() {
           </div>
 
           <div className="space-y-8">
-            {/* Featured Event */}
-            <Card className="border-2 border-yellow-200 bg-yellow-50 hover:shadow-xl transition-shadow">
-              <CardContent className="p-8">
-                <div className="flex items-start justify-between mb-6">
-                  <Badge className="bg-yellow-500 text-white">Featured Event</Badge>
-                  <Badge variant="outline" className="border-green-500 text-green-700">
-                    <Users className="mr-1 h-3 w-3" />
-                    12 spots left
-                  </Badge>
-                </div>
-
-                <div className="grid lg:grid-cols-3 gap-8">
-                  <div className="lg:col-span-2">
-                    <h3 className="text-3xl font-bold mb-4">NLP & Hypnotherapy Practitioner Certification Program</h3>
-                    <p className="text-gray-700 mb-6 text-lg">
-                      A comprehensive program to become a certified NLP and Hypnotherapy Practitioner with practical,
-                      live training and ongoing support.
-                    </p>
-
-                    <div className="grid md:grid-cols-2 gap-4 mb-6">
-                      <div className="flex items-center">
-                        <Calendar className="h-5 w-5 text-blue-600 mr-3" />
-                        <div>
-                          <p className="font-semibold">April 15-21, 2024</p>
-                          <p className="text-sm text-gray-600">7 days intensive</p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center">
-                        <Clock className="h-5 w-5 text-green-600 mr-3" />
-                        <div>
-                          <p className="font-semibold">9:00 AM - 6:00 PM</p>
-                          <p className="text-sm text-gray-600">Daily schedule</p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center">
-                        <MapPin className="h-5 w-5 text-purple-600 mr-3" />
-                        <div>
-                          <p className="font-semibold">Karachi, Pakistan</p>
-                          <p className="text-sm text-gray-600">Luxury resort venue</p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center">
-                        <Video className="h-5 w-5 text-teal-600 mr-3" />
-                        <div>
-                          <p className="font-semibold">Hybrid Format</p>
-                          <p className="text-sm text-gray-600">In-person + Online</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center mb-4">
-                      <span className="text-3xl font-bold text-green-600">$2,497</span>
-                      <span className="text-lg text-gray-500 line-through ml-3">$3,497</span>
-                      <Badge className="ml-3 bg-red-100 text-red-800">Early Bird Special</Badge>
-                    </div>
-                  </div>
-
-                  <div ref={registrationRef} className="bg-white p-6 rounded-lg border scroll-mt-24" id="registration-form">
-                    <h4 className="text-xl font-bold mb-4">Quick Registration</h4>
-                    <form
-                      onSubmit={async (e) => {
-                        e.preventDefault()
-                        const formData = new FormData(e.currentTarget)
-                        const eventId = "1" // This should be dynamic based on the event
-
-                        try {
-                          const response = await fetch(`/api/events/${eventId}/register`, {
-                            method: "POST",
-                            headers: { "Content-Type": "application/json" },
-                            body: JSON.stringify({
-                              name: formData.get("name"),
-                              email: formData.get("email"),
-                              phone: formData.get("phone"),
-                            }),
-                          })
-
-                          const data = await response.json()
-                          if (data.success) {
-                            alert("Registration successful! Check your email for confirmation.")
-                            e.currentTarget.reset()
-                          } else {
-                            alert(data.error || "Failed to register")
-                          }
-                        } catch (error) {
-                          console.error("Error registering:", error)
-                          alert("Failed to register. Please try again.")
-                        }
-                      }}
-                      className="space-y-4"
-                    >
-                      <div>
-                        <Label htmlFor="name">Full Name</Label>
-                        <Input id="name" name="name" required placeholder="Enter your name" />
-                      </div>
-                      <div>
-                        <Label htmlFor="email">Email</Label>
-                        <Input id="email" name="email" type="email" required placeholder="Enter your email" />
-                      </div>
-                      <div>
-                        <Label htmlFor="phone">Phone</Label>
-                        <Input id="phone" name="phone" required placeholder="Enter your phone" />
-                      </div>
-                      <Button type="submit" className="w-full bg-yellow-600 hover:bg-yellow-700">
-                        Register Now
-                      </Button>
-                      <p className="text-xs text-gray-600 text-center">
-                        Secure payment • Full refund if cancelled 30 days prior
-                      </p>
-                    </form>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Regular Events */}
-            <div className="grid lg:grid-cols-2 gap-8">
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <Badge className="bg-teal-100 text-teal-800">Online Workshop</Badge>
-                    <Badge variant="outline" className="border-orange-500 text-orange-700">
-                      <Users className="mr-1 h-3 w-3" />5 spots left
-                    </Badge>
-                  </div>
-                  <CardTitle className="text-2xl">Master Class: Advanced Hypnosis Techniques</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-6">
-                    Deep dive into advanced hypnosis methods for experienced practitioners. Learn cutting-edge
-                    techniques for rapid transformation.
-                  </p>
-
-                  <div className="space-y-3 mb-6">
-                    <div className="flex items-center">
-                      <Calendar className="h-4 w-4 text-blue-600 mr-3" />
-                      <span className="text-sm">March 28, 2024</span>
-                    </div>
-                    <div className="flex items-center">
-                      <Clock className="h-4 w-4 text-green-600 mr-3" />
-                      <span className="text-sm">2:00 PM - 6:00 PM EST</span>
-                    </div>
-                    <div className="flex items-center">
-                      <Video className="h-4 w-4 text-purple-600 mr-3" />
-                      <span className="text-sm">Live Online via Zoom</span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-teal-600">$297</span>
-                    <Button onClick={scrollToRegistration}>Register Now</Button>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <Badge className="bg-purple-100 text-purple-800">Corporate Training</Badge>
+            {featuredEvent && (
+              <Card className="border-2 border-yellow-200 bg-yellow-50 hover:shadow-xl transition-shadow">
+                <CardContent className="p-8">
+                  <div className="flex items-start justify-between mb-6">
+                    <Badge className="bg-yellow-500 text-white">Featured Event</Badge>
                     <Badge variant="outline" className="border-green-500 text-green-700">
                       <Users className="mr-1 h-3 w-3" />
-                      Open enrollment
+                      {getSpotsText(featuredEvent)}
                     </Badge>
                   </div>
-                  <CardTitle className="text-2xl">DEI Leadership Intensive</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-6">
-                    Transform your organization's culture with our comprehensive Diversity, Equity, and Inclusion
-                    leadership program.
-                  </p>
 
-                  <div className="space-y-3 mb-6">
-                    <div className="flex items-center">
-                      <Calendar className="h-4 w-4 text-blue-600 mr-3" />
-                      <span className="text-sm">April 5-6, 2024</span>
-                    </div>
-                    <div className="flex items-center">
-                      <Clock className="h-4 w-4 text-green-600 mr-3" />
-                      <span className="text-sm">9:00 AM - 5:00 PM</span>
-                    </div>
-                    <div className="flex items-center">
-                      <MapPin className="h-4 w-4 text-red-600 mr-3" />
-                      <span className="text-sm">New York, NY</span>
-                    </div>
-                  </div>
+                  <div className="grid lg:grid-cols-3 gap-8">
+                    <div className="lg:col-span-2">
+                      <h3 className="text-3xl font-bold mb-4">{featuredEvent.title}</h3>
+                      <p className="text-gray-700 mb-6 text-lg">{featuredEvent.description}</p>
 
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-purple-600">$1,497</span>
-                    <Button variant="outline" asChild>
-                      <Link href="/contact?subject=DEI%20Leadership%20Intensive">Learn More</Link>
-                    </Button>
+                      <div className="grid md:grid-cols-2 gap-4 mb-6">
+                        <div className="flex items-center">
+                          <Calendar className="h-5 w-5 text-blue-600 mr-3" />
+                          <div>
+                            <p className="font-semibold">{formatDate(featuredEvent.date)}</p>
+                            <p className="text-sm text-gray-600">{featuredEvent.category}</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center">
+                          <Clock className="h-5 w-5 text-green-600 mr-3" />
+                          <div>
+                            <p className="font-semibold">{featuredEvent.time}</p>
+                            <p className="text-sm text-gray-600">Event schedule</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center">
+                          <MapPin className="h-5 w-5 text-purple-600 mr-3" />
+                          <div>
+                            <p className="font-semibold">{featuredEvent.location}</p>
+                            <p className="text-sm text-gray-600">Location</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center">
+                          <Video className="h-5 w-5 text-teal-600 mr-3" />
+                          <div>
+                            <p className="font-semibold">{featuredEvent.format}</p>
+                            <p className="text-sm text-gray-600">Delivery format</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center mb-4">
+                        <span className="text-3xl font-bold text-green-600">
+                          {featuredEvent.price > 0 ? `$${featuredEvent.price.toLocaleString()}` : "FREE"}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="bg-white p-6 rounded-lg border">
+                      <h4 className="text-xl font-bold mb-2">Register</h4>
+                      <p className="text-sm text-gray-600 mb-4">
+                        Secure your spot instantly. You will receive a confirmation email.
+                      </p>
+                      <Button className="w-full bg-yellow-600 hover:bg-yellow-700" onClick={() => setSelectedEvent(featuredEvent)}>
+                        Register Now
+                      </Button>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
+            )}
 
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <Badge className="bg-blue-100 text-blue-800">Certification</Badge>
-                    <Badge variant="outline" className="border-yellow-500 text-yellow-700">
-                      <Users className="mr-1 h-3 w-3" />8 spots left
-                    </Badge>
-                  </div>
-                  <CardTitle className="text-2xl">Train the Trainer Certification</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-6">
-                    Become a certified trainer and learn to deliver NLP, Hypnosis, and corporate training programs with
-                    confidence.
-                  </p>
+            {otherEvents.length > 0 && (
+              <div className="grid lg:grid-cols-2 gap-8">
+                {otherEvents.map((event) => {
+                  const FormatIcon = getFormatIcon(event.format)
+                  return (
+                    <Card key={event.id} className="hover:shadow-lg transition-shadow">
+                      <CardHeader>
+                        <div className="flex items-center justify-between">
+                          <Badge className={getCategoryClass(event.category)}>{event.category}</Badge>
+                          <Badge variant="outline" className="border-green-500 text-green-700">
+                            <Users className="mr-1 h-3 w-3" />
+                            {getSpotsText(event)}
+                          </Badge>
+                        </div>
+                        <CardTitle className="text-2xl">{event.title}</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-gray-600 mb-6">{event.description}</p>
+                        <div className="space-y-3 mb-6">
+                          <div className="flex items-center">
+                            <Calendar className="h-4 w-4 text-blue-600 mr-3" />
+                            <span className="text-sm">{formatDate(event.date)}</span>
+                          </div>
+                          <div className="flex items-center">
+                            <Clock className="h-4 w-4 text-green-600 mr-3" />
+                            <span className="text-sm">{event.time}</span>
+                          </div>
+                          <div className="flex items-center">
+                            <FormatIcon className="h-4 w-4 text-purple-600 mr-3" />
+                            <span className="text-sm">{event.location}</span>
+                          </div>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-2xl font-bold text-teal-600">
+                            {event.price > 0 ? `$${event.price.toLocaleString()}` : "FREE"}
+                          </span>
+                          <Button onClick={() => setSelectedEvent(event)}>Register Now</Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  )
+                })}
+              </div>
+            )}
 
-                  <div className="space-y-3 mb-6">
-                    <div className="flex items-center">
-                      <Calendar className="h-4 w-4 text-blue-600 mr-3" />
-                      <span className="text-sm">May 10-12, 2024</span>
-                    </div>
-                    <div className="flex items-center">
-                      <Clock className="h-4 w-4 text-green-600 mr-3" />
-                      <span className="text-sm">9:00 AM - 6:00 PM</span>
-                    </div>
-                    <div className="flex items-center">
-                      <MapPin className="h-4 w-4 text-red-600 mr-3" />
-                      <span className="text-sm">Los Angeles, CA</span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-blue-600">$1,997</span>
-                    <Button onClick={scrollToRegistration}>Register Now</Button>
-                  </div>
+            {!isLoading && events.length === 0 && (
+              <Card>
+                <CardContent className="p-6 text-center text-gray-600">
+                  No upcoming events yet. The admin can add events from the events dashboard.
                 </CardContent>
               </Card>
-
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <Badge className="bg-green-100 text-green-800">Free Webinar</Badge>
-                    <Badge variant="outline" className="border-blue-500 text-blue-700">
-                      <Users className="mr-1 h-3 w-3" />
-                      Unlimited
-                    </Badge>
-                  </div>
-                  <CardTitle className="text-2xl">Introduction to NLP</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-6">
-                    Discover the fundamentals of Neuro-Linguistic Programming and how it can transform your personal and
-                    professional life.
-                  </p>
-
-                  <div className="space-y-3 mb-6">
-                    <div className="flex items-center">
-                      <Calendar className="h-4 w-4 text-blue-600 mr-3" />
-                      <span className="text-sm">Every Wednesday</span>
-                    </div>
-                    <div className="flex items-center">
-                      <Clock className="h-4 w-4 text-green-600 mr-3" />
-                      <span className="text-sm">7:00 PM - 8:30 PM EST</span>
-                    </div>
-                    <div className="flex items-center">
-                      <Video className="h-4 w-4 text-purple-600 mr-3" />
-                      <span className="text-sm">Live Online</span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-green-600">FREE</span>
-                    <Button className="bg-green-600 hover:bg-green-700" asChild>
-                      <Link href="/contact?subject=Introduction%20to%20NLP%20Webinar">Join Webinar</Link>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+            )}
           </div>
         </div>
       </section>
+
+      <Dialog open={Boolean(selectedEvent)} onOpenChange={(open) => !open && setSelectedEvent(null)}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Register for {selectedEvent?.title}</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4">
+            <div>
+              <Label htmlFor="reg-name">Full Name</Label>
+              <Input
+                id="reg-name"
+                value={registrationForm.name}
+                onChange={(e) => setRegistrationForm((prev) => ({ ...prev, name: e.target.value }))}
+              />
+            </div>
+            <div>
+              <Label htmlFor="reg-email">Email</Label>
+              <Input
+                id="reg-email"
+                type="email"
+                value={registrationForm.email}
+                onChange={(e) => setRegistrationForm((prev) => ({ ...prev, email: e.target.value }))}
+              />
+            </div>
+            <div>
+              <Label htmlFor="reg-phone">Phone</Label>
+              <Input
+                id="reg-phone"
+                value={registrationForm.phone}
+                onChange={(e) => setRegistrationForm((prev) => ({ ...prev, phone: e.target.value }))}
+              />
+            </div>
+            <div>
+              <Label htmlFor="reg-company">Company (optional)</Label>
+              <Input
+                id="reg-company"
+                value={registrationForm.company}
+                onChange={(e) => setRegistrationForm((prev) => ({ ...prev, company: e.target.value }))}
+              />
+            </div>
+            <Button className="w-full" disabled={isSubmitting || !selectedEvent} onClick={() => selectedEvent && handleRegister(selectedEvent.id)}>
+              {isSubmitting ? "Submitting..." : "Submit Registration"}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       {/* Past Event Highlights */}
       <section className="py-16 bg-gray-50">

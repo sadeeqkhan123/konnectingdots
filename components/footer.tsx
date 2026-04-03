@@ -78,14 +78,6 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/blog-admin"
-                  className="text-brand-secondary hover:text-brand-secondary/80 transition-colors font-semibold"
-                >
-                  Blog Admin
-                </Link>
-              </li>
-              <li>
                 <Link href="/faq" className="text-muted-foreground hover:text-foreground transition-colors">
                   FAQ
                 </Link>
@@ -99,7 +91,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="/services#one-on-one"
+                  href="/services/one-on-one-coaching"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   One-on-One Coaching
@@ -107,20 +99,20 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services#corporate"
+                  href="/services/corporate-training"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Corporate Training & Organizational Development
                 </Link>
               </li>
               <li>
-                <Link href="/services#dei" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link href="/services/dei-training" className="text-muted-foreground hover:text-foreground transition-colors">
                   DEI Training
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/services#train-trainer"
+                  href="/services/train-the-trainer"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Train the Trainer Certification
@@ -128,7 +120,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services#practitioner"
+                  href="/services/practitioner-master"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   NLP & Hypnotherapy Practitioner

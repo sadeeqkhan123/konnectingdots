@@ -8,11 +8,9 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu, X } from "lucide-react"
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
 import BookingModal from "./booking-modal"
 import { useTheme } from "next-themes"
@@ -49,39 +47,11 @@ export default function Header() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="px-4 py-2 text-foreground hover:text-brand-primary font-medium">
-                  Services
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div className="w-80 p-4 bg-card">
-                    <div className="space-y-3">
-                      <Link href="/services/one-on-one-coaching" className="block p-3 rounded-lg hover:bg-accent">
-                        <h4 className="font-semibold text-card-foreground">One-on-One Coaching</h4>
-                        <p className="text-sm text-muted-foreground">Personalized NLP & Hypnosis sessions</p>
-                      </Link>
-                      <Link href="/services/corporate-training" className="block p-3 rounded-lg hover:bg-accent">
-                        <h4 className="font-semibold text-card-foreground">
-                          Corporate Training & Organizational Development
-                        </h4>
-                        <p className="text-sm text-muted-foreground">NLP, leadership, and workplace excellence</p>
-                      </Link>
-                      <Link href="/services/dei-training" className="block p-3 rounded-lg hover:bg-accent">
-                        <h4 className="font-semibold text-card-foreground">Diversity, Equity & Inclusion Training</h4>
-                        <p className="text-sm text-muted-foreground">Build inclusive workplaces</p>
-                      </Link>
-                      <Link href="/services/train-the-trainer" className="block p-3 rounded-lg hover:bg-accent">
-                        <h4 className="font-semibold text-card-foreground">Train the Trainer Certification</h4>
-                        <p className="text-sm text-muted-foreground">NLP, Hypnosis, & corporate trainer program</p>
-                      </Link>
-                      <Link href="/services/practitioner-master" className="block p-3 rounded-lg hover:bg-accent">
-                        <h4 className="font-semibold text-card-foreground">
-                          NLP & Hypnotherapy Practitioner & Master
-                        </h4>
-                        <p className="text-sm text-muted-foreground">Practitioner and Master Practitioner track</p>
-                      </Link>
-                    </div>
-                  </div>
-                </NavigationMenuContent>
+                <Link href="/services" legacyBehavior passHref>
+                  <NavigationMenuLink className="px-4 py-2 text-foreground hover:text-brand-primary font-medium transition-colors">
+                    Services
+                  </NavigationMenuLink>
+                </Link>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
@@ -175,7 +145,13 @@ export default function Header() {
                   Home
                 </Link>
                 <div className="space-y-2">
-                  <p className="py-2 px-4 text-lg font-medium text-foreground">Services</p>
+                  <Link
+                    href="/services"
+                    className="block py-2 px-4 text-lg font-medium text-foreground hover:text-brand-primary hover:bg-accent rounded-lg transition-colors"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Services
+                  </Link>
                   <Link
                     href="/services/one-on-one-coaching"
                     className="block py-2 px-6 text-base text-foreground hover:text-brand-primary hover:bg-accent rounded-lg transition-colors"

@@ -559,7 +559,7 @@ export default function BlogAdminPage() {
             </ol>
             <p className="mt-4 text-sm">
               <strong>Note:</strong> You can access this page directly at{" "}
-              <code className="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">/blog-admin</code>
+              <code className="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">/blogadmin</code>
             </p>
           </CardContent>
         </Card>

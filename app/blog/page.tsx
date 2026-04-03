@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo, useCallback } from "react"
+import { useState, useMemo, useCallback, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -8,88 +8,94 @@ import { Input } from "@/components/ui/input"
 import { Calendar, Clock, User, Search, ArrowRight, BookOpen, TrendingUp, Heart } from "lucide-react"
 import Link from "next/link"
 
-const LATEST_ARTICLES = [
-  {
-    badge: "NLP Techniques",
+interface BlogPost {
+  id: string
+  title: string
+  slug: string
+  category: string
+  author: string
+  excerpt: string
+  image: string
+  createdAt: string
+  publishedAt?: string
+  readTime?: number
+}
+
+const getCategoryStyle = (category: string) => {
+  const normalized = category.toLowerCase()
+  if (normalized.includes("nlp")) {
+    return {
+      badgeClass: "bg-primary/10 text-primary",
+      gradient: "from-primary/20 to-accent/20",
+      Icon: BookOpen,
+    }
+  }
+  if (normalized.includes("hypnosis") || normalized.includes("wellness")) {
+    return {
+      badgeClass: "bg-secondary/50 text-secondary-foreground",
+      gradient: "from-secondary/20 to-accent/20",
+      Icon: Heart,
+    }
+  }
+  if (normalized.includes("corporate")) {
+    return {
+      badgeClass: "bg-accent/50 text-accent-foreground",
+      gradient: "from-accent/20 to-primary/20",
+      Icon: TrendingUp,
+    }
+  }
+  return {
     badgeClass: "bg-primary/10 text-primary",
-    title: "5 NLP Anchoring Techniques That Actually Work",
-    excerpt: "Learn the most effective anchoring methods used by top NLP practitioners to create lasting behavioral change.",
-    href: "/blog/nlp-anchoring-techniques",
-    date: "March 12, 2024",
-    readTime: "6 min read",
-    gradient: "from-primary/20 to-accent/20",
-    Icon: BookOpen,
-  },
-  {
-    badge: "Hypnosis",
-    badgeClass: "bg-secondary/50 text-secondary-foreground",
-    title: "Debunking Common Hypnosis Myths",
-    excerpt: "Separate fact from fiction and understand what hypnosis really is and how it can benefit your life.",
-    href: "/blog/hypnosis-myths",
-    date: "March 10, 2024",
-    readTime: "5 min read",
-    gradient: "from-secondary/20 to-accent/20",
-    Icon: Heart,
-  },
-  {
-    badge: "Corporate",
-    badgeClass: "bg-accent/50 text-accent-foreground",
-    title: "Building Inclusive Teams: A Practical Guide",
-    excerpt: "Actionable strategies for creating workplace environments where everyone feels valued and heard.",
-    href: "/blog/building-inclusive-teams",
-    date: "March 8, 2024",
-    readTime: "7 min read",
-    gradient: "from-accent/20 to-primary/20",
-    Icon: TrendingUp,
-  },
-  {
-    badge: "Personal Development",
-    badgeClass: "bg-primary/10 text-primary",
-    title: "The Power of Visualization in Goal Achievement",
-    excerpt: "Discover how mental imagery can accelerate your progress toward any goal you set for yourself.",
-    href: "/blog/visualization-goal-achievement",
-    date: "March 5, 2024",
-    readTime: "8 min read",
     gradient: "from-primary/20 to-secondary/20",
     Icon: User,
-  },
-  {
-    badge: "Case Study",
-    badgeClass: "bg-accent/50 text-accent-foreground",
-    title: "How One CEO Transformed Company Culture in 90 Days",
-    excerpt: "A detailed case study of rapid organizational transformation using NLP and leadership coaching.",
-    href: "/blog/ceo-culture-transformation",
-    date: "March 3, 2024",
-    readTime: "10 min read",
-    gradient: "from-accent/20 to-secondary/20",
-    Icon: BookOpen,
-  },
-  {
-    badge: "Wellness",
-    badgeClass: "bg-secondary/50 text-secondary-foreground",
-    title: "Stress Management Through Self-Hypnosis",
-    excerpt: "Learn simple self-hypnosis techniques you can use anywhere to manage stress and anxiety effectively.",
-    href: "/blog/stress-management-hypnosis",
-    date: "March 1, 2024",
-    readTime: "6 min read",
-    gradient: "from-secondary/20 to-primary/20",
-    Icon: Heart,
-  },
-] as const
+  }
+}
+
+const formatDate = (dateString?: string) => {
+  if (!dateString) return "Recently published"
+  return new Date(dateString).toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  })
+}
 
 export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState("")
+  const [publishedPosts, setPublishedPosts] = useState<BlogPost[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const loadPosts = async () => {
+      try {
+        const response = await fetch("/api/blog?status=published")
+        const data = await response.json()
+        if (response.ok && data.success) {
+          setPublishedPosts(data.posts || [])
+        }
+      } catch (error) {
+        console.error("Error loading published posts:", error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    loadPosts()
+  }, [])
 
   const filteredArticles = useMemo(() => {
-    if (!searchQuery.trim()) return LATEST_ARTICLES
+    if (!searchQuery.trim()) return publishedPosts
     const q = searchQuery.toLowerCase().trim()
-    return LATEST_ARTICLES.filter(
+    return publishedPosts.filter(
       (a) =>
         a.title.toLowerCase().includes(q) ||
         a.excerpt.toLowerCase().includes(q) ||
-        a.badge.toLowerCase().includes(q)
+        a.category.toLowerCase().includes(q) ||
+        a.author.toLowerCase().includes(q)
     )
-  }, [searchQuery])
+  }, [publishedPosts, searchQuery])
+
+  const featuredPost = publishedPosts[0]
 
   const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value)
@@ -143,30 +149,43 @@ export default function BlogPage() {
                 </div>
               </div>
               <div className="p-8 lg:p-12">
-                <Badge className="mb-4 bg-primary/10 text-primary hover:bg-primary/20">NLP Techniques</Badge>
-                <h3 className="text-3xl font-bold mb-4 text-foreground">
-                  The Science Behind Rapid Personal Transformation
-                </h3>
-                <p className="text-muted-foreground mb-6 text-lg">
-                  Discover how cutting-edge neuroscience research validates ancient NLP techniques and why some people
-                  achieve breakthrough results in days while others struggle for years.
-                </p>
+                {featuredPost ? (
+                  <>
+                    <Badge className="mb-4 bg-primary/10 text-primary hover:bg-primary/20">{featuredPost.category}</Badge>
+                    <h3 className="text-3xl font-bold mb-4 text-foreground">{featuredPost.title}</h3>
+                    <p className="text-muted-foreground mb-6 text-lg">{featuredPost.excerpt}</p>
 
-                <div className="flex items-center mb-6 text-sm text-muted-foreground">
-                  <User className="h-4 w-4 mr-2" />
-                  <span className="mr-4">Yousif Mangi · Founder & Chief Learning Officer</span>
-                  <Calendar className="h-4 w-4 mr-2" />
-                  <span className="mr-4">March 15, 2024</span>
-                  <Clock className="h-4 w-4 mr-2" />
-                  <span>8 min read</span>
-                </div>
+                    <div className="flex flex-wrap items-center mb-6 text-sm text-muted-foreground gap-x-4 gap-y-2">
+                      <span className="inline-flex items-center">
+                        <User className="h-4 w-4 mr-2" />
+                        {featuredPost.author}
+                      </span>
+                      <span className="inline-flex items-center">
+                        <Calendar className="h-4 w-4 mr-2" />
+                        {formatDate(featuredPost.publishedAt || featuredPost.createdAt)}
+                      </span>
+                      <span className="inline-flex items-center">
+                        <Clock className="h-4 w-4 mr-2" />
+                        {featuredPost.readTime ? `${featuredPost.readTime} min read` : "5 min read"}
+                      </span>
+                    </div>
 
-                <Link href="/blog/science-behind-rapid-transformation">
-                  <Button size="lg">
-                    Read Full Article
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </Link>
+                    <Link href={`/blog/${featuredPost.slug}`}>
+                      <Button size="lg">
+                        Read Full Article
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </Button>
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Badge className="mb-4 bg-muted text-muted-foreground">No Published Posts Yet</Badge>
+                    <h3 className="text-3xl font-bold mb-4 text-foreground">Your featured article will appear here</h3>
+                    <p className="text-muted-foreground mb-6 text-lg">
+                      Publish your first post from the admin dashboard to display it on the public blog.
+                    </p>
+                  </>
+                )}
               </div>
             </div>
           </Card>
@@ -244,21 +263,22 @@ export default function BlogPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredArticles.map((article) => {
-              const Icon = article.Icon
+              const style = getCategoryStyle(article.category)
+              const Icon = style.Icon
               return (
-                <Card key={article.href} className="hover:shadow-lg transition-shadow">
-                  <div className={`aspect-video bg-gradient-to-br ${article.gradient} flex items-center justify-center`}>
+                <Card key={article.id} className="hover:shadow-lg transition-shadow">
+                  <div className={`aspect-video bg-gradient-to-br ${style.gradient} flex items-center justify-center`}>
                     <Icon className="h-12 w-12 text-primary" />
                   </div>
                   <CardContent className="p-6">
-                    <Badge className={`mb-3 ${article.badgeClass}`}>{article.badge}</Badge>
+                    <Badge className={`mb-3 ${style.badgeClass}`}>{article.category}</Badge>
                     <h3 className="text-xl font-bold mb-3 text-foreground">{article.title}</h3>
                     <p className="text-muted-foreground mb-4">{article.excerpt}</p>
                     <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
-                      <span>{article.date}</span>
-                      <span>{article.readTime}</span>
+                      <span>{formatDate(article.publishedAt || article.createdAt)}</span>
+                      <span>{article.readTime ? `${article.readTime} min read` : "5 min read"}</span>
                     </div>
-                    <Link href={article.href}>
+                    <Link href={`/blog/${article.slug}`}>
                       <Button variant="ghost" className="p-0 h-auto text-primary hover:text-primary/80">
                         Read More <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
@@ -270,7 +290,9 @@ export default function BlogPage() {
           </div>
 
           {filteredArticles.length === 0 && (
-            <p className="text-center text-muted-foreground py-8">No articles match your search. Try a different term.</p>
+            <p className="text-center text-muted-foreground py-8">
+              {isLoading ? "Loading published posts..." : "No articles match your search. Try a different term."}
+            </p>
           )}
 
           <div className="text-center mt-12">

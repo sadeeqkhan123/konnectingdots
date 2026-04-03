@@ -162,7 +162,7 @@ Email templates are located in `https://github.com/sadeeqkhan123/konnectingdots/
 - Category filtering
 - Slug-based URLs
 - Automatic read time calculation
-- Admin interface at `/blog-admin`
+- Admin interface at `/blogadmin` (alias: `/blog-admin`)
 
 ### Booking System
 
