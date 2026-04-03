@@ -3,7 +3,25 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { CheckCircle, Users, Target, TrendingUp, BookOpen, Building, Lightbulb, Shield, Calendar, MapPin, LayoutGrid, GraduationCap } from "lucide-react"
+import {
+  Users,
+  Target,
+  TrendingUp,
+  BookOpen,
+  Building,
+  Lightbulb,
+  Shield,
+  Calendar,
+  MapPin,
+  LayoutGrid,
+  GraduationCap,
+  UserCog,
+  MessageSquare,
+  Handshake,
+  Rocket,
+  Laptop,
+  Layers3,
+} from "lucide-react"
 import Link from "next/link"
 
 export default function CorporateTrainingPage() {
@@ -138,7 +156,7 @@ export default function CorporateTrainingPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
                   <CardHeader>
-                    <Users className="h-8 w-8 text-blue-600 mb-2" />
+                    <UserCog className="h-8 w-8 text-blue-600 mb-2" />
                     <CardTitle>First-Time Managers</CardTitle>
                     <CardDescription>From individual contributor to people manager</CardDescription>
                   </CardHeader>
@@ -186,7 +204,7 @@ export default function CorporateTrainingPage() {
 
                 <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
                   <CardHeader>
-                    <BookOpen className="h-8 w-8 text-purple-600 mb-2" />
+                    <MessageSquare className="h-8 w-8 text-purple-600 mb-2" />
                     <CardTitle>Coaching at the Workplace</CardTitle>
                     <CardDescription>Embedding coaching as a leadership skill</CardDescription>
                   </CardHeader>
@@ -222,7 +240,7 @@ export default function CorporateTrainingPage() {
 
                 <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
                   <CardHeader>
-                    <Users className="h-8 w-8 text-blue-600 mb-2" />
+                    <Handshake className="h-8 w-8 text-blue-600 mb-2" />
                     <CardTitle>NLP-Based Communication & Influence</CardTitle>
                     <CardDescription>Rapport, influence, and conflict resolution</CardDescription>
                   </CardHeader>
@@ -274,7 +292,7 @@ export default function CorporateTrainingPage() {
 
                 <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
                   <CardHeader>
-                    <Users className="h-8 w-8 text-blue-600 mb-2" />
+                    <Rocket className="h-8 w-8 text-blue-600 mb-2" />
                     <CardTitle>Performance, Productivity & Mindset</CardTitle>
                     <CardDescription>Confidence, focus, and accountability</CardDescription>
                   </CardHeader>
@@ -333,19 +351,19 @@ export default function CorporateTrainingPage() {
               <CardContent>
                 <ul className="space-y-2 text-left">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Face-to-face interaction</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Hands-on activities</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Team building opportunities</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Immediate feedback</span>
                   </li>
                 </ul>
@@ -354,26 +372,26 @@ export default function CorporateTrainingPage() {
 
             <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow text-center">
               <CardHeader>
-                <BookOpen className="h-12 w-12 text-indigo-600 mx-auto mb-4" />
+                <Laptop className="h-12 w-12 text-indigo-600 mx-auto mb-4" />
                 <CardTitle>Virtual Training</CardTitle>
                 <CardDescription>Interactive online sessions</CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-left">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Global accessibility</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Cost-effective delivery</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Recording for later review</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Interactive breakout rooms</span>
                   </li>
                 </ul>
@@ -382,26 +400,26 @@ export default function CorporateTrainingPage() {
 
             <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow text-center">
               <CardHeader>
-                <Target className="h-12 w-12 text-purple-600 mx-auto mb-4" />
+                <Layers3 className="h-12 w-12 text-purple-600 mx-auto mb-4" />
                 <CardTitle>Blended Learning</CardTitle>
                 <CardDescription>Best of both worlds</CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-left">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Self-paced online modules</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Live practice sessions</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Flexible scheduling</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Continuous reinforcement</span>
                   </li>
                 </ul>

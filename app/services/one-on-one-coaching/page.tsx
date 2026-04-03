@@ -7,7 +7,6 @@ import {
   Target,
   Brain,
   Heart,
-  CheckCircle,
   Star,
   Calendar,
   MessageCircle,
@@ -144,7 +143,7 @@ export default function OneOnOneCoachingPage() {
             <div className="grid md:grid-cols-2 gap-8">
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <CheckCircle className="h-6 w-6 text-teal-600 mt-1 flex-shrink-0" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-teal-600 mt-2.5 flex-shrink-0" />
                   <div>
                     <h4 className="font-semibold mb-2">Breaking Through Blocks</h4>
                     <p className="text-gray-600">You want to break through mental or emotional blocks</p>
@@ -152,7 +151,7 @@ export default function OneOnOneCoachingPage() {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <CheckCircle className="h-6 w-6 text-teal-600 mt-1 flex-shrink-0" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-teal-600 mt-2.5 flex-shrink-0" />
                   <div>
                     <h4 className="font-semibold mb-2">Self-Doubt or Fear</h4>
                     <p className="text-gray-600">You feel limited by self-doubt, fear, or past experiences</p>
@@ -160,7 +159,7 @@ export default function OneOnOneCoachingPage() {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <CheckCircle className="h-6 w-6 text-teal-600 mt-1 flex-shrink-0" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-teal-600 mt-2.5 flex-shrink-0" />
                   <div>
                     <h4 className="font-semibold mb-2">Emotional Control</h4>
                     <p className="text-gray-600">You want better control over your emotions and reactions</p>
@@ -168,7 +167,7 @@ export default function OneOnOneCoachingPage() {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <CheckCircle className="h-6 w-6 text-teal-600 mt-1 flex-shrink-0" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-teal-600 mt-2.5 flex-shrink-0" />
                   <div>
                     <h4 className="font-semibold mb-2">Confidence & Performance</h4>
                     <p className="text-gray-600">You want to improve confidence, focus, or performance</p>
@@ -178,7 +177,7 @@ export default function OneOnOneCoachingPage() {
 
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <CheckCircle className="h-6 w-6 text-teal-600 mt-1 flex-shrink-0" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-teal-600 mt-2.5 flex-shrink-0" />
                   <div>
                     <h4 className="font-semibold mb-2">Anxiety or Unwanted Habits</h4>
                     <p className="text-gray-600">You are dealing with anxiety, phobias, stress, or unwanted habits</p>
@@ -186,7 +185,7 @@ export default function OneOnOneCoachingPage() {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <CheckCircle className="h-6 w-6 text-teal-600 mt-1 flex-shrink-0" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-teal-600 mt-2.5 flex-shrink-0" />
                   <div>
                     <h4 className="font-semibold mb-2">Seeking Real Change</h4>
                     <p className="text-gray-600">You want more than motivation or advice</p>
@@ -194,7 +193,7 @@ export default function OneOnOneCoachingPage() {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <CheckCircle className="h-6 w-6 text-teal-600 mt-1 flex-shrink-0" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-teal-600 mt-2.5 flex-shrink-0" />
                   <div>
                     <h4 className="font-semibold mb-2">Personalized Support</h4>
                     <p className="text-gray-600">You want tailored guidance focused on your goals</p>
@@ -202,7 +201,7 @@ export default function OneOnOneCoachingPage() {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <CheckCircle className="h-6 w-6 text-teal-600 mt-1 flex-shrink-0" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-teal-600 mt-2.5 flex-shrink-0" />
                   <div>
                     <h4 className="font-semibold mb-2">Ready to Start</h4>
                     <p className="text-gray-600">You are ready to work on yourself at a deeper level</p>
@@ -300,19 +299,19 @@ export default function OneOnOneCoachingPage() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>60-90 minutes per session</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>In-person or online</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Practical, focused work</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Tailored to your goals</span>
                   </div>
                   <Link href="/contact" className="block mt-6">
@@ -335,19 +334,19 @@ export default function OneOnOneCoachingPage() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Flexible plan based on your goals</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Progress tracking and adjustments</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Support between sessions</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Tailored exercises and tools</span>
                   </div>
                   <Link href="/contact" className="block mt-6">
@@ -370,15 +369,15 @@ export default function OneOnOneCoachingPage() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Discuss your goals and challenges</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Get a recommended session plan</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Understand if this is right for you</span>
                   </div>
                   <Link href="/contact" className="block mt-6">

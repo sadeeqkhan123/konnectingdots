@@ -33,6 +33,7 @@ This creates:
 - indexes
 - auto-update trigger for `updated_at`
 - temporary open RLS policies (for current no-auth admin flow)
+- SEO columns (`seo_title`, `seo_description`, `seo_keywords`, `canonical_url`, `og_image`)
 
 ## 3) Restart Development Server
 

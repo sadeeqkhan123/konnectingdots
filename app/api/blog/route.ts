@@ -24,6 +24,11 @@ const createPostSchema = z.object({
       },
       { message: "Invalid email format" },
     ),
+  seoTitle: z.string().optional(),
+  seoDescription: z.string().optional(),
+  seoKeywords: z.string().optional(),
+  canonicalUrl: z.string().url().optional(),
+  ogImage: z.string().optional(),
 })
 
 // GET - Get all blog posts (with optional filtering)
@@ -87,6 +92,11 @@ export async function POST(request: Request) {
       readTime,
       submittedBy: validated.submittedBy,
       submittedByEmail: validated.submittedByEmail,
+      seoTitle: validated.seoTitle,
+      seoDescription: validated.seoDescription,
+      seoKeywords: validated.seoKeywords,
+      canonicalUrl: validated.canonicalUrl,
+      ogImage: validated.ogImage,
     })
 
     // Send email to admin if status is pending

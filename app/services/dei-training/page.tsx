@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { CheckCircle, Users, Target, TrendingUp, Clock, Award, BookOpen } from "lucide-react"
+import { Users, Target, TrendingUp, Award, BookOpen, Handshake, Lightbulb, UserCheck, Shield, Globe, Compass } from "lucide-react"
 import Link from "next/link"
 
 export default function DEITrainingPage() {
@@ -74,15 +74,15 @@ export default function DEITrainingPage() {
               <CardContent>
                 <ul className="space-y-2">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>35% higher financial performance</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>70% more likely to capture new markets</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Improved brand reputation</span>
                   </li>
                 </ul>
@@ -91,21 +91,21 @@ export default function DEITrainingPage() {
 
             <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
               <CardHeader>
-                <Users className="h-12 w-12 text-blue-600 mb-4" />
+                <Handshake className="h-12 w-12 text-blue-600 mb-4" />
                 <CardTitle>Employee Experience</CardTitle>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-blue-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-blue-600 flex-shrink-0" />
                     <span>Higher employee engagement</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-blue-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-blue-600 flex-shrink-0" />
                     <span>Reduced turnover rates</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-blue-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-blue-600 flex-shrink-0" />
                     <span>Increased sense of belonging</span>
                   </li>
                 </ul>
@@ -114,21 +114,21 @@ export default function DEITrainingPage() {
 
             <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
               <CardHeader>
-                <Target className="h-12 w-12 text-purple-600 mb-4" />
+                <Lightbulb className="h-12 w-12 text-purple-600 mb-4" />
                 <CardTitle>Innovation & Growth</CardTitle>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-purple-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-purple-600 flex-shrink-0" />
                     <span>Enhanced creativity and innovation</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-purple-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-purple-600 flex-shrink-0" />
                     <span>Better decision-making</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-purple-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-purple-600 flex-shrink-0" />
                     <span>Competitive advantage</span>
                   </li>
                 </ul>
@@ -163,7 +163,7 @@ export default function DEITrainingPage() {
                   <li>• Interactive exercises and scenarios</li>
                 </ul>
                 <div className="mt-4 flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-gray-500" />
+                  <span className="text-gray-500">•</span>
                   <span className="text-sm text-gray-600">4-8 hours</span>
                 </div>
               </CardContent>
@@ -171,7 +171,7 @@ export default function DEITrainingPage() {
 
             <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
               <CardHeader>
-                <Users className="h-8 w-8 text-blue-600 mb-2" />
+                <UserCheck className="h-8 w-8 text-blue-600 mb-2" />
                 <CardTitle>Inclusive Leadership</CardTitle>
                 <CardDescription>Develop inclusive leadership skills</CardDescription>
               </CardHeader>
@@ -183,7 +183,7 @@ export default function DEITrainingPage() {
                   <li>• Building cultural competence</li>
                 </ul>
                 <div className="mt-4 flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-gray-500" />
+                  <span className="text-gray-500">•</span>
                   <span className="text-sm text-gray-600">1-2 days</span>
                 </div>
               </CardContent>
@@ -191,7 +191,7 @@ export default function DEITrainingPage() {
 
             <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
               <CardHeader>
-                <Target className="h-8 w-8 text-green-600 mb-2" />
+                <Shield className="h-8 w-8 text-green-600 mb-2" />
                 <CardTitle>Microaggressions Workshop</CardTitle>
                 <CardDescription>Address subtle forms of discrimination</CardDescription>
               </CardHeader>
@@ -203,7 +203,7 @@ export default function DEITrainingPage() {
                   <li>• Creating supportive environments</li>
                 </ul>
                 <div className="mt-4 flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-gray-500" />
+                  <span className="text-gray-500">•</span>
                   <span className="text-sm text-gray-600">3-4 hours</span>
                 </div>
               </CardContent>
@@ -223,7 +223,7 @@ export default function DEITrainingPage() {
                   <li>• Respectful workplace practices</li>
                 </ul>
                 <div className="mt-4 flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-gray-500" />
+                  <span className="text-gray-500">•</span>
                   <span className="text-sm text-gray-600">6-8 hours</span>
                 </div>
               </CardContent>
@@ -231,7 +231,7 @@ export default function DEITrainingPage() {
 
             <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
               <CardHeader>
-                <Users className="h-8 w-8 text-red-600 mb-2" />
+                <Globe className="h-8 w-8 text-red-600 mb-2" />
                 <CardTitle>Allyship Training</CardTitle>
                 <CardDescription>Become an effective ally and advocate</CardDescription>
               </CardHeader>
@@ -243,7 +243,7 @@ export default function DEITrainingPage() {
                   <li>• Creating inclusive spaces</li>
                 </ul>
                 <div className="mt-4 flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-gray-500" />
+                  <span className="text-gray-500">•</span>
                   <span className="text-sm text-gray-600">4-6 hours</span>
                 </div>
               </CardContent>
@@ -251,7 +251,7 @@ export default function DEITrainingPage() {
 
             <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
               <CardHeader>
-                <Target className="h-8 w-8 text-indigo-600 mb-2" />
+                <Compass className="h-8 w-8 text-indigo-600 mb-2" />
                 <CardTitle>DEI Strategy Development</CardTitle>
                 <CardDescription>Build comprehensive DEI initiatives</CardDescription>
               </CardHeader>
@@ -263,7 +263,7 @@ export default function DEITrainingPage() {
                   <li>• Sustainability strategies</li>
                 </ul>
                 <div className="mt-4 flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-gray-500" />
+                  <span className="text-gray-500">•</span>
                   <span className="text-sm text-gray-600">2-3 days</span>
                 </div>
               </CardContent>
@@ -293,19 +293,19 @@ export default function DEITrainingPage() {
               <CardContent>
                 <ul className="space-y-3">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>2 core training modules</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>4-hour workshop</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Digital resources</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>30-day email support</span>
                   </li>
                 </ul>
@@ -328,23 +328,23 @@ export default function DEITrainingPage() {
               <CardContent>
                 <ul className="space-y-3">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>4 comprehensive modules</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>2-day intensive workshop</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Leadership coaching session</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>90-day implementation support</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Progress assessment tools</span>
                   </li>
                 </ul>
@@ -364,23 +364,23 @@ export default function DEITrainingPage() {
               <CardContent>
                 <ul className="space-y-3">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Full curriculum (6+ modules)</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Multi-day program</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Executive coaching</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>1-year ongoing support</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
                     <span>Custom content development</span>
                   </li>
                 </ul>

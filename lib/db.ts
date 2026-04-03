@@ -57,6 +57,11 @@ export interface BlogPost {
   readTime?: number
   submittedBy?: string
   submittedByEmail?: string
+  seoTitle?: string
+  seoDescription?: string
+  seoKeywords?: string
+  canonicalUrl?: string
+  ogImage?: string
 }
 
 // Booking Types

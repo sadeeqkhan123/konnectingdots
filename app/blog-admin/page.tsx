@@ -18,7 +18,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { PlusCircle, Upload, Eye, Edit, Trash2, FileText, CheckCircle, XCircle } from "lucide-react"
+import { PlusCircle, Upload, Eye, Edit, Trash2, FileText, CheckCircle, XCircle, Sparkles } from "lucide-react"
 import { RichTextEditor } from "@/components/rich-text-editor"
 
 export default function BlogAdminPage() {
@@ -62,6 +62,11 @@ export default function BlogAdminPage() {
     image: "",
     submittedBy: "",
     submittedByEmail: "",
+    seoTitle: "",
+    seoDescription: "",
+    seoKeywords: "",
+    canonicalUrl: "",
+    ogImage: "",
   })
 
   const [isCreating, setIsCreating] = useState(false)
@@ -90,6 +95,11 @@ export default function BlogAdminPage() {
           status: "pending",
           submittedBy: newPost.submittedBy || newPost.author,
           submittedByEmail: newPost.submittedByEmail?.trim() || undefined,
+          seoTitle: newPost.seoTitle || undefined,
+          seoDescription: newPost.seoDescription || undefined,
+          seoKeywords: newPost.seoKeywords || undefined,
+          canonicalUrl: newPost.canonicalUrl || undefined,
+          ogImage: newPost.ogImage || undefined,
         }),
       })
 
@@ -121,7 +131,21 @@ export default function BlogAdminPage() {
             })),
           )
         }
-        setNewPost({ title: "", category: "", content: "", excerpt: "", author: "", image: "", submittedBy: "", submittedByEmail: "" })
+        setNewPost({
+          title: "",
+          category: "",
+          content: "",
+          excerpt: "",
+          author: "",
+          image: "",
+          submittedBy: "",
+          submittedByEmail: "",
+          seoTitle: "",
+          seoDescription: "",
+          seoKeywords: "",
+          canonicalUrl: "",
+          ogImage: "",
+        })
         setIsDialogOpen(false)
         alert("Blog post created successfully!")
       } else {
@@ -186,17 +210,21 @@ export default function BlogAdminPage() {
                   Create New Post
                 </Button>
               </DialogTrigger>
-              <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+              <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto border-0 bg-gradient-to-br from-slate-50 via-white to-cyan-50 shadow-2xl">
                 <DialogHeader>
-                  <DialogTitle>Create New Blog Post</DialogTitle>
+                  <DialogTitle className="flex items-center gap-2 text-2xl">
+                    <Sparkles className="h-5 w-5 text-cyan-600" />
+                    Create New Blog Post
+                  </DialogTitle>
                   <DialogDescription>Fill in the details to create a new blog post</DialogDescription>
                 </DialogHeader>
 
-                <div className="space-y-6 py-4">
+                <div className="space-y-6 py-4 rounded-xl border border-cyan-100 bg-white/80 backdrop-blur-sm p-4">
                   {/* Title */}
                   <div className="space-y-2">
                     <Label htmlFor="title">Blog Title *</Label>
                     <Input
+                      className="bg-white/90 border-cyan-100 focus-visible:ring-cyan-300"
                       id="title"
                       placeholder="Enter blog title..."
                       value={newPost.title}
@@ -229,6 +257,7 @@ export default function BlogAdminPage() {
                     <div className="space-y-2">
                       <Label htmlFor="author">Author Name *</Label>
                       <Input
+                        className="bg-white/90 border-cyan-100 focus-visible:ring-cyan-300"
                         id="author"
                         placeholder="Enter author name..."
                         value={newPost.author}
@@ -241,6 +270,7 @@ export default function BlogAdminPage() {
                   <div className="space-y-2">
                     <Label htmlFor="excerpt">Short Excerpt *</Label>
                     <Textarea
+                      className="bg-white/90 border-cyan-100 focus-visible:ring-cyan-300"
                       id="excerpt"
                       placeholder="Write a brief description (150-200 characters)..."
                       rows={3}
@@ -254,6 +284,7 @@ export default function BlogAdminPage() {
                     <Label htmlFor="image">Featured Image URL</Label>
                     <div className="flex gap-2">
                       <Input
+                        className="bg-white/90 border-cyan-100 focus-visible:ring-cyan-300"
                         id="image"
                         placeholder="Enter image URL or upload from computer..."
                         value={newPost.image}
@@ -301,6 +332,7 @@ export default function BlogAdminPage() {
                     <div className="space-y-2">
                       <Label htmlFor="submittedBy">Submitted By (Optional)</Label>
                       <Input
+                        className="bg-white/90 border-cyan-100 focus-visible:ring-cyan-300"
                         id="submittedBy"
                         placeholder="Name of submitter..."
                         value={newPost.submittedBy}
@@ -310,11 +342,78 @@ export default function BlogAdminPage() {
                     <div className="space-y-2">
                       <Label htmlFor="submittedByEmail">Submitter Email (Optional)</Label>
                       <Input
+                        className="bg-white/90 border-cyan-100 focus-visible:ring-cyan-300"
                         id="submittedByEmail"
                         type="email"
                         placeholder="email@example.com"
                         value={newPost.submittedByEmail}
                         onChange={(e) => setNewPost({ ...newPost, submittedByEmail: e.target.value })}
+                      />
+                    </div>
+                  </div>
+
+                  {/* SEO Essentials */}
+                  <div className="space-y-4 rounded-lg border border-cyan-100 bg-cyan-50/60 p-4">
+                    <h3 className="font-semibold text-cyan-900">SEO Essentials (Recommended)</h3>
+                    <p className="text-xs text-cyan-800">
+                      These fields improve search visibility: use a clear meta title, compelling meta description, keywords,
+                      canonical URL, and social sharing image.
+                    </p>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="seoTitle">Meta Title (best 55-60 chars)</Label>
+                      <Input
+                        id="seoTitle"
+                        className="bg-white/90 border-cyan-100 focus-visible:ring-cyan-300"
+                        placeholder="SEO title shown in Google results"
+                        value={newPost.seoTitle}
+                        onChange={(e) => setNewPost({ ...newPost, seoTitle: e.target.value })}
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="seoDescription">Meta Description (best 140-160 chars)</Label>
+                      <Textarea
+                        id="seoDescription"
+                        className="bg-white/90 border-cyan-100 focus-visible:ring-cyan-300"
+                        rows={3}
+                        placeholder="Short summary for search engines and social previews"
+                        value={newPost.seoDescription}
+                        onChange={(e) => setNewPost({ ...newPost, seoDescription: e.target.value })}
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="seoKeywords">SEO Keywords (comma-separated)</Label>
+                        <Input
+                          id="seoKeywords"
+                          className="bg-white/90 border-cyan-100 focus-visible:ring-cyan-300"
+                          placeholder="nlp coaching, hypnosis, leadership..."
+                          value={newPost.seoKeywords}
+                          onChange={(e) => setNewPost({ ...newPost, seoKeywords: e.target.value })}
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="canonicalUrl">Canonical URL (optional)</Label>
+                        <Input
+                          id="canonicalUrl"
+                          className="bg-white/90 border-cyan-100 focus-visible:ring-cyan-300"
+                          placeholder="https://konnectingdots.org/blog/your-slug"
+                          value={newPost.canonicalUrl}
+                          onChange={(e) => setNewPost({ ...newPost, canonicalUrl: e.target.value })}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="ogImage">Social Share Image URL (OG Image)</Label>
+                      <Input
+                        id="ogImage"
+                        className="bg-white/90 border-cyan-100 focus-visible:ring-cyan-300"
+                        placeholder="https://.../image-for-link-preview.jpg"
+                        value={newPost.ogImage}
+                        onChange={(e) => setNewPost({ ...newPost, ogImage: e.target.value })}
                       />
                     </div>
                   </div>

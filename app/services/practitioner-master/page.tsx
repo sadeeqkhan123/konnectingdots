@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Brain, Award, CheckCircle, Star, BookOpen, Target, Users, Globe, Zap, Heart } from "lucide-react"
+import { Brain, Award, BookOpen, Target, Users, Globe, Heart, ShieldCheck, Compass } from "lucide-react"
 import BookingModal from "@/components/booking-modal"
 import Link from "next/link"
 
@@ -68,23 +68,23 @@ export default function PractitionerMasterPage() {
 
                   <div className="space-y-4 mb-6">
                     <div className="flex items-center space-x-3">
-                      <CheckCircle className="h-5 w-5 text-green-500" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-green-500 flex-shrink-0" />
                       <span>Foundations of NLP and communication</span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <CheckCircle className="h-5 w-5 text-green-500" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-green-500 flex-shrink-0" />
                       <span>Understanding mind, emotions, and behavior patterns</span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <CheckCircle className="h-5 w-5 text-green-500" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-green-500 flex-shrink-0" />
                       <span>Hypnosis and hypnotherapy fundamentals</span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <CheckCircle className="h-5 w-5 text-green-500" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-green-500 flex-shrink-0" />
                       <span>Conducting safe and ethical client sessions</span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <CheckCircle className="h-5 w-5 text-green-500" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-green-500 flex-shrink-0" />
                       <span>Live demonstrations and guided practice</span>
                     </div>
                   </div>
@@ -118,23 +118,23 @@ export default function PractitionerMasterPage() {
 
                   <div className="space-y-4 mb-6">
                     <div className="flex items-center space-x-3">
-                      <CheckCircle className="h-5 w-5 text-blue-500" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-blue-500 flex-shrink-0" />
                       <span>Advanced NLP patterns and modeling</span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <CheckCircle className="h-5 w-5 text-blue-500" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-blue-500 flex-shrink-0" />
                       <span>Deep subconscious change work</span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <CheckCircle className="h-5 w-5 text-blue-500" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-blue-500 flex-shrink-0" />
                       <span>Mastery in hypnosis and hypnotherapy techniques</span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <CheckCircle className="h-5 w-5 text-blue-500" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-blue-500 flex-shrink-0" />
                       <span>Working with complex client issues</span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <CheckCircle className="h-5 w-5 text-blue-500" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-blue-500 flex-shrink-0" />
                       <span>Practitioner identity, confidence, and ethics</span>
                     </div>
                   </div>
@@ -213,7 +213,7 @@ export default function PractitionerMasterPage() {
                     "Relationships",
                   ].map((application, index) => (
                     <div key={index} className="flex items-center space-x-2">
-                      <Zap className="h-4 w-4" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-white/90" />
                       <span className="text-sm">{application}</span>
                     </div>
                   ))}
@@ -271,7 +271,7 @@ export default function PractitionerMasterPage() {
                     <div className="space-y-2">
                       {module.topics.map((topic, topicIndex) => (
                         <div key={topicIndex} className="flex items-center space-x-2">
-                          <CheckCircle className="h-4 w-4 text-green-500" />
+                          <span className="h-2.5 w-2.5 rounded-full bg-green-500 flex-shrink-0" />
                           <span className="text-sm text-gray-600">{topic}</span>
                         </div>
                       ))}
@@ -341,7 +341,7 @@ export default function PractitionerMasterPage() {
                     <div className="space-y-2">
                       {module.topics.map((topic, topicIndex) => (
                         <div key={topicIndex} className="flex items-center space-x-2">
-                          <CheckCircle className="h-4 w-4 text-blue-500" />
+                          <span className="h-2.5 w-2.5 rounded-full bg-blue-500 flex-shrink-0" />
                           <span className="text-sm text-gray-600">{topic}</span>
                         </div>
                       ))}
@@ -368,7 +368,7 @@ export default function PractitionerMasterPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
                 {
-                  icon: Brain,
+                  icon: Compass,
                   title: "Clarity & Confidence",
                   description: "Think, communicate, and respond with greater clarity and confidence",
                 },
@@ -439,9 +439,7 @@ export default function PractitionerMasterPage() {
                 <Card key={index} className="border-0 shadow-lg">
                   <CardContent className="p-6">
                     <div className="flex mb-4">
-                      {[1, 2, 3, 4, 5].map((star) => (
-                        <Star key={star} className="h-5 w-5 text-yellow-400 fill-current" />
-                      ))}
+                      <span className="text-yellow-500 tracking-wide">★★★★★</span>
                     </div>
                     <p className="text-gray-700 italic mb-6">"{testimonial.testimonial}"</p>
                     <div>
@@ -483,7 +481,7 @@ export default function PractitionerMasterPage() {
               </Card>
               <Card className="border-0 shadow-lg">
                 <CardContent className="p-6 text-center">
-                  <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />
+                  <ShieldCheck className="h-12 w-12 text-green-500 mx-auto mb-4" />
                   <h3 className="font-bold mb-2">Konnecting Dots Pakistan</h3>
                   <p className="text-sm text-gray-600">Eligible for ANLP International CIC (UK)</p>
                 </CardContent>

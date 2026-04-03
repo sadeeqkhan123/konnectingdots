@@ -403,27 +403,6 @@ html {
   width: 100%;
 }
 
-.logo-marquee::before,
-.logo-marquee::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  z-index: 2;
-  height: 100%;
-  width: 72px;
-  pointer-events: none;
-}
-
-.logo-marquee::before {
-  left: 0;
-  background: linear-gradient(to right, var(--background), transparent);
-}
-
-.logo-marquee::after {
-  right: 0;
-  background: linear-gradient(to left, var(--background), transparent);
-}
-
 .logo-marquee-track {
   display: flex;
   width: max-content;

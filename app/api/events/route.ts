@@ -16,9 +16,26 @@ const createEventSchema = z.object({
   image: z.string().optional(),
 })
 
+const markPastEventsAsCompleted = () => {
+  const now = new Date()
+  const events = eventDb.getAll()
+
+  for (const event of events) {
+    const eventEndOfDay = new Date(`${event.date}T23:59:59`)
+    const shouldComplete = (event.status === "upcoming" || event.status === "ongoing") && eventEndOfDay < now
+
+    if (shouldComplete) {
+      eventDb.update(event.id, { status: "completed" })
+    }
+  }
+}
+
 // GET - Get all events
 export async function GET(request: Request) {
   try {
+    // Auto-expire old events so they disappear from upcoming lists.
+    markPastEventsAsCompleted()
+
     const { searchParams } = new URL(request.url)
     const status = searchParams.get("status")
     const upcoming = searchParams.get("upcoming") === "true"

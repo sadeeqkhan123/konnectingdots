@@ -5,14 +5,14 @@ import {
   Users,
   Award,
   Clock,
-  CheckCircle,
-  Star,
   BookOpen,
   Target,
   TrendingUp,
   Calendar,
   DollarSign,
   Globe,
+  Briefcase,
+  MessageSquare,
 } from "lucide-react"
 import BookingModal from "@/components/booking-modal"
 import Link from "next/link"
@@ -90,7 +90,7 @@ export default function TrainTheTrainerPage() {
               <Card className="border-0 shadow-lg">
                 <CardContent className="p-6 text-center">
                   <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Users className="h-8 w-8 text-purple-600" />
+                    <Briefcase className="h-8 w-8 text-purple-600" />
                   </div>
                   <h3 className="text-xl font-bold mb-2">Training Style</h3>
                   <p className="text-gray-600">Highly practical and experiential</p>
@@ -154,7 +154,7 @@ export default function TrainTheTrainerPage() {
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Users className="h-6 w-6 text-yellow-600" />
+                    <MessageSquare className="h-6 w-6 text-yellow-600" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold mb-2">Group Facilitation Skills</h3>
@@ -246,7 +246,7 @@ export default function TrainTheTrainerPage() {
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-2">
                       {day.topics.map((topic, topicIndex) => (
                         <div key={topicIndex} className="flex items-center space-x-2">
-                          <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                          <span className="h-2.5 w-2.5 rounded-full bg-green-500 flex-shrink-0" />
                           <span className="text-sm text-gray-600">{topic}</span>
                         </div>
                       ))}
@@ -352,9 +352,7 @@ export default function TrainTheTrainerPage() {
                 <Card key={index} className="border-0 shadow-lg">
                   <CardContent className="p-6">
                     <div className="flex mb-4">
-                      {[1, 2, 3, 4, 5].map((star) => (
-                        <Star key={star} className="h-5 w-5 text-yellow-400 fill-current" />
-                      ))}
+                      <span className="text-yellow-500 tracking-wide">★★★★★</span>
                     </div>
                     <p className="text-gray-700 italic mb-6">"{testimonial.testimonial}"</p>
                     <div>

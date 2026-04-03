@@ -10,7 +10,7 @@ import { Badge } from "@/components/ui/badge"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { PlusCircle, Edit, Ban } from "lucide-react"
+import { PlusCircle, Edit, Ban, Upload, Sparkles } from "lucide-react"
 
 type EventStatus = "upcoming" | "ongoing" | "completed" | "cancelled"
 type EventFormat = "in-person" | "online" | "hybrid"
@@ -44,11 +44,20 @@ const initialForm = {
   image: "",
 }
 
+const CAPACITY_OPTIONS = [
+  { label: "Theatre Style (120)", value: "120" },
+  { label: "Classroom Style (60)", value: "60" },
+  { label: "Workshop Style (40)", value: "40" },
+  { label: "Boardroom Style (20)", value: "20" },
+  { label: "VIP Session (12)", value: "12" },
+]
+
 export default function EventsAdminPage() {
   const [events, setEvents] = useState<EventItem[]>([])
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [isSaving, setIsSaving] = useState(false)
   const [editingEventId, setEditingEventId] = useState<string | null>(null)
+  const [uploadedImageName, setUploadedImageName] = useState("")
   const [form, setForm] = useState(initialForm)
 
   const loadEvents = async () => {
@@ -70,6 +79,23 @@ export default function EventsAdminPage() {
   const resetForm = () => {
     setForm(initialForm)
     setEditingEventId(null)
+    setUploadedImageName("")
+  }
+
+  const handleImageUpload = (file?: File) => {
+    if (!file) return
+    if (!file.type.startsWith("image/")) {
+      alert("Please select a valid image file")
+      return
+    }
+
+    const reader = new FileReader()
+    reader.onload = (event) => {
+      const dataUrl = event.target?.result as string
+      setForm((prev) => ({ ...prev, image: dataUrl }))
+      setUploadedImageName(file.name)
+    }
+    reader.readAsDataURL(file)
   }
 
   const handleSave = async () => {
@@ -134,6 +160,7 @@ export default function EventsAdminPage() {
       status: event.status,
       image: "",
     })
+    setUploadedImageName("")
     setIsDialogOpen(true)
   }
 
@@ -180,20 +207,28 @@ export default function EventsAdminPage() {
                 Create Event
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+            <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto border-0 bg-gradient-to-br from-slate-50 via-white to-cyan-50 shadow-2xl">
               <DialogHeader>
-                <DialogTitle>{editingEventId ? "Edit Event" : "Create New Event"}</DialogTitle>
+                <DialogTitle className="flex items-center gap-2 text-2xl">
+                  <Sparkles className="h-5 w-5 text-cyan-600" />
+                  {editingEventId ? "Edit Event" : "Create New Event"}
+                </DialogTitle>
               </DialogHeader>
 
-              <div className="space-y-4 py-2">
+              <div className="space-y-4 py-2 rounded-xl border border-cyan-100 bg-white/80 backdrop-blur-sm p-4">
                 <div className="space-y-2">
                   <Label>Title *</Label>
-                  <Input value={form.title} onChange={(e) => setForm((prev) => ({ ...prev, title: e.target.value }))} />
+                  <Input
+                    className="bg-white/90 border-cyan-100 focus-visible:ring-cyan-300"
+                    value={form.title}
+                    onChange={(e) => setForm((prev) => ({ ...prev, title: e.target.value }))}
+                  />
                 </div>
 
                 <div className="space-y-2">
                   <Label>Description *</Label>
                   <Textarea
+                    className="bg-white/90 border-cyan-100 focus-visible:ring-cyan-300"
                     rows={4}
                     value={form.description}
                     onChange={(e) => setForm((prev) => ({ ...prev, description: e.target.value }))}
@@ -203,12 +238,16 @@ export default function EventsAdminPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label>Category *</Label>
-                    <Input value={form.category} onChange={(e) => setForm((prev) => ({ ...prev, category: e.target.value }))} />
+                    <Input
+                      className="bg-white/90 border-cyan-100 focus-visible:ring-cyan-300"
+                      value={form.category}
+                      onChange={(e) => setForm((prev) => ({ ...prev, category: e.target.value }))}
+                    />
                   </div>
                   <div className="space-y-2">
                     <Label>Format *</Label>
                     <Select value={form.format} onValueChange={(value: EventFormat) => setForm((prev) => ({ ...prev, format: value }))}>
-                      <SelectTrigger>
+                      <SelectTrigger className="bg-white/90 border-cyan-100 focus:ring-cyan-300">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -223,16 +262,26 @@ export default function EventsAdminPage() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="space-y-2">
                     <Label>Date *</Label>
-                    <Input type="date" value={form.date} onChange={(e) => setForm((prev) => ({ ...prev, date: e.target.value }))} />
+                    <Input
+                      className="bg-white/90 border-cyan-100 focus-visible:ring-cyan-300"
+                      type="date"
+                      value={form.date}
+                      onChange={(e) => setForm((prev) => ({ ...prev, date: e.target.value }))}
+                    />
                   </div>
                   <div className="space-y-2">
                     <Label>Time *</Label>
-                    <Input value={form.time} onChange={(e) => setForm((prev) => ({ ...prev, time: e.target.value }))} placeholder="9:00 AM - 5:00 PM" />
+                    <Input
+                      className="bg-white/90 border-cyan-100 focus-visible:ring-cyan-300"
+                      value={form.time}
+                      onChange={(e) => setForm((prev) => ({ ...prev, time: e.target.value }))}
+                      placeholder="9:00 AM - 5:00 PM"
+                    />
                   </div>
                   <div className="space-y-2">
                     <Label>Status *</Label>
                     <Select value={form.status} onValueChange={(value: EventStatus) => setForm((prev) => ({ ...prev, status: value }))}>
-                      <SelectTrigger>
+                      <SelectTrigger className="bg-white/90 border-cyan-100 focus:ring-cyan-300">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -248,21 +297,64 @@ export default function EventsAdminPage() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="space-y-2">
                     <Label>Location *</Label>
-                    <Input value={form.location} onChange={(e) => setForm((prev) => ({ ...prev, location: e.target.value }))} />
+                    <Input
+                      className="bg-white/90 border-cyan-100 focus-visible:ring-cyan-300"
+                      value={form.location}
+                      onChange={(e) => setForm((prev) => ({ ...prev, location: e.target.value }))}
+                    />
                   </div>
                   <div className="space-y-2">
                     <Label>Price (0 for free) *</Label>
-                    <Input type="number" min="0" value={form.price} onChange={(e) => setForm((prev) => ({ ...prev, price: e.target.value }))} />
+                    <Input
+                      className="bg-white/90 border-cyan-100 focus-visible:ring-cyan-300"
+                      type="number"
+                      min="0"
+                      value={form.price}
+                      onChange={(e) => setForm((prev) => ({ ...prev, price: e.target.value }))}
+                    />
                   </div>
                   <div className="space-y-2">
                     <Label>Capacity *</Label>
-                    <Input type="number" min="1" value={form.capacity} onChange={(e) => setForm((prev) => ({ ...prev, capacity: e.target.value }))} />
+                    <Select value={form.capacity} onValueChange={(value) => setForm((prev) => ({ ...prev, capacity: value }))}>
+                      <SelectTrigger className="bg-white/90 border-cyan-100 focus:ring-cyan-300">
+                        <SelectValue placeholder="Select capacity style" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {CAPACITY_OPTIONS.map((option) => (
+                          <SelectItem key={option.value} value={option.value}>
+                            {option.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label>Image URL (optional)</Label>
-                  <Input value={form.image} onChange={(e) => setForm((prev) => ({ ...prev, image: e.target.value }))} />
+                  <Label>Event Image (optional upload)</Label>
+                  <div className="flex gap-2">
+                    <Input
+                      className="bg-white/90 border-cyan-100"
+                      value={uploadedImageName || "No image selected"}
+                      readOnly
+                    />
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      id="event-image-upload"
+                      onChange={(e) => handleImageUpload(e.target.files?.[0])}
+                    />
+                    <Button
+                      type="button"
+                      variant="outline"
+                      className="border-cyan-200 bg-white"
+                      onClick={() => document.getElementById("event-image-upload")?.click()}
+                    >
+                      <Upload className="h-4 w-4 mr-2" />
+                      Upload
+                    </Button>
+                  </div>
                 </div>
 
                 <div className="flex gap-3 pt-2">

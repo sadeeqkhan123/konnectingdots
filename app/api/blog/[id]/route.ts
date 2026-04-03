@@ -12,6 +12,11 @@ const updatePostSchema = z.object({
   content: z.string().min(1).optional(),
   image: z.string().optional(),
   status: z.enum(["draft", "pending", "published", "rejected"]).optional(),
+  seoTitle: z.string().optional(),
+  seoDescription: z.string().optional(),
+  seoKeywords: z.string().optional(),
+  canonicalUrl: z.string().url().optional(),
+  ogImage: z.string().optional(),
 })
 
 // GET - Get a single blog post by ID

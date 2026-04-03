@@ -18,8 +18,19 @@ create table if not exists public.blog_posts (
   published_at timestamptz,
   read_time integer,
   submitted_by text,
-  submitted_by_email text
+  submitted_by_email text,
+  seo_title text,
+  seo_description text,
+  seo_keywords text,
+  canonical_url text,
+  og_image text
 );
+
+alter table if exists public.blog_posts add column if not exists seo_title text;
+alter table if exists public.blog_posts add column if not exists seo_description text;
+alter table if exists public.blog_posts add column if not exists seo_keywords text;
+alter table if exists public.blog_posts add column if not exists canonical_url text;
+alter table if exists public.blog_posts add column if not exists og_image text;
 
 create index if not exists blog_posts_status_idx on public.blog_posts (status);
 create index if not exists blog_posts_created_at_idx on public.blog_posts (created_at desc);

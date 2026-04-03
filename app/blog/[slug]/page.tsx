@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { Calendar, Clock, User, ArrowLeft, ArrowRight } from "lucide-react"
+import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { blogStore } from "@/lib/blog-store"
@@ -15,6 +16,47 @@ const formatDate = (dateString?: string) =>
         year: "numeric",
       })
     : "Recently published"
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const post = await blogStore.getBySlug(params.slug)
+  if (!post || post.status !== "published") {
+    return {
+      title: "Blog Post Not Found | Konnecting Dots",
+      description: "The requested blog post could not be found.",
+    }
+  }
+
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+  const canonicalUrl = post.canonicalUrl || `${siteUrl}/blog/${post.slug}`
+  const seoTitle = post.seoTitle || `${post.title} | Konnecting Dots`
+  const seoDescription = post.seoDescription || post.excerpt
+  const keywords = post.seoKeywords
+    ? post.seoKeywords.split(",").map((keyword) => keyword.trim())
+    : undefined
+  const ogImage = post.ogImage || post.image || "/placeholder.svg"
+
+  return {
+    title: seoTitle,
+    description: seoDescription,
+    keywords,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: seoTitle,
+      description: seoDescription,
+      url: canonicalUrl,
+      type: "article",
+      images: [{ url: ogImage }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: seoTitle,
+      description: seoDescription,
+      images: [ogImage],
+    },
+  }
+}
 
 export default async function BlogArticlePage({ params }: { params: { slug: string } }) {
   const post = await blogStore.getBySlug(params.slug)
