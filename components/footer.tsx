@@ -1,10 +1,47 @@
+"use client"
+
+import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Facebook, Twitter, Instagram, Linkedin, Youtube, Mail, Phone, MapPin } from "lucide-react"
+import { trackGtmEvent } from "@/lib/gtm"
 
 export default function Footer() {
+  const [newsletterEmail, setNewsletterEmail] = useState("")
+  const [isSubscribing, setIsSubscribing] = useState(false)
+
+  const handleNewsletterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (!newsletterEmail.trim()) return
+
+    setIsSubscribing(true)
+    try {
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: newsletterEmail.trim() }),
+      })
+      const data = await response.json()
+
+      if (response.ok && data.success) {
+        trackGtmEvent("newsletter_subscribe", {
+          page_path: window.location.pathname,
+        })
+        alert("Successfully subscribed! Check your email.")
+        setNewsletterEmail("")
+      } else {
+        alert(data.error || "Failed to subscribe")
+      }
+    } catch (error) {
+      console.error("Newsletter subscribe error:", error)
+      alert("Failed to subscribe. Please try again.")
+    } finally {
+      setIsSubscribing(false)
+    }
+  }
+
   return (
     <footer className="bg-card text-card-foreground border-t border-border">
       {/* Main Footer */}
@@ -159,12 +196,23 @@ export default function Footer() {
             <div>
               <h4 className="font-semibold mb-3">Newsletter</h4>
               <p className="text-muted-foreground text-sm mb-4">Get the latest insights and updates</p>
-              <div className="flex space-x-2">
-                <Input placeholder="Your email" className="bg-accent border-border" />
-                <Button className="bg-brand-secondary hover:bg-brand-secondary/90 text-brand-secondary-foreground font-semibold">
+              <form onSubmit={handleNewsletterSubmit} className="flex space-x-2">
+                <Input
+                  type="email"
+                  required
+                  placeholder="Your email"
+                  className="bg-accent border-border"
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                />
+                <Button
+                  type="submit"
+                  disabled={isSubscribing}
+                  className="bg-brand-secondary hover:bg-brand-secondary/90 text-brand-secondary-foreground font-semibold"
+                >
                   Subscribe
                 </Button>
-              </div>
+              </form>
             </div>
           </div>
         </div>
