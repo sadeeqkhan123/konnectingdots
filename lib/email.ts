@@ -38,14 +38,9 @@ export interface SendEmailOptions {
 
 export const sendEmail = async (options: SendEmailOptions) => {
   try {
-    // If no API key or resend client not initialized, log the email instead (for development/build)
+    // Enforce real Resend delivery for all query/contact flows.
     if (!process.env.RESEND_API_KEY || !resend) {
-      console.log("📧 Email would be sent (RESEND_API_KEY not set):", {
-        to: options.to,
-        subject: options.subject,
-        from: options.from || `${FROM_NAME} <${FROM_EMAIL}>`,
-      })
-      return { success: true, id: "dev-mode" }
+      throw new Error("RESEND_API_KEY is not configured. Email delivery is required for this request.")
     }
 
     const fromEmail = options.from || `${FROM_NAME} <${FROM_EMAIL}>`

@@ -108,7 +108,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form & Info */}
-      <section className="py-16">
+      <section id="contact-form" className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Contact Form */}
@@ -459,9 +459,11 @@ export default function ContactPage() {
             toward the life you deserve.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold">
-              <Phone className="mr-2 h-5 w-5" />
-              Book Free Consultation
+            <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold" asChild>
+              <Link href="#contact-form">
+                <Phone className="mr-2 h-5 w-5" />
+                Book Free Consultation
+              </Link>
             </Button>
             <a href="https://wa.link/8ens4r" target="_blank" rel="noopener noreferrer">
               <Button

@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 export default function CookiePolicyPage() {
   return (
@@ -235,8 +236,10 @@ export default function CookiePolicyPage() {
                     <h4 className="font-medium">Google Analytics</h4>
                     <p className="text-sm text-gray-600">Opt out of Google Analytics tracking</p>
                   </div>
-                  <Button variant="outline" size="sm">
-                    Opt Out
+                  <Button variant="outline" size="sm" asChild>
+                    <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">
+                      Opt Out
+                    </a>
                   </Button>
                 </div>
 
@@ -245,8 +248,10 @@ export default function CookiePolicyPage() {
                     <h4 className="font-medium">Facebook Advertising</h4>
                     <p className="text-sm text-gray-600">Manage Facebook ad preferences</p>
                   </div>
-                  <Button variant="outline" size="sm">
-                    Manage
+                  <Button variant="outline" size="sm" asChild>
+                    <a href="https://www.facebook.com/adpreferences/ad_settings" target="_blank" rel="noopener noreferrer">
+                      Manage
+                    </a>
                   </Button>
                 </div>
 
@@ -255,8 +260,10 @@ export default function CookiePolicyPage() {
                     <h4 className="font-medium">LinkedIn Advertising</h4>
                     <p className="text-sm text-gray-600">Control LinkedIn ad targeting</p>
                   </div>
-                  <Button variant="outline" size="sm">
-                    Control
+                  <Button variant="outline" size="sm" asChild>
+                    <a href="https://www.linkedin.com/psettings/advertising-data" target="_blank" rel="noopener noreferrer">
+                      Control
+                    </a>
                   </Button>
                 </div>
               </div>
@@ -295,7 +302,9 @@ export default function CookiePolicyPage() {
               <p className="text-sm text-gray-700 mb-3">
                 You can update your cookie preferences at any time by clicking the button below.
               </p>
-              <Button className="bg-blue-600 hover:bg-blue-700">Manage Cookie Preferences</Button>
+              <Button className="bg-blue-600 hover:bg-blue-700" asChild>
+                <Link href="/contact?subject=Cookie%20Preferences%20Request">Manage Cookie Preferences</Link>
+              </Button>
             </div>
           </CardContent>
         </Card>

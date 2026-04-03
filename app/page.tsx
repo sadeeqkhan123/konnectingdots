@@ -52,9 +52,12 @@ export default function HomePage() {
                 size="lg"
                 variant="outline"
                 className="border-white text-white hover:bg-white hover:text-black bg-transparent transform hover:scale-105 transition-all duration-300"
+                asChild
               >
-                <Play className="mr-2 h-5 w-5" />
-                Watch Intro Video
+                <Link href="#intro-video">
+                  <Play className="mr-2 h-5 w-5" />
+                  Watch Intro Video
+                </Link>
               </Button>
             </div>
           </div>
@@ -63,7 +66,7 @@ export default function HomePage() {
       {/* </CHANGE> */}
 
       {/* Intro Video Section */}
-      <section className="py-16 bg-background">
+      <section id="intro-video" className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0-animate animate-fade-in-up">
@@ -77,9 +80,12 @@ export default function HomePage() {
                 <Button
                   size="lg"
                   className="bg-white/20 hover:bg-white/30 text-white border-white/30 backdrop-blur-sm transform group-hover:scale-110 transition-all duration-300"
+                  asChild
                 >
-                  <Play className="mr-2 h-8 w-8" />
-                  Play Video
+                  <Link href="/contact?subject=Intro%20Video%20Request">
+                    <Play className="mr-2 h-8 w-8" />
+                    Play Video
+                  </Link>
                 </Button>
               </div>
             </div>

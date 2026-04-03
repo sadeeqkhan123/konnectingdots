@@ -36,9 +36,11 @@ export default function TestimonialsPage() {
             <Card className="group hover:shadow-xl transition-all duration-300 overflow-hidden">
               <div className="relative">
                 <div className="aspect-video bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
-                  <Button size="lg" className="bg-white/20 hover:bg-white/30 text-white border-white/30">
-                    <Play className="mr-2 h-6 w-6" />
-                    Play Video
+                  <Button size="lg" className="bg-white/20 hover:bg-white/30 text-white border-white/30" asChild>
+                    <Link href="/contact?subject=Corporate%20Testimonial%20Video%20Request">
+                      <Play className="mr-2 h-6 w-6" />
+                      Play Video
+                    </Link>
                   </Button>
                 </div>
                 <Badge className="absolute top-4 left-4 bg-blue-100 text-blue-800">Corporate Training</Badge>
@@ -63,9 +65,11 @@ export default function TestimonialsPage() {
             <Card className="group hover:shadow-xl transition-all duration-300 overflow-hidden">
               <div className="relative">
                 <div className="aspect-video bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
-                  <Button size="lg" className="bg-white/20 hover:bg-white/30 text-white border-white/30">
-                    <Play className="mr-2 h-6 w-6" />
-                    Play Video
+                  <Button size="lg" className="bg-white/20 hover:bg-white/30 text-white border-white/30" asChild>
+                    <Link href="/contact?subject=Personal%20Coaching%20Testimonial%20Video%20Request">
+                      <Play className="mr-2 h-6 w-6" />
+                      Play Video
+                    </Link>
                   </Button>
                 </div>
                 <Badge className="absolute top-4 left-4 bg-green-100 text-green-800">Personal Coaching</Badge>
@@ -90,9 +94,11 @@ export default function TestimonialsPage() {
             <Card className="group hover:shadow-xl transition-all duration-300 overflow-hidden">
               <div className="relative">
                 <div className="aspect-video bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center">
-                  <Button size="lg" className="bg-white/20 hover:bg-white/30 text-white border-white/30">
-                    <Play className="mr-2 h-6 w-6" />
-                    Play Video
+                  <Button size="lg" className="bg-white/20 hover:bg-white/30 text-white border-white/30" asChild>
+                    <Link href="/contact?subject=Practitioner%20Program%20Testimonial%20Video%20Request">
+                      <Play className="mr-2 h-6 w-6" />
+                      Play Video
+                    </Link>
                   </Button>
                 </div>
                 <Badge className="absolute top-4 left-4 bg-purple-100 text-purple-800">

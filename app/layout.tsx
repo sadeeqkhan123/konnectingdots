@@ -17,7 +17,10 @@ export const metadata: Metadata = {
     "Empowering minds and transforming lives through world-class NLP, Hypnosis, and Corporate Training programs. Unlock your potential with our expert-led courses.",
   keywords:
     "NLP, Neuro-Linguistic Programming, Hypnosis, Corporate Training, Personal Development, Leadership Training, DEI Training",
-    generator: 'v0.app'
+  verification: {
+    google: "HPqmQKFa0DUmCicKc7js277OlmLbm1oyHuF-q107YgY",
+  },
+  generator: "v0.app",
 }
 
 export default function RootLayout({

@@ -21,12 +21,28 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { PlusCircle, Upload, Eye, Edit, Trash2, FileText, CheckCircle, XCircle, Sparkles } from "lucide-react"
 import { RichTextEditor } from "@/components/rich-text-editor"
 
+const mapPostForAdmin = (post: any) => ({
+  id: post.id,
+  title: post.title,
+  slug: post.slug,
+  category: post.category,
+  author: post.author,
+  date: new Date(post.createdAt).toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  }),
+  status: post.status === "published" ? "Published" : post.status === "pending" ? "Pending" : post.status === "rejected" ? "Rejected" : "Draft",
+  image: post.image,
+})
+
 export default function BlogAdminPage() {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [blogPosts, setBlogPosts] = useState([
     {
       id: 1,
       title: "The Science Behind Rapid Personal Transformation",
+      slug: "the-science-behind-rapid-personal-transformation",
       category: "NLP Techniques",
       author: "Yousif Mangi",
       date: "March 15, 2024",
@@ -36,6 +52,7 @@ export default function BlogAdminPage() {
     {
       id: 2,
       title: "5 NLP Anchoring Techniques That Actually Work",
+      slug: "5-nlp-anchoring-techniques-that-actually-work",
       category: "NLP Techniques",
       author: "Yousif Mangi",
       date: "March 12, 2024",
@@ -45,6 +62,7 @@ export default function BlogAdminPage() {
     {
       id: 3,
       title: "Building Inclusive Teams: A Practical Guide",
+      slug: "building-inclusive-teams-a-practical-guide",
       category: "Corporate Training",
       author: "Yousif Mangi",
       date: "March 8, 2024",
@@ -70,6 +88,59 @@ export default function BlogAdminPage() {
   })
 
   const [isCreating, setIsCreating] = useState(false)
+
+  const refreshPosts = async () => {
+    const postsResponse = await fetch("/api/blog")
+    const postsData = await postsResponse.json()
+    if (postsData.success) {
+      setBlogPosts(postsData.posts.map(mapPostForAdmin))
+    }
+  }
+
+  const handlePreviewPost = (post: any) => {
+    const targetUrl = post.slug ? `/blog/${post.slug}` : `/blog`
+    window.open(targetUrl, "_blank", "noopener,noreferrer")
+  }
+
+  const handleRenamePost = async (post: any) => {
+    const updatedTitle = window.prompt("Edit post title:", post.title)
+    if (!updatedTitle || updatedTitle.trim() === post.title) {
+      return
+    }
+
+    try {
+      const response = await fetch(`/api/blog/${post.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title: updatedTitle.trim() }),
+      })
+
+      if (!response.ok) {
+        throw new Error("Failed to update post title")
+      }
+      await refreshPosts()
+    } catch (error) {
+      console.error("Error renaming post:", error)
+      alert("Failed to update post title")
+    }
+  }
+
+  const handleDeletePost = async (post: any) => {
+    if (!confirm(`Delete "${post.title}"? This cannot be undone.`)) {
+      return
+    }
+
+    try {
+      const response = await fetch(`/api/blog/${post.id}`, { method: "DELETE" })
+      if (!response.ok) {
+        throw new Error("Failed to delete post")
+      }
+      await refreshPosts()
+    } catch (error) {
+      console.error("Error deleting post:", error)
+      alert("Failed to delete post")
+    }
+  }
 
   const handleCreatePost = async () => {
     if (!newPost.title || !newPost.category || !newPost.author || !newPost.content || !newPost.excerpt) {
@@ -112,25 +183,7 @@ export default function BlogAdminPage() {
 
       if (data.success) {
         // Refresh the blog posts list
-        const postsResponse = await fetch("/api/blog")
-        const postsData = await postsResponse.json()
-        if (postsData.success) {
-          setBlogPosts(
-            postsData.posts.map((post: any) => ({
-              id: post.id,
-              title: post.title,
-              category: post.category,
-              author: post.author,
-              date: new Date(post.createdAt).toLocaleDateString("en-US", {
-                month: "long",
-                day: "numeric",
-                year: "numeric",
-              }),
-              status: post.status === "published" ? "Published" : post.status === "pending" ? "Pending" : post.status === "rejected" ? "Rejected" : "Draft",
-              image: post.image,
-            })),
-          )
-        }
+        await refreshPosts()
         setNewPost({
           title: "",
           category: "",
@@ -170,21 +223,7 @@ export default function BlogAdminPage() {
         }
         const data = await response.json()
         if (data.success) {
-          setBlogPosts(
-            data.posts.map((post: any) => ({
-              id: post.id,
-              title: post.title,
-              category: post.category,
-              author: post.author,
-              date: new Date(post.createdAt).toLocaleDateString("en-US", {
-                month: "long",
-                day: "numeric",
-                year: "numeric",
-              }),
-              status: post.status === "published" ? "Published" : post.status === "pending" ? "Pending" : post.status === "rejected" ? "Rejected" : "Draft",
-              image: post.image,
-            })),
-          )
+          setBlogPosts(data.posts.map(mapPostForAdmin))
         }
       } catch (error) {
         console.error("Error loading blog posts:", error)
@@ -553,21 +592,7 @@ export default function BlogAdminPage() {
                                       const postsResponse = await fetch("/api/blog")
                                       const postsData = await postsResponse.json()
                                       if (postsData.success) {
-                                        setBlogPosts(
-                                          postsData.posts.map((p: any) => ({
-                                            id: p.id,
-                                            title: p.title,
-                                            category: p.category,
-                                            author: p.author,
-                                            date: new Date(p.createdAt).toLocaleDateString("en-US", {
-                                              month: "long",
-                                              day: "numeric",
-                                              year: "numeric",
-                                            }),
-                                            status: p.status === "published" ? "Published" : p.status === "pending" ? "Pending" : p.status === "rejected" ? "Rejected" : "Draft",
-                                            image: p.image,
-                                          })),
-                                        )
+                                        setBlogPosts(postsData.posts.map(mapPostForAdmin))
                                       }
                                     }
                                   } catch (error) {
@@ -595,21 +620,7 @@ export default function BlogAdminPage() {
                                         const postsResponse = await fetch("/api/blog")
                                         const postsData = await postsResponse.json()
                                         if (postsData.success) {
-                                          setBlogPosts(
-                                            postsData.posts.map((p: any) => ({
-                                              id: p.id,
-                                              title: p.title,
-                                              category: p.category,
-                                              author: p.author,
-                                              date: new Date(p.createdAt).toLocaleDateString("en-US", {
-                                                month: "long",
-                                                day: "numeric",
-                                                year: "numeric",
-                                              }),
-                                              status: p.status === "published" ? "Published" : p.status === "pending" ? "Pending" : p.status === "rejected" ? "Rejected" : "Draft",
-                                              image: p.image,
-                                            })),
-                                          )
+                                          setBlogPosts(postsData.posts.map(mapPostForAdmin))
                                         }
                                       }
                                     } catch (error) {
@@ -624,13 +635,19 @@ export default function BlogAdminPage() {
                               </Button>
                             </>
                           )}
-                          <Button variant="ghost" size="icon">
+                          <Button variant="ghost" size="icon" onClick={() => handlePreviewPost(post)} title="Preview post">
                             <Eye className="h-4 w-4" />
                           </Button>
-                          <Button variant="ghost" size="icon">
+                          <Button variant="ghost" size="icon" onClick={() => handleRenamePost(post)} title="Rename post">
                             <Edit className="h-4 w-4" />
                           </Button>
-                          <Button variant="ghost" size="icon" className="text-red-600 hover:text-red-700">
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="text-red-600 hover:text-red-700"
+                            onClick={() => handleDeletePost(post)}
+                            title="Delete post"
+                          >
                             <Trash2 className="h-4 w-4" />
                           </Button>
                         </div>

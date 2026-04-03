@@ -39,21 +39,29 @@ export default function FAQPage() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2">
-                  <Button variant="ghost" className="w-full justify-start text-green-600">
-                    <Brain className="mr-2 h-4 w-4" />
-                    About NLP & Hypnosis
+                  <Button variant="ghost" className="w-full justify-start text-green-600" asChild>
+                    <Link href="#about-nlp-hypnosis">
+                      <Brain className="mr-2 h-4 w-4" />
+                      About NLP & Hypnosis
+                    </Link>
                   </Button>
-                  <Button variant="ghost" className="w-full justify-start">
-                    <Shield className="mr-2 h-4 w-4" />
-                    Safety & Effectiveness
+                  <Button variant="ghost" className="w-full justify-start" asChild>
+                    <Link href="#safety-effectiveness">
+                      <Shield className="mr-2 h-4 w-4" />
+                      Safety & Effectiveness
+                    </Link>
                   </Button>
-                  <Button variant="ghost" className="w-full justify-start">
-                    <Calendar className="mr-2 h-4 w-4" />
-                    Booking & Sessions
+                  <Button variant="ghost" className="w-full justify-start" asChild>
+                    <Link href="#booking-sessions">
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Booking & Sessions
+                    </Link>
                   </Button>
-                  <Button variant="ghost" className="w-full justify-start">
-                    <Phone className="mr-2 h-4 w-4" />
-                    Programs & Training
+                  <Button variant="ghost" className="w-full justify-start" asChild>
+                    <Link href="#programs-training">
+                      <Phone className="mr-2 h-4 w-4" />
+                      Programs & Training
+                    </Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -62,7 +70,7 @@ export default function FAQPage() {
             {/* FAQ Content */}
             <div className="lg:col-span-3 space-y-8">
               {/* About NLP & Hypnosis */}
-              <div>
+              <div id="about-nlp-hypnosis">
                 <h2 className="text-2xl font-bold mb-6 flex items-center">
                   <Brain className="mr-3 h-6 w-6 text-green-600" />
                   About NLP & Hypnosis
@@ -137,7 +145,7 @@ export default function FAQPage() {
               </div>
 
               {/* Safety & Effectiveness */}
-              <div>
+              <div id="safety-effectiveness">
                 <h2 className="text-2xl font-bold mb-6 flex items-center">
                   <Shield className="mr-3 h-6 w-6 text-blue-600" />
                   Safety & Effectiveness
@@ -210,7 +218,7 @@ export default function FAQPage() {
               </div>
 
               {/* Booking & Sessions */}
-              <div>
+              <div id="booking-sessions">
                 <h2 className="text-2xl font-bold mb-6 flex items-center">
                   <Calendar className="mr-3 h-6 w-6 text-purple-600" />
                   Booking & Sessions
@@ -279,7 +287,7 @@ export default function FAQPage() {
               </div>
 
               {/* Programs & Training */}
-              <div>
+              <div id="programs-training">
                 <h2 className="text-2xl font-bold mb-6 flex items-center">
                   <Phone className="mr-3 h-6 w-6 text-teal-600" />
                   Programs & Training
