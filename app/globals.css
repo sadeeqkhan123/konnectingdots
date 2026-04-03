@@ -406,7 +406,7 @@ html {
 .logo-marquee-track {
   display: flex;
   width: max-content;
-  gap: 1.25rem;
+  gap: 0.35rem;
   animation: logo-marquee-scroll 50s linear infinite;
   will-change: transform;
 }

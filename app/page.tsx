@@ -6,13 +6,13 @@ import Link from "next/link"
 import Image from "next/image"
 
 const CLIENT_LOGOS = [
-  { name: "Pakistan Reinsurance Company Limited", src: "/client-logos/pakre.png", className: "max-w-[220px]" },
-  { name: "Octal", src: "/client-logos/octal.png", className: "max-w-[155px]" },
-  { name: "Engro Vopak Terminal Ltd.", src: "/client-logos/engro-vopak.png", className: "max-w-[170px]" },
-  { name: "Tech Destination Pakistan", src: "/client-logos/tech-destination.png", className: "max-w-[170px]" },
-  { name: "Kiran Foundation", src: "/client-logos/kiran-foundation.png", className: "max-w-[88px]" },
-  { name: "QUEST Nawabshah", src: "/client-logos/quest.png", className: "max-w-[88px]" },
-  { name: "SZABIST University", src: "/client-logos/szabist.png", className: "max-w-[190px]" },
+  { name: "Pakistan Reinsurance Company Limited", src: "/client-logos/pakre.png", className: "max-w-[280px]" },
+  { name: "Octal", src: "/client-logos/octal.png", className: "max-w-[190px]" },
+  { name: "Engro Vopak Terminal Ltd.", src: "/client-logos/engro-vopak.png", className: "max-w-[220px]" },
+  { name: "Tech Destination Pakistan", src: "/client-logos/tech-destination.png", className: "max-w-[220px]" },
+  { name: "Kiran Foundation", src: "/client-logos/kiran-foundation.png", className: "max-w-[120px]" },
+  { name: "QUEST Nawabshah", src: "/client-logos/quest.png", className: "max-w-[120px]" },
+  { name: "SZABIST University", src: "/client-logos/szabist.png", className: "max-w-[250px]" },
 ]
 
 export default function HomePage() {
@@ -306,14 +306,14 @@ export default function HomePage() {
               {[...CLIENT_LOGOS, ...CLIENT_LOGOS].map((logo, index) => (
                 <div
                   key={`${logo.name}-${index}`}
-                  className="h-20 min-w-[220px] md:min-w-[250px] px-6 py-3 flex items-center justify-center"
+                  className="h-28 min-w-[200px] md:min-w-[230px] px-2 py-1 flex items-center justify-center"
                 >
                   <Image
                     src={logo.src}
                     alt={logo.name}
                     width={220}
                     height={80}
-                    className={`h-12 w-full object-contain ${logo.className}`}
+                    className={`h-20 w-full object-contain ${logo.className}`}
                     unoptimized
                   />
                 </div>
