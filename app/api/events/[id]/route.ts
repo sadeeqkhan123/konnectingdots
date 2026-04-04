@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { eventDb } from "@/lib/db"
+import { eventStore } from "@/lib/event-store"
 import { z } from "zod"
 
 const updateEventSchema = z.object({
@@ -25,7 +25,7 @@ export async function GET(request: Request, { params }: { params: { id: string }
       return NextResponse.json({ success: false, error: "Missing event ID" }, { status: 400 })
     }
     
-    const event = eventDb.getById(paramsValue.id)
+    const event = await eventStore.getById(paramsValue.id)
     if (!event) {
       return NextResponse.json({ success: false, error: "Event not found" }, { status: 404 })
     }
@@ -48,7 +48,7 @@ export async function PUT(request: Request, { params }: { params: { id: string }
     const body = await request.json()
     const validated = updateEventSchema.parse(body)
 
-    const updatedEvent = eventDb.update(paramsValue.id, validated)
+    const updatedEvent = await eventStore.update(paramsValue.id, validated)
     if (!updatedEvent) {
       return NextResponse.json({ success: false, error: "Event not found" }, { status: 404 })
     }
@@ -72,9 +72,7 @@ export async function DELETE(request: Request, { params }: { params: { id: strin
       return NextResponse.json({ success: false, error: "Missing event ID" }, { status: 400 })
     }
     
-    // Note: We'd need to add a delete method to eventDb
-    // For now, we'll just mark it as cancelled
-    const updatedEvent = eventDb.update(paramsValue.id, { status: "cancelled" })
+    const updatedEvent = await eventStore.cancel(paramsValue.id)
     if (!updatedEvent) {
       return NextResponse.json({ success: false, error: "Event not found" }, { status: 404 })
     }

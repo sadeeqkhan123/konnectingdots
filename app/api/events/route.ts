@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { eventDb } from "@/lib/db"
+import { eventStore } from "@/lib/event-store"
 import { z } from "zod"
 
 const createEventSchema = z.object({
@@ -16,34 +16,20 @@ const createEventSchema = z.object({
   image: z.string().optional(),
 })
 
-const markPastEventsAsCompleted = () => {
-  const now = new Date()
-  const events = eventDb.getAll()
-
-  for (const event of events) {
-    const eventEndOfDay = new Date(`${event.date}T23:59:59`)
-    const shouldComplete = (event.status === "upcoming" || event.status === "ongoing") && eventEndOfDay < now
-
-    if (shouldComplete) {
-      eventDb.update(event.id, { status: "completed" })
-    }
-  }
-}
-
 // GET - Get all events
 export async function GET(request: Request) {
   try {
     // Auto-expire old events so they disappear from upcoming lists.
-    markPastEventsAsCompleted()
+    await eventStore.markPastEventsAsCompleted()
 
     const { searchParams } = new URL(request.url)
     const status = searchParams.get("status")
     const upcoming = searchParams.get("upcoming") === "true"
 
-    let events = eventDb.getAll()
+    let events = await eventStore.getAll()
 
     if (upcoming) {
-      events = eventDb.getUpcoming()
+      events = await eventStore.getUpcoming()
     } else if (status) {
       events = events.filter((event) => event.status === status)
     }
@@ -64,7 +50,7 @@ export async function POST(request: Request) {
     const body = await request.json()
     const validated = createEventSchema.parse(body)
 
-    const newEvent = eventDb.create({
+    const newEvent = await eventStore.create({
       title: validated.title,
       description: validated.description,
       category: validated.category,

@@ -84,3 +84,108 @@ on public.blog_posts
 for delete
 to anon, authenticated
 using (true);
+
+-- -------------------------------------------------------------------
+-- Events and event registrations (for /events + /eventsadmin)
+-- -------------------------------------------------------------------
+
+create table if not exists public.events (
+  id uuid primary key default gen_random_uuid(),
+  title text not null,
+  description text not null,
+  category text not null,
+  date date not null,
+  time text not null,
+  location text not null,
+  format text not null check (format in ('in-person', 'online', 'hybrid')),
+  price numeric(10,2) not null default 0,
+  capacity integer not null default 1,
+  registered integer not null default 0,
+  status text not null default 'upcoming' check (status in ('upcoming', 'ongoing', 'completed', 'cancelled')),
+  image text,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create table if not exists public.event_registrations (
+  id uuid primary key default gen_random_uuid(),
+  event_id uuid not null references public.events(id) on delete cascade,
+  name text not null,
+  email text not null,
+  phone text not null,
+  company text,
+  status text not null default 'pending' check (status in ('pending', 'confirmed', 'cancelled')),
+  created_at timestamptz not null default now()
+);
+
+create index if not exists events_date_idx on public.events (date asc);
+create index if not exists events_status_idx on public.events (status);
+create index if not exists event_registrations_event_id_idx on public.event_registrations (event_id);
+create index if not exists event_registrations_email_idx on public.event_registrations (email);
+
+drop trigger if exists trg_events_updated_at on public.events;
+create trigger trg_events_updated_at
+before update on public.events
+for each row
+execute function public.set_updated_at();
+
+alter table public.events enable row level security;
+alter table public.event_registrations enable row level security;
+
+drop policy if exists "Open read access events" on public.events;
+create policy "Open read access events"
+on public.events
+for select
+to anon, authenticated
+using (true);
+
+drop policy if exists "Open insert access events" on public.events;
+create policy "Open insert access events"
+on public.events
+for insert
+to anon, authenticated
+with check (true);
+
+drop policy if exists "Open update access events" on public.events;
+create policy "Open update access events"
+on public.events
+for update
+to anon, authenticated
+using (true)
+with check (true);
+
+drop policy if exists "Open delete access events" on public.events;
+create policy "Open delete access events"
+on public.events
+for delete
+to anon, authenticated
+using (true);
+
+drop policy if exists "Open read access event registrations" on public.event_registrations;
+create policy "Open read access event registrations"
+on public.event_registrations
+for select
+to anon, authenticated
+using (true);
+
+drop policy if exists "Open insert access event registrations" on public.event_registrations;
+create policy "Open insert access event registrations"
+on public.event_registrations
+for insert
+to anon, authenticated
+with check (true);
+
+drop policy if exists "Open update access event registrations" on public.event_registrations;
+create policy "Open update access event registrations"
+on public.event_registrations
+for update
+to anon, authenticated
+using (true)
+with check (true);
+
+drop policy if exists "Open delete access event registrations" on public.event_registrations;
+create policy "Open delete access event registrations"
+on public.event_registrations
+for delete
+to anon, authenticated
+using (true);

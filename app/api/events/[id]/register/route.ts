@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { eventDb } from "@/lib/db"
+import { eventStore } from "@/lib/event-store"
 import { sendEventRegistrationConfirmation } from "@/lib/email"
 import { z } from "zod"
 
@@ -25,8 +25,7 @@ export async function POST(request: Request, { params }: { params: { id: string 
     const body = await request.json()
     const validated = registrationSchema.parse(body)
 
-    // Get event (may be unavailable on serverless local-file storage)
-    const event = eventDb.getById(paramsValue.id)
+    const event = await eventStore.getById(paramsValue.id)
     const fallbackEventFromClient = {
       title: validated.eventTitle || "Training Event",
       date: validated.eventDate || new Date().toISOString().split("T")[0],
@@ -38,28 +37,18 @@ export async function POST(request: Request, { params }: { params: { id: string 
       return NextResponse.json({ success: false, error: "Event not found" }, { status: 404 })
     }
 
-    if (event) {
-      // Check if event is full
-      if (event.registered >= event.capacity) {
-        return NextResponse.json({ success: false, error: "Event is full" }, { status: 400 })
-      }
-
-      // Check if event is still accepting registrations
-      if (event.status !== "upcoming") {
-        return NextResponse.json({ success: false, error: "Event is not accepting registrations" }, { status: 400 })
-      }
-    }
-
-    // Try to register for event (but don't fail if database write doesn't work on Vercel)
     let registration = null
+    let registeredEvent = event
     try {
       if (event) {
-        registration = eventDb.register(paramsValue.id, {
+        const result = await eventStore.register(paramsValue.id, {
           name: validated.name,
           email: validated.email,
           phone: validated.phone,
           company: validated.company,
         })
+        registration = result.registration
+        registeredEvent = result.event
       } else {
         registration = {
           id: Date.now().toString(),
@@ -73,8 +62,18 @@ export async function POST(request: Request, { params }: { params: { id: string 
         }
       }
     } catch (dbError) {
+      const message = dbError instanceof Error ? dbError.message : String(dbError)
+      if (/event is full/i.test(message)) {
+        return NextResponse.json({ success: false, error: "Event is full" }, { status: 400 })
+      }
+      if (/not accepting registrations/i.test(message)) {
+        return NextResponse.json({ success: false, error: "Event is not accepting registrations" }, { status: 400 })
+      }
+      if (/event not found/i.test(message)) {
+        return NextResponse.json({ success: false, error: "Event not found" }, { status: 404 })
+      }
+
       console.error("Error saving event registration to database (non-critical):", dbError)
-      // Create a registration object anyway for the response
       registration = {
         id: Date.now().toString(),
         eventId: paramsValue.id,
@@ -90,14 +89,14 @@ export async function POST(request: Request, { params }: { params: { id: string 
     // Send confirmation email (this is the critical part)
     try {
       await sendEventRegistrationConfirmation({
-        eventTitle: event?.title || fallbackEventFromClient.title,
+        eventTitle: registeredEvent?.title || fallbackEventFromClient.title,
         name: validated.name,
         email: validated.email,
         phone: validated.phone,
         company: validated.company,
-        date: event?.date || fallbackEventFromClient.date,
-        time: event?.time || fallbackEventFromClient.time,
-        location: event?.location || fallbackEventFromClient.location,
+        date: registeredEvent?.date || fallbackEventFromClient.date,
+        time: registeredEvent?.time || fallbackEventFromClient.time,
+        location: registeredEvent?.location || fallbackEventFromClient.location,
       })
     } catch (emailError) {
       console.error("Error sending event registration email:", emailError)

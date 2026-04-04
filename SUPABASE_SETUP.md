@@ -1,6 +1,8 @@
 # Supabase Setup
 
-The project is now wired to use Supabase for blog APIs through `lib/blog-store.ts`.
+The project is now wired to use Supabase for:
+- blog APIs through `lib/blog-store.ts`
+- events APIs through `lib/event-store.ts`
 
 ## 1) Environment Variables
 
@@ -22,7 +24,7 @@ Optional but recommended for secure server-side writes:
 SUPABASE_SERVICE_ROLE_KEY=your_service_role_key_here
 ```
 
-## 2) Create the Blog Table
+## 2) Create Blog + Events Tables
 
 Open Supabase Dashboard -> SQL Editor, then run:
 
@@ -30,6 +32,8 @@ Open Supabase Dashboard -> SQL Editor, then run:
 
 This creates:
 - `public.blog_posts` table
+- `public.events` table
+- `public.event_registrations` table
 - indexes
 - auto-update trigger for `updated_at`
 - temporary open RLS policies (for current no-auth admin flow)
@@ -57,7 +61,19 @@ npm run dev
 - Approval email link to dashboard uses `NEXT_PUBLIC_SITE_URL + /blogadmin`
 - Publish email link uses `NEXT_PUBLIC_SITE_URL + /blog/{slug}`
 
-## 6) Where To Put Keys In Production
+## 6) Events Pathway (Clear Flow)
+
+- Admin dashboard path: `/eventsadmin` (also aliased from `/events-admin`)
+- Admin actions call API: `/api/events`, `/api/events/[id]`
+- Public events page uses API: `/api/events?upcoming=true`
+- Registration endpoint: `/api/events/[id]/register`
+- Registration emails are sent to:
+  - the participant email submitted in the form
+  - `ADMIN_EMAIL`
+
+- **Important:** If events are still not persisting after deployment, re-run `supabase-blog-schema.sql` in Supabase SQL Editor so `events` and `event_registrations` tables/policies exist.
+
+## 7) Where To Put Keys In Production
 
 - Local development: `.env.local`
 - Vercel/hosting: Project Settings -> Environment Variables (same key names)
