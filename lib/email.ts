@@ -10,11 +10,10 @@ import {
 // During build time, this might be undefined, so we'll handle it gracefully
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null
 
-// Use Resend test domain if custom domain not verified
-// For production, verify your domain in Resend and set FROM_EMAIL env variable
-const FROM_EMAIL = process.env.FROM_EMAIL || "onboarding@resend.dev"
+// Default to brand sender; override with FROM_EMAIL in env vars.
+const FROM_EMAIL = process.env.FROM_EMAIL || "noreply@konnectingdots.org"
 const FROM_NAME = process.env.FROM_NAME || "Konnecting Dots"
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "yousifmangi32@gmail.com"
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "Connect@konnectingdots.org"
 
 // Utility function to escape HTML to prevent XSS in email templates
 const escapeHtml = (text: string): string => {
@@ -56,7 +55,7 @@ export const sendEmail = async (options: SendEmailOptions) => {
       to: Array.isArray(options.to) ? options.to : [options.to],
       subject: options.subject,
       html: options.html,
-      reply_to: options.replyTo,
+      reply_to: options.replyTo || ADMIN_EMAIL,
     })
 
     console.log("✅ Email sent successfully:", {
