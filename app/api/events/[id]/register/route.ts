@@ -8,6 +8,10 @@ const registrationSchema = z.object({
   email: z.string().email("Invalid email address"),
   phone: z.string().min(1, "Phone is required"),
   company: z.string().optional(),
+  eventTitle: z.string().optional(),
+  eventDate: z.string().optional(),
+  eventTime: z.string().optional(),
+  eventLocation: z.string().optional(),
 })
 
 export async function POST(request: Request, { params }: { params: { id: string } | Promise<{ id: string }> }) {
@@ -21,31 +25,53 @@ export async function POST(request: Request, { params }: { params: { id: string 
     const body = await request.json()
     const validated = registrationSchema.parse(body)
 
-    // Get event
+    // Get event (may be unavailable on serverless local-file storage)
     const event = eventDb.getById(paramsValue.id)
-    if (!event) {
+    const fallbackEventFromClient = {
+      title: validated.eventTitle || "Training Event",
+      date: validated.eventDate || new Date().toISOString().split("T")[0],
+      time: validated.eventTime || "To be confirmed",
+      location: validated.eventLocation || "To be confirmed",
+    }
+
+    if (!event && !validated.eventTitle) {
       return NextResponse.json({ success: false, error: "Event not found" }, { status: 404 })
     }
 
-    // Check if event is full
-    if (event.registered >= event.capacity) {
-      return NextResponse.json({ success: false, error: "Event is full" }, { status: 400 })
-    }
+    if (event) {
+      // Check if event is full
+      if (event.registered >= event.capacity) {
+        return NextResponse.json({ success: false, error: "Event is full" }, { status: 400 })
+      }
 
-    // Check if event is still accepting registrations
-    if (event.status !== "upcoming") {
-      return NextResponse.json({ success: false, error: "Event is not accepting registrations" }, { status: 400 })
+      // Check if event is still accepting registrations
+      if (event.status !== "upcoming") {
+        return NextResponse.json({ success: false, error: "Event is not accepting registrations" }, { status: 400 })
+      }
     }
 
     // Try to register for event (but don't fail if database write doesn't work on Vercel)
     let registration = null
     try {
-      registration = eventDb.register(paramsValue.id, {
-        name: validated.name,
-        email: validated.email,
-        phone: validated.phone,
-        company: validated.company,
-      })
+      if (event) {
+        registration = eventDb.register(paramsValue.id, {
+          name: validated.name,
+          email: validated.email,
+          phone: validated.phone,
+          company: validated.company,
+        })
+      } else {
+        registration = {
+          id: Date.now().toString(),
+          eventId: paramsValue.id,
+          name: validated.name,
+          email: validated.email,
+          phone: validated.phone,
+          company: validated.company,
+          status: "pending",
+          createdAt: new Date().toISOString(),
+        }
+      }
     } catch (dbError) {
       console.error("Error saving event registration to database (non-critical):", dbError)
       // Create a registration object anyway for the response
@@ -64,14 +90,14 @@ export async function POST(request: Request, { params }: { params: { id: string 
     // Send confirmation email (this is the critical part)
     try {
       await sendEventRegistrationConfirmation({
-        eventTitle: event.title,
+        eventTitle: event?.title || fallbackEventFromClient.title,
         name: validated.name,
         email: validated.email,
         phone: validated.phone,
         company: validated.company,
-        date: event.date,
-        time: event.time,
-        location: event.location,
+        date: event?.date || fallbackEventFromClient.date,
+        time: event?.time || fallbackEventFromClient.time,
+        location: event?.location || fallbackEventFromClient.location,
       })
     } catch (emailError) {
       console.error("Error sending event registration email:", emailError)

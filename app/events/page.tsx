@@ -78,20 +78,26 @@ export default function EventsPage() {
   const handleRegister = async (eventId: string) => {
     setIsSubmitting(true)
     try {
+      const selected = events.find((item) => item.id === eventId) || selectedEvent
       const response = await fetch(`/api/events/${eventId}/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(registrationForm),
+        body: JSON.stringify({
+          ...registrationForm,
+          eventTitle: selected?.title,
+          eventDate: selected?.date,
+          eventTime: selected?.time,
+          eventLocation: selected?.location,
+        }),
       })
       const data = await response.json()
       if (response.ok && data.success) {
-        const selected = events.find((item) => item.id === eventId)
         trackGtmEvent("event_registration", {
           event_id: eventId,
           event_title: selected?.title || selectedEvent?.title || "unknown",
           page_path: window.location.pathname,
         })
-        alert("Registration successful! Check your email for confirmation.")
+        alert(`Registration successful! Confirmation was sent to ${registrationForm.email}.`)
         setRegistrationForm({ name: "", email: "", phone: "", company: "" })
         setSelectedEvent(null)
       } else {
