@@ -16,6 +16,10 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  icons: {
+    icon: [{ url: "/logo-light.png", type: "image/png" }],
+    apple: [{ url: "/logo-light.png", type: "image/png" }],
+  },
   title: "Konnecting Dots - NLP, Hypnosis & Corporate Training",
   description:
     "Empowering minds and transforming lives through world-class NLP, Hypnosis, and Corporate Training programs. Unlock your potential with our expert-led courses.",

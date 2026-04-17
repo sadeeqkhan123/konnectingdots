@@ -310,10 +310,9 @@ export default function ContactPage() {
                 </CardHeader>
                 <CardContent>
                   <div>
-                    <p className="font-semibold">Headquarters</p>
-                    <p className="text-gray-600">
-                      Karachi, Pakistan
-                    </p>
+                    <p className="font-semibold">Locations</p>
+                    <p className="text-gray-600">Karachi, Pakistan</p>
+                    <p className="text-gray-600">Kathmandu, Nepal</p>
                   </div>
                 </CardContent>
               </Card>
@@ -408,8 +407,8 @@ export default function ContactPage() {
                 <CardContent className="p-6">
                   <h3 className="font-bold mb-2">How quickly will I see results?</h3>
                   <p className="text-gray-600">
-                    Many clients experience significant improvements within 3-6 sessions. However, results vary
-                    depending on individual goals and commitment to the process.
+                    Many clients experience significant improvements over our typical 8-session one-on-one coaching
+                    program. However, results vary depending on individual goals and commitment to the process.
                   </p>
                 </CardContent>
               </Card>

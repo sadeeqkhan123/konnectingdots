@@ -32,6 +32,7 @@ import {
   Shield,
 } from "lucide-react"
 import Link from "next/link"
+import { PRACTITIONER_APPLY_FORM_URL } from "@/lib/practitioner-apply-form-url"
 
 export default function ServicesPage() {
   const [activeTab, setActiveTab] = useState("one-on-one")
@@ -95,7 +96,7 @@ export default function ServicesPage() {
                 Train the Trainer
               </TabsTrigger>
               <TabsTrigger value="practitioner" className="text-xs lg:text-sm">
-                Practitioner
+                NLP & Hypnosis
               </TabsTrigger>
             </TabsList>
 
@@ -160,7 +161,7 @@ export default function ServicesPage() {
                           <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-100">
                             <Clock className="h-5 w-5 text-blue-600" />
                           </span>
-                          <span>Session length: 60-90 minutes</span>
+                          <span>Session length: 60 minutes</span>
                         </div>
                         <div className="flex items-center gap-3">
                           <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-green-100">
@@ -178,13 +179,13 @@ export default function ServicesPage() {
                           <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-teal-100">
                             <Award className="h-5 w-5 text-teal-600" />
                           </span>
-                          <span>Sessions: Usually 4-12</span>
+                          <span>Sessions: 8-session program</span>
                         </div>
                         <div className="flex items-center gap-3">
                           <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-yellow-100">
                             <Star className="h-5 w-5 text-yellow-600" />
                           </span>
-                          <span>Investment: 50 USD per session</span>
+                          <span>Investment: 100 USD per session</span>
                         </div>
                         <div className="flex items-center gap-3">
                           <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-green-100">
@@ -362,8 +363,8 @@ export default function ServicesPage() {
                   </Link>
                   <p className="text-sm text-gray-600 mt-4">
                     Email:{" "}
-                    <a href="mailto:yousif.mangi@konnectingdots.org" className="text-teal-700 underline">
-                      yousif.mangi@konnectingdots.org
+                    <a href="mailto:yousifmangi@konnectingdots.org" className="text-teal-700 underline">
+                      yousifmangi@konnectingdots.org
                     </a>
                   </p>
                 </div>
@@ -641,7 +642,7 @@ export default function ServicesPage() {
                       <div className="grid md:grid-cols-2 gap-4">
                         <div className="flex items-center space-x-3">
                           <Clock className="h-5 w-5 text-blue-600" />
-                          <span>Duration: 03 Month Program</span>
+                          <span>Duration: 4 months (in-person)</span>
                         </div>
                         <div className="flex items-center space-x-3">
                           <MapPin className="h-5 w-5 text-green-600" />
@@ -661,7 +662,7 @@ export default function ServicesPage() {
                         </div>
                       </div>
                       <p className="text-gray-600 mt-4">
-                        Investment: USD 5,000 (includes certifications, memberships, training materials, and ongoing
+                        Investment: 4000 USD (includes certifications, memberships, training materials, and ongoing
                         support).
                       </p>
                     </div>
@@ -675,8 +676,8 @@ export default function ServicesPage() {
                   </Link>
                   <p className="text-sm text-gray-600 mt-4">
                     Apply now or request full program details at{" "}
-                    <a href="mailto:yousif.mangi@konnectingdots.org" className="text-blue-700 underline">
-                      yousif.mangi@konnectingdots.org
+                    <a href="mailto:yousifmangi@konnectingdots.org" className="text-blue-700 underline">
+                      yousifmangi@konnectingdots.org
                     </a>
                   </p>
                 </div>
@@ -821,13 +822,13 @@ export default function ServicesPage() {
                         <ArrowRight className="ml-2 h-5 w-5" />
                       </Button>
                     </Link>
-                    <Link href="https://lnkd.in/dbNTGHgH" target="_blank" rel="noreferrer">
+                    <Link href={PRACTITIONER_APPLY_FORM_URL} target="_blank" rel="noopener noreferrer">
                       <Button
                         size="lg"
                         variant="outline"
                         className="border-green-600 text-green-600 hover:bg-green-50 bg-transparent"
                       >
-                        Sign Up Now
+                        Apply Now
                       </Button>
                     </Link>
                   </div>

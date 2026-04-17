@@ -6,14 +6,11 @@ import {
   Heart,
   Users,
   Award,
-  Calendar,
   Tv,
-  Building,
   CheckCircle,
   ArrowRight,
   Globe,
   BookOpen,
-  TrendingUp,
 } from "lucide-react"
 import Link from "next/link"
 
@@ -223,137 +220,15 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Journey</h2>
-              <p className="text-xl text-gray-600">Key milestones in our mission to transform lives</p>
-            </div>
-
-            <div className="space-y-8">
-              <div className="flex items-start space-x-6">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center">
-                    <Calendar className="h-6 w-6 text-teal-600" />
-                  </div>
-                </div>
-                <div>
-                  <div className="flex items-center space-x-3 mb-2">
-                    <h3 className="text-xl font-bold">2009</h3>
-                    <Badge variant="outline">Foundation</Badge>
-                  </div>
-                  <p className="text-gray-600">
-                    Konnecting Dots was founded with a vision to make transformational NLP and hypnosis techniques
-                    accessible to everyone.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-6">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                    <Award className="h-6 w-6 text-blue-600" />
-                  </div>
-                </div>
-                <div>
-                  <div className="flex items-center space-x-3 mb-2">
-                    <h3 className="text-xl font-bold">2012</h3>
-                    <Badge variant="outline">Recognition</Badge>
-                  </div>
-                  <p className="text-gray-600">
-                    Achieved international recognition for innovative NLP training methodologies and received first
-                    industry awards.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-6">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
-                    <Building className="h-6 w-6 text-purple-600" />
-                  </div>
-                </div>
-                <div>
-                  <div className="flex items-center space-x-3 mb-2">
-                    <h3 className="text-xl font-bold">2015</h3>
-                    <Badge variant="outline">Corporate Expansion</Badge>
-                  </div>
-                  <p className="text-gray-600">
-                    Launched corporate training division, partnering with Fortune 500 companies to transform
-                    organizational culture.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-6">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                    <Heart className="h-6 w-6 text-green-600" />
-                  </div>
-                </div>
-                <div>
-                  <div className="flex items-center space-x-3 mb-2">
-                    <h3 className="text-xl font-bold">2018</h3>
-                    <Badge variant="outline">DEI Leadership</Badge>
-                  </div>
-                  <p className="text-gray-600">
-                    Pioneered comprehensive DEI training programs, becoming a leading voice in inclusive workplace
-                    transformation.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-6">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
-                    <Globe className="h-6 w-6 text-yellow-600" />
-                  </div>
-                </div>
-                <div>
-                  <div className="flex items-center space-x-3 mb-2">
-                    <h3 className="text-xl font-bold">2020</h3>
-                    <Badge variant="outline">Global Reach</Badge>
-                  </div>
-                  <p className="text-gray-600">
-                    Expanded globally with online programs, reaching clients in over 50 countries and training 10,000+
-                    individuals.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-6">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center">
-                    <TrendingUp className="h-6 w-6 text-teal-600" />
-                  </div>
-                </div>
-                <div>
-                  <div className="flex items-center space-x-3 mb-2">
-                    <h3 className="text-xl font-bold">2024</h3>
-                    <Badge variant="outline">Innovation</Badge>
-                  </div>
-                  <p className="text-gray-600">
-                    Launched cutting-edge hybrid training programs and AI-enhanced learning platforms for personalized
-                    transformation.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Team & Collaborators */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Expert Team</h2>
-            <p className="text-xl text-gray-600">Meet the professionals behind your transformation</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Leadership</h2>
+            <p className="text-xl text-gray-600">Meet the people behind your transformation</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid max-w-3xl mx-auto md:grid-cols-2 gap-8">
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="p-8">
                 <div className="w-20 h-20 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -369,108 +244,56 @@ export default function AboutPage() {
 
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="p-8">
-                <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-blue-600 font-bold text-xl">DR</span>
-                </div>
-                <h3 className="text-xl font-bold mb-2">Dr. Sarah Rodriguez</h3>
-                <p className="text-gray-600 mb-4">Senior NLP Trainer</p>
-                <p className="text-sm text-gray-500">Clinical psychologist and certified Master Practitioner</p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="p-8">
-                <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-purple-600 font-bold text-xl">MJ</span>
-                </div>
-                <h3 className="text-xl font-bold mb-2">Michael Johnson</h3>
-                <p className="text-gray-600 mb-4">Corporate Training Director</p>
-                <p className="text-sm text-gray-500">Former Fortune 500 executive and leadership development expert</p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="p-8">
                 <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-green-600 font-bold text-xl">LW</span>
+                  <span className="text-green-600 font-bold text-xl">ZY</span>
                 </div>
-                <h3 className="text-xl font-bold mb-2">Lisa Wang</h3>
-                <p className="text-gray-600 mb-4">DEI Specialist</p>
-                <p className="text-sm text-gray-500">Diversity consultant with expertise in inclusive leadership</p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="p-8">
-                <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-yellow-600 font-bold text-xl">RP</span>
-                </div>
-                <h3 className="text-xl font-bold mb-2">Robert Park</h3>
-                <p className="text-gray-600 mb-4">Hypnotherapy Expert</p>
-                <p className="text-sm text-gray-500">Certified clinical hypnotherapist and wellness coach</p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="p-8">
-                <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-red-600 font-bold text-xl">AT</span>
-                </div>
-                <h3 className="text-xl font-bold mb-2">Amanda Torres</h3>
-                <p className="text-gray-600 mb-4">Program Coordinator</p>
-                <p className="text-sm text-gray-500">Operations expert ensuring seamless training experiences</p>
+                <h3 className="text-xl font-bold mb-2">Zoya Yousif</h3>
+                <p className="text-gray-600 mb-4">Co-Founder & Program Director</p>
+                <p className="text-sm text-gray-500">
+                  Learning experience design, client success, and inclusive program delivery
+                </p>
               </CardContent>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* Affiliations & Partners */}
+      {/* Affiliated boards */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Affiliations & Partners</h2>
-            <p className="text-xl text-gray-600">Proud members and partners of leading organizations</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Affiliated boards</h2>
+            <p className="text-xl text-gray-600">Certification and professional standards we align with</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid max-w-5xl mx-auto md:grid-cols-3 gap-8">
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Award className="h-8 w-8 text-blue-600" />
+                  <Globe className="h-8 w-8 text-blue-600" />
                 </div>
-                <h3 className="font-bold mb-2">International NLP Association</h3>
-                <p className="text-sm text-gray-600">Certified training provider</p>
+                <h3 className="font-bold mb-2">Association of NLP CIC UK</h3>
+                <p className="text-sm text-gray-600">United Kingdom</p>
               </CardContent>
             </Card>
 
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <BookOpen className="h-8 w-8 text-green-600" />
+                  <Award className="h-8 w-8 text-green-600" />
                 </div>
-                <h3 className="font-bold mb-2">American Hypnosis Association</h3>
-                <p className="text-sm text-gray-600">Professional member</p>
+                <h3 className="font-bold mb-2">American Board of Hypnotherapy (ABH) USA</h3>
+                <p className="text-sm text-gray-600">United States</p>
               </CardContent>
             </Card>
 
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
                 <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="h-8 w-8 text-purple-600" />
+                  <BookOpen className="h-8 w-8 text-purple-600" />
                 </div>
-                <h3 className="font-bold mb-2">Society for Human Resource Management</h3>
-                <p className="text-sm text-gray-600">Corporate partner</p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Globe className="h-8 w-8 text-teal-600" />
-                </div>
-                <h3 className="font-bold mb-2">International Coach Federation</h3>
-                <p className="text-sm text-gray-600">Approved provider</p>
+                <h3 className="font-bold mb-2">Professional Board of Hypnosis (PBH) Canada</h3>
+                <p className="text-sm text-gray-600">Canada</p>
               </CardContent>
             </Card>
           </div>

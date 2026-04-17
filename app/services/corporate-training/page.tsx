@@ -102,8 +102,8 @@ export default function CorporateTrainingPage() {
             </Button>
             <p className="text-sm text-gray-600 mt-4">
               Email:{" "}
-              <a href="mailto:yousif.mangi@konnectingdots.org" className="text-teal-700 underline hover:no-underline">
-                yousif.mangi@konnectingdots.org
+              <a href="mailto:yousifmangi@konnectingdots.org" className="text-teal-700 underline hover:no-underline">
+                yousifmangi@konnectingdots.org
               </a>
             </p>
           </div>

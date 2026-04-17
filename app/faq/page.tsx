@@ -247,8 +247,8 @@ export default function FAQPage() {
                     </CollapsibleTrigger>
                     <CollapsibleContent className="p-4 bg-white border border-gray-100 rounded-b-lg">
                       <p className="text-gray-700">
-                        Individual coaching sessions typically last 60-90 minutes. The first session may be longer (up
-                        to 2 hours) as we conduct a thorough assessment and begin the transformation process. Group
+                        Individual one-on-one coaching sessions are 60 minutes each. The first session may include a
+                        little extra time for intake when needed. Group
                         training sessions and workshops vary in length from half-day (4 hours) to multi-day intensive
                         programs depending on the specific program you choose.
                       </p>
@@ -277,9 +277,9 @@ export default function FAQPage() {
                     </CollapsibleTrigger>
                     <CollapsibleContent className="p-4 bg-white border border-gray-100 rounded-b-lg">
                       <p className="text-gray-700">
-                        The number of sessions varies based on your goals and the challenges being addressed. Most
-                        clients benefit from 4-12 sessions, and we will discuss a personalized plan during your
-                        consultation.
+                        The number of sessions varies based on your goals and the challenges being addressed. Our
+                        typical one-on-one coaching program is 8 sessions at 100 USD per session, and we will discuss a
+                        personalized plan during your consultation.
                       </p>
                     </CollapsibleContent>
                   </Collapsible>

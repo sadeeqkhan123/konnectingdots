@@ -73,7 +73,7 @@ export default function TrainTheTrainerPage() {
                     <Clock className="h-8 w-8 text-blue-600" />
                   </div>
                   <h3 className="text-xl font-bold mb-2">Duration</h3>
-                  <p className="text-gray-600">03 Month Program</p>
+                  <p className="text-gray-600">4 months (in-person)</p>
                 </CardContent>
               </Card>
 
@@ -382,7 +382,7 @@ export default function TrainTheTrainerPage() {
                 <div>
                   <h3 className="text-2xl font-bold mb-4">Program Investment</h3>
                   <div className="space-y-2">
-                    <p className="text-blue-100">USD 5,000</p>
+                    <p className="text-blue-100">4000 USD</p>
                     <p className="text-blue-100">Includes certifications, memberships, and training materials</p>
                     <p className="text-blue-100">Ongoing mentoring and guidance included</p>
                   </div>
@@ -390,7 +390,7 @@ export default function TrainTheTrainerPage() {
                 <div>
                   <h3 className="text-2xl font-bold mb-4">Apply or Request Details</h3>
                   <div className="space-y-2">
-                    <p className="text-blue-100">Email: yousif.mangi@konnectingdots.org</p>
+                    <p className="text-blue-100">Email: yousifmangi@konnectingdots.org</p>
                     <p className="text-blue-100">In-person training</p>
                     <p className="text-blue-100">Practice-based program</p>
                   </div>

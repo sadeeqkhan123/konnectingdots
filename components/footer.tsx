@@ -187,9 +187,12 @@ export default function Footer() {
                   +92 331 1365146
                 </a>
               </div>
-              <div className="flex items-center space-x-3">
-                <MapPin className="h-5 w-5 text-brand-secondary" />
-                <span className="text-muted-foreground">Karachi, Pakistan</span>
+              <div className="flex items-start space-x-3">
+                <MapPin className="h-5 w-5 text-brand-secondary shrink-0 mt-0.5" />
+                <div className="text-muted-foreground space-y-1">
+                  <div>Karachi, Pakistan</div>
+                  <div>Kathmandu, Nepal</div>
+                </div>
               </div>
             </div>
 

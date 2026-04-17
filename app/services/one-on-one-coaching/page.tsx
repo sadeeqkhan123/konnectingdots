@@ -233,7 +233,7 @@ export default function OneOnOneCoachingPage() {
                 <CardContent className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <Clock className="h-5 w-5 text-teal-600" />
-                    <span>60-90 minutes per session</span>
+                    <span>60 minutes per session</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Calendar className="h-5 w-5 text-teal-600" />
@@ -259,7 +259,7 @@ export default function OneOnOneCoachingPage() {
                 <CardContent className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <Clock className="h-5 w-5 text-blue-600" />
-                    <span>60-90 minutes per session</span>
+                    <span>60 minutes per session</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Calendar className="h-5 w-5 text-blue-600" />
@@ -294,13 +294,13 @@ export default function OneOnOneCoachingPage() {
                 <CardHeader className="text-center pb-4">
                   <CardTitle className="text-2xl mb-2">Single Session</CardTitle>
                   <p className="text-gray-600">Focused, personalized session</p>
-                  <div className="text-4xl font-bold text-teal-600 mt-4">$50</div>
+                  <div className="text-4xl font-bold text-teal-600 mt-4">100 USD</div>
                   <p className="text-sm text-gray-500">per session</p>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
-                    <span>60-90 minutes per session</span>
+                    <span>60 minutes per session</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <span className="h-2.5 w-2.5 rounded-full bg-green-600 flex-shrink-0" />
@@ -327,7 +327,7 @@ export default function OneOnOneCoachingPage() {
                 </Badge>
                 <CardHeader className="text-center pb-4">
                   <CardTitle className="text-2xl mb-2">Session Packages</CardTitle>
-                  <p className="text-gray-600">Usually 4-12 sessions</p>
+                  <p className="text-gray-600">Typically 8 sessions</p>
                   <div className="text-4xl font-bold text-teal-600 mt-4">Custom</div>
                   <p className="text-sm text-gray-500">Based on your goals</p>
                   <p className="text-sm text-green-600 font-semibold">Designed for lasting change</p>
@@ -419,7 +419,7 @@ export default function OneOnOneCoachingPage() {
                 <CardContent className="p-8">
                   <h3 className="text-xl font-bold mb-4">How long does each session last?</h3>
                   <p className="text-gray-600">
-                    Sessions are typically 60-90 minutes, depending on your goals and the work we are doing together.
+                    Sessions are 60 minutes each, focused on your goals and the work we are doing together.
                   </p>
                 </CardContent>
               </Card>
@@ -438,7 +438,8 @@ export default function OneOnOneCoachingPage() {
                 <CardContent className="p-8">
                   <h3 className="text-xl font-bold mb-4">How quickly will I see results?</h3>
                   <p className="text-gray-600">
-                    Most clients see noticeable change over 4-12 sessions, depending on goals and commitment.
+                    Most clients follow an 8-session program and see meaningful progress along the way, depending on
+                    goals and commitment.
                   </p>
                 </CardContent>
               </Card>
@@ -455,7 +456,9 @@ export default function OneOnOneCoachingPage() {
               <Card>
                 <CardContent className="p-8">
                   <h3 className="text-xl font-bold mb-4">What is the investment?</h3>
-                  <p className="text-gray-600">Investment is 50 USD per session. Packages are available.</p>
+                  <p className="text-gray-600">
+                    Investment is 100 USD per session. A typical program is 8 sessions; package options are available.
+                  </p>
                 </CardContent>
               </Card>
             </div>

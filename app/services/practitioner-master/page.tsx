@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { Brain, Award, BookOpen, Target, Users, Globe, Heart, ShieldCheck, Compass } from "lucide-react"
 import BookingModal from "@/components/booking-modal"
 import Link from "next/link"
+import { PRACTITIONER_APPLY_FORM_URL } from "@/lib/practitioner-apply-form-url"
 
 export default function PractitionerMasterPage() {
   return (
@@ -25,11 +26,11 @@ export default function PractitionerMasterPage() {
               ongoing mentorship.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <BookingModal>
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold">
-                  Sign Up Now
-                </Button>
-              </BookingModal>
+              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold" asChild>
+                <Link href={PRACTITIONER_APPLY_FORM_URL} target="_blank" rel="noopener noreferrer">
+                  Apply Now
+                </Link>
+              </Button>
               <Button
                 size="lg"
                 variant="outline"
@@ -522,20 +523,19 @@ export default function PractitionerMasterPage() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <BookingModal>
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold">
-                  Sign Up Now
-                </Button>
-              </BookingModal>
-              <Link href="https://lnkd.in/dbNTGHgH" target="_blank" rel="noreferrer">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white text-white hover:bg-white hover:text-green-600 bg-transparent"
-                >
-                  Sign Up Now
-                </Button>
-              </Link>
+              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold" asChild>
+                <Link href={PRACTITIONER_APPLY_FORM_URL} target="_blank" rel="noopener noreferrer">
+                  Apply Now
+                </Link>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-white text-white hover:bg-white hover:text-green-600 bg-transparent"
+                asChild
+              >
+                <Link href="/contact?subject=Practitioner%20Master%20Program%20Details">Request Full Program Details</Link>
+              </Button>
             </div>
           </div>
         </div>

@@ -91,15 +91,15 @@ export default function HomePage() {
             </div>
             <div className="mt-8 text-left max-w-3xl mx-auto space-y-4 text-muted-foreground">
               <p className="text-lg">
-                Yousif Mangi is a seasoned professional in personal development and organizational transformation. With
-                a decade-long background in Learning and Development, he has conducted 80+ workshops across various
-                sectors, impacting 10,000+ individuals. As a certified Trainer of NLP, Hypnotherapy, and Success Coach,
-                he empowers individuals and organizations to reach their full potential.
+                Yousif Mangi, Founder Chief Learning Officer at Konnecting Dots, is a seasoned professional in personal
+                development and organizational transformation. With decade long experience in Learning and Development,
+                he&apos;s conducted over 100+ workshops across various sectors, impacting 30,000+ individuals. As a
+                certified Trainer of NLP, Hypnotherapy, and Success Coach, he empowers individuals and organizations to
+                reach their full potential.
               </p>
               <p className="text-lg">
-                His approach is rooted in the belief that internal transformation leads to external success. With a
-                global reach, he coaches clients from 15 countries and continues to inspire deep transformation
-                worldwide.
+                Yousif&apos;s approach is rooted in the belief that internal transformation leads to external success.
+                Yousif is an International Ambassador ANLP.
               </p>
               <div className="rounded-2xl border border-border/60 bg-background/60 p-6">
                 <h3 className="text-base font-semibold text-foreground mb-4">Areas of Expertise</h3>
@@ -171,15 +171,15 @@ export default function HomePage() {
                 <ul className="space-y-2 mb-6">
                   <li className="flex items-center text-sm text-muted-foreground">
                     <CheckCircle className="h-4 w-4 text-success mr-2" />
-                    60-90 minute sessions
+                    60 mins per session
                   </li>
                   <li className="flex items-center text-sm text-muted-foreground">
                     <CheckCircle className="h-4 w-4 text-success mr-2" />
-                    In-person or online
+                    8 sessions
                   </li>
                   <li className="flex items-center text-sm text-muted-foreground">
                     <CheckCircle className="h-4 w-4 text-success mr-2" />
-                    4-12 sessions, $50 per session
+                    100 USD
                   </li>
                 </ul>
                 <Link href="/services#one-on-one">
@@ -239,7 +239,7 @@ export default function HomePage() {
                 <ul className="space-y-2 mb-6">
                   <li className="flex items-center text-sm text-muted-foreground">
                     <CheckCircle className="h-4 w-4 text-success mr-2" />
-                    03 month, in-person program
+                    4 months, in-person program
                   </li>
                   <li className="flex items-center text-sm text-muted-foreground">
                     <CheckCircle className="h-4 w-4 text-success mr-2" />
@@ -247,7 +247,7 @@ export default function HomePage() {
                   </li>
                   <li className="flex items-center text-sm text-muted-foreground">
                     <CheckCircle className="h-4 w-4 text-success mr-2" />
-                    USD 5,000 investment
+                    4000 USD investment
                   </li>
                 </ul>
                 <Link href="/services#train-trainer">
