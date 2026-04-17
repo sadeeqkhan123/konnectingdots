@@ -2,7 +2,7 @@ import { NextResponse } from "next/server"
 import { BlogPost } from "@/lib/db"
 import { blogStore } from "@/lib/blog-store"
 import { z } from "zod"
-import { sendEmail } from "@/lib/email"
+import { ADMIN_NOTIFICATION_EMAILS, sendEmail } from "@/lib/email"
 import { SITE_URL } from "@/lib/site-url"
 
 // Validation schemas
@@ -103,7 +103,6 @@ export async function POST(request: Request) {
     // Send email to admin if status is pending
     if (postStatus === "pending") {
       try {
-        const adminEmail = process.env.ADMIN_EMAIL || "Connect@konnectingdots.org"
         const emailHtml = `
           <!DOCTYPE html>
           <html>
@@ -148,7 +147,7 @@ export async function POST(request: Request) {
         `
         
         await sendEmail({
-          to: adminEmail,
+          to: ADMIN_NOTIFICATION_EMAILS,
           subject: `New Blog Post Pending Approval: ${validated.title}`,
           html: emailHtml,
         })

@@ -13,7 +13,12 @@ const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KE
 // Default to brand sender; override with FROM_EMAIL in env vars.
 const FROM_EMAIL = process.env.FROM_EMAIL || "noreply@konnectingdots.org"
 const FROM_NAME = process.env.FROM_NAME || "Konnecting Dots"
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "Connect@konnectingdots.org"
+const DEFAULT_ADMIN_EMAILS = ["yousifmangi@konnectingdots.org", "Connect@konnectingdots.org"]
+const configuredAdminEmails = (process.env.ADMIN_EMAIL || "")
+  .split(",")
+  .map((email) => email.trim())
+  .filter(Boolean)
+export const ADMIN_NOTIFICATION_EMAILS = Array.from(new Set([...DEFAULT_ADMIN_EMAILS, ...configuredAdminEmails]))
 
 // Utility function to escape HTML to prevent XSS in email templates
 const escapeHtml = (text: string): string => {
@@ -55,7 +60,7 @@ export const sendEmail = async (options: SendEmailOptions) => {
       to: Array.isArray(options.to) ? options.to : [options.to],
       subject: options.subject,
       html: options.html,
-      reply_to: options.replyTo || ADMIN_EMAIL,
+      reply_to: options.replyTo || ADMIN_NOTIFICATION_EMAILS[0],
     })
 
     console.log("✅ Email sent successfully:", {
@@ -104,7 +109,7 @@ export const sendBookingConfirmation = async (bookingData: {
   `
 
   await sendEmail({
-    to: ADMIN_EMAIL,
+    to: ADMIN_NOTIFICATION_EMAILS,
     subject: `New Booking Request: ${bookingData.name}`,
     html: adminEmailHtml,
     replyTo: bookingData.email,
@@ -150,7 +155,7 @@ export const sendContactNotification = async (contactData: {
   `
 
   await sendEmail({
-    to: ADMIN_EMAIL,
+    to: ADMIN_NOTIFICATION_EMAILS,
     subject: `New Contact Form: ${contactData.subject || "No Subject"}`,
     html: adminEmailHtml,
     replyTo: contactData.email,
@@ -240,7 +245,7 @@ export const sendEventRegistrationConfirmation = async (eventData: {
   `
 
   await sendEmail({
-    to: ADMIN_EMAIL,
+    to: ADMIN_NOTIFICATION_EMAILS,
     subject: `New Event Registration: ${escapeHtml(eventData.eventTitle)} - ${escapeHtml(eventData.name)}`,
     html: adminEmailHtml,
     replyTo: eventData.email,
