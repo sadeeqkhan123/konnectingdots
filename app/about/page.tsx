@@ -9,10 +9,9 @@ import {
   Tv,
   CheckCircle,
   ArrowRight,
-  Globe,
-  BookOpen,
 } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function AboutPage() {
   return (
@@ -220,15 +219,174 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team & Collaborators */}
+      {/* Zoya Yousif Profile */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet Zoya Yousif</h2>
+              <p className="text-xl text-gray-600">Co-Founder & Program Director</p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <div className="aspect-square bg-gradient-to-br from-emerald-400 to-teal-600 rounded-2xl flex items-center justify-center mb-8">
+                  <div className="text-center text-white">
+                    <div className="w-32 h-32 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Users className="h-16 w-16" />
+                    </div>
+                    <h3 className="text-2xl font-bold">Zoya Yousif</h3>
+                    <p className="text-emerald-100">Co-Founder & Program Director</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-2xl font-bold mb-4">Inclusion & Well-being Specialist</h3>
+                  <p className="text-gray-600 leading-relaxed mb-6">
+                    Zoya Yousif is a certified trainer and advocate for inclusion and workplace well-being, bringing
+                    over 10 years of experience in training, facilitation, and corporate engagement. As Co-Founder and
+                    Program Director at Konnecting Dots, she contributes to the design and delivery of impactful
+                    learning and development initiatives.
+                  </p>
+                  <p className="text-gray-600 leading-relaxed">
+                    She specializes in employee development, disability sensitization, and effective communication, and
+                    holds certifications in NLP, NLP Master Practitioner, and Train the Young Trainer. Her approach
+                    integrates empathy, communication psychology, and interactive facilitation to build inclusive,
+                    aware, and people-centric workplace cultures.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="font-bold text-gray-800 mb-3 flex items-center">
+                    <Award className="mr-2 h-5 w-5 text-yellow-600" />
+                    Core Expertise
+                  </h4>
+                  <ul className="grid md:grid-cols-2 gap-3 text-sm text-gray-600">
+                    {[
+                      "Diversity, Equity & Inclusion (DEI) trainings",
+                      "Disability sensitization & inclusive workplaces",
+                      "Communication & interpersonal skills",
+                      "Soft skills development",
+                      "Emotional intelligence & workplace well-being",
+                      "Women empowerment & leadership development",
+                      "Confidence building & personal effectiveness",
+                      "Team collaboration & workplace behavior",
+                      "Mental health awareness & psychological safety",
+                      "Facilitation & experiential learning",
+                      "NLP-based coaching & behavioral transformation",
+                      "Youth development & capacity building",
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Zubair Ahmed Profile */}
       <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet Zubair Ahmed</h2>
+              <p className="text-xl text-gray-600">Corporate Consultant & NLP Coach</p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <div className="aspect-square bg-gradient-to-br from-indigo-500 to-sky-600 rounded-2xl flex items-center justify-center mb-8">
+                  <div className="text-center text-white">
+                    <div className="w-32 h-32 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Users className="h-16 w-16" />
+                    </div>
+                    <h3 className="text-2xl font-bold">Zubair Ahmed</h3>
+                    <p className="text-sky-100">Corporate Consultant & NLP Coach</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-2xl font-bold mb-4">Corporate Consultant and NLP Coach</h3>
+                  <p className="text-gray-600 leading-relaxed mb-6">
+                    Zubair Ahmed is a dynamic Corporate Consultant and Certified NLP Coach with over 9 years of
+                    experience in Learning and Development. He has delivered impactful training and facilitation across
+                    corporates, academia, NGOs, and youth platforms.
+                  </p>
+                  <p className="text-gray-600 leading-relaxed">
+                    Guided by the principle of "Perception is Projection," he integrates applied linguistics,
+                    psychology, and mind sciences to build deep self-awareness, emotional intelligence, and sustainable
+                    behavioral change.
+                  </p>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="font-bold text-gray-800 mb-3 flex items-center">
+                      <Award className="mr-2 h-5 w-5 text-yellow-600" />
+                      Core Expertise
+                    </h4>
+                    <ul className="space-y-3 text-sm text-gray-600">
+                      {[
+                        "Emotional intelligence & workplace effectiveness",
+                        "Communication & interpersonal skills",
+                        "Negotiation skills",
+                        "Stress management & resilience",
+                        "Growth mindset & performance development",
+                        "NLP tools for values alignment and transformation",
+                      ].map((item) => (
+                        <li key={item} className="flex items-start gap-2">
+                          <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-gray-800 mb-3 flex items-center">
+                      <Tv className="mr-2 h-5 w-5 text-blue-600" />
+                      Experience & Impact
+                    </h4>
+                    <ul className="space-y-3 text-sm text-gray-600">
+                      {[
+                        "400+ training sessions conducted",
+                        "35,000+ individuals empowered",
+                        "Extensive work with corporates, NGOs, academia, and youth groups",
+                        "Industry experience: textile, pharma, BPO, and development sector",
+                        "Highly interactive, reflective, and practical facilitation style",
+                      ].map((item) => (
+                        <li key={item} className="flex items-start gap-2">
+                          <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Team & Collaborators */}
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Leadership</h2>
             <p className="text-xl text-gray-600">Meet the people behind your transformation</p>
           </div>
 
-          <div className="grid max-w-3xl mx-auto md:grid-cols-2 gap-8">
+          <div className="grid max-w-5xl mx-auto md:grid-cols-3 gap-8">
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="p-8">
                 <div className="w-20 h-20 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -250,7 +408,20 @@ export default function AboutPage() {
                 <h3 className="text-xl font-bold mb-2">Zoya Yousif</h3>
                 <p className="text-gray-600 mb-4">Co-Founder & Program Director</p>
                 <p className="text-sm text-gray-500">
-                  Learning experience design, client success, and inclusive program delivery
+                  Inclusion, workplace well-being, and impactful learning program design
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardContent className="p-8">
+                <div className="w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-indigo-600 font-bold text-xl">ZA</span>
+                </div>
+                <h3 className="text-xl font-bold mb-2">Zubair Ahmed</h3>
+                <p className="text-gray-600 mb-4">Corporate Consultant & NLP Coach</p>
+                <p className="text-sm text-gray-500">
+                  400+ sessions conducted, 35,000+ individuals empowered across diverse sectors
                 </p>
               </CardContent>
             </Card>
@@ -269,8 +440,15 @@ export default function AboutPage() {
           <div className="grid max-w-5xl mx-auto md:grid-cols-3 gap-8">
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Globe className="h-8 w-8 text-blue-600" />
+                <div className="h-32 flex items-center justify-center mx-auto mb-4">
+                  <Image
+                    src="/board-logos/anlp.png"
+                    alt="Association for NLP Trainer Member"
+                    width={130}
+                    height={130}
+                    className="h-28 w-auto object-contain"
+                    unoptimized
+                  />
                 </div>
                 <h3 className="font-bold mb-2">Association of NLP CIC UK</h3>
                 <p className="text-sm text-gray-600">United Kingdom</p>
@@ -279,8 +457,15 @@ export default function AboutPage() {
 
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Award className="h-8 w-8 text-green-600" />
+                <div className="h-32 flex items-center justify-center mx-auto mb-4">
+                  <Image
+                    src="/board-logos/abh.png"
+                    alt="American Board of Hypnotherapy seal"
+                    width={130}
+                    height={130}
+                    className="h-28 w-auto object-contain"
+                    unoptimized
+                  />
                 </div>
                 <h3 className="font-bold mb-2">American Board of Hypnotherapy (ABH) USA</h3>
                 <p className="text-sm text-gray-600">United States</p>
@@ -289,8 +474,15 @@ export default function AboutPage() {
 
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <BookOpen className="h-8 w-8 text-purple-600" />
+                <div className="h-32 flex items-center justify-center mx-auto mb-4">
+                  <Image
+                    src="/board-logos/pbh.png"
+                    alt="Professional Board of Hypnosis seal"
+                    width={130}
+                    height={130}
+                    className="h-28 w-auto object-contain"
+                    unoptimized
+                  />
                 </div>
                 <h3 className="font-bold mb-2">Professional Board of Hypnosis (PBH) Canada</h3>
                 <p className="text-sm text-gray-600">Canada</p>

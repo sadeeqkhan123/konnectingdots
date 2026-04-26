@@ -12,7 +12,20 @@ const registrationSchema = z.object({
   eventDate: z.string().optional(),
   eventTime: z.string().optional(),
   eventLocation: z.string().optional(),
+  eventFormat: z.enum(["in-person", "online", "hybrid"]).optional(),
+  eventPrice: z.number().min(0).optional(),
+  registrationDuration: z.string().optional(),
+  registrationOutcomes: z.string().optional(),
+  registrationCertification: z.string().optional(),
+  registrationInvestmentLabel: z.string().optional(),
+  registrationPaymentNote: z.string().optional(),
 })
+
+function defaultInvestmentLine(price: number | undefined): string {
+  const p = price ?? 0
+  if (p <= 0) return "Complimentary"
+  return `PKR ${p.toLocaleString("en-PK")} (exclusive of taxes)`
+}
 
 export async function POST(request: Request, { params }: { params: { id: string } | Promise<{ id: string }> }) {
   try {
@@ -31,6 +44,13 @@ export async function POST(request: Request, { params }: { params: { id: string 
       date: validated.eventDate || new Date().toISOString().split("T")[0],
       time: validated.eventTime || "To be confirmed",
       location: validated.eventLocation || "To be confirmed",
+      format: validated.eventFormat || ("online" as const),
+      price: validated.eventPrice ?? 0,
+      registrationDuration: validated.registrationDuration,
+      registrationOutcomes: validated.registrationOutcomes,
+      registrationCertification: validated.registrationCertification,
+      registrationInvestmentLabel: validated.registrationInvestmentLabel,
+      registrationPaymentNote: validated.registrationPaymentNote,
     }
 
     if (!event && !validated.eventTitle) {
@@ -88,8 +108,14 @@ export async function POST(request: Request, { params }: { params: { id: string 
 
     // Send confirmation email (this is the critical part)
     try {
+      const eventTitle = registeredEvent?.title || fallbackEventFromClient.title
+      const investmentLine =
+        registeredEvent?.registrationInvestmentLabel ||
+        fallbackEventFromClient.registrationInvestmentLabel ||
+        defaultInvestmentLine(registeredEvent?.price ?? fallbackEventFromClient.price)
+
       await sendEventRegistrationConfirmation({
-        eventTitle: registeredEvent?.title || fallbackEventFromClient.title,
+        eventTitle,
         name: validated.name,
         email: validated.email,
         phone: validated.phone,
@@ -97,6 +123,14 @@ export async function POST(request: Request, { params }: { params: { id: string 
         date: registeredEvent?.date || fallbackEventFromClient.date,
         time: registeredEvent?.time || fallbackEventFromClient.time,
         location: registeredEvent?.location || fallbackEventFromClient.location,
+        format: registeredEvent?.format || fallbackEventFromClient.format,
+        investmentLine,
+        registrationDuration: registeredEvent?.registrationDuration || fallbackEventFromClient.registrationDuration,
+        registrationOutcomes: registeredEvent?.registrationOutcomes || fallbackEventFromClient.registrationOutcomes,
+        registrationCertification:
+          registeredEvent?.registrationCertification || fallbackEventFromClient.registrationCertification,
+        registrationPaymentNote:
+          registeredEvent?.registrationPaymentNote || fallbackEventFromClient.registrationPaymentNote,
       })
     } catch (emailError) {
       console.error("Error sending event registration email:", emailError)

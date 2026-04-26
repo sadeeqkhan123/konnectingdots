@@ -4,7 +4,9 @@ import {
   welcomeEmailTemplate,
   sessionReminderTemplate,
   newsletterTemplate,
+  eventRegistrationConfirmationTemplate,
 } from "./email-templates"
+import { escapeHtml } from "./html-escape"
 
 // Initialize Resend client (only if API key is available)
 // During build time, this might be undefined, so we'll handle it gracefully
@@ -19,18 +21,6 @@ const configuredAdminEmails = (process.env.ADMIN_EMAIL || "")
   .map((email) => email.trim())
   .filter(Boolean)
 export const ADMIN_NOTIFICATION_EMAILS = Array.from(new Set([...DEFAULT_ADMIN_EMAILS, ...configuredAdminEmails]))
-
-// Utility function to escape HTML to prevent XSS in email templates
-const escapeHtml = (text: string): string => {
-  const map: { [key: string]: string } = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#039;',
-  }
-  return text.replace(/[&<>"']/g, (m) => map[m])
-}
 
 export interface SendEmailOptions {
   to: string | string[]
@@ -200,6 +190,12 @@ export const sendNewsletterWelcome = async (email: string, name?: string) => {
   return { success: true }
 }
 
+const formatLabelForEmail = (format: "in-person" | "online" | "hybrid") => {
+  if (format === "in-person") return "In-person"
+  if (format === "online") return "Online"
+  return "Hybrid"
+}
+
 export const sendEventRegistrationConfirmation = async (eventData: {
   eventTitle: string
   name: string
@@ -207,27 +203,34 @@ export const sendEventRegistrationConfirmation = async (eventData: {
   date: string
   time: string
   location: string
+  format: "in-person" | "online" | "hybrid"
+  investmentLine: string
+  registrationDuration?: string
+  registrationOutcomes?: string
+  registrationCertification?: string
+  registrationPaymentNote?: string
   phone?: string
   company?: string
 }) => {
-  const emailHtml = `
-    <h2>Event Registration Confirmed!</h2>
-    <p>Hello ${escapeHtml(eventData.name)},</p>
-    <p>Your registration for <strong>${escapeHtml(eventData.eventTitle)}</strong> has been confirmed!</p>
-    <div style="background: #f3f4f6; padding: 20px; border-radius: 5px; margin: 20px 0;">
-      <p><strong>Event:</strong> ${escapeHtml(eventData.eventTitle)}</p>
-      <p><strong>Date:</strong> ${escapeHtml(eventData.date)}</p>
-      <p><strong>Time:</strong> ${escapeHtml(eventData.time)}</p>
-      <p><strong>Location:</strong> ${escapeHtml(eventData.location)}</p>
-    </div>
-    <p>We'll send you a reminder 24 hours before the event. We look forward to seeing you there!</p>
-    <p>Best regards,<br>The Konnecting Dots Team</p>
-  `
+  const emailHtml = eventRegistrationConfirmationTemplate({
+    name: eventData.name,
+    eventTitle: eventData.eventTitle,
+    date: eventData.date,
+    time: eventData.time,
+    location: eventData.location,
+    formatLabel: formatLabelForEmail(eventData.format),
+    investmentLine: eventData.investmentLine,
+    registrationDuration: eventData.registrationDuration,
+    registrationOutcomes: eventData.registrationOutcomes,
+    registrationCertification: eventData.registrationCertification,
+    registrationPaymentNote: eventData.registrationPaymentNote,
+  })
 
-  // Send to customer
+  const subjectTitle = eventData.eventTitle.replace(/\s+/g, " ").trim()
+
   await sendEmail({
     to: eventData.email,
-    subject: `Registration Confirmed: ${escapeHtml(eventData.eventTitle)}`,
+    subject: `Registration Confirmed – ${subjectTitle}`,
     html: emailHtml,
   })
 

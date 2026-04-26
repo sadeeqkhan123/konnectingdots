@@ -103,6 +103,11 @@ create table if not exists public.events (
   registered integer not null default 0,
   status text not null default 'upcoming' check (status in ('upcoming', 'ongoing', 'completed', 'cancelled')),
   image text,
+  registration_duration text,
+  registration_outcomes text,
+  registration_certification text,
+  registration_investment_label text,
+  registration_payment_note text,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );

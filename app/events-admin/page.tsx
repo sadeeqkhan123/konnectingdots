@@ -28,6 +28,11 @@ interface EventItem {
   capacity: number
   registered: number
   status: EventStatus
+  registrationDuration?: string
+  registrationOutcomes?: string
+  registrationCertification?: string
+  registrationInvestmentLabel?: string
+  registrationPaymentNote?: string
 }
 
 const initialForm = {
@@ -42,6 +47,11 @@ const initialForm = {
   capacity: "30",
   status: "upcoming" as EventStatus,
   image: "",
+  registrationDuration: "",
+  registrationOutcomes: "",
+  registrationCertification: "",
+  registrationInvestmentLabel: "",
+  registrationPaymentNote: "",
 }
 
 const CAPACITY_OPTIONS = [
@@ -118,6 +128,11 @@ export default function EventsAdminPage() {
         capacity: Number(form.capacity),
         status: form.status,
         image: form.image || undefined,
+        registrationDuration: form.registrationDuration.trim(),
+        registrationOutcomes: form.registrationOutcomes.trim(),
+        registrationCertification: form.registrationCertification.trim(),
+        registrationInvestmentLabel: form.registrationInvestmentLabel.trim(),
+        registrationPaymentNote: form.registrationPaymentNote.trim(),
       }
 
       const url = editingEventId ? `/api/events/${editingEventId}` : "/api/events"
@@ -159,6 +174,11 @@ export default function EventsAdminPage() {
       capacity: String(event.capacity),
       status: event.status,
       image: "",
+      registrationDuration: event.registrationDuration || "",
+      registrationOutcomes: event.registrationOutcomes || "",
+      registrationCertification: event.registrationCertification || "",
+      registrationInvestmentLabel: event.registrationInvestmentLabel || "",
+      registrationPaymentNote: event.registrationPaymentNote || "",
     })
     setUploadedImageName("")
     setIsDialogOpen(true)
@@ -327,6 +347,60 @@ export default function EventsAdminPage() {
                         ))}
                       </SelectContent>
                     </Select>
+                  </div>
+                </div>
+
+                <div className="rounded-lg border border-dashed border-amber-200 bg-amber-50/50 p-4 space-y-4">
+                  <p className="text-sm font-semibold text-amber-900">Registration confirmation email (optional)</p>
+                  <p className="text-xs text-amber-800/90">
+                    These fields personalize the automatic email registrants receive. Leave blank to omit sections or use defaults (investment uses PKR from price unless you override).
+                  </p>
+                  <div className="space-y-2">
+                    <Label>Duration line</Label>
+                    <Input
+                      className="bg-white/90 border-cyan-100"
+                      placeholder='e.g. 2 Months (Twice a week)'
+                      value={form.registrationDuration}
+                      onChange={(e) => setForm((prev) => ({ ...prev, registrationDuration: e.target.value }))}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>What you will gain (one bullet per line)</Label>
+                    <Textarea
+                      className="bg-white/90 border-cyan-100 font-mono text-sm"
+                      rows={5}
+                      placeholder={"Clarify your thinking and improve decision-making\nEnhance emotional intelligence (EQ)"}
+                      value={form.registrationOutcomes}
+                      onChange={(e) => setForm((prev) => ({ ...prev, registrationOutcomes: e.target.value }))}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Certification (paragraphs; blank line = new paragraph)</Label>
+                    <Textarea
+                      className="bg-white/90 border-cyan-100 text-sm"
+                      rows={4}
+                      placeholder="Upon successful completion, you will receive..."
+                      value={form.registrationCertification}
+                      onChange={(e) => setForm((prev) => ({ ...prev, registrationCertification: e.target.value }))}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Investment line override</Label>
+                    <Input
+                      className="bg-white/90 border-cyan-100"
+                      placeholder="e.g. PKR 150,000 (exclusive of taxes) — leave empty to use Price field"
+                      value={form.registrationInvestmentLabel}
+                      onChange={(e) => setForm((prev) => ({ ...prev, registrationInvestmentLabel: e.target.value }))}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Payment / next steps (optional; default text if empty)</Label>
+                    <Textarea
+                      className="bg-white/90 border-cyan-100 text-sm"
+                      rows={4}
+                      value={form.registrationPaymentNote}
+                      onChange={(e) => setForm((prev) => ({ ...prev, registrationPaymentNote: e.target.value }))}
+                    />
                   </div>
                 </div>
 

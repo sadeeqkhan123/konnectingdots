@@ -14,6 +14,11 @@ const createEventSchema = z.object({
   capacity: z.number().min(1),
   status: z.enum(["upcoming", "ongoing", "completed", "cancelled"]).optional(),
   image: z.string().optional(),
+  registrationDuration: z.string().optional(),
+  registrationOutcomes: z.string().optional(),
+  registrationCertification: z.string().optional(),
+  registrationInvestmentLabel: z.string().optional(),
+  registrationPaymentNote: z.string().optional(),
 })
 
 // GET - Get all events
@@ -62,6 +67,11 @@ export async function POST(request: Request) {
       capacity: validated.capacity,
       status: validated.status || "upcoming",
       image: validated.image,
+      registrationDuration: validated.registrationDuration,
+      registrationOutcomes: validated.registrationOutcomes,
+      registrationCertification: validated.registrationCertification,
+      registrationInvestmentLabel: validated.registrationInvestmentLabel,
+      registrationPaymentNote: validated.registrationPaymentNote,
     })
 
     return NextResponse.json({ success: true, event: newEvent }, { status: 201 })

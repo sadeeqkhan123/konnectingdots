@@ -118,6 +118,16 @@ export interface Event {
   status: "upcoming" | "ongoing" | "completed" | "cancelled"
   createdAt: string
   image?: string
+  /** Shown in registration email, e.g. "2 Months (Twice a week)" */
+  registrationDuration?: string
+  /** One outcome per line → bullet list in registration email */
+  registrationOutcomes?: string
+  /** Certification / credentials paragraph(s) for registration email */
+  registrationCertification?: string
+  /** Overrides default investment line (e.g. "PKR 150,000 (exclusive of taxes)") */
+  registrationInvestmentLabel?: string
+  /** Closing payment / next-steps copy for registration email */
+  registrationPaymentNote?: string
 }
 
 export interface EventRegistration {

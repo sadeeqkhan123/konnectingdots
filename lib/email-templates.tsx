@@ -1,3 +1,5 @@
+import { escapeHtml } from "./html-escape"
+
 interface BookingData {
   name: string
   email: string
@@ -755,6 +757,149 @@ export const newsletterTemplate = (content: {
         <a href="#" style="color: #94a3b8; text-decoration: none;">Unsubscribe</a> | 
         <a href="#" style="color: #94a3b8; text-decoration: none;">Update Preferences</a>
       </p>
+    </div>
+  </div>
+</body>
+</html>
+  `.trim()
+}
+
+export interface EventRegistrationConfirmationTemplateData {
+  name: string
+  eventTitle: string
+  date: string
+  time: string
+  location: string
+  formatLabel: string
+  investmentLine: string
+  registrationDuration?: string
+  registrationOutcomes?: string
+  registrationCertification?: string
+  registrationPaymentNote?: string
+}
+
+const defaultPaymentNote = `To secure your seat, please proceed with the payment. Once completed, kindly share your payment confirmation so we can finalize your enrollment and provide you with further onboarding details.
+
+Please reply to this email with your preferred payment method, and we will share the invoice and payment instructions accordingly.`
+
+export const eventRegistrationConfirmationTemplate = (data: EventRegistrationConfirmationTemplateData): string => {
+  const outcomes = (data.registrationOutcomes || "")
+    .split(/\r?\n/)
+    .map((s) => s.trim())
+    .filter(Boolean)
+
+  const outcomesBlock =
+    outcomes.length > 0
+      ? `
+      <h2 style="font-size: 20px; color: #1f2937; margin: 32px 0 16px;">What You Will Gain</h2>
+      <p class="message" style="margin-bottom: 12px;">Through this program, you will:</p>
+      <ul class="outcomes-list" style="margin: 0 0 24px; padding-left: 20px; color: #4b5563; line-height: 1.6;">
+        ${outcomes.map((line) => `<li style="margin-bottom: 8px;">${escapeHtml(line)}</li>`).join("")}
+      </ul>`
+      : ""
+
+  const certificationRaw = (data.registrationCertification || "").trim()
+  const certificationBlock = certificationRaw
+    ? `
+      <h2 style="font-size: 20px; color: #1f2937; margin: 32px 0 16px;">Certification</h2>
+      <div class="message" style="margin-bottom: 24px;">
+        ${certificationRaw
+          .split(/\r?\n\r?\n/)
+          .map((p) => p.trim())
+          .filter(Boolean)
+          .map((p) => `<p style="margin: 0 0 12px;">${escapeHtml(p).replace(/\n/g, "<br>")}</p>`)
+          .join("")}
+      </div>`
+    : ""
+
+  const paymentText = (data.registrationPaymentNote || "").trim() || defaultPaymentNote
+  const paymentParagraphs = paymentText
+    .split(/\r?\n\r?\n/)
+    .map((p) => p.trim())
+    .filter(Boolean)
+    .map((p) => `<p class="message" style="margin-bottom: 16px;">${escapeHtml(p).replace(/\n/g, "<br>")}</p>`)
+    .join("")
+
+  const durationRow = data.registrationDuration
+    ? `<div class="detail-row">
+          <span class="detail-label">Duration:</span>
+          <span class="detail-value">${escapeHtml(data.registrationDuration)}</span>
+        </div>`
+    : ""
+
+  return `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Confirmed – ${escapeHtml(data.eventTitle)}</title>
+  <style>
+    body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f3f4f6; }
+    .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; }
+    .header { background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%); padding: 40px 30px; text-align: center; }
+    .logo { max-width: 200px; height: auto; margin-bottom: 16px; }
+    .header-text { color: #ffffff; font-size: 24px; font-weight: bold; margin: 0; line-height: 1.3; }
+    .content { padding: 40px 30px; }
+    .greeting { font-size: 18px; color: #1f2937; margin-bottom: 16px; font-weight: 600; }
+    .message { font-size: 16px; line-height: 1.65; color: #4b5563; margin-bottom: 20px; }
+    .details-box { background-color: #f9fafb; border-left: 4px solid #eab308; padding: 20px; margin: 28px 0; border-radius: 4px; }
+    .detail-row { display: flex; padding: 12px 0; border-bottom: 1px solid #e5e7eb; }
+    .detail-row:last-child { border-bottom: none; }
+    .detail-label { font-weight: 600; color: #374151; min-width: 130px; }
+    .detail-value { color: #6b7280; flex: 1; }
+    .footer { background-color: #1e293b; padding: 28px; text-align: center; color: #94a3b8; font-size: 14px; }
+    @media only screen and (max-width: 600px) {
+      .content { padding: 30px 20px; }
+      .detail-row { flex-direction: column; }
+      .detail-label { margin-bottom: 4px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="https://konnectingdots.com/images/2.png" alt="Konnecting Dots" class="logo">
+      <h1 class="header-text">Registration Confirmed</h1>
+      <p style="color: rgba(255,255,255,0.95); margin: 12px 0 0; font-size: 17px; font-weight: 500;">${escapeHtml(data.eventTitle)}</p>
+    </div>
+    <div class="content">
+      <p class="greeting">Hi ${escapeHtml(data.name)},</p>
+      <p class="message">Thank you for registering for <strong>${escapeHtml(data.eventTitle)}</strong>. We're excited to have you take this step toward personal and professional transformation.</p>
+      <p class="message">Allow me to briefly introduce myself—I'm <strong>Yousif Mangi</strong>, Founder and Chief Learning Officer at Konnecting Dots. It's a pleasure to welcome you to a program designed not just to teach, but to create real, lasting change through an experiential learning approach.</p>
+
+      ${outcomesBlock}
+      ${certificationBlock}
+
+      <h2 style="font-size: 20px; color: #1f2937; margin: 32px 0 16px;">Program Details</h2>
+      <div class="details-box">
+        ${durationRow}
+        <div class="detail-row">
+          <span class="detail-label">Date:</span>
+          <span class="detail-value">${escapeHtml(data.date)}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Timings:</span>
+          <span class="detail-value">${escapeHtml(data.time)}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Location / Format:</span>
+          <span class="detail-value">${escapeHtml(data.location)} (${escapeHtml(data.formatLabel)})</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Investment:</span>
+          <span class="detail-value">${escapeHtml(data.investmentLine)}</span>
+        </div>
+      </div>
+
+      <h2 style="font-size: 20px; color: #1f2937; margin: 32px 0 16px;">Next Steps – Payment Process</h2>
+      ${paymentParagraphs}
+
+      <p class="message" style="margin-top: 28px;">Warm regards,<br><strong>Yousif Mangi</strong><br>Konnecting Dots</p>
+    </div>
+    <div class="footer">
+      <p style="margin: 0;">© Konnecting Dots · Karachi, Pakistan</p>
+      <p style="margin: 12px 0 0;"><a href="mailto:Connect@konnectingdots.org" style="color: #5eead4;">Connect@konnectingdots.org</a></p>
     </div>
   </div>
 </body>

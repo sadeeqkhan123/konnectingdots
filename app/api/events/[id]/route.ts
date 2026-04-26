@@ -14,6 +14,11 @@ const updateEventSchema = z.object({
   capacity: z.number().min(1).optional(),
   status: z.enum(["upcoming", "ongoing", "completed", "cancelled"]).optional(),
   image: z.string().optional(),
+  registrationDuration: z.string().optional(),
+  registrationOutcomes: z.string().optional(),
+  registrationCertification: z.string().optional(),
+  registrationInvestmentLabel: z.string().optional(),
+  registrationPaymentNote: z.string().optional(),
 })
 
 // GET - Get a single event by ID

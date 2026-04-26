@@ -20,6 +20,11 @@ interface EventRow {
   created_at: string
   updated_at: string
   image: string | null
+  registration_duration?: string | null
+  registration_outcomes?: string | null
+  registration_certification?: string | null
+  registration_investment_label?: string | null
+  registration_payment_note?: string | null
 }
 
 interface EventRegistrationRow {
@@ -48,6 +53,11 @@ const mapRowToEvent = (row: EventRow): Event => ({
   status: row.status,
   createdAt: row.created_at,
   image: row.image ?? undefined,
+  registrationDuration: row.registration_duration ?? undefined,
+  registrationOutcomes: row.registration_outcomes ?? undefined,
+  registrationCertification: row.registration_certification ?? undefined,
+  registrationInvestmentLabel: row.registration_investment_label ?? undefined,
+  registrationPaymentNote: row.registration_payment_note ?? undefined,
 })
 
 const mapRegistrationRow = (row: EventRegistrationRow): EventRegistration => ({
@@ -169,6 +179,11 @@ export const eventStore = {
       status: event.status,
       image: event.image ?? null,
       registered: 0,
+      registration_duration: event.registrationDuration?.trim() || null,
+      registration_outcomes: event.registrationOutcomes?.trim() || null,
+      registration_certification: event.registrationCertification?.trim() || null,
+      registration_investment_label: event.registrationInvestmentLabel?.trim() || null,
+      registration_payment_note: event.registrationPaymentNote?.trim() || null,
     }
 
     try {
@@ -185,6 +200,8 @@ export const eventStore = {
   update: async (id: string, updates: Partial<Event>): Promise<Event | null> => {
     if (!canUseSupabase) return eventDb.update(id, updates)
 
+    const toNullIfEmpty = (s: string | undefined) => (s !== undefined ? s.trim() || null : undefined)
+
     const payload = {
       title: updates.title,
       description: updates.description,
@@ -198,6 +215,11 @@ export const eventStore = {
       registered: updates.registered,
       status: updates.status,
       image: updates.image,
+      registration_duration: toNullIfEmpty(updates.registrationDuration),
+      registration_outcomes: toNullIfEmpty(updates.registrationOutcomes),
+      registration_certification: toNullIfEmpty(updates.registrationCertification),
+      registration_investment_label: toNullIfEmpty(updates.registrationInvestmentLabel),
+      registration_payment_note: toNullIfEmpty(updates.registrationPaymentNote),
       updated_at: new Date().toISOString(),
     }
 

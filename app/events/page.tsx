@@ -25,6 +25,11 @@ interface EventItem {
   capacity: number
   registered: number
   status: "upcoming" | "ongoing" | "completed" | "cancelled"
+  registrationDuration?: string
+  registrationOutcomes?: string
+  registrationCertification?: string
+  registrationInvestmentLabel?: string
+  registrationPaymentNote?: string
 }
 
 export default function EventsPage() {
@@ -88,6 +93,13 @@ export default function EventsPage() {
           eventDate: selected?.date,
           eventTime: selected?.time,
           eventLocation: selected?.location,
+          eventFormat: selected?.format,
+          eventPrice: selected?.price,
+          registrationDuration: selected?.registrationDuration,
+          registrationOutcomes: selected?.registrationOutcomes,
+          registrationCertification: selected?.registrationCertification,
+          registrationInvestmentLabel: selected?.registrationInvestmentLabel,
+          registrationPaymentNote: selected?.registrationPaymentNote,
         }),
       })
       const data = await response.json()
