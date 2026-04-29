@@ -29,6 +29,38 @@ const THEME_STYLES = {
 export default function TestimonialsPage() {
   const featured = allTestimonials.slice(0, 3)
   const moreStories = allTestimonials.slice(3)
+  const beforeAfterStories = [
+    {
+      id: "ghina-before-after",
+      name: "Ghina Asad",
+      role: "Psychologist",
+      before:
+        "Complex NLP concepts felt difficult to translate into day-to-day personal and professional growth.",
+      after:
+        "With Yousif's guidance, concepts became easy to understand and apply, with clear growth in confidence and practical use.",
+      timeline: "During Practitioner Program",
+    },
+    {
+      id: "sarfraz-before-after",
+      name: "Sarfraz Ali Shah",
+      role: "Podcast Host - Educationalist",
+      before:
+        "Learning methods felt less engaging and trainer communication style often made concepts harder to retain.",
+      after:
+        "Sessions felt transformative and comfortable, with clear definitions and practical techniques that were easy to absorb.",
+      timeline: "Through Webinars",
+    },
+    {
+      id: "aqsa-before-after",
+      name: "Aqsa Kamran",
+      role: "Teacher & Life Coach",
+      before:
+        "Wanted stronger personal and professional growth with an approachable, interactive trainer experience.",
+      after:
+        "Master Practitioner journey became smooth, empowering, and transforming with highly interactive sessions.",
+      timeline: "After Master Practitioner",
+    },
+  ]
 
   return (
     <div className="min-h-screen pt-20">
@@ -89,6 +121,47 @@ export default function TestimonialsPage() {
                 </Card>
               )
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Before & After Cards */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Before & After Transformations</h2>
+            <p className="text-xl text-gray-600">Real progress snapshots based on your uploaded testimonials</p>
+          </div>
+
+          <div className="space-y-8 max-w-6xl mx-auto">
+            {beforeAfterStories.map((story) => (
+              <Card key={story.id} className="overflow-hidden border border-gray-200">
+                <CardContent className="p-0">
+                  <div className="grid lg:grid-cols-2">
+                    <div className="p-7 bg-red-50">
+                      <Badge className="bg-red-100 text-red-800 mb-4">Before</Badge>
+                      <p className="text-gray-700 mb-5">{story.before}</p>
+                      <div>
+                        <h4 className="font-semibold">{story.name}</h4>
+                        <p className="text-sm text-gray-600">{story.role}</p>
+                      </div>
+                    </div>
+                    <div className="p-7 bg-green-50">
+                      <Badge className="bg-green-100 text-green-800 mb-4">After</Badge>
+                      <p className="text-gray-700 mb-5">{story.after}</p>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium text-green-700">{story.timeline}</span>
+                        <div className="flex">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <Star key={star} className="h-4 w-4 text-yellow-400 fill-current" />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
