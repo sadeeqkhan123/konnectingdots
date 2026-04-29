@@ -5,6 +5,7 @@ import { Brain, Award, BookOpen, Target, Users, Globe, Heart, ShieldCheck, Compa
 import BookingModal from "@/components/booking-modal"
 import Link from "next/link"
 import { PRACTITIONER_APPLY_FORM_URL } from "@/lib/practitioner-apply-form-url"
+import { practitionerProgramTestimonials } from "@/lib/testimonials"
 
 export default function PractitionerMasterPage() {
   return (
@@ -414,39 +415,17 @@ export default function PractitionerMasterPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  name: "Jennifer Martinez",
-                  role: "Life Coach",
-                  program: "Master Practitioner Graduate",
-                  testimonial:
-                    "NLP gave me the tools to help my clients achieve breakthrough results. My coaching practice has tripled since certification.",
-                },
-                {
-                  name: "Thomas Anderson",
-                  role: "Sales Director",
-                  program: "Practitioner Graduate",
-                  testimonial:
-                    "The communication skills I learned increased my sales by 150%. NLP is a game-changer for anyone in business.",
-                },
-                {
-                  name: "Dr. Lisa Chen",
-                  role: "Therapist",
-                  program: "Master Practitioner Graduate",
-                  testimonial:
-                    "NLP techniques have revolutionized my therapy practice. I can help clients achieve results faster than ever before.",
-                },
-              ].map((testimonial, index) => (
-                <Card key={index} className="border-0 shadow-lg">
+              {practitionerProgramTestimonials.map((testimonial) => (
+                <Card key={testimonial.id} className="border-0 shadow-lg">
                   <CardContent className="p-6">
                     <div className="flex mb-4">
                       <span className="text-yellow-500 tracking-wide">★★★★★</span>
                     </div>
-                    <p className="text-gray-700 italic mb-6">"{testimonial.testimonial}"</p>
+                    <p className="text-gray-700 italic mb-6">"{testimonial.quote}"</p>
                     <div>
                       <h4 className="font-semibold">{testimonial.name}</h4>
                       <p className="text-sm text-gray-600">{testimonial.role}</p>
-                      <Badge className="mt-2 bg-green-100 text-green-800 text-xs">{testimonial.program}</Badge>
+                      <Badge className="mt-2 bg-green-100 text-green-800 text-xs">{testimonial.label}</Badge>
                     </div>
                   </CardContent>
                 </Card>

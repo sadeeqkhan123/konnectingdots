@@ -16,6 +16,7 @@ import {
 } from "lucide-react"
 import BookingModal from "@/components/booking-modal"
 import Link from "next/link"
+import { trainTheTrainerTestimonials } from "@/lib/testimonials"
 
 export default function TrainTheTrainerPage() {
   return (
@@ -326,39 +327,17 @@ export default function TrainTheTrainerPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  name: "Michael Chen",
-                  role: "Corporate Training Manager",
-                  company: "Fortune 500 Company",
-                  testimonial:
-                    "This program transformed my ability to deliver impactful training. The practical skills and certification opened up incredible career opportunities.",
-                },
-                {
-                  name: "Sarah Williams",
-                  role: "Independent Trainer",
-                  company: "Leadership Development",
-                  testimonial:
-                    "I went from being nervous about public speaking to confidently training executives. The support and materials are exceptional.",
-                },
-                {
-                  name: "David Rodriguez",
-                  role: "HR Director",
-                  company: "Tech Startup",
-                  testimonial:
-                    "The Train the Trainer program gave me the skills to build our entire internal training program. ROI was immediate and substantial.",
-                },
-              ].map((testimonial, index) => (
-                <Card key={index} className="border-0 shadow-lg">
+              {trainTheTrainerTestimonials.map((testimonial) => (
+                <Card key={testimonial.id} className="border-0 shadow-lg">
                   <CardContent className="p-6">
                     <div className="flex mb-4">
                       <span className="text-yellow-500 tracking-wide">★★★★★</span>
                     </div>
-                    <p className="text-gray-700 italic mb-6">"{testimonial.testimonial}"</p>
+                    <p className="text-gray-700 italic mb-6">"{testimonial.quote}"</p>
                     <div>
                       <h4 className="font-semibold">{testimonial.name}</h4>
                       <p className="text-sm text-gray-600">{testimonial.role}</p>
-                      <p className="text-sm text-gray-500">{testimonial.company}</p>
+                      <p className="text-sm text-gray-500">{testimonial.label}</p>
                     </div>
                   </CardContent>
                 </Card>

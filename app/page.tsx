@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { Play, ArrowRight, Users, Award, Heart, Star, CheckCircle, TrendingUp } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { homeTestimonials } from "@/lib/testimonials"
 
 const CLIENT_LOGOS = [
   { name: "Pakistan Reinsurance Company Limited", src: "/client-logos/pakre.png", className: "max-w-[280px]" },
@@ -14,6 +15,24 @@ const CLIENT_LOGOS = [
   { name: "QUEST Nawabshah", src: "/client-logos/quest.png", className: "max-w-[120px]" },
   { name: "SZABIST University", src: "/client-logos/szabist.png", className: "max-w-[250px]" },
 ]
+
+const THEME_STYLES = {
+  secondary: {
+    label: "text-brand-secondary",
+    avatarBg: "bg-brand-secondary/10",
+    avatarText: "text-brand-secondary",
+  },
+  primary: {
+    label: "text-brand-primary",
+    avatarBg: "bg-brand-primary/10",
+    avatarText: "text-brand-primary",
+  },
+  accent: {
+    label: "text-brand-accent",
+    avatarBg: "bg-brand-accent/10",
+    avatarText: "text-brand-accent",
+  },
+} as const
 
 export default function HomePage() {
   return (
@@ -338,84 +357,35 @@ export default function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 opacity-0-animate animate-fade-in-up animate-delay-100">
-              <CardContent className="p-8">
-                <p className="text-sm font-semibold text-brand-secondary mb-3">Practitioner Program</p>
-                <div className="flex mb-4">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <Star key={star} className="h-5 w-5 text-brand-secondary fill-current" />
-                  ))}
-                </div>
-                <p className="text-foreground/80 italic mb-6">
-                  "Yousif is an incredible human being and an exceptional NLP coach. I had the privilege of completing
-                  my NLP certification under his guidance, and his teaching made complex concepts easy to understand and
-                  apply. He is always available and offers valuable insights that help navigate challenges effectively.
-                  His support has played a key role in my personal and professional growth. I highly recommend Yousif
-                  to anyone seeking a trusted and impactful coach."
-                </p>
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-brand-secondary/10 rounded-full flex items-center justify-center mr-4">
-                    <span className="text-brand-secondary font-bold">GA</span>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold">Ghina Asad</h4>
-                    <p className="text-sm text-muted-foreground">Psychologist</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 opacity-0-animate animate-fade-in-up animate-delay-200">
-              <CardContent className="p-8">
-                <p className="text-sm font-semibold text-brand-primary mb-3">Webinars</p>
-                <div className="flex mb-4">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <Star key={star} className="h-5 w-5 text-brand-secondary fill-current" />
-                  ))}
-                </div>
-                <p className="text-foreground/80 italic mb-6">
-                  "The sessions were truly transformative, and I thoroughly enjoyed learning about the concepts and
-                  techniques shared during the program. I also want to comment about the trainer, Mr. Yousif Mangi. I
-                  felt more comfortable with him as his way of defining everything was very impressive. Thanks for the
-                  opportunity, Yousif."
-                </p>
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-brand-primary/10 rounded-full flex items-center justify-center mr-4">
-                    <span className="text-brand-primary font-bold">SA</span>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold">Sarfraz Ali Shah</h4>
-                    <p className="text-sm text-muted-foreground">Podcast Host - Educationalist</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 opacity-0-animate animate-fade-in-up animate-delay-300">
-              <CardContent className="p-8">
-                <p className="text-sm font-semibold text-brand-accent mb-3">Master Practitioner</p>
-                <div className="flex mb-4">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <Star key={star} className="h-5 w-5 text-brand-secondary fill-current" />
-                  ))}
-                </div>
-                <p className="text-foreground/80 italic mb-6">
-                  "Highly recommended, very approachable trainer (Yousif Mangi), interactive sessions. I have completed
-                  my Master Practitioner of NLP and Hypnosis program. The journey up till now is very smooth, empowering
-                  and transforming. I recommend this program to everyone who is looking forward to grow in personal and
-                  professional life."
-                </p>
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-brand-accent/10 rounded-full flex items-center justify-center mr-4">
-                    <span className="text-brand-accent font-bold">AK</span>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold">Aqsa Kamran</h4>
-                    <p className="text-sm text-muted-foreground">Teacher &amp; Life Coach</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            {homeTestimonials.map((item, index) => {
+              const styles = THEME_STYLES[item.theme]
+              const delayClass = index === 0 ? "animate-delay-100" : index === 1 ? "animate-delay-200" : "animate-delay-300"
+              return (
+                <Card
+                  key={item.id}
+                  className={`border-0 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 opacity-0-animate animate-fade-in-up ${delayClass}`}
+                >
+                  <CardContent className="p-8">
+                    <p className={`text-sm font-semibold mb-3 ${styles.label}`}>{item.label}</p>
+                    <div className="flex mb-4">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star key={star} className="h-5 w-5 text-brand-secondary fill-current" />
+                      ))}
+                    </div>
+                    <p className="text-foreground/80 italic mb-6">"{item.quote}"</p>
+                    <div className="flex items-center">
+                      <div className={`w-12 h-12 rounded-full flex items-center justify-center mr-4 ${styles.avatarBg}`}>
+                        <span className={`font-bold ${styles.avatarText}`}>{item.initials}</span>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold">{item.name}</h4>
+                        <p className="text-sm text-muted-foreground">{item.role}</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              )
+            })}
           </div>
 
           <div className="text-center mt-12">
