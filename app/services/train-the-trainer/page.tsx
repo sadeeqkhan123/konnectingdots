@@ -16,7 +16,7 @@ import {
 } from "lucide-react"
 import BookingModal from "@/components/booking-modal"
 import Link from "next/link"
-import { trainTheTrainerTestimonials } from "@/lib/testimonials"
+import { SiteTestimonialsGrid } from "@/components/site-testimonials-grid"
 
 export default function TrainTheTrainerPage() {
   return (
@@ -326,23 +326,7 @@ export default function TrainTheTrainerPage() {
               <p className="text-xl text-gray-600">Hear from our certified trainers</p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {trainTheTrainerTestimonials.map((testimonial) => (
-                <Card key={testimonial.id} className="border-0 shadow-lg">
-                  <CardContent className="p-6">
-                    <div className="flex mb-4">
-                      <span className="text-yellow-500 tracking-wide">★★★★★</span>
-                    </div>
-                    <p className="text-gray-700 italic mb-6">"{testimonial.quote}"</p>
-                    <div>
-                      <h4 className="font-semibold">{testimonial.name}</h4>
-                      <p className="text-sm text-gray-600">{testimonial.role}</p>
-                      <p className="text-sm text-gray-500">{testimonial.label}</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+            <SiteTestimonialsGrid />
           </div>
         </div>
       </section>

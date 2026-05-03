@@ -7,10 +7,11 @@ import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { Calendar, Clock, MapPin, Users, Video, Star } from "lucide-react"
+import { Calendar, Clock, MapPin, Users, Video } from "lucide-react"
 import Link from "next/link"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { trackGtmEvent } from "@/lib/gtm"
+import { SiteTestimonialsGrid } from "@/components/site-testimonials-grid"
 
 interface EventItem {
   id: string
@@ -320,87 +321,15 @@ export default function EventsPage() {
         </DialogContent>
       </Dialog>
 
-      {/* Past Event Highlights */}
+      {/* Success stories (same site-wide testimonials as home) */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Past Event Highlights</h2>
-            <p className="text-xl text-gray-600">See what participants experienced in our previous events</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Success Stories</h2>
+            <p className="text-xl text-gray-600">Real transformations from real people</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="overflow-hidden">
-              <div className="aspect-video bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
-                <div className="text-center text-white">
-                  <h3 className="text-xl font-bold mb-2">NLP Master Class 2023</h3>
-                  <p className="text-sm">200+ Participants</p>
-                </div>
-              </div>
-              <CardContent className="p-6">
-                <div className="flex items-center mb-4">
-                  <div className="flex">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <Star key={star} className="h-4 w-4 text-yellow-400 fill-current" />
-                    ))}
-                  </div>
-                  <span className="ml-2 text-sm text-gray-600">4.9/5 rating</span>
-                </div>
-                <p className="text-gray-700 text-sm">
-                  "Life-changing experience! The techniques I learned have transformed both my personal relationships
-                  and business success."
-                </p>
-                <p className="text-xs text-gray-500 mt-2">- Sarah M., Participant</p>
-              </CardContent>
-            </Card>
-
-            <Card className="overflow-hidden">
-              <div className="aspect-video bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center">
-                <div className="text-center text-white">
-                  <h3 className="text-xl font-bold mb-2">Corporate DEI Summit</h3>
-                  <p className="text-sm">50+ Companies</p>
-                </div>
-              </div>
-              <CardContent className="p-6">
-                <div className="flex items-center mb-4">
-                  <div className="flex">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <Star key={star} className="h-4 w-4 text-yellow-400 fill-current" />
-                    ))}
-                  </div>
-                  <span className="ml-2 text-sm text-gray-600">4.8/5 rating</span>
-                </div>
-                <p className="text-gray-700 text-sm">
-                  "Outstanding program that gave us practical tools to build a more inclusive workplace culture
-                  immediately."
-                </p>
-                <p className="text-xs text-gray-500 mt-2">- David L., HR Director</p>
-              </CardContent>
-            </Card>
-
-            <Card className="overflow-hidden">
-              <div className="aspect-video bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
-                <div className="text-center text-white">
-                  <h3 className="text-xl font-bold mb-2">Hypnosis Intensive</h3>
-                  <p className="text-sm">75+ Practitioners</p>
-                </div>
-              </div>
-              <CardContent className="p-6">
-                <div className="flex items-center mb-4">
-                  <div className="flex">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <Star key={star} className="h-4 w-4 text-yellow-400 fill-current" />
-                    ))}
-                  </div>
-                  <span className="ml-2 text-sm text-gray-600">4.9/5 rating</span>
-                </div>
-                <p className="text-gray-700 text-sm">
-                  "The most comprehensive hypnosis training I've ever attended. My practice has grown 300% since
-                  completing this program."
-                </p>
-                <p className="text-xs text-gray-500 mt-2">- Michael R., Therapist</p>
-              </CardContent>
-            </Card>
-          </div>
+          <SiteTestimonialsGrid />
         </div>
       </section>
 

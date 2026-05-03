@@ -5,7 +5,7 @@ import { Brain, Award, BookOpen, Target, Users, Globe, Heart, ShieldCheck, Compa
 import BookingModal from "@/components/booking-modal"
 import Link from "next/link"
 import { PRACTITIONER_APPLY_FORM_URL } from "@/lib/practitioner-apply-form-url"
-import { practitionerProgramTestimonials } from "@/lib/testimonials"
+import { SiteTestimonialsGrid } from "@/components/site-testimonials-grid"
 
 export default function PractitionerMasterPage() {
   return (
@@ -414,23 +414,7 @@ export default function PractitionerMasterPage() {
               <p className="text-xl text-gray-600">Real transformations from our NLP certification programs</p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {practitionerProgramTestimonials.map((testimonial) => (
-                <Card key={testimonial.id} className="border-0 shadow-lg">
-                  <CardContent className="p-6">
-                    <div className="flex mb-4">
-                      <span className="text-yellow-500 tracking-wide">★★★★★</span>
-                    </div>
-                    <p className="text-gray-700 italic mb-6">"{testimonial.quote}"</p>
-                    <div>
-                      <h4 className="font-semibold">{testimonial.name}</h4>
-                      <p className="text-sm text-gray-600">{testimonial.role}</p>
-                      <Badge className="mt-2 bg-green-100 text-green-800 text-xs">{testimonial.label}</Badge>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+            <SiteTestimonialsGrid />
           </div>
         </div>
       </section>

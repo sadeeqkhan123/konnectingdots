@@ -12,6 +12,7 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { TEAM } from "@/lib/team"
 
 export default function AboutPage() {
   return (
@@ -102,7 +103,7 @@ export default function AboutPage() {
       </section>
 
       {/* Yousif Mangi Profile */}
-      <section className="py-16 bg-gray-50">
+      <section id="yousif-mangi" className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -111,16 +112,19 @@ export default function AboutPage() {
             </div>
 
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="aspect-square bg-gradient-to-br from-teal-400 to-blue-600 rounded-2xl flex items-center justify-center mb-8">
-                  <div className="text-center text-white">
-                    <div className="w-32 h-32 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Users className="h-16 w-16" />
-                    </div>
-                    <h3 className="text-2xl font-bold">Yousif Mangi</h3>
-                    <p className="text-teal-100">Founder & Chief Learning Officer</p>
-                  </div>
+              <div className="max-w-md mx-auto lg:max-w-none">
+                <div className="relative aspect-[3/4] w-full rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5">
+                  <Image
+                    src={TEAM.yousif.src}
+                    alt={TEAM.yousif.alt}
+                    width={800}
+                    height={1000}
+                    className="h-full w-full object-cover object-[center_top]"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                  />
                 </div>
+                <p className="text-center text-sm text-gray-500 mt-3 lg:hidden">{TEAM.yousif.title}</p>
               </div>
 
               <div className="space-y-6">
@@ -220,7 +224,7 @@ export default function AboutPage() {
       </section>
 
       {/* Zoya Yousif Profile */}
-      <section className="py-16">
+      <section id="zoya-yousif" className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -229,16 +233,18 @@ export default function AboutPage() {
             </div>
 
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="aspect-square bg-gradient-to-br from-emerald-400 to-teal-600 rounded-2xl flex items-center justify-center mb-8">
-                  <div className="text-center text-white">
-                    <div className="w-32 h-32 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Users className="h-16 w-16" />
-                    </div>
-                    <h3 className="text-2xl font-bold">Zoya Yousif</h3>
-                    <p className="text-emerald-100">Co-Founder & Program Director</p>
-                  </div>
+              <div className="max-w-md mx-auto lg:max-w-none">
+                <div className="relative aspect-[3/4] w-full rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5">
+                  <Image
+                    src={TEAM.zoya.src}
+                    alt={TEAM.zoya.alt}
+                    width={800}
+                    height={1000}
+                    className="h-full w-full object-cover object-[center_top]"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
                 </div>
+                <p className="text-center text-sm text-gray-500 mt-3 lg:hidden">{TEAM.zoya.title}</p>
               </div>
 
               <div className="space-y-6">
@@ -291,93 +297,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Zubair Ahmed Profile */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet Zubair Ahmed</h2>
-              <p className="text-xl text-gray-600">Corporate Consultant & NLP Coach</p>
-            </div>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="aspect-square bg-gradient-to-br from-indigo-500 to-sky-600 rounded-2xl flex items-center justify-center mb-8">
-                  <div className="text-center text-white">
-                    <div className="w-32 h-32 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Users className="h-16 w-16" />
-                    </div>
-                    <h3 className="text-2xl font-bold">Zubair Ahmed</h3>
-                    <p className="text-sky-100">Corporate Consultant & NLP Coach</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-6">
-                <div>
-                  <h3 className="text-2xl font-bold mb-4">Corporate Consultant and NLP Coach</h3>
-                  <p className="text-gray-600 leading-relaxed mb-6">
-                    Zubair Ahmed is a dynamic Corporate Consultant and Certified NLP Coach with over 9 years of
-                    experience in Learning and Development. He has delivered impactful training and facilitation across
-                    corporates, academia, NGOs, and youth platforms.
-                  </p>
-                  <p className="text-gray-600 leading-relaxed">
-                    Guided by the principle of "Perception is Projection," he integrates applied linguistics,
-                    psychology, and mind sciences to build deep self-awareness, emotional intelligence, and sustainable
-                    behavioral change.
-                  </p>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="font-bold text-gray-800 mb-3 flex items-center">
-                      <Award className="mr-2 h-5 w-5 text-yellow-600" />
-                      Core Expertise
-                    </h4>
-                    <ul className="space-y-3 text-sm text-gray-600">
-                      {[
-                        "Emotional intelligence & workplace effectiveness",
-                        "Communication & interpersonal skills",
-                        "Negotiation skills",
-                        "Stress management & resilience",
-                        "Growth mindset & performance development",
-                        "NLP tools for values alignment and transformation",
-                      ].map((item) => (
-                        <li key={item} className="flex items-start gap-2">
-                          <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h4 className="font-bold text-gray-800 mb-3 flex items-center">
-                      <Tv className="mr-2 h-5 w-5 text-blue-600" />
-                      Experience & Impact
-                    </h4>
-                    <ul className="space-y-3 text-sm text-gray-600">
-                      {[
-                        "400+ training sessions conducted",
-                        "35,000+ individuals empowered",
-                        "Extensive work with corporates, NGOs, academia, and youth groups",
-                        "Industry experience: textile, pharma, BPO, and development sector",
-                        "Highly interactive, reflective, and practical facilitation style",
-                      ].map((item) => (
-                        <li key={item} className="flex items-start gap-2">
-                          <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Team & Collaborators */}
       <section className="py-16">
         <div className="container mx-auto px-4">
@@ -386,42 +305,41 @@ export default function AboutPage() {
             <p className="text-xl text-gray-600">Meet the people behind your transformation</p>
           </div>
 
-          <div className="grid max-w-5xl mx-auto md:grid-cols-3 gap-8">
-            <Card className="text-center hover:shadow-lg transition-shadow">
+          <div className="grid max-w-3xl mx-auto md:grid-cols-2 gap-8">
+            <Card className="text-center hover:shadow-lg transition-shadow overflow-hidden">
               <CardContent className="p-8">
-                <div className="w-20 h-20 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-teal-600 font-bold text-xl">YM</span>
+                <div className="relative w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden ring-2 ring-teal-100 shadow-md">
+                  <Image
+                    src={TEAM.yousif.src}
+                    alt={TEAM.yousif.alt}
+                    width={224}
+                    height={224}
+                    className="h-full w-full object-cover object-[center_top]"
+                  />
                 </div>
-                <h3 className="text-xl font-bold mb-2">Yousif Mangi</h3>
-                <p className="text-gray-600 mb-4">Founder & Chief Learning Officer</p>
+                <h3 className="text-xl font-bold mb-2">{TEAM.yousif.name}</h3>
+                <p className="text-gray-600 mb-4">{TEAM.yousif.title}</p>
                 <p className="text-sm text-gray-500">
                   80+ workshops, 10,000+ individuals impacted, coaching clients across 15 countries
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="text-center hover:shadow-lg transition-shadow">
+            <Card className="text-center hover:shadow-lg transition-shadow overflow-hidden">
               <CardContent className="p-8">
-                <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-green-600 font-bold text-xl">ZY</span>
+                <div className="relative w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden ring-2 ring-emerald-100 shadow-md">
+                  <Image
+                    src={TEAM.zoya.src}
+                    alt={TEAM.zoya.alt}
+                    width={224}
+                    height={224}
+                    className="h-full w-full object-cover object-[center_top]"
+                  />
                 </div>
-                <h3 className="text-xl font-bold mb-2">Zoya Yousif</h3>
-                <p className="text-gray-600 mb-4">Co-Founder & Program Director</p>
+                <h3 className="text-xl font-bold mb-2">{TEAM.zoya.name}</h3>
+                <p className="text-gray-600 mb-4">{TEAM.zoya.title}</p>
                 <p className="text-sm text-gray-500">
                   Inclusion, workplace well-being, and impactful learning program design
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="p-8">
-                <div className="w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-indigo-600 font-bold text-xl">ZA</span>
-                </div>
-                <h3 className="text-xl font-bold mb-2">Zubair Ahmed</h3>
-                <p className="text-gray-600 mb-4">Corporate Consultant & NLP Coach</p>
-                <p className="text-sm text-gray-500">
-                  400+ sessions conducted, 35,000+ individuals empowered across diverse sectors
                 </p>
               </CardContent>
             </Card>

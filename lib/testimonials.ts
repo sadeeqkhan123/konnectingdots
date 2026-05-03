@@ -73,14 +73,4 @@ export const allTestimonials: Testimonial[] = [
   },
 ]
 
-export const homeTestimonials = allTestimonials.slice(0, 3)
-
-export const practitionerProgramTestimonials = allTestimonials.filter((t) =>
-  ["ghina-asad", "urania-nelom", "roomana-shazad"].includes(t.id),
-)
-
-export const trainTheTrainerTestimonials = allTestimonials.filter((t) =>
-  ["sarfraz-ali-shah", "rehman-khosani", "aqsa-kamran"].includes(t.id),
-)
-
 export const getTestimonialById = (id: string) => allTestimonials.find((t) => t.id === id)

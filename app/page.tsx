@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Play, ArrowRight, Users, Award, Heart, Star, CheckCircle, TrendingUp } from "lucide-react"
+import { Play, ArrowRight, Users, Award, Heart, CheckCircle, TrendingUp } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-import { homeTestimonials } from "@/lib/testimonials"
+import { SiteTestimonialsGrid } from "@/components/site-testimonials-grid"
+import { TEAM } from "@/lib/team"
 
 const CLIENT_LOGOS = [
   { name: "Pakistan Reinsurance Company Limited", src: "/client-logos/pakre.png", className: "max-w-[280px]" },
@@ -15,24 +16,6 @@ const CLIENT_LOGOS = [
   { name: "QUEST Nawabshah", src: "/client-logos/quest.png", className: "max-w-[120px]" },
   { name: "SZABIST University", src: "/client-logos/szabist.png", className: "max-w-[250px]" },
 ]
-
-const THEME_STYLES = {
-  secondary: {
-    label: "text-brand-secondary",
-    avatarBg: "bg-brand-secondary/10",
-    avatarText: "text-brand-secondary",
-  },
-  primary: {
-    label: "text-brand-primary",
-    avatarBg: "bg-brand-primary/10",
-    avatarText: "text-brand-primary",
-  },
-  accent: {
-    label: "text-brand-accent",
-    avatarBg: "bg-brand-accent/10",
-    avatarText: "text-brand-accent",
-  },
-} as const
 
 export default function HomePage() {
   return (
@@ -87,79 +70,105 @@ export default function HomePage() {
       {/* Intro Video Section */}
       <section id="intro-video" className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0-animate animate-fade-in-up">
-              A Message from Yousif Mangi
-            </h2>
-            <p className="text-xl text-muted-foreground mb-8 opacity-0-animate animate-fade-in-up animate-delay-100">
-              Founder & Chief Learning Officer at Konnecting Dots
-            </p>
-            <div className="relative aspect-video bg-gradient-to-br from-brand-primary to-info rounded-2xl overflow-hidden shadow-2xl opacity-0-animate animate-scale-in animate-delay-200 group cursor-pointer">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Button
-                  size="lg"
-                  className="bg-white/20 hover:bg-white/30 text-white border-white/30 backdrop-blur-sm transform group-hover:scale-110 transition-all duration-300"
-                  asChild
-                >
-                  <Link href="/contact?subject=Intro%20Video%20Request">
-                    <Play className="mr-2 h-8 w-8" />
-                    Play Video
-                  </Link>
-                </Button>
-              </div>
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 opacity-0-animate animate-fade-in-up">
+                A Message from Yousif Mangi
+              </h2>
+              <p className="text-xl text-muted-foreground opacity-0-animate animate-fade-in-up animate-delay-100">
+                Founder & Chief Learning Officer at Konnecting Dots
+              </p>
             </div>
-            <div className="mt-8 text-left max-w-3xl mx-auto space-y-4 text-muted-foreground">
-              <p className="text-lg">
-                Yousif Mangi, Founder Chief Learning Officer at Konnecting Dots, is a seasoned professional in personal
-                development and organizational transformation. With decade long experience in Learning and Development,
-                he&apos;s conducted over 100+ workshops across various sectors, impacting 30,000+ individuals. As a
-                certified Trainer of NLP, Hypnotherapy, and Success Coach, he empowers individuals and organizations to
-                reach their full potential.
-              </p>
-              <p className="text-lg">
-                Yousif&apos;s approach is rooted in the belief that internal transformation leads to external success.
-                Yousif is an International Ambassador ANLP.
-              </p>
-              <div className="rounded-2xl border border-border/60 bg-background/60 p-6">
-                <h3 className="text-base font-semibold text-foreground mb-4">Areas of Expertise</h3>
-                <ul className="grid sm:grid-cols-2 gap-3 text-sm">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    Emotional intelligence
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    Negotiation skills
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    Stress management
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    Work-life balance
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    Team building, collaboration and leadership
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    Sales and customer relationships
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    First-time managers
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    Conflict management
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    Personality, behavior & managing state
-                  </li>
-                </ul>
+
+            <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+              <div className="lg:col-span-4 flex justify-center lg:justify-start">
+                <Link
+                  href="/about#yousif-mangi"
+                  className="group flex flex-col items-center text-center max-w-[240px] mx-auto lg:mx-0"
+                >
+                  <div className="relative w-full aspect-[3/4] max-w-[240px] rounded-2xl overflow-hidden shadow-lg ring-1 ring-border/60 transition-transform group-hover:scale-[1.02]">
+                    <Image
+                      src={TEAM.yousif.src}
+                      alt={TEAM.yousif.alt}
+                      width={480}
+                      height={640}
+                      className="h-full w-full object-cover object-[center_top]"
+                    />
+                  </div>
+                  <span className="text-sm font-medium text-foreground mt-2">{TEAM.yousif.name}</span>
+                  <span className="text-xs text-muted-foreground">{TEAM.yousif.title}</span>
+                </Link>
+              </div>
+
+              <div className="lg:col-span-8 w-full min-w-0">
+                <div className="relative aspect-video bg-gradient-to-br from-brand-primary to-info rounded-2xl overflow-hidden shadow-2xl opacity-0-animate animate-scale-in animate-delay-200 group cursor-pointer">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Button
+                      size="lg"
+                      className="bg-white/20 hover:bg-white/30 text-white border-white/30 backdrop-blur-sm transform group-hover:scale-110 transition-all duration-300"
+                      asChild
+                    >
+                      <Link href="/contact?subject=Intro%20Video%20Request">
+                        <Play className="mr-2 h-8 w-8" />
+                        Play Video
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+                <div className="mt-8 text-left space-y-4 text-muted-foreground">
+                  <p className="text-lg">
+                    Yousif Mangi, Founder Chief Learning Officer at Konnecting Dots, is a seasoned professional in personal
+                    development and organizational transformation. With decade long experience in Learning and Development,
+                    he&apos;s conducted over 100+ workshops across various sectors, impacting 30,000+ individuals. As a
+                    certified Trainer of NLP, Hypnotherapy, and Success Coach, he empowers individuals and organizations to
+                    reach their full potential.
+                  </p>
+                  <p className="text-lg">
+                    Yousif&apos;s approach is rooted in the belief that internal transformation leads to external success.
+                    Yousif is an International Ambassador ANLP.
+                  </p>
+                  <div className="rounded-2xl border border-border/60 bg-background/60 p-6">
+                    <h3 className="text-base font-semibold text-foreground mb-4">Areas of Expertise</h3>
+                    <ul className="grid sm:grid-cols-2 gap-3 text-sm">
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                        Emotional intelligence
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                        Negotiation skills
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                        Stress management
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                        Work-life balance
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                        Team building, collaboration and leadership
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                        Sales and customer relationships
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                        First-time managers
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                        Conflict management
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                        Personality, behavior & managing state
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -356,37 +365,7 @@ export default function HomePage() {
             <p className="text-xl text-muted-foreground">Real transformations from real people</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {homeTestimonials.map((item, index) => {
-              const styles = THEME_STYLES[item.theme]
-              const delayClass = index === 0 ? "animate-delay-100" : index === 1 ? "animate-delay-200" : "animate-delay-300"
-              return (
-                <Card
-                  key={item.id}
-                  className={`border-0 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 opacity-0-animate animate-fade-in-up ${delayClass}`}
-                >
-                  <CardContent className="p-8">
-                    <p className={`text-sm font-semibold mb-3 ${styles.label}`}>{item.label}</p>
-                    <div className="flex mb-4">
-                      {[1, 2, 3, 4, 5].map((star) => (
-                        <Star key={star} className="h-5 w-5 text-brand-secondary fill-current" />
-                      ))}
-                    </div>
-                    <p className="text-foreground/80 italic mb-6">"{item.quote}"</p>
-                    <div className="flex items-center">
-                      <div className={`w-12 h-12 rounded-full flex items-center justify-center mr-4 ${styles.avatarBg}`}>
-                        <span className={`font-bold ${styles.avatarText}`}>{item.initials}</span>
-                      </div>
-                      <div>
-                        <h4 className="font-semibold">{item.name}</h4>
-                        <p className="text-sm text-muted-foreground">{item.role}</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              )
-            })}
-          </div>
+          <SiteTestimonialsGrid animated />
 
           <div className="text-center mt-12">
             <Link href="/testimonials">
